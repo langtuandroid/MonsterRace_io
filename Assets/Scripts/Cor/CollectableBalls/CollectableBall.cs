@@ -10,6 +10,7 @@ namespace PlayKing.Cor
         [SerializeField] Color colorBall;
         [SerializeField] Color colorClaim;
         [SerializeField] MeshRenderer meshRenderer;
+        private bool isBallDestroyed;
 
         [Header("NeedCharacterType")]
         [SerializeField] CharacterColorType _characterColorType;
@@ -19,7 +20,7 @@ namespace PlayKing.Cor
         private void Start()
         {
             _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
-            transform.DOScale(transform.localScale, 0.5f).From(0);
+            transform.DOScale(transform.localScale, 0.2f).From(0);
         }
 
         public bool IsTrueCharacter(CharacterColorType characterColorType)
@@ -39,9 +40,14 @@ namespace PlayKing.Cor
 
         public IEnumerator IE_BallToMonster(BallsMonster ballsMonster)
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.35f);
 
-            Destroy(gameObject);
+            if (!isBallDestroyed)
+            {
+                ballsMonster.BallActiveted();
+                isBallDestroyed = true;
+                Destroy(gameObject, 0.1f);
+            }
         }
 
         private IEnumerator IE_ReturnColorBall()

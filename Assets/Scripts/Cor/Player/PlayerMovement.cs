@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 namespace PlayKing.Cor
 {
@@ -12,26 +13,48 @@ namespace PlayKing.Cor
         [SerializeField] private float groundDistance;
         [SerializeField] private float speedMovement;
         [SerializeField] private float speedRotate;
+        [SerializeField] private bool isLockControll;
 
         Vector3 gravityVelocity;
         Transform _transformPlayer;
         CharacterController _characterController;
         FloatingJoystick _joystick;
+        CharacterStatesAnimation _characterStatesAnimation;
 
         private void Start()
         {
             _transformPlayer = GetComponent<Transform>();
             _characterController = GetComponent<CharacterController>();
             _joystick = GameObject.FindObjectOfType<FloatingJoystick>();
+            _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
         }
 
         private void Update()
         {
+            if (isLockControll)
+                return;
+
             MovementControll();
+        }
+
+        public void LockControll(bool lockControll)
+        {
+            isLockControll = lockControll;
+        }
+
+        public void MovementToTarget(Transform target)
+        {
+            _transformPlayer.DOMove(new Vector3(target.position.x, 
+                _transformPlayer.position.y, target.position.z), 0.4f);
         }
 
         private void MovementControll()
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _characterStatesAnimation.RunAnimation(true);
+            }
+
             if (Input.GetMouseButton(0))
             {
                 if (_joystick != null)
@@ -53,6 +76,11 @@ namespace PlayKing.Cor
                     gravityVelocity += Vector3.up * gravityMultyplier * Time.deltaTime;
                     _characterController.Move(gravityVelocity);
                 }
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                _characterStatesAnimation.RunAnimation(false);
             }
         }
     }

@@ -67,7 +67,6 @@ namespace PlayKing.Cor
                 {
                     i.collectableBall = null;
                     i.isBallRemoved = true;
-                    Debug.Log("LLL");
                     break;
                 }
             }
@@ -109,7 +108,6 @@ namespace PlayKing.Cor
             createdBall.transform.position = spawnedBall.spawnPosition;
             spawnedBall.collectableBall = createdBall.GetComponent<CollectableBall>();
             spawnedBall.isBallRemoved = false;
-            Debug.Log("jjj");
         }
     }
 }
