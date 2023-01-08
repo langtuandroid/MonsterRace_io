@@ -5,6 +5,7 @@ namespace PlayKing.Cor
 {
     public class CollectableBallsField : MonoBehaviour
     {
+        [System.Serializable]
         public class SpawnedBall
         {
             public CollectableBall collectableBall;
@@ -13,7 +14,7 @@ namespace PlayKing.Cor
         }
 
         [Header("BallPrefabs")]
-        [SerializeField] List<Transform> ballPrefabs = new List<Transform>();
+        [SerializeField] List<GameObject> ballPrefabs = new List<GameObject>();
 
         [Header("FieldPlacement")]
         [SerializeField] private int length;
@@ -29,7 +30,7 @@ namespace PlayKing.Cor
         private Vector3 startPoint;
         private Vector3 position;
 
-        private List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
+        public List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
 
         void Start()
         {
@@ -50,11 +51,25 @@ namespace PlayKing.Cor
                 {
                     if (i.isBallRemoved)
                     {
-                        GenerateRemovedBrick(i);
+                        GenerateRemovedBall(i);
                         break;
                     }
                 }
                 timer = 0f;
+            }
+        }
+
+        public void RemoveBall(CollectableBall collectableBall)
+        {
+            foreach (var i in spawnedBalls)
+            {
+                if (collectableBall == i.collectableBall)
+                {
+                    i.collectableBall = null;
+                    i.isBallRemoved = true;
+                    Debug.Log("LLL");
+                    break;
+                }
             }
         }
 
@@ -75,7 +90,7 @@ namespace PlayKing.Cor
                     position = new Vector3(xPosition + xOrder, startPoint.y, zPosition);
                 }
 
-                Transform newCollectableBall = Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Count)], 
+                GameObject newCollectableBall = Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Count)], 
                     position, ballPrefabs[Random.Range(0, ballPrefabs.Count)].transform.rotation);
 
                 SpawnedBall spawnedBall = new SpawnedBall();
@@ -86,10 +101,15 @@ namespace PlayKing.Cor
             }
         }
 
-        private void GenerateRemovedBrick(SpawnedBall spawnedBall)
+        private void GenerateRemovedBall(SpawnedBall spawnedBall)
         {
-            Transform createdBrick = Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Count)], 
-                spawnedBall.spawnPosition, ballPrefabs[Random.Range(0, ballPrefabs.Count)].transform.rotation, transform);
+            GameObject createdBall = Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Count)], spawnedBall.spawnPosition,
+                Quaternion.identity);
+
+            createdBall.transform.position = spawnedBall.spawnPosition;
+            spawnedBall.collectableBall = createdBall.GetComponent<CollectableBall>();
+            spawnedBall.isBallRemoved = false;
+            Debug.Log("jjj");
         }
     }
 }

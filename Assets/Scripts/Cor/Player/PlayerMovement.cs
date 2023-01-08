@@ -20,8 +20,8 @@ namespace PlayKing.Cor
 
         private void Start()
         {
-            _transformPlayer = gameObject.GetComponent<Transform>();
-            _characterController = gameObject.GetComponent<CharacterController>();
+            _transformPlayer = GetComponent<Transform>();
+            _characterController = GetComponent<CharacterController>();
             _joystick = GameObject.FindObjectOfType<FloatingJoystick>();
         }
 
