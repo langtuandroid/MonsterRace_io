@@ -16,12 +16,14 @@ namespace PlayKing.Cor
         [SerializeField] CharacterColorType _characterColorType;
 
         StackBalls _stackBalls;
+        CharacterRagdoll _characterRagdoll;
         CharacterStates _characterStates;
         BallsMonster _ballsMoster;
 
         private void Start()
         {
             _stackBalls = GetComponent<StackBalls>();
+            _characterRagdoll = GetComponent<CharacterRagdoll>();
             _characterStates = GetComponentInParent<CharacterStates>();
         }
 

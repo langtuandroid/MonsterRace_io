@@ -73,6 +73,7 @@ namespace PlayKing.Cor
         }
 
         public float form;
+
         private void BallsPlacement()
         {
             for (int i = 0; i < length; i++)
@@ -93,6 +94,8 @@ namespace PlayKing.Cor
                 GameObject newCollectableBall = Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Count)], 
                     position, ballPrefabs[Random.Range(0, ballPrefabs.Count)].transform.rotation);
 
+                newCollectableBall.transform.parent = transform;
+
                 SpawnedBall spawnedBall = new SpawnedBall();
                 spawnedBall.collectableBall = newCollectableBall.GetComponent<CollectableBall>();
                 spawnedBall.isBallRemoved = false;
@@ -106,6 +109,7 @@ namespace PlayKing.Cor
             GameObject createdBall = Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Count)], spawnedBall.spawnPosition,
                 Quaternion.identity);
 
+            createdBall.transform.parent = transform;
             createdBall.transform.position = spawnedBall.spawnPosition;
             spawnedBall.collectableBall = createdBall.GetComponent<CollectableBall>();
             spawnedBall.isBallRemoved = false;
