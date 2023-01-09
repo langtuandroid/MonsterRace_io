@@ -31,7 +31,8 @@ namespace PlayKing.Cor
 
         private void Update()
         {
-            if (isLockControll)
+            if (LevelController.Instance.levelAction != LevelAction.Start 
+                || isLockControll)
                 return;
 
             MovementControll();

@@ -19,7 +19,7 @@ namespace PlayKing.Cor
         [Header("FieldPlacement")]
         [SerializeField] private int length;
         [SerializeField] private int line;
-        [SerializeField] private int xOrder;
+        [SerializeField] private float xOrder;
         [SerializeField] private float xPosition;
         [SerializeField] private float zPosition;
 
@@ -72,11 +72,12 @@ namespace PlayKing.Cor
             }
         }
 
+        public float form;
         private void BallsPlacement()
         {
             for (int i = 0; i < length; i++)
             {
-                xOrder += 1;
+                xOrder += form;
 
                 if (i % line == 0)
                 {
