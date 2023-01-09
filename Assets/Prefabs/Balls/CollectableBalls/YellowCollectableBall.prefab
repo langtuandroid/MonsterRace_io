@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5ddc281bbdf4041bb0ecb15238f551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorBall: {r: 0.54901963, g: 0.88235295, b: 1, a: 1}
+  colorBall: {r: 0.93333334, g: 0.8235294, b: 0.24313726, a: 1}
   colorClaim: {r: 1, g: 0.99179006, b: 0.76792455, a: 1}
   meshRenderer: {fileID: 7544584392840889687}
   _characterColorType: 2

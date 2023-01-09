@@ -8,6 +8,7 @@ namespace PlayKing.Cor
         [SerializeField] Character _character;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] CharacterCanvas _characterCanvas;
         [SerializeField] PlayerMovement _playerMovement;
         private bool isMonsterStage;
 
@@ -25,6 +26,7 @@ namespace PlayKing.Cor
 
             _characterStatesAnimation.JumpAnimation();
             _characterStatesAnimation.IsMonsterStage(true);
+            _characterCanvas.SetMonsterTarget();
             StartCoroutine(IE_CharacterInMonster());
             StartCoroutine(IE_ActivetedMonster());
             isMonsterStage = true;

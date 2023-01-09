@@ -8,14 +8,24 @@ namespace PlayKing.Cor
         [SerializeField] Transform targetCharacter;
         [SerializeField] Transform targetMonster;
 
+        Transform _target;
+        Transform _transform;
+
         private void Start()
         {
-            transform.parent = null;
+            _transform = GetComponent<Transform>();
+            _transform.parent = null;
+            _target = targetCharacter;
         }
 
         private void LateUpdate()
         {
-            transform.position = targetCharacter.position;
+            transform.position = _target.position;
+        }
+
+        public void SetMonsterTarget()
+        {
+            _target = targetMonster;
         }
     }
 }

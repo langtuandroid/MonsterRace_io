@@ -24,6 +24,21 @@ namespace PlayKing.Cor
             _stackBalls = GetComponent<StackBalls>();
             _characterStates = GetComponentInParent<CharacterStates>();
         }
+        public bool isD;
+        private void Update()
+        {
+            if (!isD)
+                return;
+            if (Input.GetKeyDown("a"))
+            {
+                crown.SetActive(true);
+            }
+
+            if (Input.GetKeyDown("b"))
+            {
+                crown.SetActive(false);
+            }
+        }
 
         public void KnockCharacter()
         {
