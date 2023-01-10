@@ -38,6 +38,11 @@ namespace PlayKing.Cor
                 _ballsMoster.transform.position.y + 1f, _ballsMoster.transform.position.z), 4f, 1, 0.5f);
         }
 
+        public void KillCharacter()
+        {
+            _characterRagdoll.ActiveteRagdoll();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Ball"))

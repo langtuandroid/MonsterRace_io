@@ -13,14 +13,6 @@ namespace PlayKing.Cor
             currencyBalls.Add(monsterBall);
         }
 
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                ExplosionCharacterMonster();
-            }
-        }
-
         public void ExplosionCharacterMonster()
         {
             foreach(var i in currencyBalls)
