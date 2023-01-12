@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum LevelAction
@@ -36,17 +34,20 @@ namespace PlayKing.Cor
         public void LevelCompleted()
         {
             LevelEnd();
+            UIManager.Instance.WinScreen(true);
         }
 
         public void LevelFailed()
         {
             LevelEnd();
+            UIManager.Instance.LoseScreen(true);
         }
 
         private void LevelEnd()
         {
             levelAction = LevelAction.End;
             UIManager.Instance.LeaderboardScreen(false);
+            UIManager.Instance.SettingsScreen(false);
         }
     }
 }

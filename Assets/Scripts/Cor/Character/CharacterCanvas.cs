@@ -20,7 +20,8 @@ namespace PlayKing.Cor
 
         private void LateUpdate()
         {
-            transform.position = _target.position;
+            if(_target != null)
+                transform.position = _target.position;
         }
 
         public void SetMonsterTarget()

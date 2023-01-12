@@ -30,6 +30,7 @@ namespace PlayKing.Cor
         [SerializeField] private bool isPlayer;
         private bool isMonsterStage;
 
+        Arena _arena;
         BallsMonster monster;
         Leaderboard leaderboard;
 
@@ -39,6 +40,8 @@ namespace PlayKing.Cor
             leaderboard.AddMember(_character,characterColorType, color, name);
             _character.SetCharacterSettings(characterColorType);
             basket.material.color = basketColor;
+            _arena = GameObject.FindObjectOfType<Arena>();
+            if (!isPlayer) { _arena.AddBot(this); }
         }
 
         public void CharacterTransformation(BallsMonster ballsMonster)
@@ -70,6 +73,9 @@ namespace PlayKing.Cor
             _characterStatesAnimation.StopAnimations();
             if (_botMovement != null)
                 _botMovement.StopMovement(true);
+
+            if (!isPlayer) { _arena.RemoveBot(this); }
+            if (isPlayer) { _arena.RemovePlayer(); }
         }
 
         public void Die()
@@ -92,6 +98,7 @@ namespace PlayKing.Cor
                 _botMovement.StopMovement(true);
 
             _characterStatesAnimation.KonckAnimation();
+
             StartCoroutine(IE_WakeUp());
             StartCoroutine(CanMove());
         }

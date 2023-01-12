@@ -10,6 +10,16 @@ namespace PlayKing.Cor
             LevelController.Instance.LevelStart();
         }
 
+        public void RestartLevel()
+        {
+            SceneLoader(0);
+        }
+
+        public void NextLevel()
+        {
+            SceneLoader(0);
+        }
+
         private void SceneLoader(int indexScene)
         {
             SceneManager.LoadScene(indexScene);

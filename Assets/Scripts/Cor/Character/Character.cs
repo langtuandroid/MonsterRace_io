@@ -134,19 +134,19 @@ namespace PlayKing.Cor
                 if (!_ballsMoster.IsTrueCharacter(_characterColorType))
                     return;
 
-                if (_stackBalls.AmmountBalls() == 0)
-                    return;
-
                 _stackBalls.UnstackCollectablekBalls(_ballsMoster);
                 leaderboard.AddScoreMemeber(_characterColorType, _ballsMoster.GetPercent());
-
-                if (isPlayer) { VibrationController.Instance.UnstackVibration(); }
 
                 if (_ballsMoster.IsFullMonster())
                 {
                     _characterStates.CharacterTransformation(_ballsMoster);
                     _stackBalls.ClearStack();
                 }
+
+                if (_stackBalls.AmmountBalls() == 0)
+                    return;
+
+                if (isPlayer) { VibrationController.Instance.UnstackVibration(); }
             }
         }
     }
