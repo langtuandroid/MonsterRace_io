@@ -51,11 +51,6 @@ namespace PlayKing.Cor
 
         private void MovementControll()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _characterStatesAnimation.RunAnimation(true);
-            }
-
             if (Input.GetMouseButton(0))
             {
                 if (_joystick != null)
@@ -76,6 +71,13 @@ namespace PlayKing.Cor
 
                     gravityVelocity += Vector3.up * gravityMultyplier * Time.deltaTime;
                     _characterController.Move(gravityVelocity);
+
+                    if (xInput >= 0.1f || xInput <= -0.1f ||
+                        yInput >= 0.1f || yInput <= -0.1f)
+                    {
+                        _characterStatesAnimation.RunAnimation(true);
+                    }
+                    else { _characterStatesAnimation.RunAnimation(false); }
                 }
             }
 

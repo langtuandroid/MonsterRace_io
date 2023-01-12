@@ -12,6 +12,7 @@ public class BallsMonster : MonoBehaviour
 
     [Header("NeedCharacter")]
     [SerializeField] CharacterColorType _characterColorType;
+    [SerializeField] Material color;
 
     [Header("MonsterCanvas")]
     [SerializeField] GameObject monsterCanvas;
@@ -33,6 +34,13 @@ public class BallsMonster : MonoBehaviour
         return false;
     }
 
+    public int GetPercent()
+    {
+        if (needAmmountBalls == 0) return 0;
+
+        return (int)(ammountBalls / (needAmmountBalls / 100M));
+    }
+
     private void Start()
     {
         needAmmountBalls = currencyBalls.Count;
@@ -51,5 +59,6 @@ public class BallsMonster : MonoBehaviour
 
         textCountBalls.text = ammountBalls + "/" + needAmmountBalls;
         currencyBalls[ammountBalls - 1].SetActive(true);
+        currencyBalls[ammountBalls - 1].GetComponent<MeshRenderer>().material = color;
     }
 }

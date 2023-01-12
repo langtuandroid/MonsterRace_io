@@ -1,18 +1,45 @@
 using System.Collections;
 using UnityEngine;
 
+public enum CharacterColorType
+{
+    Blue,
+    Green,
+    Yellow,
+    Violet,
+    Red,
+    Purple,
+    Neutral
+}
+
 namespace PlayKing.Cor
 {
     public class CharacterStates : MonoBehaviour
     {
+        [SerializeField] CharacterColorType characterColorType;
+        [SerializeField] string name;
+        [SerializeField] Color color;
         [SerializeField] Character _character;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
         [SerializeField] CharacterCanvas _characterCanvas;
         [SerializeField] PlayerMovement _playerMovement;
+        [SerializeField] BotMovement _botMovement;
+        [SerializeField] MeshRenderer basket;
+        [SerializeField] Color basketColor;
+        [SerializeField] private bool isPlayer;
         private bool isMonsterStage;
 
         BallsMonster monster;
+        Leaderboard leaderboard;
+
+        private void Start()
+        {
+            leaderboard = GameObject.FindObjectOfType<Leaderboard>();
+            leaderboard.AddMember(_character,characterColorType, color, name);
+            _character.SetCharacterSettings(characterColorType);
+            basket.material.color = basketColor;
+        }
 
         public void CharacterTransformation(BallsMonster ballsMonster)
         {
@@ -32,12 +59,52 @@ namespace PlayKing.Cor
             isMonsterStage = true;
         }
 
+        public void Stop()
+        {
+            _characterStatesAnimation.RunAnimation(false);
+            _botMovement.StopMovement(true);
+        }
+
+        public void CharacterDie()
+        {
+            _characterStatesAnimation.StopAnimations();
+            if (_botMovement != null)
+                _botMovement.StopMovement(true);
+        }
+
+        public void Die()
+        {
+            Destroy(_characterCanvas.gameObject);
+            Destroy(gameObject, 0.3f);
+        }
+
+        public void Attack()
+        {
+            _characterStatesAnimation.AttackAnimation();
+        }
+
+        public void Knock()
+        {
+            if (_playerMovement != null)
+                _playerMovement.LockControll(true);
+
+            if (_botMovement != null)
+                _botMovement.StopMovement(true);
+
+            _characterStatesAnimation.KonckAnimation();
+            StartCoroutine(IE_WakeUp());
+            StartCoroutine(CanMove());
+        }
+
         private IEnumerator IE_CharacterInMonster()
         {
             yield return new WaitForSeconds(0.5f);
 
-            _playerMovement.MovementToTarget(monster.transform);
+            if(_playerMovement != null)
+                _playerMovement.MovementToTarget(monster.transform);
+
             _character.JumpToMontser();
+            CameraController.Instance.ChangeMonsterStateCam();
         }
 
         private IEnumerator IE_ActivetedMonster()
@@ -50,6 +117,26 @@ namespace PlayKing.Cor
            
             if (_playerMovement != null)
                 _playerMovement.LockControll(false);
+        }
+
+        private IEnumerator IE_WakeUp()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            _characterStatesAnimation.WakeUpAnimation();
+        }
+
+        private IEnumerator CanMove()
+        {
+            yield return new WaitForSeconds(2.2f);
+
+            if (_playerMovement != null)
+                _playerMovement.LockControll(false);
+
+            if (_botMovement != null)
+                _botMovement.StopMovement(false);
+
+            _character.ActiveCharacter(false);
         }
     }
 }

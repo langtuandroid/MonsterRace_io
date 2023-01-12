@@ -9,6 +9,11 @@ namespace PlayKing.Cor
         [SerializeField] List<CollectableBall> currencyBalls = new List<CollectableBall>();
         [SerializeField] List<Transform> currencyStackPoints = new List<Transform>(); //rework this solution
 
+        public int AmmountBalls()
+        {
+            return currencyBalls.Count;
+        }
+
         public void AddCollectableBall(CollectableBall _ball)
         {
             foreach (var i in currencyBalls)
@@ -35,6 +40,16 @@ namespace PlayKing.Cor
                 currencyBalls.Remove(currencyBalls[i]);
                 return;
             }
+        }
+
+        public void DestroyedStack()
+        {
+            foreach (var i in currencyBalls)
+            {
+                i.BallNeutral();
+            }
+
+            currencyBalls.Clear();
         }
 
         public void ClearStack()

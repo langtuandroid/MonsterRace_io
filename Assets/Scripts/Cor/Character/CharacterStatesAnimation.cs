@@ -25,6 +25,27 @@ namespace PlayKing.Cor
             _animCharacter.SetTrigger("Jump");
         }
 
+        public void AttackAnimation()
+        {
+            _animMonster.SetTrigger("Attack");
+        }
+
+        public void StopAnimations()
+        {
+            _animCharacter.enabled = false;
+            _animMonster.enabled = false;
+        }
+
+        public void KonckAnimation()
+        {
+            _animCharacter.SetTrigger("Knock");
+        }
+
+        public void WakeUpAnimation()
+        {
+            _animCharacter.SetTrigger("WakeUp");
+        }
+
         public void IsMonsterStage(bool monsterStage)
         {
             isMonsterStage = monsterStage;

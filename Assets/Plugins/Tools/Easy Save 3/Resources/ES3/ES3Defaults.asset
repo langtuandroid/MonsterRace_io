@@ -29,16 +29,26 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
+    - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - MoreMountains.NiceVibrations.Haptics
+    - MoreMountains.NiceVibrations.Demos
     - Cinemachine
     - ToonyColorsPro2.Demo
-    - Assembly-CSharp
     - Sirenix.OdinInspector.CompatibilityLayer
     - ToonyColorsPro.Runtime
+    - MoreMountains.NiceVibrations
     - KinoBloom.Runtime
+    - NavMeshComponentsExamples
+    - NavMeshComponentsTestsPlaymode
+    - NavMeshComponents
     - ToonyColorsPro.Editor
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
+    - MoreMountains.NiceVibrations.Editor
     - ToonyColorsPro.Demo.Editor
+    - NavMeshComponentsEditor
+    - NavMeshComponentsTestsEditmode
+    - NavMeshComponentsExamplesEditor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
