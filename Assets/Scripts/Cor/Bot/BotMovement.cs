@@ -58,7 +58,8 @@ namespace PlayKing.Cor
 
             if(timer >= timeToMonster)
             {
-                if (_stackBalls.AmmountBalls() <= 3)
+                int random = Random.Range(3, 8);
+                if (_stackBalls.AmmountBalls() <= random)
                 {
                     timer = 0f;
                     return;
@@ -93,6 +94,7 @@ namespace PlayKing.Cor
             {
                 isStopMovement = isActive;
                 _agent.enabled = false;
+                return;
             }
 
             isStopMovement = false;

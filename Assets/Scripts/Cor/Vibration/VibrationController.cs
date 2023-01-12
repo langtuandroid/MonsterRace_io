@@ -47,6 +47,7 @@ namespace PlayKing.Cor
                 return;
 
             MMVibrationManager.Haptic(HapticTypes.Success, false, true, this);
+            Debug.Log("UnstackVibration");
         }
 
         public void ClaimVibration()
@@ -55,6 +56,7 @@ namespace PlayKing.Cor
                 return;
 
             MMVibrationManager.Haptic(HapticTypes.Selection, false, true, this);
+            Debug.Log("ClaimVibration");
         }
 
         public void KnockVibration()
@@ -63,6 +65,7 @@ namespace PlayKing.Cor
                 return;
 
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact, false, true, this);
+            Debug.Log("KnockVibration");
         }
 
         public void AttackVibration()
@@ -71,6 +74,7 @@ namespace PlayKing.Cor
                 return;
 
             MMVibrationManager.Haptic(HapticTypes.Failure, false, true, this);
+            Debug.Log("AttackVibration");
         }
     }
 }

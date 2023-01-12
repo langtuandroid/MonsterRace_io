@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BoBoGames
+namespace PlayKing.Cor
 {
     public class FPSController : MonoBehaviour
     {
