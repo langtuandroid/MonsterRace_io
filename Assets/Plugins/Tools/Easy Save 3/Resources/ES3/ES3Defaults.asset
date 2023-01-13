@@ -33,21 +33,21 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - MoreMountains.NiceVibrations.Haptics
     - MoreMountains.NiceVibrations.Demos
+    - NavMeshComponentsTestsPlaymode
     - Cinemachine
     - ToonyColorsPro2.Demo
+    - NavMeshComponentsExamples
     - Sirenix.OdinInspector.CompatibilityLayer
     - ToonyColorsPro.Runtime
     - MoreMountains.NiceVibrations
-    - KinoBloom.Runtime
-    - NavMeshComponentsExamples
-    - NavMeshComponentsTestsPlaymode
     - NavMeshComponents
+    - KinoBloom.Runtime
     - ToonyColorsPro.Editor
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - MoreMountains.NiceVibrations.Editor
-    - ToonyColorsPro.Demo.Editor
-    - NavMeshComponentsEditor
     - NavMeshComponentsTestsEditmode
+    - NavMeshComponentsEditor
+    - ToonyColorsPro.Demo.Editor
     - NavMeshComponentsExamplesEditor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
