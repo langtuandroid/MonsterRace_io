@@ -1,10 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using TMPro;
 using DG.Tweening;
 
 public class BallsMonster : MonoBehaviour
 {
+    [System.Serializable]
+    public class BallType
+    {
+        public CharacterColorType ballType;
+        public int ammountBallsType;
+    }
+
     [Header("BallMonsterType")]
     [SerializeField] CharacterColorType _characterColorType;
 
@@ -22,12 +30,7 @@ public class BallsMonster : MonoBehaviour
     [SerializeField] List<GameObject> currencyBalls = new List<GameObject>();
     [SerializeField] private int needAmmountBalls;
     [SerializeField] private int ammountBalls;
-    private int ammountBlueBalls;
-    private int ammountGreenBalls;
-    private int ammountYellowBalls;
-    private int ammountVioletBalls;
-    private int ammountPurpleBalls;
-    private int ammountRedBalls;
+    [SerializeField] List<BallType> ballTypes = new List<BallType>();
 
     public bool IsFullMonster()
     {
@@ -43,27 +46,6 @@ public class BallsMonster : MonoBehaviour
             return 0;
 
         return (int)(ammountBalls / (needAmmountBalls / 100M));
-    }
-
-    private int GetAmmountBalls(CharacterColorType _ballType, int number)
-    {
-        switch (_ballType)
-        {
-            case CharacterColorType.Blue:
-                return ammountBlueBalls + number;
-            case CharacterColorType.Green:
-                return ammountGreenBalls + number;
-            case CharacterColorType.Yellow:
-                return ammountYellowBalls + number;
-            case CharacterColorType.Violet:
-                return ammountVioletBalls + number;
-            case CharacterColorType.Purple:
-                return ammountPurpleBalls + number;
-            case CharacterColorType.Red:
-                return ammountRedBalls + number;
-        }
-
-        return 0;
     }
 
     private Material SwithcColorBall(CharacterColorType _ballType)
@@ -102,15 +84,38 @@ public class BallsMonster : MonoBehaviour
             return;
         }
 
+        AddAmmountBalls(_ballType, 1);
+
         textCountBalls.text = ammountBalls + "/" + needAmmountBalls;
         currencyBalls[ammountBalls - 1].SetActive(true);
         currencyBalls[ammountBalls - 1].GetComponent<MeshRenderer>().material = SwithcColorBall(_ballType);
-        GetAmmountBalls(_ballType, 1);
-        //ChangeGatesColor();
+
+        ChangeGatesColor();
+    }
+
+    private void AddAmmountBalls(CharacterColorType _ballType, int number)
+    {
+        foreach(var i in ballTypes)
+        {
+            if(i.ballType == _ballType)
+            {
+                i.ammountBallsType += number;
+            }
+        }
     }
 
     private void ChangeGatesColor()
     {
+        int k = ballTypes.Max(i => i.ammountBallsType);
+
+        foreach (var i in ballTypes)
+        {
+            if(i.ammountBallsType == k)
+            {
+                _characterColorType = i.ballType;
+            }
+        }
+
         foreach(var i in meshGates)
         {
             i.material = SwithcColorBall(_characterColorType);
