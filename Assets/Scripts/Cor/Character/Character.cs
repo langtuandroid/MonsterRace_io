@@ -40,7 +40,6 @@ namespace PlayKing.Cor
             effectDamage.Play();
             _stackBalls.DestroyedStack();
             _characterStates.Knock();
-            //gameObject.GetComponent<Collider>().enabled = false;
         }
 
         public void CrownActive(bool isActive)
@@ -131,11 +130,8 @@ namespace PlayKing.Cor
             {
                 _ballsMoster = other.GetComponentInParent<BallsMonster>();
 
-                if (!_ballsMoster.IsTrueCharacter(_characterColorType))
-                    return;
-
                 _stackBalls.UnstackCollectablekBalls(_ballsMoster);
-                leaderboard.AddScoreMemeber(_characterColorType, _ballsMoster.GetPercent());
+                leaderboard.AddScoreMemeber(_characterColorType, _ballsMoster.GetFillingPercent());
 
                 if (_ballsMoster.IsFullMonster())
                 {
@@ -144,7 +140,7 @@ namespace PlayKing.Cor
                 }
 
                 if (_stackBalls.AmmountBalls() == 0)
-                    return;
+                    return; 
 
                 if (isPlayer) { VibrationController.Instance.UnstackVibration(); }
             }

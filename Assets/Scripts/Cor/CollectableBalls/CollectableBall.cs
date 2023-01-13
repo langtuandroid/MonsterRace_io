@@ -16,7 +16,7 @@ namespace PlayKing.Cor
         public bool cantStack;
 
         [Header("NeedCharacterType")]
-        [SerializeField] CharacterColorType _characterColorType;
+        [SerializeField] CharacterColorType _ballType;
 
         CollectableBallsField _collectableBallsField;
         Rigidbody _rb;
@@ -33,9 +33,11 @@ namespace PlayKing.Cor
             if (cantStack)
                 return false;
 
-            if (_characterColorType == characterColorType ||
-                _characterColorType == CharacterColorType.Neutral)
+            if (_ballType == characterColorType ||
+                _ballType == CharacterColorType.Neutral)
             {
+                if(_ballType == CharacterColorType.Neutral)
+                    _ballType = characterColorType;
                 SwitchColor(characterColorType);
                 return true;
             }
@@ -59,37 +61,9 @@ namespace PlayKing.Cor
             meshRenderer.material.DOColor(neutral, 0.2f);
             _rb.isKinematic = false;
             _rb.AddForce(new Vector3(0f, 9f, -2f), ForceMode.Impulse);
-            _characterColorType = CharacterColorType.Neutral;
+            _ballType = CharacterColorType.Neutral;
             cantStack = true;
             StartCoroutine(IE_Normal());
-        }
-
-        private IEnumerator IE_Normal()
-        {
-            yield return new WaitForSeconds(2.5f);
-
-            gameObject.GetComponent<Collider>().isTrigger = true;
-            _rb.isKinematic = true;
-            cantStack = false;
-        }
-
-        public IEnumerator IE_BallToMonster(BallsMonster ballsMonster)
-        {
-            yield return new WaitForSeconds(0.35f);
-
-            if (!isBallDestroyed)
-            {
-                ballsMonster.BallActiveted();
-                isBallDestroyed = true;
-                Destroy(gameObject, 0.1f);
-            }
-        }
-
-        private IEnumerator IE_ReturnColorBall()
-        {
-            yield return new WaitForSeconds(0.15f);
-
-            meshRenderer.material.DOColor(colorBall, 0.2f);
         }
 
         private void SwitchColor(CharacterColorType _characterColorType)
@@ -115,6 +89,34 @@ namespace PlayKing.Cor
                     colorBall = colors[5];
                     break;
             }
+        }
+
+        private IEnumerator IE_Normal()
+        {
+            yield return new WaitForSeconds(2.5f);
+
+            gameObject.GetComponent<Collider>().isTrigger = true;
+            _rb.isKinematic = true;
+            cantStack = false;
+        }
+
+        public IEnumerator IE_BallToMonster(BallsMonster ballsMonster)
+        {
+            yield return new WaitForSeconds(0.35f);
+
+            if (!isBallDestroyed)
+            {
+                ballsMonster.BallActiveted(_ballType);
+                isBallDestroyed = true;
+                Destroy(gameObject, 0.1f);
+            }
+        }
+
+        private IEnumerator IE_ReturnColorBall()
+        {
+            yield return new WaitForSeconds(0.15f);
+
+            meshRenderer.material.DOColor(colorBall, 0.2f);
         }
     }
 }

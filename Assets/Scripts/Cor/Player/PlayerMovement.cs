@@ -73,8 +73,7 @@ namespace PlayKing.Cor
                     _characterController.Move(gravityVelocity);
 
                     if (xInput >= 0.1f || xInput <= -0.1f ||
-                        yInput >= 0.1f || yInput <= -0.1f)
-                    {
+                        yInput >= 0.1f || yInput <= -0.1f){
                         _characterStatesAnimation.RunAnimation(true);
                     }
                     else { _characterStatesAnimation.RunAnimation(false); }
