@@ -89,14 +89,16 @@ namespace PlayKing.Cor
             _characterStatesAnimation.AttackAnimation();
         }
 
-        public void Knock()
+        public void Knock(Transform knockDir)
         {
             if (_playerMovement != null)
                 _playerMovement.LockControll(true);
 
             if (_botMovement != null)
+            {
                 _botMovement.StopMovement(true);
-
+                _botMovement.PushBot(knockDir);
+            }
             _characterStatesAnimation.KonckAnimation();
 
             StartCoroutine(IE_WakeUp());

@@ -17,6 +17,7 @@ namespace PlayKing.Cor
 
         [Header("Screens")]
         [SerializeField] GameObject joystickScreen;
+        [SerializeField] GameObject tutorialScreen;
         [SerializeField] GameObject startScreen;
         [SerializeField] GameObject settingsScreen;
         [SerializeField] GameObject moneyScreen;
@@ -27,6 +28,11 @@ namespace PlayKing.Cor
         public void JoystickScreen(bool isActive)
         {
             joystickScreen.SetActive(isActive);   
+        }
+
+        public void TutorialScreen(bool isActive)
+        {
+            tutorialScreen.SetActive(isActive);
         }
 
         public void StartScreen(bool isActive)

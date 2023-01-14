@@ -22,6 +22,7 @@ namespace PlayKing.Cor
         [SerializeField] private float xOrder;
         [SerializeField] private float xPosition;
         [SerializeField] private float zPosition;
+        [SerializeField] private float form;
 
         [Header("TimerResetBall")]
         [SerializeField] private float timeToResetBall;
@@ -30,7 +31,7 @@ namespace PlayKing.Cor
         private Vector3 startPoint;
         private Vector3 position;
 
-        public List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
+        private List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
 
         void Start()
         {
@@ -67,12 +68,9 @@ namespace PlayKing.Cor
                 {
                     i.collectableBall = null;
                     i.isBallRemoved = true;
-                    break;
                 }
             }
         }
-
-        public float form;
 
         private void BallsPlacement()
         {

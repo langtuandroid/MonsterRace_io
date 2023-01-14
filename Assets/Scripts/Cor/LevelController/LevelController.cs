@@ -27,6 +27,7 @@ namespace PlayKing.Cor
         public void LevelStart()
         {
             levelAction = LevelAction.Start;
+            UIManager.Instance.TutorialScreen(false);   
             UIManager.Instance.StartScreen(false);
             UIManager.Instance.LeaderboardScreen(true);
         }

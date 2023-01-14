@@ -6,14 +6,13 @@ namespace PlayKing.Cor
 {
     public class Character : MonoBehaviour
     {
-        [SerializeField] GameObject crown;
-        [SerializeField] ParticleSystem effectDamage;
-        [SerializeField] GameObject canvas;
         [SerializeField] CharacterColorType _characterColorType;
+        [SerializeField] GameObject crown;
+        [SerializeField] GameObject canvas;
+        [SerializeField] ParticleSystem effectDamage;
         [SerializeField] private bool isPlayer;
-
-        private bool isDeactiveCharacter;
-        
+        [SerializeField] private bool isDeactiveCharacter;
+         
         StackBalls _stackBalls;
         CharacterRagdoll _characterRagdoll;
         CharacterStates _characterStates;
@@ -35,22 +34,27 @@ namespace PlayKing.Cor
             _characterColorType = characterColorType;
         }
 
-        public void KnockCharacter()
-        {
-            effectDamage.Play();
-            _stackBalls.DestroyedStack();
-            _characterStates.Knock();
-        }
-
         public void CrownActive(bool isActive)
         {
             crown.SetActive(isActive);
+        }
+
+        public void ActiveCharacter(bool isActive)
+        {
+            isDeactiveCharacter = isActive;
         }
 
         public void JumpToMontser()
         {
             transform.DOJump(new Vector3(_ballsMoster.transform.position.x,
                 _ballsMoster.transform.position.y + 1f, _ballsMoster.transform.position.z), 4f, 1, 0.5f);
+        }
+
+        public void KnockCharacter(Transform m)
+        {
+            effectDamage.Play();
+            _stackBalls.DestroyedStack();
+            _characterStates.Knock(m);
         }
 
         public void KillCharacter(Transform t)
@@ -72,11 +76,6 @@ namespace PlayKing.Cor
             transform.LookAt(p);
         }
 
-        public void ActiveCharacter(bool isActive)
-        {
-            isDeactiveCharacter = isActive;
-        }
-
         private IEnumerator IE_Die()
         {
             yield return new WaitForSeconds(2.5f);
@@ -85,6 +84,8 @@ namespace PlayKing.Cor
             _characterRagdoll.ON();
             Destroy(gameObject, 2.5f);
         }
+
+        #region CharacterCollisions
 
         private void OnTriggerEnter(Collider other)
         {
@@ -114,13 +115,13 @@ namespace PlayKing.Cor
 
                 if (_stackBalls.AmmountBalls() >= stackBalls.AmmountBalls())
                 {
-                    other.GetComponent<Character>().KnockCharacter();
+                    other.GetComponent<Character>().KnockCharacter(transform);
                     if (isPlayer) { VibrationController.Instance.KnockVibration(); }
                     return;
                 }
 
                 if (isPlayer) { VibrationController.Instance.KnockVibration(); }
-                KnockCharacter();
+                KnockCharacter(other.transform);
             }
         }
 
@@ -145,5 +146,7 @@ namespace PlayKing.Cor
                 if (isPlayer) { VibrationController.Instance.UnstackVibration(); }
             }
         }
+
+        #endregion
     }
 }

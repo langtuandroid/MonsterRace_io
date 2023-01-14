@@ -11,9 +11,10 @@ namespace PlayKing.Cor
         [SerializeField] private float range;
         [SerializeField] private float timeToMonster;
         [SerializeField] private float timer;
-        private bool isStopMovement;
-        private bool toMonster;
+        [SerializeField] private bool isStopMovement;
+        [SerializeField] private bool toMonster;
 
+        Rigidbody _rb;
         NavMeshAgent _agent;
         CharacterStatesAnimation _characterStatesAnimation;
         StackBalls _stackBalls;
@@ -34,6 +35,7 @@ namespace PlayKing.Cor
 
         private void Start()
         {
+            _rb = GetComponent<Rigidbody>();
             _agent = GetComponent<NavMeshAgent>();
             _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
             _stackBalls = GetComponentInChildren<StackBalls>();
@@ -50,13 +52,40 @@ namespace PlayKing.Cor
 
         private void Update()
         {
-            if (isStopMovement || 
+            Movement();
+        }
+
+        public void StopMovement(bool isActive)
+        {
+            if (isActive)
+            {
+                isStopMovement = isActive;
+                _agent.enabled = false;
+                return;
+            }
+
+            _rb.isKinematic = true;
+            isStopMovement = false;
+            _agent.enabled = true;
+        }
+
+        public void PushBot(Transform dir)
+        {
+            _rb.isKinematic = false;
+            Vector3 pushDirection = new Vector3(transform.position.x - dir.position.x, 
+                transform.position.y, transform.position.x - dir.position.x);
+            _rb.AddForce(pushDirection * 5f, ForceMode.Impulse);
+        }
+
+        private void Movement()
+        {
+            if (isStopMovement ||
                 LevelController.Instance.levelAction != LevelAction.Start)
                 return;
 
             timer += Time.deltaTime;
 
-            if(timer >= timeToMonster)
+            if (timer >= timeToMonster)
             {
                 int random = Random.Range(3, 8);
                 if (_stackBalls.AmmountBalls() <= random)
@@ -86,19 +115,6 @@ namespace PlayKing.Cor
                     _characterStatesAnimation.RunAnimation(true);
                 }
             }
-        }
-
-        public void StopMovement(bool isActive)
-        {
-            if (isActive)
-            {
-                isStopMovement = isActive;
-                _agent.enabled = false;
-                return;
-            }
-
-            isStopMovement = false;
-            _agent.enabled = true;
         }
     }
 }

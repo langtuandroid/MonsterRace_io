@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public enum CharacterSkinType
 {
@@ -23,7 +24,7 @@ namespace PlayKing.Cor
         [SerializeField] List<GameObject> sirenSkin = new List<GameObject>();
         [SerializeField] List<GameObject> venomSkin = new List<GameObject>();
         [SerializeField] CharacterSkinType _skinType;
-        [SerializeField] Material colorDie;
+        [SerializeField] Color colorDie;
 
         private void Start()
         {
@@ -60,22 +61,22 @@ namespace PlayKing.Cor
             switch (_skinType)
             {
                 case CharacterSkinType.HuggyWuggy:
-                    foreach (var i in huggyWaggySkin) { i.GetComponent<SkinnedMeshRenderer>().material = colorDie; }
+                    foreach (var i in huggyWaggySkin) { i.GetComponent<SkinnedMeshRenderer>().material.DOColor(colorDie, 0.2f); }
                     break;
                 case CharacterSkinType.Baldy:
-                    foreach (var i in baldySkin) { i.GetComponent<SkinnedMeshRenderer>().material = colorDie; }
+                    foreach (var i in baldySkin) { i.GetComponent<SkinnedMeshRenderer>().material.DOColor(colorDie, 0.2f); }
                     break;
                 case CharacterSkinType.MotherSpider:
-                    foreach (var i in motherSpiderSkin) { i.GetComponent<SkinnedMeshRenderer>().material = colorDie; }
+                    foreach (var i in motherSpiderSkin) { i.GetComponent<SkinnedMeshRenderer>().material.DOColor(colorDie, 0.2f); }
                     break;
                 case CharacterSkinType.CartoonCat:
-                    foreach (var i in cartoonCatSkin) { i.GetComponent<SkinnedMeshRenderer>().material = colorDie; }
+                    foreach (var i in cartoonCatSkin) { i.GetComponent<SkinnedMeshRenderer>().material.DOColor(colorDie, 0.2f); }
                     break;
                 case CharacterSkinType.Siren:
-                    foreach (var i in sirenSkin) { i.GetComponent<SkinnedMeshRenderer>().material = colorDie; }
+                    foreach (var i in sirenSkin) { i.GetComponent<SkinnedMeshRenderer>().material.DOColor(colorDie, 0.2f); }
                     break;
                 case CharacterSkinType.Venom:
-                    foreach (var i in venomSkin) { i.GetComponent<SkinnedMeshRenderer>().material = colorDie; }
+                    foreach (var i in venomSkin) { i.GetComponent<SkinnedMeshRenderer>().material.DOColor(colorDie, 0.2f); }
                     break;
             }
         }
