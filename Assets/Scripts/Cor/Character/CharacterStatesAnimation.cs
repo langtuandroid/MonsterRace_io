@@ -46,6 +46,16 @@ namespace PlayKing.Cor
             _animCharacter.SetTrigger("WakeUp");
         }
 
+        public void DecreaseAnimation()
+        {
+            _animCharacter.SetTrigger("Decrease");
+        }
+
+        public void DanceAnimation()
+        {
+            _animMonster.SetTrigger("Dance");
+        }
+
         public void IsMonsterStage(bool monsterStage)
         {
             isMonsterStage = monsterStage;

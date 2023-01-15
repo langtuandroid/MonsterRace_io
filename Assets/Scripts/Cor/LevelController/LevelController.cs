@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum LevelAction
 {
@@ -24,18 +26,24 @@ namespace PlayKing.Cor
 
         public LevelAction levelAction;
 
+        [HideInInspector]
+        public UnityEvent OnLevelCompleted;
+
         public void LevelStart()
         {
             levelAction = LevelAction.Start;
             UIManager.Instance.TutorialScreen(false);   
             UIManager.Instance.StartScreen(false);
+            UIManager.Instance.MoneyScreen(false);
+            UIManager.Instance.PointerScreen(true);
             UIManager.Instance.LeaderboardScreen(true);
         }
 
         public void LevelCompleted()
         {
             LevelEnd();
-            UIManager.Instance.WinScreen(true);
+            OnLevelCompleted.Invoke();
+            StartCoroutine(IE_WinUI());
         }
 
         public void LevelFailed()
@@ -47,8 +55,18 @@ namespace PlayKing.Cor
         private void LevelEnd()
         {
             levelAction = LevelAction.End;
-            UIManager.Instance.LeaderboardScreen(false);
             UIManager.Instance.SettingsScreen(false);
+            UIManager.Instance.PointerScreen(false);
+            UIManager.Instance.LeaderboardScreen(false);
+        }
+
+        private IEnumerator IE_WinUI()
+        {
+            yield return new WaitForSeconds(5f);
+
+            UIManager.Instance.MoneyScreen(true);
+            UIManager.Instance.WinScreen(true);
+            MoneyWallet.Instance.MoneyPlus(100);
         }
     }
 }

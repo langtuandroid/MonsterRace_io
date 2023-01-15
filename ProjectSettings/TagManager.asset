@@ -8,6 +8,7 @@ TagManager:
   - MonsterFields
   - Character
   - Monster
+  - Platform
   layers:
   - Default
   - TransparentFX

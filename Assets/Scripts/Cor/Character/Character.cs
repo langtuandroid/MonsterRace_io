@@ -10,11 +10,11 @@ namespace PlayKing.Cor
         [SerializeField] GameObject crown;
         [SerializeField] GameObject canvas;
         [SerializeField] ParticleSystem effectDamage;
+        [SerializeField] ParticleSystem effectDie;
         [SerializeField] private bool isPlayer;
         [SerializeField] private bool isDeactiveCharacter;
          
         StackBalls _stackBalls;
-        CharacterRagdoll _characterRagdoll;
         CharacterStates _characterStates;
         CharacterSkins _characterSkins;
         BallsMonster _ballsMoster;
@@ -23,7 +23,6 @@ namespace PlayKing.Cor
         private void Start()
         {
             _stackBalls = GetComponent<StackBalls>();
-            _characterRagdoll = GetComponent<CharacterRagdoll>();
             _characterStates = GetComponentInParent<CharacterStates>();
             _characterSkins = GetComponentInParent<CharacterSkins>();
             leaderboard = GameObject.FindObjectOfType<Leaderboard>();
@@ -57,14 +56,12 @@ namespace PlayKing.Cor
             _characterStates.Knock(m);
         }
 
-        public void KillCharacter(Transform t)
+        public void KillCharacter()
         {
-            effectDamage.transform.parent = null;
-            effectDamage.Play();
-            _characterStates.Stop();
+            _characterStates.StopMovement(true);
             _characterStates.CharacterDie();
-            _characterRagdoll.ActiveteRagdoll(t);
-            _characterSkins.ChangeDieSkin();
+            effectDie.transform.parent = null;
+            effectDie.Play();
             Destroy(canvas);
             gameObject.GetComponent<Collider>().enabled = false;
             StartCoroutine(IE_Die());
@@ -80,8 +77,7 @@ namespace PlayKing.Cor
         {
             yield return new WaitForSeconds(2.5f);
 
-            transform.DOMoveY(-5f, 1.2f);
-            _characterRagdoll.ON();
+            transform.DOScale(0, 0.9f);
             Destroy(gameObject, 2.5f);
         }
 
@@ -132,7 +128,7 @@ namespace PlayKing.Cor
                 _ballsMoster = other.GetComponentInParent<BallsMonster>();
 
                 _stackBalls.UnstackCollectablekBalls(_ballsMoster);
-                leaderboard.AddScoreMemeber(_characterColorType, _ballsMoster.GetFillingPercent());
+                leaderboard.AddScoreMemeber(_characterColorType, _ballsMoster.GetFillingPercent(_characterColorType));
 
                 if (_ballsMoster.IsFullMonster())
                 {

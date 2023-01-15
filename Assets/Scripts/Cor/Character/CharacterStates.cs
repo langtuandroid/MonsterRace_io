@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum CharacterColorType
 {
@@ -22,17 +23,34 @@ namespace PlayKing.Cor
         [SerializeField] Character _character;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] CharacterSkins _characterSkins;
         [SerializeField] CharacterCanvas _characterCanvas;
         [SerializeField] PlayerMovement _playerMovement;
         [SerializeField] BotMovement _botMovement;
         [SerializeField] MeshRenderer basket;
         [SerializeField] Color basketColor;
         [SerializeField] private bool isPlayer;
-        private bool isMonsterStage;
+        [SerializeField] private bool isMonsterStage;
+
+        [HideInInspector]
+        public UnityEvent OnDie;
 
         Arena _arena;
-        BallsMonster monster;
+         public BallsMonster monster;
         Leaderboard leaderboard;
+
+        public bool IsMonsterStage()
+        {
+            return isMonsterStage;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown("k"))
+            {
+                CharacterTransformation(monster);
+            }
+        }
 
         private void Start()
         {
@@ -42,6 +60,7 @@ namespace PlayKing.Cor
             basket.material.color = basketColor;
             _arena = GameObject.FindObjectOfType<Arena>();
             if (!isPlayer) { _arena.AddBot(this); }
+            monster.SetMonster(_characterSkins.Type());
         }
 
         public void CharacterTransformation(BallsMonster ballsMonster)
@@ -57,25 +76,49 @@ namespace PlayKing.Cor
             _characterStatesAnimation.JumpAnimation();
             _characterStatesAnimation.IsMonsterStage(true);
             _characterCanvas.SetMonsterTarget();
+            _characterMonster.SetMonster(ballsMonster.Type());
             StartCoroutine(IE_CharacterInMonster());
             StartCoroutine(IE_ActivetedMonster());
             isMonsterStage = true;
         }
 
-        public void Stop()
+        public void StopMovement(bool isStop)
         {
-            _characterStatesAnimation.RunAnimation(false);
-            _botMovement.StopMovement(true);
+            if (isStop)
+            {
+                _characterStatesAnimation.RunAnimation(false);
+
+                if (_playerMovement != null)
+                    _playerMovement.LockControll(true);
+
+                if (_botMovement != null)
+                    _botMovement.StopMovement(true);
+
+                return;
+            }
+
+            if (_playerMovement != null)
+                _playerMovement.LockControll(false);
+
+            if (_botMovement != null)
+                _botMovement.StopMovement(false);
         }
 
         public void CharacterDie()
         {
-            _characterStatesAnimation.StopAnimations();
+            OnDie.Invoke();
+            _characterStatesAnimation.DecreaseAnimation();
             if (_botMovement != null)
                 _botMovement.StopMovement(true);
 
             if (!isPlayer) { _arena.RemoveBot(this); }
             if (isPlayer) { _arena.RemovePlayer(); }
+        }
+
+        public void Dance()
+        {
+            _characterStatesAnimation.DanceAnimation();
+            _characterCanvas.gameObject.SetActive(false);
         }
 
         public void Die()
@@ -123,6 +166,7 @@ namespace PlayKing.Cor
             monster.gameObject.SetActive(false);
             _character.gameObject.SetActive(false);
             _characterMonster.gameObject.SetActive(true);
+            _characterMonster.AttackFieldActive(true);
            
             if (_playerMovement != null)
                 _playerMovement.LockControll(false);
@@ -139,11 +183,7 @@ namespace PlayKing.Cor
         {
             yield return new WaitForSeconds(2.2f);
 
-            if (_playerMovement != null)
-                _playerMovement.LockControll(false);
-
-            if (_botMovement != null)
-                _botMovement.StopMovement(false);
+            StopMovement(false);
 
             _character.ActiveCharacter(false);
         }
