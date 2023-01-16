@@ -2,13 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum LevelAction
-{
-    Start,
-    Pause,
-    End
-}
-
 namespace PlayKing.Cor
 {
     public class LevelController : MonoBehaviour
@@ -24,14 +17,14 @@ namespace PlayKing.Cor
 
         #endregion
 
-        public LevelAction levelAction;
-
         [HideInInspector]
-        public UnityEvent OnLevelCompleted;
+        public UnityEvent OnLevelStart;
+        [HideInInspector]
+        public UnityEvent OnLevelEnd;
 
         public void LevelStart()
         {
-            levelAction = LevelAction.Start;
+            OnLevelStart.Invoke();
             UIManager.Instance.TutorialScreen(false);   
             UIManager.Instance.StartScreen(false);
             UIManager.Instance.MoneyScreen(false);
@@ -42,7 +35,6 @@ namespace PlayKing.Cor
         public void LevelCompleted()
         {
             LevelEnd();
-            OnLevelCompleted.Invoke();
             StartCoroutine(IE_WinUI());
         }
 
@@ -54,7 +46,7 @@ namespace PlayKing.Cor
 
         private void LevelEnd()
         {
-            levelAction = LevelAction.End;
+            OnLevelEnd.Invoke();
             UIManager.Instance.SettingsScreen(false);
             UIManager.Instance.PointerScreen(false);
             UIManager.Instance.LeaderboardScreen(false);

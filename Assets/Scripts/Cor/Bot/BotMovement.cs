@@ -13,16 +13,25 @@ namespace PlayKing.Cor
         [SerializeField] private float timer;
         [SerializeField] private bool isStopMovement;
         [SerializeField] private bool toMonster;
+        [SerializeField] CharacterColorType colorType;
+        public Collider[] isfind;
+        public float sightRange;
+        public LayerMask whatIs;
+        public bool isd;
+        public Transform t;
 
         Rigidbody _rb;
         NavMeshAgent _agent;
+        CharacterStates _characterStates;
         CharacterStatesAnimation _characterStatesAnimation;
         StackBalls _stackBalls;
+        public CollectableBall collectableBall;
 
         private bool RandomPoint(Vector3 center, float range, out Vector3 result)
         {
             Vector3 randomPoint = center + Random.insideUnitSphere * range;
             NavMeshHit hit;
+
             if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
             {
                 result = hit.position;
@@ -37,22 +46,27 @@ namespace PlayKing.Cor
         {
             _rb = GetComponent<Rigidbody>();
             _agent = GetComponent<NavMeshAgent>();
+            _characterStates = GetComponentInChildren<CharacterStates>();
             _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
             _stackBalls = GetComponentInChildren<StackBalls>();
-        }
-
-        private void FixedUpdate()
-        {
-            if (transform.position.x == monsterPoint.position.x || 
-                transform.position.z == monsterPoint.position.z){
-                toMonster = false;
-                return;
-            }
+            isStopMovement = true;
+            LevelController.Instance.OnLevelStart.AddListener(Move);
+            LevelController.Instance.OnLevelEnd.AddListener(Stop);
         }
 
         private void Update()
         {
             Movement();
+        }
+
+        public void Move()
+        {
+            StopMovement(false);
+        }
+
+        public void Stop()
+        {
+            StopMovement(true);
         }
 
         public void StopMovement(bool isActive)
@@ -74,20 +88,34 @@ namespace PlayKing.Cor
             _rb.isKinematic = false;
             Vector3 pushDirection = new Vector3(transform.position.x - dir.position.x, 
                 transform.position.y, transform.position.x - dir.position.x);
-            _rb.AddForce(pushDirection * 5f, ForceMode.Impulse);
+            _rb.AddForce(pushDirection * 3f, ForceMode.Impulse);
         }
 
         private void Movement()
         {
-            if (isStopMovement ||
-                LevelController.Instance.levelAction != LevelAction.Start)
+            if (isStopMovement)
                 return;
+
+            if(_characterStates.IsMonsterStage())
+            {
+                if (_agent.remainingDistance <= _agent.stoppingDistance)
+                {
+                    Vector3 point;
+                    if (RandomPoint(centerPoint.position, range, out point))
+                    {
+                        Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
+                        _agent.SetDestination(point);
+                        _characterStatesAnimation.RunAnimation(true);
+                    }
+                }
+                return;
+            }    
 
             timer += Time.deltaTime;
 
             if (timer >= timeToMonster)
             {
-                int random = Random.Range(3, 8);
+                int random = Random.Range(10, 15);
                 if (_stackBalls.AmmountBalls() <= random)
                 {
                     timer = 0f;
@@ -105,16 +133,57 @@ namespace PlayKing.Cor
                 return;
             }
 
-            if (_agent.remainingDistance <= _agent.stoppingDistance)
+            if (!toMonster)
             {
-                Vector3 point;
-                if (RandomPoint(centerPoint.position, range, out point))
+                if (isd)
                 {
-                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                    _agent.SetDestination(point);
-                    _characterStatesAnimation.RunAnimation(true);
+                    if (_agent.remainingDistance <= _agent.stoppingDistance && collectableBall.IsTrueCharacter(colorType))
+                    {
+                        _agent.SetDestination(collectableBall.transform.position);
+                        _characterStatesAnimation.RunAnimation(true);
+                    }
+                    else
+                    {
+                        collectableBall = null;
+                        isd = false;
+                        Find();
+                    }
                 }
             }
+            Find();
+        }
+
+        private void Find()
+        {
+            if (isd)
+                return;
+
+            isfind = Physics.OverlapSphere(centerPoint.position, sightRange, whatIs);
+            foreach (var i in isfind)
+            {
+                if (i.gameObject.GetComponent<CollectableBall>() != null)
+                {
+                    if (i.gameObject.GetComponent<CollectableBall>().IsTrueCharacter(colorType))
+                    {
+                        collectableBall = i.gameObject.GetComponent<CollectableBall>();
+                        isd = true;
+                    }
+                }
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("MonsterFields"))
+            {
+                toMonster = false;
+            }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, sightRange);
         }
     }
 }

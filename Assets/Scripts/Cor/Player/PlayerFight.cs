@@ -15,7 +15,7 @@ namespace PlayKing.Cor
 
         private void Start()
         {
-            LevelController.Instance.OnLevelCompleted.AddListener(Test);
+            LevelController.Instance.OnLevelEnd.AddListener(Test);
         }
 
         private void Update()

@@ -4,10 +4,10 @@ namespace PlayKing.Cor
 {
     public class BotPointer : MonoBehaviour
     {
-        CharacterStates _characterStates;
+        [SerializeField] CharacterStates _characterStates;
+        
         private void Start()
         {
-            _characterStates = GetComponentInChildren<CharacterStates>();
             PointerController.Instance.AddToList(this);
             _characterStates.OnDie.AddListener(Remove);
         }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4974526430600081003}
   - component: {fileID: 2379087013684395009}
   - component: {fileID: 664064308640456906}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BlueCollectableBall
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -150,6 +150,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trail
       objectReference: {fileID: 0}
+    - target: {fileID: 3237677719320127822, guid: acf72eacc949f7943b246762dc57d940, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237677719320127822, guid: acf72eacc949f7943b246762dc57d940, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4370904440354639360, guid: acf72eacc949f7943b246762dc57d940, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -228,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7703373874751236658, guid: acf72eacc949f7943b246762dc57d940, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
-      value: 0.22352941
+      value: 0.6392157
       objectReference: {fileID: 0}
     - target: {fileID: 7703373874751236658, guid: acf72eacc949f7943b246762dc57d940, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.size

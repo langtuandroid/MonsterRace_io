@@ -36,8 +36,7 @@ namespace PlayKing.Cor
             if (_ballType == characterColorType ||
                 _ballType == CharacterColorType.Neutral)
             {
-                if(_ballType == CharacterColorType.Neutral)
-                    _ballType = characterColorType;
+                ch = characterColorType;
                 SwitchColor(characterColorType);
                 return true;
             }
@@ -45,25 +44,27 @@ namespace PlayKing.Cor
             return false;
         }
 
+        CharacterColorType ch;
+
         public void BallInStack()
         {
             cantStack = true;
             _rb.isKinematic = true;
             meshRenderer.material.DOColor(colorClaim, 0.2f);
             _collectableBallsField.RemoveBall(this);
+          
             StartCoroutine(IE_ReturnColorBall());
         }
        
         public void BallNeutral()
-        { 
+        {
+            cantStack = true;
             transform.SetParent(null);
             gameObject.GetComponent<Collider>().isTrigger = false;
             meshRenderer.material.DOColor(neutral, 0.2f);
             _rb.isKinematic = false;
             _rb.AddForce(new Vector3(0f, 9f, -2f), ForceMode.Impulse);
             _ballType = CharacterColorType.Neutral;
-            cantStack = true;
-            StartCoroutine(IE_Normal());
         }
 
         private void SwitchColor(CharacterColorType _characterColorType)
@@ -91,10 +92,9 @@ namespace PlayKing.Cor
             }
         }
 
-        private IEnumerator IE_Normal()
+        public void Normal()
         {
-            yield return new WaitForSeconds(2.5f);
-
+            _ballType = CharacterColorType.Neutral;
             gameObject.GetComponent<Collider>().isTrigger = true;
             _rb.isKinematic = true;
             cantStack = false;
@@ -117,6 +117,7 @@ namespace PlayKing.Cor
             yield return new WaitForSeconds(0.15f);
 
             meshRenderer.material.DOColor(colorBall, 0.2f);
+            _ballType = ch;
         }
     }
 }

@@ -14,8 +14,9 @@ namespace PlayKing.Cor
             return _skinType;
         }
 
-        private void Start()
+        public void SetType(CharacterMonsterType t)
         {
+            _skinType = t;
             SetCharacterSkin(_skinType);
         }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3425123963610923644}
   - component: {fileID: 5441855226445795350}
   - component: {fileID: 8028130134152621191}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PurpleCollectableBall 2
   m_TagString: Ball
   m_Icon: {fileID: 0}

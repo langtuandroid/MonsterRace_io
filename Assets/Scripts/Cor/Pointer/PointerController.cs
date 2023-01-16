@@ -5,25 +5,23 @@ namespace PlayKing.Cor
 {
     public class PointerController : MonoBehaviour
     {
-        [SerializeField] Transform pointSpawn;
-        [SerializeField] PointerArrow _pointerPrefab;
-        private Dictionary<BotPointer, PointerArrow> _dictionary = new Dictionary<BotPointer, PointerArrow>();
-        [SerializeField] Transform _playerTransform;
-        [SerializeField] Camera _camera;
+        #region Singelton
 
         public static PointerController Instance;
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(this);
-            }
+            Instance = this;
         }
+
+        #endregion
+
+        [SerializeField] Transform pointSpawn;
+        [SerializeField] PointerArrow _pointerPrefab;
+        [SerializeField] Transform _playerTransform;
+        [SerializeField] Camera _camera;
+
+        private Dictionary<BotPointer, PointerArrow> _dictionary = new Dictionary<BotPointer, PointerArrow>();
 
         public void AddToList(BotPointer enemyPointer)
         {
@@ -39,8 +37,6 @@ namespace PlayKing.Cor
 
         void LateUpdate()
         {
-
-            // Left, Right, Down, Up
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
 
             foreach (var kvp in _dictionary)

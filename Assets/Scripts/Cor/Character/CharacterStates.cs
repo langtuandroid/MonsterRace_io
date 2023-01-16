@@ -17,9 +17,6 @@ namespace PlayKing.Cor
 {
     public class CharacterStates : MonoBehaviour
     {
-        [SerializeField] CharacterColorType characterColorType;
-        [SerializeField] string name;
-        [SerializeField] Color color;
         [SerializeField] Character _character;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
@@ -27,8 +24,6 @@ namespace PlayKing.Cor
         [SerializeField] CharacterCanvas _characterCanvas;
         [SerializeField] PlayerMovement _playerMovement;
         [SerializeField] BotMovement _botMovement;
-        [SerializeField] MeshRenderer basket;
-        [SerializeField] Color basketColor;
         [SerializeField] private bool isPlayer;
         [SerializeField] private bool isMonsterStage;
 
@@ -36,31 +31,17 @@ namespace PlayKing.Cor
         public UnityEvent OnDie;
 
         Arena _arena;
-         public BallsMonster monster;
-        Leaderboard leaderboard;
+        BallsMonster monster;
 
         public bool IsMonsterStage()
         {
             return isMonsterStage;
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown("k"))
-            {
-                CharacterTransformation(monster);
-            }
-        }
-
         private void Start()
         {
-            leaderboard = GameObject.FindObjectOfType<Leaderboard>();
-            leaderboard.AddMember(_character,characterColorType, color, name);
-            _character.SetCharacterSettings(characterColorType);
-            basket.material.color = basketColor;
             _arena = GameObject.FindObjectOfType<Arena>();
             if (!isPlayer) { _arena.AddBot(this); }
-            monster.SetMonster(_characterSkins.Type());
         }
 
         public void CharacterTransformation(BallsMonster ballsMonster)

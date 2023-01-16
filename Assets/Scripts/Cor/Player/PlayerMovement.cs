@@ -27,12 +27,14 @@ namespace PlayKing.Cor
             _characterController = GetComponent<CharacterController>();
             _joystick = GameObject.FindObjectOfType<FloatingJoystick>();
             _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
+            LockControll(true);
+            LevelController.Instance.OnLevelStart.AddListener(Move);
+            LevelController.Instance.OnLevelEnd.AddListener(Stop);
         }
 
         private void Update()
         {
-            if (LevelController.Instance.levelAction != LevelAction.Start 
-                || isLockControll)
+            if (isLockControll)
                 return;
 
             MovementControll();
@@ -41,6 +43,16 @@ namespace PlayKing.Cor
         public void LockControll(bool lockControll)
         {
             isLockControll = lockControll;
+        }
+
+        public void Move()
+        {
+            LockControll(false);
+        }
+
+        public void Stop()
+        {
+            LockControll(true);
         }
 
         public void MovementToTarget(Transform target)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3425123963610923644}
   - component: {fileID: 5441855226445795350}
   - component: {fileID: 2514578808358000782}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VioletCollectableBall 1
   m_TagString: Ball
   m_Icon: {fileID: 0}

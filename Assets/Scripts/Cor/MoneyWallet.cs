@@ -28,6 +28,7 @@ namespace PlayKing.Cor
 
         private void Start()
         {
+            LoadSave();
             MoneyText(textAmmountMoney, ammountMoney);
         }
 
@@ -35,12 +36,14 @@ namespace PlayKing.Cor
         {
             ammountMoney += number;
             MoneyText(textAmmountMoney, ammountMoney);
+            Save();
         }
 
         public void MoneyMinus(int number)
         {
             ammountMoney -= number;
             MoneyText(textAmmountMoney, ammountMoney);
+            Save();
         }
 
         private void MoneyText(TextMeshProUGUI textMoney, int money)
@@ -98,5 +101,19 @@ namespace PlayKing.Cor
 
             return $"{value:0.##}{suffix}";
         }
+
+        #region Load&Save
+
+        private void LoadSave()
+        {
+            ammountMoney = ES3.Load("ammountMoney", ammountMoney);
+        }
+
+        private void Save()
+        {
+            ES3.Save("ammountMoney", ammountMoney);
+        }
+
+        #endregion
     }
 }
