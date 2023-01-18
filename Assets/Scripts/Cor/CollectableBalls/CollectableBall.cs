@@ -56,8 +56,6 @@ namespace PlayKing.Cor
 
         public void BallInStack()
         {
-            //if (trail != null)
-              //  trail.SetActive(true);
             cantStack = true;
             _rb.isKinematic = true;
             meshRenderer.material.DOColor(colorClaim, 0.2f);

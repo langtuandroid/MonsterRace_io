@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using PlayKing.Cor.Bot;
+using PlayKing.Cor.Arena;
+using DG.Tweening;
 
 public enum CharacterColorType
 {
@@ -26,11 +29,12 @@ namespace PlayKing.Cor
         [SerializeField] BotMovement _botMovement;
         [SerializeField] private bool isPlayer;
         [SerializeField] private bool isMonsterStage;
+        [SerializeField] Skin skin;
 
         [HideInInspector]
         public UnityEvent OnDie;
 
-        Arena _arena;
+        ArenaController _arena;
         public BallsMonster monster;
 
         public bool IsMonsterStage()
@@ -40,7 +44,7 @@ namespace PlayKing.Cor
 
         private void Start()
         {
-            _arena = GameObject.FindObjectOfType<Arena>();
+            _arena = GameObject.FindObjectOfType<ArenaController>();
             if (!isPlayer) { _arena.AddBot(this); }
         }
 
@@ -52,6 +56,24 @@ namespace PlayKing.Cor
             if (Input.GetKeyDown("d"))
             {
                 CharacterTransformation(monster);
+            }
+
+            if (Input.GetKeyDown("a"))
+            {
+                _characterCanvas.transform.DOScale(0, 0.5f);
+                _characterStatesAnimation.JumpAnimation();
+                _playerMovement.transform.DORotate(new Vector3(0f, 90f, 0f), 0.5f);
+            }
+
+
+            if (Input.GetKeyDown("f"))
+            {
+                _playerMovement.JumpToTarget();
+            }
+
+            if (Input.GetKey("e"))
+            {
+                skin.ChangeSkin();
             }
         }
 

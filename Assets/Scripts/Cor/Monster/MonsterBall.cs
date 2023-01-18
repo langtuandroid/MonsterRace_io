@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayKing.Cor
@@ -7,12 +5,14 @@ namespace PlayKing.Cor
     [RequireComponent(typeof(Rigidbody))]
     public class MonsterBall : MonoBehaviour
     {
+        public Transform point;
+
         [SerializeField] MeshRenderer meshRenderer;
         [SerializeField] Material[] materials;
         [SerializeField] private float force;
 
         [SerializeField] Rigidbody _rb;
-        [SerializeField] private bool isHead;
+        public bool isHead;
         CharacterSettings characterSettings;
         CharacterMonster _characterMonster;
 

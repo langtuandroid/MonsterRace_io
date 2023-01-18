@@ -80,7 +80,7 @@ namespace PlayKing.Cor
         {
             yield return new WaitForSeconds(0.5f);
 
-            CameraController.Instance.FinishCam();
+            CameraController.Instance.JumpStateCam();
             foreach (var i in weapon)
             {
                 i.gameObject.SetActive(false);
@@ -93,8 +93,8 @@ namespace PlayKing.Cor
         {
             yield return new WaitForSeconds(1f);
 
-            _characterStates.Dance();
-            transform.DORotate(new Vector3(0f, 180f, 0f), 0.3f);
+            //_characterStates.Dance();
+            //transform.DORotate(new Vector3(0f, 180f, 0f), 0.3f);
         }
     }
 }

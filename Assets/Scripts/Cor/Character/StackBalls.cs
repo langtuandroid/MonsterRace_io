@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -8,7 +7,7 @@ namespace PlayKing.Cor
     public class StackBalls : MonoBehaviour
     {
         [SerializeField] List<CollectableBall> currencyBalls = new List<CollectableBall>();
-        [SerializeField] List<Transform> currencyStackPoints = new List<Transform>(); //rework this solution
+        [SerializeField] List<Transform> currencyStackPoints = new List<Transform>();
 
         public int AmmountBalls()
         {

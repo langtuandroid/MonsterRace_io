@@ -22,6 +22,7 @@ namespace PlayKing.Cor
 
         public void JumpAnimation()
         {
+            if (isMonsterStage) { _animMonster.SetTrigger("Jump"); }
             _animCharacter.SetTrigger("Jump");
         }
 
@@ -53,7 +54,7 @@ namespace PlayKing.Cor
 
         public void DanceAnimation()
         {
-            _animMonster.SetTrigger("Dance");
+            //_animMonster.SetTrigger("Dance");
         }
 
         public void IsMonsterStage(bool monsterStage)

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PlayKing.Cor
+namespace PlayKing.Cor.FPS
 {
     public class FPSController : MonoBehaviour
     {

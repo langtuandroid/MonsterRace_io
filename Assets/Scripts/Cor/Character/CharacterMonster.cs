@@ -33,7 +33,7 @@ namespace PlayKing.Cor
         [SerializeField] CharacterSkins _characterSkins;
         [SerializeField] Animator _anim;
         [SerializeField] GameObject attackField;
-
+        [SerializeField] Transform p;
         public void SetMonster(CharacterMonsterType _monsterType)
         {
             foreach(var i in monsters)
@@ -68,6 +68,31 @@ namespace PlayKing.Cor
             _characterStates.Die();
         }
 
+        Skin _skin;
+
+        public void ToPoint(Skin skin)
+        {
+            
+        }
+
+        private void Unstack()
+        {
+            for (int i = currencyBalls.Count - 1; i >= 0; i--)
+            {
+                if (currencyBalls[i].isHead)
+                {
+                    currencyBalls[i].transform.DOScale(0, 0.2f);
+                }
+                currencyBalls[i].transform.SetParent(null);
+                currencyBalls[i].transform.DOMove(transform.position + Vector3.up * 4f, 0.15f);
+                currencyBalls[i].transform.DOJump(p.transform.position, 2, 1, 0.3f).SetDelay(0.15f);
+                Destroy(currencyBalls[i].gameObject, 0.5f);
+                currencyBalls.Remove(currencyBalls[i]);
+                _skin.UpdateSkin(true);
+                return;
+            }
+        }
+
         private void SwitchHead(CharacterMonsterType characterMonster)
         {
             switch (characterMonster)
@@ -99,55 +124,34 @@ namespace PlayKing.Cor
             if (!isActive) { attackField.transform.DOScale(0, 0.5f); }
         }
 
-        //public void Stopped()
-        //{
-        //    _characterStates.Stop();    
-        //}
+        private bool can;
 
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.gameObject.CompareTag("Character"))
-        //    {
-        //        if (isAttack)
-        //            return;
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.CompareTag("Finish"))
+            {
+                if (!can)
+                {
+                    Skin skin = other.GetComponent<Skin>();
+                    _skin = skin;
+                    PlayerMovement playerMovement = GetComponentInParent<PlayerMovement>();
+                    playerMovement.transform.DORotate(new Vector3(0, -90f, 0f), 0.5f);
+                    CameraController.Instance.FinishCam();
+                    StartCoroutine(IE_Can());
+                }
 
-        //        _characterStates.Attack();
-        //        StartCoroutine(Kill(other.GetComponent<Character>()));
-        //        isAttack = true;
-        //    }
+                if (can)
+                {
+                    Unstack();
+                }
+            }
+        }
 
-        //    if (other.gameObject.CompareTag("Monster"))
-        //    {
-        //        if (!isPlayer)
-        //            return;
+        private IEnumerator IE_Can()
+        {
+            yield return new WaitForSeconds(0.7f);
 
-        //        if (isAttack)
-        //            return;
-
-        //        CharacterMonster monster = other.GetComponent<CharacterMonster>();
-
-        //        _characterStates.Attack();
-        //        monster.Stopped();
-        //        monster.transform.LookAt(transform);
-        //        StartCoroutine(IE_KillMonster(monster));
-        //        isAttack = true;
-        //    }
-        //}
-
-        //private IEnumerator Kill(Character character)
-        //{
-        //    yield return new WaitForSeconds(0.4f);
-
-        //    character.KillCharacter(transform);
-        //    isAttack = false;
-        //}
-
-        //private IEnumerator IE_KillMonster(CharacterMonster monster)
-        //{
-        //    yield return new WaitForSeconds(0.4f);
-
-        //    monster.ExplosionCharacterMonster();
-        //    isAttack = false;
-        //}
+            can = true;
+        }
     }
 }

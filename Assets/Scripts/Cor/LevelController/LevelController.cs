@@ -48,7 +48,8 @@ namespace PlayKing.Cor
         public void LevelCompleted()
         {
             LevelEnd();
-            StartCoroutine(IE_WinUI());
+            CameraController.Instance.JumpStateCam();
+           // StartCoroutine(IE_WinUI());
         }
 
         public void LevelFailed()

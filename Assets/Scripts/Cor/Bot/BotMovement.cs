@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace PlayKing.Cor
+namespace PlayKing.Cor.Bot
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class BotMovement : MonoBehaviour

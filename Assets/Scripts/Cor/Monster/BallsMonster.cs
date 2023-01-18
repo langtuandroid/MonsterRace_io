@@ -202,6 +202,9 @@ namespace PlayKing.Cor
 
             for (int i = 0; i < _balls + 1; i++)
             {
+                if (currencyBalls[i] == null)
+                    return;
+
                 currencyBalls[i].GetComponent<MeshRenderer>().material = SwithcColorBall(_ballType);
             }
         }

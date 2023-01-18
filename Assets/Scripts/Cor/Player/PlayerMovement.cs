@@ -14,7 +14,7 @@ namespace PlayKing.Cor
         [SerializeField] private float speedMovement;
         [SerializeField] private float speedRotate;
         [SerializeField] private bool isLockControll;
-
+        [SerializeField] Transform point;
         Vector3 gravityVelocity;
         Transform _transformPlayer;
         CharacterController _characterController;
@@ -59,6 +59,12 @@ namespace PlayKing.Cor
         {
             _transformPlayer.DOMove(new Vector3(target.position.x, 
                 _transformPlayer.position.y, target.position.z), 0.4f);
+        }
+
+        public void JumpToTarget()
+        {
+            transform.DOJump(point.position, 15, 1, 2.5f);
+            LockControll(true);
         }
 
         private void MovementControll()

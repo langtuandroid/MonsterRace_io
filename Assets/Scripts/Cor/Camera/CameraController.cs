@@ -18,6 +18,7 @@ namespace PlayKing.Cor
 
         [SerializeField] GameObject characterStateCam;
         [SerializeField] GameObject monsterStateCam;
+        [SerializeField] GameObject jumpStateCam;
         [SerializeField] GameObject finishCam;
         [SerializeField] ParticleSystem effect;
 
@@ -40,12 +41,17 @@ namespace PlayKing.Cor
             monsterStateCam.SetActive(true);
         }
 
+        public void JumpStateCam()
+        {
+            jumpStateCam.SetActive(true);
+        }
+
         public void FinishCam()
         {
             characterStateCam.SetActive(false);
             monsterStateCam.SetActive(false);
             finishCam.SetActive(true);
-            Invoke("R", 0.8f);
+            Invoke("R", 2.5f);
         }
 
         private void R()

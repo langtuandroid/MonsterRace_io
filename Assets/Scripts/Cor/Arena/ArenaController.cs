@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayKing.Cor
+namespace PlayKing.Cor.Arena
 {
-    public class Arena : MonoBehaviour
+    public class ArenaController : MonoBehaviour
     {
         [SerializeField] List<CharacterStates> currencyBots = new List<CharacterStates>();
 
