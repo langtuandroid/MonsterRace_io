@@ -7,14 +7,6 @@ namespace PlayKing.Cor
     {
         [SerializeField] List<CharacterStates> currencyBots = new List<CharacterStates>();
 
-        private void Update()
-        {
-            if (Input.GetKeyDown("a"))
-            {
-                LevelController.Instance.LevelCompleted();
-            }
-        }
-
         public void AddBot(CharacterStates characterStates)
         {
             currencyBots.Add(characterStates);

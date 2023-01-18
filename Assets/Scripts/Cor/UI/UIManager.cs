@@ -23,6 +23,8 @@ namespace PlayKing.Cor
         [SerializeField] GameObject moneyScreen;
         [SerializeField] GameObject pointerScreen;
         [SerializeField] GameObject leaderboardScreen;
+        [SerializeField] GameObject bonusScreen;
+        [SerializeField] GameObject rewardScreen;
         [SerializeField] GameObject loseScreen;
         [SerializeField] GameObject winScreen;
 
@@ -59,6 +61,16 @@ namespace PlayKing.Cor
         public void LeaderboardScreen(bool isActive)
         {
             leaderboardScreen.SetActive(isActive);   
+        }
+
+        public void BonusScreen(bool isActive)
+        {
+            bonusScreen.SetActive(isActive);
+        }
+
+        public void RewardScreen(bool isActive)
+        {
+            rewardScreen.SetActive(isActive);
         }
 
         public void LoseScreen(bool isActive)

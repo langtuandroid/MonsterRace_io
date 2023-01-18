@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,14 @@ namespace PlayKing.Cor
     public class CollectableBallsField : MonoBehaviour
     {
         [System.Serializable]
-        public class SpawnedBall
+        public class BallType
         {
-            public CollectableBall collectableBall;
-            public Vector3 spawnPosition;
-            public bool isBallRemoved;
+            public GameObject ballPrefab;
+            public CharacterColorType type;
         }
 
-        [Header("BallPrefabs")]
-        [SerializeField] List<GameObject> ballPrefabs = new List<GameObject>();
+        [Header("BallTypes")]
+        [SerializeField] List<BallType> ballTypes = new List<BallType>();
 
         [Header("FieldPlacement")]
         [SerializeField] private int length;
@@ -33,43 +33,125 @@ namespace PlayKing.Cor
 
         private List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
 
-        void Start()
+        public List<Vector3> ListTypeBalls(CharacterColorType colorType)
         {
-            startPoint = transform.position;
-            zPosition = transform.position.z;
-            xPosition = transform.position.x;
-
-            BallsPlacement();
+            List<Vector3> balls = new List<Vector3>();
+            switch (colorType)
+            {
+                case CharacterColorType.Blue:
+                    foreach (var i in spawnedBalls)
+                    {
+                        if (i.GetSpawnedBallType() == colorType)
+                        {
+                            balls.Add(i.SpawnPosition());
+                        }
+                    }
+                    return balls;
+                case CharacterColorType.Yellow:
+                    foreach (var i in spawnedBalls)
+                    {
+                        if (i.GetSpawnedBallType() == colorType)
+                        {
+                            balls.Add(i.SpawnPosition());
+                        }
+                    }
+                    return balls;
+                case CharacterColorType.Green:
+                    foreach (var i in spawnedBalls)
+                    {
+                        if (i.GetSpawnedBallType() == colorType)
+                        {
+                            balls.Add(i.SpawnPosition());
+                        }
+                    }
+                    return balls;
+                case CharacterColorType.Violet:
+                    foreach (var i in spawnedBalls)
+                    {
+                        if (i.GetSpawnedBallType() == colorType)
+                        {
+                            balls.Add(i.SpawnPosition());
+                        }
+                    }
+                    return balls;
+                case CharacterColorType.Purple:
+                    foreach (var i in spawnedBalls)
+                    {
+                        if (i.GetSpawnedBallType() == colorType)
+                        {
+                            balls.Add(i.SpawnPosition());
+                        }
+                    }
+                    return balls;
+                case CharacterColorType.Red:
+                    foreach (var i in spawnedBalls)
+                    {
+                        if (i.GetSpawnedBallType() == colorType)
+                        {
+                            balls.Add(i.SpawnPosition());
+                        }
+                    }
+                    return balls;
+            }
+            return null;
         }
 
-        private void Update()
+        void Start()
         {
-            timer += Time.deltaTime;
-
-            if(timer >= timeToResetBall)
-            {
-                foreach (var i in spawnedBalls)
-                {
-                    if (i.isBallRemoved)
-                    {
-                        GenerateRemovedBall(i);
-                        break;
-                    }
-                }
-                timer = 0f;
-            }
+            SetStartPos();
+            BallsPlacement();
         }
 
         public void RemoveBall(CollectableBall collectableBall)
         {
             foreach (var i in spawnedBalls)
             {
-                if (collectableBall == i.collectableBall)
+                if (collectableBall == i.GetCollectableBall())
                 {
-                    i.collectableBall = null;
-                    i.isBallRemoved = true;
+                    i.ClearSpawnedBall();
+                    StartCoroutine(i.NewCollactable());
                 }
             }
+        }
+
+        public void RemoveSpawnedBall(CharacterColorType _characterColorType)
+        {
+            for (int i = 0; i < ballTypes.Count; i++)
+            {
+                if(ballTypes[i].type == _characterColorType)
+                {
+                    ballTypes.Remove(ballTypes[i]);
+                }
+            }
+
+            foreach (var i in spawnedBalls)
+            {
+                if(i.GetSpawnedBallType() == _characterColorType)
+                {
+                    if (i.GetCollectableBall() != null)
+                    {
+                        Destroy(i.GetCollectableBall().gameObject);
+                    }
+                }
+            }
+        }
+
+        public void GenerateRemovedBall(SpawnedBall spawnedBall)
+        {
+            BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
+            GameObject createdBall = Instantiate(ballType.ballPrefab, spawnedBall.SpawnPosition(),
+                Quaternion.identity);
+
+            createdBall.transform.parent = transform;
+            createdBall.transform.position = spawnedBall.SpawnPosition();
+            spawnedBall.SetNewSpawnedBall(createdBall.GetComponent<CollectableBall>());
+        }
+
+        private void SetStartPos()
+        {
+            startPoint = transform.position;
+            zPosition = transform.position.z;
+            xPosition = transform.position.x;
         }
 
         private void BallsPlacement()
@@ -89,28 +171,17 @@ namespace PlayKing.Cor
                     position = new Vector3(xPosition + xOrder, startPoint.y, zPosition);
                 }
 
-                GameObject newCollectableBall = Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Count)], 
-                    position, ballPrefabs[Random.Range(0, ballPrefabs.Count)].transform.rotation);
+                BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
+
+                GameObject newCollectableBall = Instantiate(ballType.ballPrefab,
+                 position, ballType.ballPrefab.transform.rotation);
 
                 newCollectableBall.transform.parent = transform;
 
                 SpawnedBall spawnedBall = new SpawnedBall();
-                spawnedBall.collectableBall = newCollectableBall.GetComponent<CollectableBall>();
-                spawnedBall.isBallRemoved = false;
-                spawnedBall.spawnPosition = position;
+                spawnedBall.SetSpawnedBall(newCollectableBall.GetComponent<CollectableBall>(), position, this);
                 spawnedBalls.Add(spawnedBall);
             }
-        }
-
-        private void GenerateRemovedBall(SpawnedBall spawnedBall)
-        {
-            GameObject createdBall = Instantiate(ballPrefabs[Random.Range(0, ballPrefabs.Count)], spawnedBall.spawnPosition,
-                Quaternion.identity);
-
-            createdBall.transform.parent = transform;
-            createdBall.transform.position = spawnedBall.spawnPosition;
-            spawnedBall.collectableBall = createdBall.GetComponent<CollectableBall>();
-            spawnedBall.isBallRemoved = false;
         }
     }
 }

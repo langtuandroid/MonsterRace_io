@@ -31,7 +31,7 @@ namespace PlayKing.Cor
         public UnityEvent OnDie;
 
         Arena _arena;
-        BallsMonster monster;
+        public BallsMonster monster;
 
         public bool IsMonsterStage()
         {
@@ -42,6 +42,17 @@ namespace PlayKing.Cor
         {
             _arena = GameObject.FindObjectOfType<Arena>();
             if (!isPlayer) { _arena.AddBot(this); }
+        }
+
+        private void Update()
+        {
+            if (!isPlayer)
+                return;
+
+            if (Input.GetKeyDown("d"))
+            {
+                CharacterTransformation(monster);
+            }
         }
 
         public void CharacterTransformation(BallsMonster ballsMonster)
@@ -89,6 +100,7 @@ namespace PlayKing.Cor
         {
             OnDie.Invoke();
             _characterStatesAnimation.DecreaseAnimation();
+            Destroy(_characterCanvas.gameObject);
             if (_botMovement != null)
                 _botMovement.StopMovement(true);
 
@@ -137,35 +149,36 @@ namespace PlayKing.Cor
                 _playerMovement.MovementToTarget(monster.transform);
 
             _character.JumpToMontser();
-            CameraController.Instance.ChangeMonsterStateCam();
+            if(isPlayer)
+                CameraController.Instance.ChangeMonsterStateCam();
         }
 
         private IEnumerator IE_ActivetedMonster()
         {
             yield return new WaitForSeconds(0.9f);
 
-            monster.gameObject.SetActive(false);
             _character.gameObject.SetActive(false);
             _characterMonster.gameObject.SetActive(true);
             _characterMonster.AttackFieldActive(true);
-           
+            monster.DeactiveMonster();
+
             if (_playerMovement != null)
                 _playerMovement.LockControll(false);
         }
 
         private IEnumerator IE_WakeUp()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
 
             _characterStatesAnimation.WakeUpAnimation();
         }
 
         private IEnumerator CanMove()
         {
-            yield return new WaitForSeconds(2.2f);
+            yield return new WaitForSeconds(1.5f);
 
             StopMovement(false);
-
+            _botMovement.RestartMovement();
             _character.ActiveCharacter(false);
         }
     }

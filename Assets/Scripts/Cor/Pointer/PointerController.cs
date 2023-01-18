@@ -18,10 +18,15 @@ namespace PlayKing.Cor
 
         [SerializeField] Transform pointSpawn;
         [SerializeField] PointerArrow _pointerPrefab;
-        [SerializeField] Transform _playerTransform;
+        [SerializeField] PlayerMovement _playerTransform;
         [SerializeField] Camera _camera;
 
         private Dictionary<BotPointer, PointerArrow> _dictionary = new Dictionary<BotPointer, PointerArrow>();
+
+        private void Start()
+        {
+            _playerTransform = GameObject.FindObjectOfType<PlayerMovement>();
+        }
 
         public void AddToList(BotPointer enemyPointer)
         {
@@ -45,9 +50,9 @@ namespace PlayKing.Cor
                 BotPointer enemyPointer = kvp.Key;
                 PointerArrow pointerIcon = kvp.Value;
 
-                Vector3 toEnemy = enemyPointer.transform.position - _playerTransform.position;
-                Ray ray = new Ray(_playerTransform.position, toEnemy);
-                Debug.DrawRay(_playerTransform.position, toEnemy);
+                Vector3 toEnemy = enemyPointer.transform.position - _playerTransform.transform.position;
+                Ray ray = new Ray(_playerTransform.transform.position, toEnemy);
+                Debug.DrawRay(_playerTransform.transform.position, toEnemy);
 
 
                 float rayMinDistance = Mathf.Infinity;
@@ -81,7 +86,6 @@ namespace PlayKing.Cor
 
                 pointerIcon.SetIconPosition(position, rotation);
             }
-
         }
 
         Quaternion GetIconRotation(int planeIndex)

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,48 +8,33 @@ namespace PlayKing.Cor
     public class BotMovement : MonoBehaviour
     {
         [SerializeField] Transform centerPoint;
-        [SerializeField] Transform monsterPoint;
+        [SerializeField] Transform[] monsterPoints;
         [SerializeField] private float range;
         [SerializeField] private float timeToMonster;
         [SerializeField] private float timer;
         [SerializeField] private bool isStopMovement;
         [SerializeField] private bool toMonster;
         [SerializeField] CharacterColorType colorType;
-        public Collider[] isfind;
-        public float sightRange;
-        public LayerMask whatIs;
-        public bool isd;
-        public Transform t;
+        [SerializeField] List<Vector3> points = new List<Vector3>();
+        [SerializeField] int min;
+        [SerializeField] int max;
+        private int indexMonsterPoint;
 
         Rigidbody _rb;
         NavMeshAgent _agent;
-        CharacterStates _characterStates;
         CharacterStatesAnimation _characterStatesAnimation;
+        CollectableBallsField _collectableBallsField;
         StackBalls _stackBalls;
-        public CollectableBall collectableBall;
-
-        private bool RandomPoint(Vector3 center, float range, out Vector3 result)
-        {
-            Vector3 randomPoint = center + Random.insideUnitSphere * range;
-            NavMeshHit hit;
-
-            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
-            {
-                result = hit.position;
-                return true;
-            }
-
-            result = Vector3.zero;
-            return false;
-        }
+        public Vector3 ball;
+        public int index;
 
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
             _agent = GetComponent<NavMeshAgent>();
-            _characterStates = GetComponentInChildren<CharacterStates>();
             _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
             _stackBalls = GetComponentInChildren<StackBalls>();
+            _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
             isStopMovement = true;
             LevelController.Instance.OnLevelStart.AddListener(Move);
             LevelController.Instance.OnLevelEnd.AddListener(Stop);
@@ -56,11 +42,76 @@ namespace PlayKing.Cor
 
         private void Update()
         {
-            Movement();
+            if (isStopMovement)
+                return;
+
+            if (!toMonster)
+            {
+                if (timer >= timeToMonster)
+                {
+                    int random = Random.Range(min, max);
+                    if (_stackBalls.AmmountBalls() >= random)
+                    {
+                        _agent.SetDestination(monsterPoints[indexMonsterPoint].position);
+                        _characterStatesAnimation.RunAnimation(true);
+                        timer = 0f;
+                        toMonster = true;
+                        return;
+                    }
+
+                    timer = 0f;
+                }
+            }
+
+            if (toMonster)
+                return;
+
+            timer += Time.deltaTime;
+
+            NewMove();
         }
+
+         #region PlatformMovement
+
+        private void SetPoints()
+        {
+            points = _collectableBallsField.ListTypeBalls(colorType);
+        }
+
+        private void NewMove()
+        {
+            if (Vector3.Distance(transform.position, ball) < 1)
+            {
+                NewPoint();
+                UpdateMove();
+
+                _characterStatesAnimation.RunAnimation(false);
+            }
+            else
+            {
+                _characterStatesAnimation.RunAnimation(true);
+            }
+        }
+
+        private void UpdateMove()
+        {
+            ball = points[index];
+            _agent.SetDestination(ball);
+            _characterStatesAnimation.RunAnimation(true);
+        }
+
+        private void NewPoint()
+        {
+            index = Random.Range(0, points.Count - 1);
+        }
+
+        #endregion
 
         public void Move()
         {
+            SetPoints();
+            index = Random.Range(0, points.Count - 1);
+            UpdateMove();
             StopMovement(false);
         }
 
@@ -88,102 +139,45 @@ namespace PlayKing.Cor
             _rb.isKinematic = false;
             Vector3 pushDirection = new Vector3(transform.position.x - dir.position.x, 
                 transform.position.y, transform.position.x - dir.position.x);
-            _rb.AddForce(pushDirection * 3f, ForceMode.Impulse);
+            _rb.AddForce(pushDirection * 2f, ForceMode.Impulse);
         }
 
-        private void Movement()
+        public void RestartMovement()
         {
-            if (isStopMovement)
-                return;
-
-            if(_characterStates.IsMonsterStage())
-            {
-                if (_agent.remainingDistance <= _agent.stoppingDistance)
-                {
-                    Vector3 point;
-                    if (RandomPoint(centerPoint.position, range, out point))
-                    {
-                        Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
-                        _agent.SetDestination(point);
-                        _characterStatesAnimation.RunAnimation(true);
-                    }
-                }
-                return;
-            }    
-
-            timer += Time.deltaTime;
-
-            if (timer >= timeToMonster)
-            {
-                int random = Random.Range(10, 15);
-                if (_stackBalls.AmmountBalls() <= random)
-                {
-                    timer = 0f;
-                    return;
-                }
-
-                toMonster = true;
-                timer = 0f;
-            }
-
-            if (toMonster)
-            {
-                _agent.SetDestination(monsterPoint.position);
-                _characterStatesAnimation.RunAnimation(true);
-                return;
-            }
-
-            if (!toMonster)
-            {
-                if (isd)
-                {
-                    if (_agent.remainingDistance <= _agent.stoppingDistance && collectableBall.IsTrueCharacter(colorType))
-                    {
-                        _agent.SetDestination(collectableBall.transform.position);
-                        _characterStatesAnimation.RunAnimation(true);
-                    }
-                    else
-                    {
-                        collectableBall = null;
-                        isd = false;
-                        Find();
-                    }
-                }
-            }
-            Find();
+            NewPoint();
+            UpdateMove();
         }
 
-        private void Find()
-        {
-            if (isd)
-                return;
+        private bool inMonster;
 
-            isfind = Physics.OverlapSphere(centerPoint.position, sightRange, whatIs);
-            foreach (var i in isfind)
-            {
-                if (i.gameObject.GetComponent<CollectableBall>() != null)
-                {
-                    if (i.gameObject.GetComponent<CollectableBall>().IsTrueCharacter(colorType))
-                    {
-                        collectableBall = i.gameObject.GetComponent<CollectableBall>();
-                        isd = true;
-                    }
-                }
-            }
-        }
-
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("MonsterFields"))
             {
-                toMonster = false;
+                if (toMonster)
+                {
+                    if (inMonster)
+                        return;
+
+                    BallsMonster ballsMonster = other.GetComponentInParent<BallsMonster>();
+                    if(ballsMonster.IsDeactivetedMonster())
+                    {
+                        indexMonsterPoint++;
+                        inMonster = true;
+                    }
+
+                    points.Clear();
+                    SetPoints();
+                    NewPoint();
+                    UpdateMove();
+                    toMonster = false;
+                }
             }
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnTriggerExit(Collider other)
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, sightRange);
+            inMonster = false;
         }
     }
 }

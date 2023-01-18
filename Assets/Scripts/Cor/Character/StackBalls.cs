@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -24,8 +25,8 @@ namespace PlayKing.Cor
 
             currencyBalls.Add(_ball);
             int indexBall = currencyBalls.IndexOf(_ball);
-            _ball.transform.parent = currencyStackPoints[indexBall];
             _ball.transform.position = currencyStackPoints[indexBall].position;
+            _ball.transform.parent = currencyStackPoints[indexBall];
             _ball.BallInStack();
         }
 

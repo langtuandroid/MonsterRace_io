@@ -9,7 +9,6 @@ namespace PlayKing.Cor
         [SerializeField] CharacterStates _characterStates;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] Weapon[] weapon;
-        [SerializeField] ParticleSystem effects;
         private bool canAttack;
         private bool isAttack;
 
@@ -95,7 +94,6 @@ namespace PlayKing.Cor
             yield return new WaitForSeconds(1f);
 
             _characterStates.Dance();
-            effects.Play();
             transform.DORotate(new Vector3(0f, 180f, 0f), 0.3f);
         }
     }

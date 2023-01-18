@@ -10,6 +10,13 @@ namespace PlayKing.Cor
             LevelController.Instance.LevelStart();
         }
 
+        public void Continue()
+        {
+            UIManager.Instance.MoneyScreen(true);
+            UIManager.Instance.RewardScreen(true);
+            UIManager.Instance.BonusScreen(false);
+        }
+
         public void RestartLevel()
         {
             SceneLoader(0);
@@ -17,6 +24,7 @@ namespace PlayKing.Cor
 
         public void NextLevel()
         {
+            LevelController.Instance.NextLevel();
             SceneLoader(0);
         }
 

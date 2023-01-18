@@ -18,8 +18,16 @@ namespace PlayKing.Cor
         [Header("NeedCharacterType")]
         [SerializeField] CharacterColorType _ballType;
 
+        [Header("Trail")]
+        [SerializeField] GameObject trail;
+
         CollectableBallsField _collectableBallsField;
         Rigidbody _rb;
+
+        public CharacterColorType Type()
+        {
+            return _ballType;
+        }
 
         private void Start()
         {
@@ -48,12 +56,15 @@ namespace PlayKing.Cor
 
         public void BallInStack()
         {
+            //if (trail != null)
+              //  trail.SetActive(true);
             cantStack = true;
             _rb.isKinematic = true;
             meshRenderer.material.DOColor(colorClaim, 0.2f);
             _collectableBallsField.RemoveBall(this);
           
             StartCoroutine(IE_ReturnColorBall());
+            StartCoroutine(IE_CloseTrail());
         }
        
         public void BallNeutral()
@@ -104,6 +115,9 @@ namespace PlayKing.Cor
         {
             yield return new WaitForSeconds(0.35f);
 
+            if (trail != null)
+                trail.SetActive(false);
+
             if (!isBallDestroyed)
             {
                 ballsMonster.BallActiveted(_ballType);
@@ -114,10 +128,20 @@ namespace PlayKing.Cor
 
         private IEnumerator IE_ReturnColorBall()
         {
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.2f);
 
             meshRenderer.material.DOColor(colorBall, 0.2f);
             _ballType = ch;
+        }
+
+        private IEnumerator IE_CloseTrail()
+        {
+            yield return new WaitForSeconds(0.4f);
+
+            if(trail != null)
+            {
+                trail.SetActive(false);
+            }
         }
     }
 }

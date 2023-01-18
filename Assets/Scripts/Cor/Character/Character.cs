@@ -6,6 +6,7 @@ namespace PlayKing.Cor
 {
     public class Character : MonoBehaviour
     {
+        
         [SerializeField] CharacterColorType _characterColorType;
         [SerializeField] GameObject crown;
         [SerializeField] GameObject canvas;
@@ -16,7 +17,6 @@ namespace PlayKing.Cor
          
         StackBalls _stackBalls;
         CharacterStates _characterStates;
-        CharacterSkins _characterSkins;
         BallsMonster _ballsMoster;
         Leaderboard leaderboard;
 
@@ -24,7 +24,6 @@ namespace PlayKing.Cor
         {
             _stackBalls = GetComponent<StackBalls>();
             _characterStates = GetComponentInParent<CharacterStates>();
-            _characterSkins = GetComponentInParent<CharacterSkins>();
             leaderboard = GameObject.FindObjectOfType<Leaderboard>();
         }
 
@@ -35,7 +34,8 @@ namespace PlayKing.Cor
 
         public void CrownActive(bool isActive)
         {
-            crown.SetActive(isActive);
+            if(crown != null)
+                crown.SetActive(isActive);
         }
 
         public void ActiveCharacter(bool isActive)
@@ -58,12 +58,10 @@ namespace PlayKing.Cor
 
         public void KillCharacter()
         {
-            _characterStates.StopMovement(true);
-            _characterStates.CharacterDie();
             effectDie.transform.parent = null;
             effectDie.Play();
-            Destroy(canvas);
             gameObject.GetComponent<Collider>().enabled = false;
+            _characterStates.CharacterDie();
             StartCoroutine(IE_Die());
         }
 
@@ -126,6 +124,9 @@ namespace PlayKing.Cor
             if (other.CompareTag("MonsterFields"))
             {
                 _ballsMoster = other.GetComponentInParent<BallsMonster>();
+
+                if (_ballsMoster.IsDeactivetedMonster())
+                    return;
 
                 _stackBalls.UnstackCollectablekBalls(_ballsMoster);
                 leaderboard.AddScoreMemeber(_characterColorType, _ballsMoster.GetFillingPercent(_characterColorType));
