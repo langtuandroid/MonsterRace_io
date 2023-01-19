@@ -54,7 +54,7 @@ namespace PlayKing.Cor
 
         public void DanceAnimation()
         {
-            //_animMonster.SetTrigger("Dance");
+            _animMonster.SetTrigger("Dance");
         }
 
         public void IsMonsterStage(bool monsterStage)

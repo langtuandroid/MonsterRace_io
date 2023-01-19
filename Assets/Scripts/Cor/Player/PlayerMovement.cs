@@ -63,8 +63,15 @@ namespace PlayKing.Cor
 
         public void JumpToTarget()
         {
-            transform.DOJump(point.position, 15, 1, 2.5f);
+            transform.DOJump(point.position, 15, 1, 1.8f);
             LockControll(true);
+        }
+
+        public void PushPlayer(Transform dir)
+        {
+            Vector3 pushDirection = new Vector3(transform.position.x - dir.position.x,
+                transform.position.y, transform.position.z - dir.position.z);
+            _transformPlayer.DOJump(pushDirection, 1f, 1, 0.5f);
         }
 
         private void MovementControll()

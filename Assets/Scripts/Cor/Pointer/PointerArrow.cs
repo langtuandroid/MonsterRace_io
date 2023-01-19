@@ -26,7 +26,7 @@ namespace PlayKing.Cor
             if (_isShown) return;
             _isShown = true;
             StopAllCoroutines();
-            StartCoroutine(ShowProcess());
+            StartCoroutine(IE_ShowProcess());
         }
 
         public void Hide()
@@ -35,10 +35,10 @@ namespace PlayKing.Cor
             _isShown = false;
 
             StopAllCoroutines();
-            StartCoroutine(HideProcess());
+            StartCoroutine(IE_HideProcess());
         }
 
-        IEnumerator ShowProcess()
+        private IEnumerator IE_ShowProcess()
         {
             _image.enabled = true;
             transform.localScale = Vector3.zero;
@@ -50,9 +50,8 @@ namespace PlayKing.Cor
             transform.localScale = Vector3.one;
         }
 
-        IEnumerator HideProcess()
+        private IEnumerator IE_HideProcess()
         {
-
             for (float t = 0; t < 1f; t += Time.deltaTime * 4f)
             {
                 transform.localScale = Vector3.one * (1f - t);

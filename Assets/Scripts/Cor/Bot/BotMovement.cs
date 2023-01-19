@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace PlayKing.Cor.Bot
+namespace PlayKing.Cor
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class BotMovement : MonoBehaviour
@@ -138,7 +138,7 @@ namespace PlayKing.Cor.Bot
         {
             _rb.isKinematic = false;
             Vector3 pushDirection = new Vector3(transform.position.x - dir.position.x, 
-                transform.position.y, transform.position.x - dir.position.x);
+                transform.position.y, transform.position.z - dir.position.z);
             _rb.AddForce(pushDirection * 2f, ForceMode.Impulse);
         }
 

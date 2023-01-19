@@ -20,12 +20,14 @@ namespace PlayKing.Cor
         [SerializeField] PointerArrow _pointerPrefab;
         [SerializeField] PlayerMovement _playerTransform;
         [SerializeField] Camera _camera;
+        private bool canShow;
 
         private Dictionary<BotPointer, PointerArrow> _dictionary = new Dictionary<BotPointer, PointerArrow>();
 
         private void Start()
         {
             _playerTransform = GameObject.FindObjectOfType<PlayerMovement>();
+            LevelController.Instance.OnLevelStart.AddListener(ShowedPointer);
         }
 
         public void AddToList(BotPointer enemyPointer)
@@ -42,6 +44,9 @@ namespace PlayKing.Cor
 
         void LateUpdate()
         {
+            if (!canShow)
+                return;
+
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
 
             foreach (var kvp in _dictionary)
@@ -86,6 +91,11 @@ namespace PlayKing.Cor
 
                 pointerIcon.SetIconPosition(position, rotation);
             }
+        }
+
+        private void ShowedPointer()
+        {
+            canShow = true;
         }
 
         Quaternion GetIconRotation(int planeIndex)

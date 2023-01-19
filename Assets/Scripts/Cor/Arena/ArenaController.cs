@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayKing.Cor.Arena
+namespace PlayKing.Cor
 {
     public class ArenaController : MonoBehaviour
     {

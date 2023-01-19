@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using DG.Tweening;
 
 namespace PlayKing.Cor
 {
@@ -9,24 +8,27 @@ namespace PlayKing.Cor
         [SerializeField] CharacterStates _characterStates;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] Weapon[] weapon;
+        private bool canFight;
         private bool canAttack;
         private bool isAttack;
 
         private void Start()
         {
+            LevelController.Instance.OnLevelStart.AddListener(Fight);
+            LevelController.Instance.OnLevelEnd.AddListener(StopFight);
             LevelController.Instance.OnLevelEnd.AddListener(Test);
         }
 
         private void Update()
         {
+            if (canFight || !_characterStates.IsMonsterStage())
+                return;
+
             FightControll();
         }
 
         private void FightControll()
         {
-            if (!_characterStates.IsMonsterStage())
-                return;
-
             if (Input.GetMouseButton(0))
             {
                 if (isAttack)
@@ -49,6 +51,22 @@ namespace PlayKing.Cor
             }
         }
 
+        private void Fight()
+        {
+            canFight = true;
+        }
+
+        private void StopFight()
+        {
+            canFight = false;
+        }
+
+        private void Test()
+        {
+            StartCoroutine(IE_S());
+        }
+
+
         private IEnumerator IE_Kick()
         {
             yield return new WaitForSeconds(0.2f);
@@ -67,34 +85,21 @@ namespace PlayKing.Cor
             {
                 i.StopAttack();
             }
+
             isAttack = false;
             _characterStates.StopMovement(false);
-        }
-
-        private void Test()
-        {
-            StartCoroutine(IE_S());
         }
 
         private IEnumerator IE_S()
         {
             yield return new WaitForSeconds(0.5f);
 
-            CameraController.Instance.JumpStateCam();
             foreach (var i in weapon)
             {
                 i.gameObject.SetActive(false);
             }
+
             _characterMonster.AttackFieldActive(false);
-            StartCoroutine(IE_Effects());
-        }
-
-        private IEnumerator IE_Effects()
-        {
-            yield return new WaitForSeconds(1f);
-
-            //_characterStates.Dance();
-            //transform.DORotate(new Vector3(0f, 180f, 0f), 0.3f);
         }
     }
 }

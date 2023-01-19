@@ -6,13 +6,10 @@ namespace PlayKing.Cor
 {
     public class Character : MonoBehaviour
     {
-        
         [SerializeField] CharacterColorType _characterColorType;
         [SerializeField] GameObject crown;
-        [SerializeField] GameObject canvas;
         [SerializeField] ParticleSystem effectDamage;
         [SerializeField] ParticleSystem effectDie;
-        [SerializeField] private bool isPlayer;
         [SerializeField] private bool isDeactiveCharacter;
          
         StackBalls _stackBalls;
@@ -91,7 +88,8 @@ namespace PlayKing.Cor
                     return;
 
                 _stackBalls.AddCollectableBall(_ball);
-                if (isPlayer) { VibrationController.Instance.ClaimVibration(); }
+                if (_characterStates.IsPlayerCharacter())
+                    VibrationController.Instance.ClaimVibration();
             }
 
             if (other.CompareTag("Character"))
@@ -110,11 +108,15 @@ namespace PlayKing.Cor
                 if (_stackBalls.AmmountBalls() >= stackBalls.AmmountBalls())
                 {
                     other.GetComponent<Character>().KnockCharacter(transform);
-                    if (isPlayer) { VibrationController.Instance.KnockVibration(); }
+                    if (_characterStates.IsPlayerCharacter())
+                        VibrationController.Instance.KnockVibration();
+
                     return;
                 }
 
-                if (isPlayer) { VibrationController.Instance.KnockVibration(); }
+                if (_characterStates.IsPlayerCharacter()) 
+                    VibrationController.Instance.KnockVibration();
+                
                 KnockCharacter(other.transform);
             }
         }
@@ -126,6 +128,9 @@ namespace PlayKing.Cor
                 _ballsMoster = other.GetComponentInParent<BallsMonster>();
 
                 if (_ballsMoster.IsDeactivetedMonster())
+                    return;
+
+                if (_characterStates.IsDie())
                     return;
 
                 _stackBalls.UnstackCollectablekBalls(_ballsMoster);
@@ -140,7 +145,8 @@ namespace PlayKing.Cor
                 if (_stackBalls.AmmountBalls() == 0)
                     return; 
 
-                if (isPlayer) { VibrationController.Instance.UnstackVibration(); }
+                if (_characterStates.IsPlayerCharacter())
+                    VibrationController.Instance.UnstackVibration();
             }
         }
 

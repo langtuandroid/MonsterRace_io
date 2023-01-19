@@ -1,9 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
-using PlayKing.Cor.Bot;
-using PlayKing.Cor.Arena;
-using DG.Tweening;
 
 public enum CharacterColorType
 {
@@ -27,12 +23,10 @@ namespace PlayKing.Cor
         [SerializeField] CharacterCanvas _characterCanvas;
         [SerializeField] PlayerMovement _playerMovement;
         [SerializeField] BotMovement _botMovement;
-        [SerializeField] private bool isPlayer;
+        [SerializeField] BotPointer _botPointer;
+        [SerializeField] private bool isPlayerCharacter;
         [SerializeField] private bool isMonsterStage;
-        [SerializeField] Skin skin;
-
-        [HideInInspector]
-        public UnityEvent OnDie;
+        [SerializeField] private bool isDie;
 
         ArenaController _arena;
         public BallsMonster monster;
@@ -42,39 +36,52 @@ namespace PlayKing.Cor
             return isMonsterStage;
         }
 
+        public bool IsDie()
+        {
+            return isDie;
+        }
+
+        public bool IsPlayerCharacter()
+        {
+            return isPlayerCharacter;
+        }
+
         private void Start()
         {
             _arena = GameObject.FindObjectOfType<ArenaController>();
-            if (!isPlayer) { _arena.AddBot(this); }
+            if (!IsPlayerCharacter())
+                _arena.AddBot(this);
         }
 
         private void Update()
         {
-            if (!isPlayer)
-                return;
+            //if (Input.GetKeyDown("d"))
+            //{
+            //    CharacterTransformation(monster);
+            //}
 
-            if (Input.GetKeyDown("d"))
-            {
-                CharacterTransformation(monster);
-            }
+            //if (Input.GetKeyDown("a"))
+            //{
+            //    _characterCanvas.transform.DOScale(0, 0.5f);
+            //    _characterStatesAnimation.JumpAnimation();
+            //    _playerMovement.transform.DORotate(new Vector3(0f, 90f, 0f), 0.5f);
+            //}
 
-            if (Input.GetKeyDown("a"))
-            {
-                _characterCanvas.transform.DOScale(0, 0.5f);
-                _characterStatesAnimation.JumpAnimation();
-                _playerMovement.transform.DORotate(new Vector3(0f, 90f, 0f), 0.5f);
-            }
+            //if (Input.GetKeyDown("f"))
+            //{
+            //    _playerMovement.JumpToTarget();
+            //}
 
+            //if (Input.GetKey("e"))
+            //{
+            //    skin.ChangeSkin();
+            //}
 
-            if (Input.GetKeyDown("f"))
-            {
-                _playerMovement.JumpToTarget();
-            }
-
-            if (Input.GetKey("e"))
-            {
-                skin.ChangeSkin();
-            }
+            //if (Input.GetKeyDown("t"))
+            //{
+            //    _characterStatesAnimation.DanceAnimation();
+            //    _playerMovement.transform.DORotate(new Vector3(0, -90f, 0f), 0.5f);
+            //}
         }
 
         public void CharacterTransformation(BallsMonster ballsMonster)
@@ -120,14 +127,15 @@ namespace PlayKing.Cor
 
         public void CharacterDie()
         {
-            OnDie.Invoke();
+            isDie = true;
             _characterStatesAnimation.DecreaseAnimation();
+            _botPointer.Remove();
             Destroy(_characterCanvas.gameObject);
             if (_botMovement != null)
                 _botMovement.StopMovement(true);
 
-            if (!isPlayer) { _arena.RemoveBot(this); }
-            if (isPlayer) { _arena.RemovePlayer(); }
+            if (!IsPlayerCharacter()) { _arena.RemoveBot(this); }
+            if (IsPlayerCharacter()) { _arena.RemovePlayer(); }
         }
 
         public void Dance()
@@ -150,7 +158,10 @@ namespace PlayKing.Cor
         public void Knock(Transform knockDir)
         {
             if (_playerMovement != null)
+            {
                 _playerMovement.LockControll(true);
+                _playerMovement.PushPlayer(knockDir);
+            }
 
             if (_botMovement != null)
             {
@@ -171,7 +182,8 @@ namespace PlayKing.Cor
                 _playerMovement.MovementToTarget(monster.transform);
 
             _character.JumpToMontser();
-            if(isPlayer)
+
+            if(IsPlayerCharacter())
                 CameraController.Instance.ChangeMonsterStateCam();
         }
 

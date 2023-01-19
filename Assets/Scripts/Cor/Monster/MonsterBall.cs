@@ -5,27 +5,28 @@ namespace PlayKing.Cor
     [RequireComponent(typeof(Rigidbody))]
     public class MonsterBall : MonoBehaviour
     {
-        public Transform point;
-
         [SerializeField] MeshRenderer meshRenderer;
         [SerializeField] Material[] materials;
-        [SerializeField] private float force;
-
         [SerializeField] Rigidbody _rb;
-        public bool isHead;
-        CharacterSettings characterSettings;
-        CharacterMonster _characterMonster;
+        [SerializeField] private float force;
+        [SerializeField] private bool isHeadBall;
+
+        CharacterSettings _characterSettings;
+        MonsterSpine _monsterSpine;
+
+        public bool IsHeadBall()
+        {
+            return isHeadBall;
+        }
 
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
-            characterSettings = GetComponentInParent<CharacterSettings>();
-            _characterMonster = GetComponentInParent<CharacterMonster>();
-            _characterMonster.AddMonsterBall(this);
-            if (!isHead)
-            {
+            _characterSettings = GetComponentInParent<CharacterSettings>();
+            _monsterSpine = GetComponentInParent<MonsterSpine>();
+            _monsterSpine.AddBallsToSpine(this);
+            if (!isHeadBall)
                 SwitchColor();
-            }
         }
 
         public void Explosion(Vector3 dir)
@@ -37,7 +38,7 @@ namespace PlayKing.Cor
 
         private void SwitchColor()
         {
-            switch (characterSettings.Type())
+            switch (_characterSettings.Type())
             {
                 case CharacterColorType.Blue:
                     meshRenderer.material = materials[0];

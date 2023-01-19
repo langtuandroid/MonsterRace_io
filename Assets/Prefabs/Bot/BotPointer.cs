@@ -9,10 +9,9 @@ namespace PlayKing.Cor
         private void Start()
         {
             PointerController.Instance.AddToList(this);
-            _characterStates.OnDie.AddListener(Remove);
         }
 
-        private void Remove()
+        public void Remove()
         {
             PointerController.Instance.RemoveFromList(this);
         }
