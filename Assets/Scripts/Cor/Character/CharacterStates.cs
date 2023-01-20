@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public enum CharacterColorType
 {
@@ -30,6 +31,8 @@ namespace PlayKing.Cor
 
         ArenaController _arena;
         public BallsMonster monster;
+        SkinsController skinsController;
+        Skin skin;
 
         public bool IsMonsterStage()
         {
@@ -49,39 +52,21 @@ namespace PlayKing.Cor
         private void Start()
         {
             _arena = GameObject.FindObjectOfType<ArenaController>();
+            skinsController = GameObject.FindObjectOfType<SkinsController>();
+            LevelController.Instance.OnLevelCompleted.AddListener(Finish);
             if (!IsPlayerCharacter())
                 _arena.AddBot(this);
         }
 
         private void Update()
         {
-            //if (Input.GetKeyDown("d"))
-            //{
-            //    CharacterTransformation(monster);
-            //}
+            if (!isPlayerCharacter)
+                return;
 
-            //if (Input.GetKeyDown("a"))
-            //{
-            //    _characterCanvas.transform.DOScale(0, 0.5f);
-            //    _characterStatesAnimation.JumpAnimation();
-            //    _playerMovement.transform.DORotate(new Vector3(0f, 90f, 0f), 0.5f);
-            //}
-
-            //if (Input.GetKeyDown("f"))
-            //{
-            //    _playerMovement.JumpToTarget();
-            //}
-
-            //if (Input.GetKey("e"))
-            //{
-            //    skin.ChangeSkin();
-            //}
-
-            //if (Input.GetKeyDown("t"))
-            //{
-            //    _characterStatesAnimation.DanceAnimation();
-            //    _playerMovement.transform.DORotate(new Vector3(0, -90f, 0f), 0.5f);
-            //}
+            if (Input.GetKeyDown("d"))
+            {
+                CharacterTransformation(monster);
+            }
         }
 
         public void CharacterTransformation(BallsMonster ballsMonster)
@@ -129,7 +114,8 @@ namespace PlayKing.Cor
         {
             isDie = true;
             _characterStatesAnimation.DecreaseAnimation();
-            _botPointer.Remove();
+            if(!isPlayerCharacter)
+                _botPointer.Remove();
             Destroy(_characterCanvas.gameObject);
             if (_botMovement != null)
                 _botMovement.StopMovement(true);
@@ -140,7 +126,7 @@ namespace PlayKing.Cor
 
         public void Dance()
         {
-            _characterStatesAnimation.DanceAnimation();
+            _characterStatesAnimation.LandingAnimation();
             _characterCanvas.gameObject.SetActive(false);
         }
 
@@ -183,8 +169,11 @@ namespace PlayKing.Cor
 
             _character.JumpToMontser();
 
-            if(IsPlayerCharacter())
-                CameraController.Instance.ChangeMonsterStateCam();
+            if (IsPlayerCharacter())
+            {
+                CameraController.Instance.CharacterCam(false);
+                CameraController.Instance.ChangeMonsterCam(true);
+            }
         }
 
         private IEnumerator IE_ActivetedMonster()
@@ -214,6 +203,41 @@ namespace PlayKing.Cor
             StopMovement(false);
             _botMovement.RestartMovement();
             _character.ActiveCharacter(false);
+        }
+
+
+
+
+        //finish Part
+
+        private void Finish()
+        {
+            StartCoroutine(IE_StartJump());
+            StartCoroutine(IE_Jump());
+        }
+
+        private IEnumerator IE_StartJump()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            if(_characterCanvas != null)
+                _characterCanvas.transform.DOScale(0, 0.5f);
+            _characterStatesAnimation.JumpAnimation();
+            _playerMovement.transform.DORotate(new Vector3(0f, 90f, 0f), 0.5f);
+        }
+
+        private IEnumerator IE_Jump()
+        {
+            yield return new WaitForSeconds(1.4f);
+
+            skin = skinsController.GetProgressSkin();
+            _playerMovement.JumpToTarget(skin.Point());
+        }
+
+        public void RootToFinish()
+        {
+            _characterStatesAnimation.LandingAnimation();
+            _playerMovement.transform.DORotate(new Vector3(0, -90f, 0f), 0.5f);
         }
     }
 }

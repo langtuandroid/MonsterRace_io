@@ -52,9 +52,9 @@ namespace PlayKing.Cor
             _animCharacter.SetTrigger("Decrease");
         }
 
-        public void DanceAnimation()
+        public void LandingAnimation()
         {
-            _animMonster.SetTrigger("Dance");
+            _animMonster.SetTrigger("Landing");
         }
 
         public void IsMonsterStage(bool monsterStage)

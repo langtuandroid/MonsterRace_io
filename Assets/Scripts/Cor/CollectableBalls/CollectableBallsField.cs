@@ -109,7 +109,7 @@ namespace PlayKing.Cor
                 if (collectableBall == i.GetCollectableBall())
                 {
                     i.ClearSpawnedBall();
-                    StartCoroutine(i.NewCollactable());
+                    StartCoroutine(i.NewCollactable(1.5f));
                 }
             }
         }
@@ -124,13 +124,19 @@ namespace PlayKing.Cor
                 }
             }
 
-            foreach (var i in spawnedBalls)
+            for (int i = 0; i < spawnedBalls.Count; i++)
             {
-                if(i.GetSpawnedBallType() == _characterColorType)
+                if(spawnedBalls[i].GetSpawnedBallType() == _characterColorType)
                 {
-                    if (i.GetCollectableBall() != null)
+                    if (spawnedBalls[i].GetCollectableBall() != null)
                     {
-                        Destroy(i.GetCollectableBall().gameObject);
+                        Destroy(spawnedBalls[i].GetCollectableBall().gameObject);
+                        spawnedBalls[i].ClearSpawnedBall();
+                        if (ballTypes.Count == 0)
+                            return;
+
+                        float randomTime = Random.Range(2f, 6f);
+                        StartCoroutine(spawnedBalls[i].NewCollactable(randomTime));
                     }
                 }
             }

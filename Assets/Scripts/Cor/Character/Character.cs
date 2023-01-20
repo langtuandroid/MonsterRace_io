@@ -59,6 +59,7 @@ namespace PlayKing.Cor
             effectDie.Play();
             gameObject.GetComponent<Collider>().enabled = false;
             _characterStates.CharacterDie();
+            leaderboard.RemoveMember(_characterColorType);
             StartCoroutine(IE_Die());
         }
 
@@ -101,9 +102,8 @@ namespace PlayKing.Cor
                     return;
 
                 if (_stackBalls.AmmountBalls() == stackBalls.AmmountBalls())
-                {
                     return;
-                }
+                
 
                 if (_stackBalls.AmmountBalls() >= stackBalls.AmmountBalls())
                 {
@@ -114,9 +114,9 @@ namespace PlayKing.Cor
                     return;
                 }
 
-                if (_characterStates.IsPlayerCharacter()) 
+                if (_characterStates.IsPlayerCharacter())
                     VibrationController.Instance.KnockVibration();
-                
+
                 KnockCharacter(other.transform);
             }
         }

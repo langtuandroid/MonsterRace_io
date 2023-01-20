@@ -11,10 +11,12 @@ namespace PlayKing.Cor
         [SerializeField] Color colorCharacter;
         [SerializeField] MeshRenderer basket;
         [SerializeField] Color basketColor;
-        [SerializeField] private bool isPlayer;
         [SerializeField] NameGenerator nameGenerator;
         [SerializeField] BallsMonster ballsMonster;
+
         Leaderboard _leaderboard;
+        public SkinsController _skinsController;
+        CharacterStates _characterState;
         CharacterSkins _characterSkins;
         Character _character;
 
@@ -25,7 +27,9 @@ namespace PlayKing.Cor
 
         private void Start()
         {
+            _skinsController = GameObject.FindObjectOfType<SkinsController>();
             _leaderboard = GameObject.FindObjectOfType<Leaderboard>();
+            _characterState = GetComponent<CharacterStates>();
             _characterSkins = GetComponent<CharacterSkins>();
             _character = GetComponentInChildren<Character>();
 
@@ -36,18 +40,15 @@ namespace PlayKing.Cor
 
         public void SetMonsterType()
         {
-            if (!isPlayer)
+            if (!_characterState.IsPlayerCharacter())
             {
                 int random = Random.Range(0, monsterTypes.Count);
                 _characterSkins.SetType(monsterTypes[random]);
             }
 
-            if (isPlayer)
+            if (_characterState.IsPlayerCharacter())
             {
-                if (LevelController.Instance.LvlNumber() < 3)
-                {
-                    _characterSkins.SetType(CharacterMonsterType.Venom);
-                }
+                _characterSkins.SetType(monsterTypes[_skinsController.OpenSkinMumber()]);
             }
 
             ballsMonster.SetMonster(_characterSkins.Type());

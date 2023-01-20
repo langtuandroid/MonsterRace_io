@@ -44,9 +44,9 @@ namespace PlayKing.Cor
             _collectableBall = null;
         }
 
-        public IEnumerator NewCollactable()
+        public IEnumerator NewCollactable(float time)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(time);
 
             _collectableBallsField.GenerateRemovedBall(this);
         }

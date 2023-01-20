@@ -29,6 +29,8 @@ namespace PlayKing.Cor
         public UnityEvent OnLevelStart;
         [HideInInspector]
         public UnityEvent OnLevelEnd;
+        [HideInInspector]
+        public UnityEvent OnLevelCompleted;
 
         public int LvlNumber()
         {
@@ -48,8 +50,9 @@ namespace PlayKing.Cor
         public void LevelCompleted()
         {
             LevelEnd();
-            CameraController.Instance.JumpStateCam();
-           // StartCoroutine(IE_WinUI());
+            OnLevelCompleted?.Invoke();
+            CameraController.Instance.ChangeMonsterCam(false);
+            CameraController.Instance.JumpStateCam(true);
         }
 
         public void LevelFailed()
@@ -86,14 +89,6 @@ namespace PlayKing.Cor
                 lvlIndex = 0;
             }
             Save();
-        }
-
-        private IEnumerator IE_WinUI()
-        {
-            yield return new WaitForSeconds(5f);
-
-            UIManager.Instance.BonusScreen(true);
-            MoneyWallet.Instance.MoneyPlus(100);
         }
 
         #region Load&Save

@@ -15,9 +15,10 @@ namespace PlayKing.Cor
 
         public void SpawnMoney()
         {
-            UIManager.Instance.WinScreen(true);
             button.SetActive(false);
-           StartCoroutine(IE_Spawn());
+            StopAllCoroutines();
+            StartCoroutine(IE_Spawn());
+            StartCoroutine(IE_Win());
         }
 
         private void FixedUpdate()
@@ -41,6 +42,12 @@ namespace PlayKing.Cor
             }
         }
 
+        private IEnumerator IE_Win()
+        {
+            yield return new WaitForSeconds(2.5f);
+
+            UIManager.Instance.WinScreen(true);
+        }
 
         private IEnumerator IE_Target()
         {

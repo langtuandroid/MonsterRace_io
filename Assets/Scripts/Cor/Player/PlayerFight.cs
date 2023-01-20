@@ -21,7 +21,7 @@ namespace PlayKing.Cor
 
         private void Update()
         {
-            if (canFight || !_characterStates.IsMonsterStage())
+            if (!canFight || !_characterStates.IsMonsterStage())
                 return;
 
             FightControll();
@@ -65,7 +65,6 @@ namespace PlayKing.Cor
         {
             StartCoroutine(IE_S());
         }
-
 
         private IEnumerator IE_Kick()
         {

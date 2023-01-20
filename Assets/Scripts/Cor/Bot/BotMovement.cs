@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 namespace PlayKing.Cor
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class BotMovement : MonoBehaviour
     {
-        [SerializeField] Transform centerPoint;
         [SerializeField] Transform[] monsterPoints;
         [SerializeField] private float range;
         [SerializeField] private float timeToMonster;
@@ -19,13 +19,14 @@ namespace PlayKing.Cor
         [SerializeField] int min;
         [SerializeField] int max;
         private int indexMonsterPoint;
+        private bool inMonster;
 
         Rigidbody _rb;
         NavMeshAgent _agent;
         CharacterStatesAnimation _characterStatesAnimation;
         CollectableBallsField _collectableBallsField;
         StackBalls _stackBalls;
-        public Vector3 ball;
+        Vector3 ball;
         public int index;
 
         private void Start()
@@ -50,6 +51,7 @@ namespace PlayKing.Cor
                 if (timer >= timeToMonster)
                 {
                     int random = Random.Range(min, max);
+
                     if (_stackBalls.AmmountBalls() >= random)
                     {
                         _agent.SetDestination(monsterPoints[indexMonsterPoint].position);
@@ -71,7 +73,7 @@ namespace PlayKing.Cor
             NewMove();
         }
 
-         #region PlatformMovement
+        #region PlatformMovement
 
         private void SetPoints()
         {
@@ -96,7 +98,8 @@ namespace PlayKing.Cor
         private void UpdateMove()
         {
             ball = points[index];
-            _agent.SetDestination(ball);
+            if(_agent.enabled)
+                _agent.SetDestination(ball);
             _characterStatesAnimation.RunAnimation(true);
         }
 
@@ -132,23 +135,27 @@ namespace PlayKing.Cor
             _rb.isKinematic = true;
             isStopMovement = false;
             _agent.enabled = true;
+            toMonster = false;
         }
 
-        public void PushBot(Transform dir)
+        public void PushBot(Transform pushTarget)
         {
+            _agent.enabled = false;
             _rb.isKinematic = false;
-            Vector3 pushDirection = new Vector3(transform.position.x - dir.position.x, 
-                transform.position.y, transform.position.z - dir.position.z);
+            Vector3 pushDirection = new Vector3(transform.position.x - pushTarget.position.x,
+                transform.position.y, transform.position.z - pushTarget.position.z);
             _rb.AddForce(pushDirection * 2f, ForceMode.Impulse);
         }
 
         public void RestartMovement()
         {
+            _agent.enabled = true;
+            SetPoints();
             NewPoint();
             UpdateMove();
         }
 
-        private bool inMonster;
+        #region BotCollisions
 
         private void OnTriggerStay(Collider other)
         {
@@ -160,7 +167,7 @@ namespace PlayKing.Cor
                         return;
 
                     BallsMonster ballsMonster = other.GetComponentInParent<BallsMonster>();
-                    if(ballsMonster.IsDeactivetedMonster())
+                    if (ballsMonster.IsDeactivetedMonster())
                     {
                         indexMonsterPoint++;
                         inMonster = true;
@@ -179,5 +186,7 @@ namespace PlayKing.Cor
         {
             inMonster = false;
         }
+
+        #endregion
     }
 }

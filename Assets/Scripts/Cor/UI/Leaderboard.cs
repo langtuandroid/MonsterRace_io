@@ -37,6 +37,20 @@ namespace PlayKing.Cor
             SpawnMemberBlock(_leaderboardMember);
         }
 
+        public void RemoveMember(CharacterColorType _characterColorType)
+        {
+            for(int i = 0; i < leaderboradMembers.Count; i++)
+            {
+                if(leaderboradMembers[i].characterColorType == _characterColorType)
+                {
+                    Destroy(leaderboradMembers[i].memeberBlock.gameObject);
+                    leaderboradMembers.RemoveAt(leaderboradMembers.IndexOf(leaderboradMembers[i]));
+                }
+            }
+
+            SortLeaderboardMemebers();
+        }
+
         public void AddScoreMemeber(CharacterColorType _characterColorType, int score)
         {
             foreach(var i in leaderboradMembers) 
