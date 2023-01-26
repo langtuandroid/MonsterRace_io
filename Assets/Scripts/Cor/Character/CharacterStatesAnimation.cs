@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Animations;
 
 namespace PlayKing.Cor
 {
@@ -9,15 +9,27 @@ namespace PlayKing.Cor
         [SerializeField] Animator _animMonster;
         private bool isMonsterStage;
 
+        public void IsMonsterStage(bool monsterStage)
+        {
+            isMonsterStage = monsterStage;
+        }
+
+        public void AddMonsterAnimator(Animator anim)
+        {
+            _animMonster = anim;
+        }
+
         public void RunAnimation(bool isRun)
         {
             if(isMonsterStage)
             {
-                _animMonster.SetBool("Run", isRun);
+                if(_animMonster != null)
+                    _animMonster.SetBool("Run", isRun);
                 return;
             }
 
-            _animCharacter.SetBool("Run", isRun);
+            if(_animCharacter != null)
+                _animCharacter.SetBool("Run", isRun);
         }
 
         public void JumpAnimation()
@@ -28,7 +40,8 @@ namespace PlayKing.Cor
 
         public void AttackAnimation()
         {
-            _animMonster.SetTrigger("Attack");
+            if(_animMonster != null)
+                _animMonster.SetTrigger("Attack");
         }
 
         public void StopAnimations()
@@ -55,11 +68,6 @@ namespace PlayKing.Cor
         public void LandingAnimation()
         {
             _animMonster.SetTrigger("Landing");
-        }
-
-        public void IsMonsterStage(bool monsterStage)
-        {
-            isMonsterStage = monsterStage;
         }
     }
 }

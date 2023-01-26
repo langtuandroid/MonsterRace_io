@@ -21,7 +21,7 @@ namespace PlayKing.Cor
         [SerializeField] Transform pointSkin;
 
         [Header("SkinEffeñå³")]
-        [SerializeField] ParticleSystem effect;
+        [SerializeField] GameObject effect;
 
         [Header("SkinAnimation")]
         [SerializeField] DOTweenAnimation punchSkin;
@@ -29,6 +29,7 @@ namespace PlayKing.Cor
         [Header("StatusSkin")]
         [SerializeField] private bool isOpenSkin;
         private bool isPartOpen;
+        private bool isSetProgress;
 
         SkinsController _skinsController;
 
@@ -53,9 +54,10 @@ namespace PlayKing.Cor
             {
                 punchSkin.DOPlay();
                 fragments[ammountFramgents].material = mat;
-               
 
-                UIManager.Instance.MoneyScreen(true);
+
+                UIManager.Instance.SettingsButtonScreen(false);
+                UIManager.Instance.MoneyScreen(false);
                 UIManager.Instance.BonusScreen(false);
                 UIManager.Instance.RewardScreen(true);
                 
@@ -64,20 +66,21 @@ namespace PlayKing.Cor
             }
         }
 
-        private bool isd;
         public void UpdateSkin()
         {
             _slider.minValue = 0;
             _slider.maxValue = 4;
-            if (!isd)
+            if (!isSetProgress)
             {
                 _slider.value = ammountFramgents;
                 UIManager.Instance.BonusScreen(true);
-                isd = true;
+                isSetProgress = true;
             }
             if (_slider.value < ammountFramgents + 1)
-                _slider.value += 0.003f;
-            effect.Play();
+                _slider.value += 0.004f;
+
+            if(!effect.activeSelf)
+                effect.SetActive(true);
         }
 
         private void CheckStatusSkin()
@@ -103,6 +106,7 @@ namespace PlayKing.Cor
         public void OpenFramgentSkin()
         {
             ActiveFragmentsSkin();
+            effect.SetActive(false);
             ammountFramgents++;
             if (ammountFramgents >= 4)
                 isOpenSkin = true;

@@ -12,7 +12,7 @@ namespace PlayKing.Cor
         [SerializeField] MeshRenderer basket;
         [SerializeField] Color basketColor;
         [SerializeField] NameGenerator nameGenerator;
-        [SerializeField] BallsMonster ballsMonster;
+        [SerializeField] CollectableMonster ballsMonster;
 
         Leaderboard _leaderboard;
         public SkinsController _skinsController;
@@ -44,14 +44,15 @@ namespace PlayKing.Cor
             {
                 int random = Random.Range(0, monsterTypes.Count);
                 _characterSkins.SetType(monsterTypes[random]);
+                ballsMonster.SetMonster(monsterTypes[random]);
+                return;
             }
 
             if (_characterState.IsPlayerCharacter())
             {
                 _characterSkins.SetType(monsterTypes[_skinsController.OpenSkinMumber()]);
+                ballsMonster.SetMonster(monsterTypes[_skinsController.OpenSkinMumber()]);
             }
-
-            ballsMonster.SetMonster(_characterSkins.Type());
         }
 
         private void SetBasketColor()

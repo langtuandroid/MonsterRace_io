@@ -7,7 +7,7 @@ namespace PlayKing.Cor
     {
         [SerializeField] CharacterStates _characterStates;
         [SerializeField] CharacterMonster _characterMonster;
-        [SerializeField] Weapon[] weapon;
+        [SerializeField] Weapon weapon;
         private bool canFight;
         private bool canAttack;
         private bool isAttack;
@@ -25,6 +25,11 @@ namespace PlayKing.Cor
                 return;
 
             FightControll();
+        }
+
+        public void SetWeapon(Weapon monsterWeapon)
+        {
+            weapon = monsterWeapon;
         }
 
         private void FightControll()
@@ -69,21 +74,19 @@ namespace PlayKing.Cor
         private IEnumerator IE_Kick()
         {
             yield return new WaitForSeconds(0.2f);
-            
-            foreach (var i in weapon)
+
+            if(weapon == null)
             {
-                i.Attack();
+                weapon = GetComponentInChildren<Weapon>();
             }
+            weapon.Attack();
         }
 
         private IEnumerator IE_ReturnAttack()
         {
             yield return new WaitForSeconds(0.7f);
 
-            foreach (var i in weapon)
-            {
-                i.StopAttack();
-            }
+            weapon.StopAttack();
 
             isAttack = false;
             _characterStates.StopMovement(false);
@@ -93,10 +96,7 @@ namespace PlayKing.Cor
         {
             yield return new WaitForSeconds(0.5f);
 
-            foreach (var i in weapon)
-            {
-                i.gameObject.SetActive(false);
-            }
+            weapon.gameObject.SetActive(false);
 
             _characterMonster.AttackFieldActive(false);
         }

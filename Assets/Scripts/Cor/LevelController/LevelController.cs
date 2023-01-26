@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using TMPro;
+using UnityEngine.UI;
 
 namespace PlayKing.Cor
 {
@@ -20,7 +19,8 @@ namespace PlayKing.Cor
         #endregion
 
         [SerializeField] LevelSpawner levelSpawner;
-        [SerializeField] TextMeshProUGUI textLvlNumber;
+        [SerializeField] LevelsProgress levelsProgress;
+        [SerializeField] Text textLvlNumber;
         [SerializeField] private int lvlNumber;
         [SerializeField] private bool isEditor;
         private int lvlIndex;
@@ -42,7 +42,6 @@ namespace PlayKing.Cor
             OnLevelStart.Invoke();
             UIManager.Instance.TutorialScreen(false);   
             UIManager.Instance.StartScreen(false);
-            UIManager.Instance.MoneyScreen(false);
             UIManager.Instance.PointerScreen(true);
             UIManager.Instance.LeaderboardScreen(true);
         }
@@ -58,6 +57,7 @@ namespace PlayKing.Cor
         public void LevelFailed()
         {
             LevelEnd();
+            UIManager.Instance.MoneyScreen(false);
             UIManager.Instance.LoseScreen(true);
         }
 
@@ -65,6 +65,7 @@ namespace PlayKing.Cor
         {
             OnLevelEnd.Invoke();
             UIManager.Instance.JoystickScreen(false);
+            UIManager.Instance.SettingsButtonScreen(false);
             UIManager.Instance.SettingsScreen(false);
             UIManager.Instance.PointerScreen(false);
             UIManager.Instance.LeaderboardScreen(false);
@@ -77,7 +78,8 @@ namespace PlayKing.Cor
                 return;
 
             levelSpawner.SpawnLevel(lvlIndex);
-            textLvlNumber.text = "LEVEL " + lvlNumber;
+            levelsProgress.CheckLevelsProgress();
+            textLvlNumber.text = "Level " + lvlNumber;
         }
 
         public void NextLevel()
@@ -88,6 +90,7 @@ namespace PlayKing.Cor
             {
                 lvlIndex = 0;
             }
+            levelsProgress.ProgressUp();
             Save();
         }
 

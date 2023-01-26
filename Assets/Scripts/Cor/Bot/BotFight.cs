@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayKing.Cor
@@ -7,90 +6,86 @@ namespace PlayKing.Cor
     public class BotFight : MonoBehaviour
     {
         [SerializeField] CharacterStates _characterStates;
+        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
         [SerializeField] CharacterMonster _characterMonster;
-        [SerializeField] Weapon[] weapon;
-        private bool canFight;
-        private bool canAttack;
-        private bool isAttack;
+        [SerializeField] Weapon weapon;
+        [SerializeField] BotMovement botMovement;
+        public bool isAttack;
 
         private void Start()
         {
-            LevelController.Instance.OnLevelStart.AddListener(Fight);
             LevelController.Instance.OnLevelEnd.AddListener(StopFight);
-            LevelController.Instance.OnLevelEnd.AddListener(Test);
+            if(weapon == null)
+            {
+                SetWeapon(GetComponentInChildren<Weapon>());
+            }
         }
 
-        private void Fight()
+        public void SetWeapon(Weapon monsterWeapon)
         {
-            canFight = true;
+            weapon = monsterWeapon;
         }
 
         private void StopFight()
         {
-            canFight = false;
-        }
+            _characterStatesAnimation.RunAnimation(false);
 
-        private void Test()
-        {
-            StartCoroutine(IE_S());
-        }
+            weapon.gameObject.SetActive(false);
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Character"))
-            {
-                _characterStates.Attack();
-                _characterStates.StopMovement(true);
-                StartCoroutine(IE_Kick());
-                StartCoroutine(IE_ReturnAttack());
-                isAttack = true;
-                canAttack = false;
-            }
-
-            if (other.gameObject.CompareTag("Monster"))
-            {
-                _characterStates.Attack();
-                _characterStates.StopMovement(true);
-                StartCoroutine(IE_Kick());
-                StartCoroutine(IE_ReturnAttack());
-                isAttack = true;
-                canAttack = false;
-            }
+            _characterMonster.AttackFieldActive(false);
         }
 
         private IEnumerator IE_Kick()
         {
             yield return new WaitForSeconds(0.2f);
 
-            foreach (var i in weapon)
-            {
-                i.Attack();
-            }
+            weapon.Attack();
         }
 
         private IEnumerator IE_ReturnAttack()
         {
             yield return new WaitForSeconds(0.7f);
 
-            foreach (var i in weapon)
-            {
-                i.StopAttack();
-            }
+            weapon.StopAttack();
 
+            botMovement.MonsterReturnMove();
             isAttack = false;
-            _characterStates.StopMovement(false);
         }
 
-        private IEnumerator IE_S()
+        private void OnTriggerEnter(Collider other)
         {
-            yield return new WaitForSeconds(0.5f);
-
-            foreach (var i in weapon)
+            if (other.gameObject.tag == "Character")
             {
-                i.gameObject.SetActive(false);
+                if (isAttack)
+                    return;
+
+                _characterStates.Attack();
+                botMovement.Stop();
+                StartCoroutine(IE_Kick());
+                StartCoroutine(IE_ReturnAttack());
+                isAttack = true;
             }
 
-            _characterMonster.AttackFieldActive(false);
+            if (other.gameObject.tag == "Monster")
+            {
+                if (other.gameObject.GetComponentInParent<CharacterStates>().IsPlayerCharacter())
+                    return;
+
+                if (other.gameObject.GetComponent<BotFight>() != null)
+                {
+                    if (other.gameObject.GetComponent<BotFight>().isAttack)
+                        return;
+                }
+
+                if (isAttack)
+                    return;
+
+                _characterStates.Attack();
+                botMovement.Stop();
+                StartCoroutine(IE_Kick());
+                StartCoroutine(IE_ReturnAttack());
+                isAttack = true;
+            }
         }
     }
 }

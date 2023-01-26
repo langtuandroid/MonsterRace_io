@@ -7,37 +7,50 @@ namespace PlayKing.Cor
 {
     public class LoadGame : MonoBehaviour
     {
-        [SerializeField] Slider progressSlider;
+        private AsyncOperation loadOperation;
+
+        [SerializeField]
+        private Slider progressBar;
+
+        private float currentValue;
+        private float targetValue;
+
+        [SerializeField]
+        [Range(0, 1)]
+        private float progressAnimationMultiplier = 0.25f;
+
+        private bool canLoad;
 
         private void Start()
         {
-            LoadScene(0);
+            StartCoroutine(IE_Load());
         }
 
-        public void LoadScene(int index)
+        private void Update()
         {
-            StartCoroutine(LoadScene_Coroutine(index));
-        }
-
-        public IEnumerator LoadScene_Coroutine(int index)
-        {
-            progressSlider.value = 0;
-
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(1);
-            asyncOperation.allowSceneActivation = false;
-            float progress = 0;
-
-            while (!asyncOperation.isDone)
+            if (canLoad)
             {
-                progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);
-                progressSlider.value = progress;
-                if (progress >= 0.9f)
+                targetValue = loadOperation.progress / 0.9f;
+                currentValue = Mathf.MoveTowards(currentValue, targetValue, progressAnimationMultiplier * Time.deltaTime);
+                progressBar.value = currentValue;
+                if (Mathf.Approximately(currentValue, 1f))
                 {
-                    progressSlider.value = 1;
-                    asyncOperation.allowSceneActivation = true;
+                    loadOperation.allowSceneActivation = true;
+                    progressBar.value = 1.2f;
                 }
-                yield return null;
             }
+        }
+
+        private IEnumerator IE_Load()
+        {
+            yield return new WaitForSeconds(0.15f);
+
+            progressBar.value = currentValue = targetValue = 0;
+
+            loadOperation = SceneManager.LoadSceneAsync(1);
+
+            loadOperation.allowSceneActivation = false;
+            canLoad = true;
         }
     }
 }

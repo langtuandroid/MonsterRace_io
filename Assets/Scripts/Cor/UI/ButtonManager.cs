@@ -19,6 +19,7 @@ namespace PlayKing.Cor
 
         public void RestartLevel()
         {
+            MoneyWallet.Instance.MoneyPlus(50);
             SceneLoader(0);
         }
 

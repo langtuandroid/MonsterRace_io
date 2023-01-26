@@ -8,6 +8,12 @@ namespace PlayKing.Cor
         [SerializeField] Collider _collider;
         [SerializeField] DOTweenAnimation punchAnim;
         [SerializeField] ParticleSystem dust;
+        CharacterStates characterStates;
+
+        private void Start()
+        {
+            characterStates = GetComponentInParent<CharacterStates>();    
+        }
 
         public void Attack()
         {
@@ -21,28 +27,31 @@ namespace PlayKing.Cor
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Platform"))
+            if (other.gameObject.tag == "Platform")
             {
                 punchAnim.DORestart();
                 dust.Play();
-                Debug.Log("P");
             }
 
-            if (other.CompareTag("Character"))
+            if (other.gameObject.tag == "Character")
             {
                 Character character = other.GetComponent<Character>();
                 character.KillCharacter();
-                VibrationController.Instance.AttackVibration();
+
+                if(characterStates.IsPlayerCharacter())
+                    VibrationController.Instance.AttackVibration();
             }
 
-            if (other.CompareTag("Monster"))
+            if (other.gameObject.tag == "Monster")
             {
                 CharacterMonster characterMonster = other.GetComponent<CharacterMonster>();
                 if (characterMonster == GetComponentInParent<CharacterMonster>())
                     return;
 
                 characterMonster.ExplosionCharacterMonster(transform);
-                VibrationController.Instance.AttackVibration();
+
+                if (characterStates.IsPlayerCharacter())
+                    VibrationController.Instance.AttackVibration();
             }
         }
     }

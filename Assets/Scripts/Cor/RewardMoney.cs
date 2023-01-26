@@ -6,28 +6,21 @@ namespace PlayKing.Cor
 {
     public class RewardMoney : MonoBehaviour
     {
+        [SerializeField] ButtonManager buttonManager;
         [SerializeField] GameObject prefabMoney;
         [SerializeField] Transform[] pointSpawn;
         [SerializeField] GameObject button;
         [SerializeField] int rewardMoney;
-        List<Coin> coins = new List<Coin>();
-        int index;
+        [SerializeField] List<Coin> coins = new List<Coin>();
+        private int index;
 
         public void SpawnMoney()
         {
+            buttonManager.NextLevel();
             button.SetActive(false);
-            StopAllCoroutines();
-            StartCoroutine(IE_Spawn());
-            StartCoroutine(IE_Win());
-        }
-
-        private void FixedUpdate()
-        {
-            if(index >= 10)
-            {
-                StartCoroutine(IE_Target());
-                index = 0;
-            }
+            //StopAllCoroutines();
+            //StartCoroutine(IE_Spawn());
+            //StartCoroutine(IE_Win());
         }
 
         private IEnumerator IE_Spawn()
@@ -38,15 +31,20 @@ namespace PlayKing.Cor
                 newMoney.transform.parent = pointSpawn[index];
                 coins.Add(newMoney.GetComponent<Coin>());
                 index++;
+                if (index >= 10)
+                {
+                    StartCoroutine(IE_Target());
+                    index = 0;
+                }
                 yield return new WaitForSeconds(0.15f);
             }
         }
 
         private IEnumerator IE_Win()
         {
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(3.2f);
 
-            UIManager.Instance.WinScreen(true);
+            buttonManager.NextLevel();
         }
 
         private IEnumerator IE_Target()

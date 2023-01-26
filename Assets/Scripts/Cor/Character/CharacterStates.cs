@@ -2,17 +2,6 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-public enum CharacterColorType
-{
-    Blue,
-    Green,
-    Yellow,
-    Violet,
-    Red,
-    Purple,
-    Neutral
-}
-
 namespace PlayKing.Cor
 {
     public class CharacterStates : MonoBehaviour
@@ -30,7 +19,8 @@ namespace PlayKing.Cor
         [SerializeField] private bool isDie;
 
         ArenaController _arena;
-        public BallsMonster monster;
+        public CollectableMonster _monster;
+        BallsMonster _ballsMonster;
         SkinsController skinsController;
         Skin skin;
 
@@ -60,30 +50,33 @@ namespace PlayKing.Cor
 
         private void Update()
         {
-            if (!isPlayerCharacter)
-                return;
-
-            if (Input.GetKeyDown("d"))
+            if (IsPlayerCharacter())
             {
-                CharacterTransformation(monster);
+                if (Input.GetKeyDown("d"))
+                {
+                    CharacterTransformation(_monster);
+                }
             }
         }
 
-        public void CharacterTransformation(BallsMonster ballsMonster)
+        public void CharacterTransformation(CollectableMonster monster)
         {
             if (isMonsterStage)
                 return;
 
-            monster = ballsMonster;
-
+            _monster = monster;
+            _monster.DeactiveMonster();
+            _ballsMonster = _monster.GetComponentInChildren<BallsMonster>();
+            
             if (_playerMovement != null)
                 _playerMovement.LockControll(true);
 
             _characterStatesAnimation.JumpAnimation();
             _characterStatesAnimation.IsMonsterStage(true);
             _characterCanvas.SetMonsterTarget();
-            _characterMonster.SetMonster(ballsMonster.Type());
+
             StartCoroutine(IE_CharacterInMonster());
+            StartCoroutine(IE_SetMonsterSettings());
             StartCoroutine(IE_ActivetedMonster());
             isMonsterStage = true;
         }
@@ -124,12 +117,6 @@ namespace PlayKing.Cor
             if (IsPlayerCharacter()) { _arena.RemovePlayer(); }
         }
 
-        public void Dance()
-        {
-            _characterStatesAnimation.LandingAnimation();
-            _characterCanvas.gameObject.SetActive(false);
-        }
-
         public void Die()
         {
             Destroy(_characterCanvas.gameObject);
@@ -165,9 +152,21 @@ namespace PlayKing.Cor
             yield return new WaitForSeconds(0.5f);
 
             if(_playerMovement != null)
-                _playerMovement.MovementToTarget(monster.transform);
+                _playerMovement.MovementToTarget(_monster.transform);
 
             _character.JumpToMontser();
+        }
+
+        private IEnumerator IE_SetMonsterSettings()
+        {
+            yield return new WaitForSeconds(0.85f);
+
+            _ballsMonster.transform.parent = _characterMonster.transform;
+            _ballsMonster.transform.position = _characterMonster.MonsterPoint().position;
+            _ballsMonster.transform.rotation = _characterMonster.MonsterPoint().rotation;
+            _ballsMonster.ActiveMontserHead(_characterSkins.Type());
+            _ballsMonster.AddPhysicsBalls();
+            _characterMonster.SetMonsterAnimator(_monster.Type());
 
             if (IsPlayerCharacter())
             {
@@ -183,7 +182,7 @@ namespace PlayKing.Cor
             _character.gameObject.SetActive(false);
             _characterMonster.gameObject.SetActive(true);
             _characterMonster.AttackFieldActive(true);
-            monster.DeactiveMonster();
+            _monster.DeactiveMonster();
 
             if (_playerMovement != null)
                 _playerMovement.LockControll(false);
@@ -201,17 +200,16 @@ namespace PlayKing.Cor
             yield return new WaitForSeconds(1.5f);
 
             StopMovement(false);
-            _botMovement.RestartMovement();
+            if(_botMovement != null)
+                _botMovement.RestartMovement();
             _character.ActiveCharacter(false);
         }
 
-
-
-
-        //finish Part
-
         private void Finish()
         {
+            if (!IsPlayerCharacter())
+                return;
+
             StartCoroutine(IE_StartJump());
             StartCoroutine(IE_Jump());
         }

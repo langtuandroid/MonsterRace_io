@@ -8,10 +8,10 @@ namespace PlayKing.Cor
 
         public static UIManager Instance;
 
-       private void Awake()
-       {
+        private void Awake()
+        {
             Instance = this;
-       }
+        }
 
         #endregion
 
@@ -19,6 +19,7 @@ namespace PlayKing.Cor
         [SerializeField] GameObject joystickScreen;
         [SerializeField] GameObject tutorialScreen;
         [SerializeField] GameObject startScreen;
+        [SerializeField] GameObject settingsButtonScreen;
         [SerializeField] GameObject settingsScreen;
         [SerializeField] GameObject moneyScreen;
         [SerializeField] GameObject pointerScreen;
@@ -26,7 +27,6 @@ namespace PlayKing.Cor
         [SerializeField] GameObject bonusScreen;
         [SerializeField] GameObject rewardScreen;
         [SerializeField] GameObject loseScreen;
-        [SerializeField] GameObject winScreen;
 
         public void JoystickScreen(bool isActive)
         {
@@ -41,6 +41,11 @@ namespace PlayKing.Cor
         public void StartScreen(bool isActive)
         {
             startScreen.SetActive(isActive);   
+        }
+
+        public void SettingsButtonScreen(bool isActive)
+        {
+            settingsButtonScreen.SetActive(isActive);
         }
 
         public void SettingsScreen(bool isActive)
@@ -76,11 +81,6 @@ namespace PlayKing.Cor
         public void LoseScreen(bool isActive)
         {
             loseScreen.SetActive(isActive);   
-        }
-
-        public void WinScreen(bool isActive)
-        {
-            winScreen.SetActive(isActive);   
         }
     }
 }

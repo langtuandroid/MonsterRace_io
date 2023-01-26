@@ -31,8 +31,9 @@ namespace PlayKing.Cor
         private Vector3 startPoint;
         private Vector3 position;
 
-        private List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
-
+        List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
+        List<SpawnedBall> respawnBalls = new List<SpawnedBall>();
+        
         public List<Vector3> ListTypeBalls(CharacterColorType colorType)
         {
             List<Vector3> balls = new List<Vector3>();
@@ -96,10 +97,28 @@ namespace PlayKing.Cor
             return null;
         }
 
-        void Start()
-        {
+        private void Start()
+        { 
             SetStartPos();
             BallsPlacement();
+        }
+
+        private void Update()
+        {
+            timer += Time.deltaTime;
+
+            if(timer >= timeToResetBall)
+            {
+                if (respawnBalls.Count == 0)
+                {
+                    timer = 0f;
+                    return;
+                }
+
+                GenerateRemovedBall(respawnBalls[0]);
+
+                timer = 0f;
+            }
         }
 
         public void RemoveBall(CollectableBall collectableBall)
@@ -109,7 +128,7 @@ namespace PlayKing.Cor
                 if (collectableBall == i.GetCollectableBall())
                 {
                     i.ClearSpawnedBall();
-                    StartCoroutine(i.NewCollactable(1.5f));
+                    respawnBalls.Add(i);
                 }
             }
         }
@@ -134,9 +153,7 @@ namespace PlayKing.Cor
                         spawnedBalls[i].ClearSpawnedBall();
                         if (ballTypes.Count == 0)
                             return;
-
-                        float randomTime = Random.Range(2f, 6f);
-                        StartCoroutine(spawnedBalls[i].NewCollactable(randomTime));
+                        respawnBalls.Add(spawnedBalls[i]);
                     }
                 }
             }
@@ -144,6 +161,9 @@ namespace PlayKing.Cor
 
         public void GenerateRemovedBall(SpawnedBall spawnedBall)
         {
+            if (ballTypes.Count == 0)
+                return;
+
             BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
             GameObject createdBall = Instantiate(ballType.ballPrefab, spawnedBall.SpawnPosition(),
                 Quaternion.identity);
@@ -151,6 +171,7 @@ namespace PlayKing.Cor
             createdBall.transform.parent = transform;
             createdBall.transform.position = spawnedBall.SpawnPosition();
             spawnedBall.SetNewSpawnedBall(createdBall.GetComponent<CollectableBall>());
+            respawnBalls.Remove(spawnedBall);
         }
 
         private void SetStartPos()

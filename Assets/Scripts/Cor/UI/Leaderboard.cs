@@ -66,11 +66,11 @@ namespace PlayKing.Cor
                    
                     if(i.scoreMember >= 100)
                     { 
-                        i.memeberBlock.SetTextBlock("MONSTER");
+                        i.memeberBlock.SetProgressBlock("MONSTER", 100);
                         return;
                     }
 
-                    i.memeberBlock.SetTextBlock(i.nameMemeber + " - " + i.bestScoreMember + "%");
+                    i.memeberBlock.SetProgressBlock(i.nameMemeber + " - " + i.bestScoreMember + "%", i.bestScoreMember);
                     i.memeberBlock.BlockAnimation();
                     SortLeaderboardMemebers();
                 }
@@ -94,10 +94,12 @@ namespace PlayKing.Cor
                 if(i == leaderboradMembers[leaderboradMembers.Count - 1])
                 {
                     i.character.CrownActive(true);
+                    i.memeberBlock.LeaderBlock(true);
                 }
                 else
                 {
                     i.character.CrownActive(false);
+                    i.memeberBlock.LeaderBlock(false);
                 }
             }
         }
@@ -109,7 +111,7 @@ namespace PlayKing.Cor
             newBlock.transform.parent = pointSpawn[leaderboradMembers.Count - 1];
             MemberBlock _memberBlock = newBlock.GetComponent<MemberBlock>();
             _memberBlock.SetColorBlock(leaderboard.colorMember);
-            _memberBlock.SetTextBlock(leaderboard.nameMemeber + " - " + leaderboard.bestScoreMember + "%");
+            _memberBlock.SetProgressBlock(leaderboard.nameMemeber + " - " + leaderboard.bestScoreMember + "%", leaderboard.bestScoreMember);
             leaderboard.memeberBlock = _memberBlock;
         }
     }

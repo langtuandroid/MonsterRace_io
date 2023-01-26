@@ -12,17 +12,15 @@ namespace PlayKing.Cor
         [SerializeField] Color neutral;
         [SerializeField] Color[] colors;
         [SerializeField] MeshRenderer meshRenderer;
+        [SerializeField] Rigidbody _rb;
         private bool isBallDestroyed;
         public bool cantStack;
 
-        [Header("NeedCharacterType")]
+        [Header("BallType")]
         [SerializeField] CharacterColorType _ballType;
 
-        [Header("Trail")]
-        [SerializeField] GameObject trail;
-
+        CharacterColorType newType;
         CollectableBallsField _collectableBallsField;
-        Rigidbody _rb;
 
         public CharacterColorType Type()
         {
@@ -32,8 +30,6 @@ namespace PlayKing.Cor
         private void Start()
         {
             _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
-            _rb = GetComponent<Rigidbody>();
-            transform.DOScale(transform.localScale, 0.2f).From(0);
         }
 
         public bool IsTrueCharacter(CharacterColorType characterColorType)
@@ -44,7 +40,7 @@ namespace PlayKing.Cor
             if (_ballType == characterColorType ||
                 _ballType == CharacterColorType.Neutral)
             {
-                ch = characterColorType;
+                newType = characterColorType;
                 SwitchColor(characterColorType);
                 return true;
             }
@@ -52,17 +48,15 @@ namespace PlayKing.Cor
             return false;
         }
 
-        CharacterColorType ch;
-
         public void BallInStack()
         {
             cantStack = true;
             _rb.isKinematic = true;
             meshRenderer.material.DOColor(colorClaim, 0.2f);
             _collectableBallsField.RemoveBall(this);
-          
+
+            StopAllCoroutines();
             StartCoroutine(IE_ReturnColorBall());
-            StartCoroutine(IE_CloseTrail());
         }
        
         public void BallNeutral()
@@ -74,6 +68,32 @@ namespace PlayKing.Cor
             _rb.isKinematic = false;
             _rb.AddForce(new Vector3(0f, 9f, -2f), ForceMode.Impulse);
             _ballType = CharacterColorType.Neutral;
+        }
+
+        public void Normal()
+        {
+            _ballType = CharacterColorType.Neutral;
+            gameObject.GetComponent<Collider>().isTrigger = true;
+            _rb.isKinematic = true;
+            cantStack = false;
+        }
+
+        public void BallToMonster(CollectableMonster ballsMonster)
+        {
+            if (!isBallDestroyed)
+            {
+                ballsMonster.BallActiveted(_ballType);
+                isBallDestroyed = true;
+                Destroy(gameObject, 0.28f);
+            }
+        }
+
+        private IEnumerator IE_ReturnColorBall()
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            meshRenderer.material.DOColor(colorBall, 0.2f);
+            _ballType = newType;
         }
 
         private void SwitchColor(CharacterColorType _characterColorType)
@@ -98,47 +118,6 @@ namespace PlayKing.Cor
                 case CharacterColorType.Purple:
                     colorBall = colors[5];
                     break;
-            }
-        }
-
-        public void Normal()
-        {
-            _ballType = CharacterColorType.Neutral;
-            gameObject.GetComponent<Collider>().isTrigger = true;
-            _rb.isKinematic = true;
-            cantStack = false;
-        }
-
-        public IEnumerator IE_BallToMonster(BallsMonster ballsMonster)
-        {
-            yield return new WaitForSeconds(0.35f);
-
-            if (trail != null)
-                trail.SetActive(false);
-
-            if (!isBallDestroyed)
-            {
-                ballsMonster.BallActiveted(_ballType);
-                isBallDestroyed = true;
-                Destroy(gameObject, 0.1f);
-            }
-        }
-
-        private IEnumerator IE_ReturnColorBall()
-        {
-            yield return new WaitForSeconds(0.2f);
-
-            meshRenderer.material.DOColor(colorBall, 0.2f);
-            _ballType = ch;
-        }
-
-        private IEnumerator IE_CloseTrail()
-        {
-            yield return new WaitForSeconds(0.4f);
-
-            if(trail != null)
-            {
-                trail.SetActive(false);
             }
         }
     }

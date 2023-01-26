@@ -53,7 +53,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1089891139789347188}
   m_Enabled: 1
   m_CastShadows: 0
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -107,7 +107,9 @@ MonoBehaviour:
   - {r: 0.8392157, g: 0, b: 0.8509804, a: 1}
   - {r: 0.93333334, g: 0.8235294, b: 0.24313726, a: 1}
   - {r: 0.93333334, g: 0.24313726, b: 0.27450982, a: 1}
+  - {r: 0.5176471, g: 0, b: 1, a: 1}
   meshRenderer: {fileID: 7544584392840889687}
+  _rb: {fileID: 4448893231416003041}
   cantStack: 0
   _ballType: 2
   trail: {fileID: 0}

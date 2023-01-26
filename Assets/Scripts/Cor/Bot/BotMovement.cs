@@ -21,20 +21,16 @@ namespace PlayKing.Cor
         private int indexMonsterPoint;
         private bool inMonster;
 
-        Rigidbody _rb;
-        NavMeshAgent _agent;
-        CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] Rigidbody _rb;
+        [SerializeField] NavMeshAgent _agent;
+        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] StackBalls _stackBalls;
         CollectableBallsField _collectableBallsField;
-        StackBalls _stackBalls;
         Vector3 ball;
         public int index;
 
         private void Start()
         {
-            _rb = GetComponent<Rigidbody>();
-            _agent = GetComponent<NavMeshAgent>();
-            _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
-            _stackBalls = GetComponentInChildren<StackBalls>();
             _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
             isStopMovement = true;
             LevelController.Instance.OnLevelStart.AddListener(Move);
@@ -86,8 +82,6 @@ namespace PlayKing.Cor
             {
                 NewPoint();
                 UpdateMove();
-
-                _characterStatesAnimation.RunAnimation(false);
             }
             else
             {
@@ -121,6 +115,7 @@ namespace PlayKing.Cor
         public void Stop()
         {
             StopMovement(true);
+            _characterStatesAnimation.RunAnimation(false);
         }
 
         public void StopMovement(bool isActive)
@@ -155,18 +150,26 @@ namespace PlayKing.Cor
             UpdateMove();
         }
 
+        public void MonsterReturnMove()
+        {
+            _agent.enabled = true;
+            isStopMovement = false;
+            NewPoint();
+            UpdateMove();
+        }
+
         #region BotCollisions
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("MonsterFields"))
+            if (other.gameObject.tag == "MonsterFields")
             {
                 if (toMonster)
                 {
                     if (inMonster)
                         return;
 
-                    BallsMonster ballsMonster = other.GetComponentInParent<BallsMonster>();
+                    CollectableMonster ballsMonster = other.GetComponentInParent<CollectableMonster>();
                     if (ballsMonster.IsDeactivetedMonster())
                     {
                         indexMonsterPoint++;

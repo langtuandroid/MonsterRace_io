@@ -45,11 +45,6 @@ namespace PlayKing.Cor
             jumpStateCam.SetActive(true);
         }
 
-        public void FinishCam(bool isActive)
-        {
-            finishCam.SetActive(isActive);
-        }
-
         public void SkinCam(Transform targetSkin, bool isActive)
         {
             skinCam.GetComponent<CinemachineVirtualCamera>().Follow = targetSkin;

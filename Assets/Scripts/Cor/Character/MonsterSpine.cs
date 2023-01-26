@@ -50,8 +50,6 @@ namespace PlayKing.Cor
                 if (!isk)
                 {
                     _skin.OpenFramgentSkin();
-                    CameraController.Instance.FinishCam(false);
-                    CameraController.Instance.SkinCam(_skin.transform, true);
                     isk = true;
                 }
             }
@@ -71,12 +69,15 @@ namespace PlayKing.Cor
         {
             if (other.gameObject.CompareTag("Finish"))
             {
+                Skin skin = other.GetComponentInParent<Skin>();
+                _skin = skin;
+
                 if (!isw)
                 {
                     CharacterStates characterStates = GetComponentInParent<CharacterStates>();
                     characterStates.RootToFinish();
                     CameraController.Instance.JumpStateCam(false);
-                    CameraController.Instance.FinishCam(true);
+                    CameraController.Instance.SkinCam(_skin.transform, true);
                     isw = true;
                 }
 
@@ -85,9 +86,6 @@ namespace PlayKing.Cor
                     Unstack();
                     return;
                 }
-
-                Skin skin = other.GetComponentInParent<Skin>();
-                _skin = skin;
 
                 StartCoroutine(IE_CanUnstack());
             }

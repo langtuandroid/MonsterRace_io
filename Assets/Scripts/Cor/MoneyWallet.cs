@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 using DG.Tweening;
 
 namespace PlayKing.Cor
@@ -17,7 +17,7 @@ namespace PlayKing.Cor
 
         #endregion
 
-        [SerializeField] TextMeshProUGUI textAmmountMoney;
+        [SerializeField] Text textAmmountMoney;
         [SerializeField] DOTweenAnimation punchMoney;
         [SerializeField] private int ammountMoney;
 
@@ -46,7 +46,7 @@ namespace PlayKing.Cor
             Save();
         }
 
-        private void MoneyText(TextMeshProUGUI textMoney, int money)
+        private void MoneyText(Text textMoney, int money)
         {
             if (textMoney == null)
                 return;

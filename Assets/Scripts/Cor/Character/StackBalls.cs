@@ -29,14 +29,14 @@ namespace PlayKing.Cor
             _ball.BallInStack();
         }
 
-        public void UnstackCollectablekBalls(BallsMonster unstackMonster)
+        public void UnstackCollectablekBalls(CollectableMonster unstackMonster)
         {
             for (int i = currencyBalls.Count - 1; i >= 0; i--)
             {
                 currencyBalls[i].transform.SetParent(null);
                 currencyBalls[i].transform.DOMove(transform.position + Vector3.up * 4f, 0.25f);
                 currencyBalls[i].transform.DOJump(unstackMonster.transform.position, 4, 1, 0.3f).SetDelay(0.25f);
-                StartCoroutine(currencyBalls[i].IE_BallToMonster(unstackMonster));
+                currencyBalls[i].BallToMonster(unstackMonster);
                 currencyBalls.Remove(currencyBalls[i]);
                 return;
             }

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 namespace PlayKing.Cor
@@ -8,7 +7,6 @@ namespace PlayKing.Cor
         CollectableBall _collectableBall;
         CharacterColorType _type;
         Vector3 _spawnPosition;
-        CollectableBallsField _collectableBallsField;
 
         public CollectableBall GetCollectableBall()
         {
@@ -30,7 +28,6 @@ namespace PlayKing.Cor
             _collectableBall = ball;
             _type = _collectableBall.Type();
             _spawnPosition = pos;
-            _collectableBallsField = collectableBallsField;
         }
 
         public void SetNewSpawnedBall(CollectableBall collectableBall)
@@ -42,13 +39,6 @@ namespace PlayKing.Cor
         public void ClearSpawnedBall()
         {
             _collectableBall = null;
-        }
-
-        public IEnumerator NewCollactable(float time)
-        {
-            yield return new WaitForSeconds(time);
-
-            _collectableBallsField.GenerateRemovedBall(this);
         }
     }
 }

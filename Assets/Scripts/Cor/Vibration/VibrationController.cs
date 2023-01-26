@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 
 namespace PlayKing.Cor
@@ -16,29 +17,21 @@ namespace PlayKing.Cor
 
         #endregion
 
-        [Header("VibrationSettings")]
-        [SerializeField] GameObject buttonOffVibration;
-        [SerializeField] GameObject buttonOnVibration;
-        private bool isOffVibration;
+        [SerializeField] private bool isOffVibration;
+
+        public bool ISOffVibration()
+        {
+            return isOffVibration;
+        }
+
+        public void SettingsActive(bool isActive)
+        {
+            UIManager.Instance.SettingsScreen(isActive);
+        }
 
         public void VibrationOffAndOn(bool isActive)
         {
             isOffVibration = isActive;
-
-            if (isActive)
-            {
-                if (buttonOffVibration != null)
-                    buttonOffVibration.SetActive(false);
-                if (buttonOnVibration != null)
-                    buttonOnVibration.SetActive(true);
-            }
-            else
-            {
-                if (buttonOffVibration != null)
-                    buttonOffVibration.SetActive(true);
-                if (buttonOnVibration != null)
-                    buttonOnVibration.SetActive(false);
-            }
         }
 
         public void UnstackVibration()

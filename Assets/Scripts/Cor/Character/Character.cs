@@ -10,17 +10,15 @@ namespace PlayKing.Cor
         [SerializeField] GameObject crown;
         [SerializeField] ParticleSystem effectDamage;
         [SerializeField] ParticleSystem effectDie;
+        [SerializeField] StackBalls _stackBalls;
+        [SerializeField] CharacterStates _characterStates;
         [SerializeField] private bool isDeactiveCharacter;
          
-        StackBalls _stackBalls;
-        CharacterStates _characterStates;
-        BallsMonster _ballsMoster;
+        CollectableMonster _ballsMoster;
         Leaderboard leaderboard;
 
         private void Start()
         {
-            _stackBalls = GetComponent<StackBalls>();
-            _characterStates = GetComponentInParent<CharacterStates>();
             leaderboard = GameObject.FindObjectOfType<Leaderboard>();
         }
 
@@ -81,7 +79,7 @@ namespace PlayKing.Cor
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Ball"))
+            if (other.gameObject.tag == "Ball")
             {
                 CollectableBall _ball = other.GetComponent<CollectableBall>();
                 
@@ -93,7 +91,7 @@ namespace PlayKing.Cor
                     VibrationController.Instance.ClaimVibration();
             }
 
-            if (other.CompareTag("Character"))
+            if (other.gameObject.tag == "Character")
             {
                 Character character = other.GetComponent<Character>();
                 StackBalls stackBalls = other.GetComponent<StackBalls>();
@@ -123,9 +121,9 @@ namespace PlayKing.Cor
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("MonsterFields"))
+            if (other.gameObject.tag == "MonsterFields")
             {
-                _ballsMoster = other.GetComponentInParent<BallsMonster>();
+                _ballsMoster = other.GetComponentInParent<CollectableMonster>();
 
                 if (_ballsMoster.IsDeactivetedMonster())
                     return;
@@ -138,6 +136,9 @@ namespace PlayKing.Cor
 
                 if (_ballsMoster.IsFullMonster())
                 {
+                    if (_ballsMoster.IsDeactivetedMonster())
+                        return;
+
                     _characterStates.CharacterTransformation(_ballsMoster);
                     _stackBalls.ClearStack();
                 }
