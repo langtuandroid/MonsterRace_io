@@ -5,12 +5,16 @@ namespace BlueStellar.Cor
 {
     public class PlayerFight : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] CharacterStates _characterStates;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] Weapon weapon;
         private bool canFight;
         private bool canAttack;
         private bool isAttack;
+
+        #endregion
 
         private void Start()
         {

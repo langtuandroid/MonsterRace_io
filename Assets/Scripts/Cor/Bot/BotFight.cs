@@ -5,12 +5,16 @@ namespace BlueStellar.Cor
 {
     public class BotFight : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] CharacterStates _characterStates;
         [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] Weapon weapon;
         [SerializeField] BotMovement botMovement;
         public bool isAttack;
+
+        #endregion
 
         private void Start()
         {

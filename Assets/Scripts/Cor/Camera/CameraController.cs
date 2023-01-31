@@ -16,6 +16,8 @@ namespace BlueStellar.Cor
 
         #endregion
 
+        #region Variables
+
         [SerializeField] GameObject characterStateCam;
         [SerializeField] GameObject monsterStateCam;
         [SerializeField] GameObject jumpStateCam;
@@ -24,6 +26,8 @@ namespace BlueStellar.Cor
         [SerializeField] ParticleSystem effect;
 
         Transform player;
+
+        #endregion
 
         private void Start()
         {

@@ -9,6 +9,7 @@ TagManager:
   - Character
   - Monster
   - Platform
+  - Gate
   layers:
   - Default
   - TransparentFX

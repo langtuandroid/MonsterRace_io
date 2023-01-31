@@ -13,6 +13,8 @@ namespace BlueStellar.Cor
             public RuntimeAnimatorController monsterAnimator;
         }
 
+        #region Variables
+
         [SerializeField] List<Monster> monsters = new List<Monster>();
         [SerializeField] Transform monsterPoint;
         [SerializeField] CharacterStates _characterStates;
@@ -21,6 +23,8 @@ namespace BlueStellar.Cor
         [SerializeField] MonsterSpine _monsterSpine;
         [SerializeField] GameObject attackField;
         [SerializeField] Animator _anim;
+
+        #endregion
 
         public Transform MonsterPoint()
         {

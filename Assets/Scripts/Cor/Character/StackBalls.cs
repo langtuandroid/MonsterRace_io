@@ -61,5 +61,21 @@ namespace BlueStellar.Cor
 
             currencyBalls.Clear();
         }
+
+        public void Bonus(GatesType gatesType, int number)
+        {
+            switch (gatesType)
+            {
+                case GatesType.Positive:
+
+                    break;
+                case GatesType.Negative:
+
+                    break;
+                case GatesType.Multyplying:
+
+                    break;
+            }
+        }
     }
 }

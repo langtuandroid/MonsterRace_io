@@ -6,6 +6,8 @@ namespace BlueStellar.Cor
 {
     public class Character : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] CharacterColorType _characterColorType;
         [SerializeField] GameObject crown;
         [SerializeField] ParticleSystem effectDamage;
@@ -16,6 +18,8 @@ namespace BlueStellar.Cor
          
         CollectableMonster _ballsMoster;
         Leaderboard leaderboard;
+
+        #endregion
 
         private void Start()
         {
@@ -116,6 +120,13 @@ namespace BlueStellar.Cor
                     VibrationController.Instance.KnockVibration();
 
                 KnockCharacter(other.transform);
+            }
+
+            if(other.gameObject.tag == "Gate")
+            {
+                Gates gates = other.gameObject.GetComponent<Gates>();
+                gates.ActivetedBonus(_stackBalls);
+                //_stackBalls.Bonus(gates.GetGatesType(), gates.GetNumberGates());
             }
         }
 

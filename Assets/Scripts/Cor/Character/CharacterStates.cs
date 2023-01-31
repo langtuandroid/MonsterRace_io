@@ -6,6 +6,8 @@ namespace BlueStellar.Cor
 {
     public class CharacterStates : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] Character _character;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
@@ -19,10 +21,12 @@ namespace BlueStellar.Cor
         [SerializeField] private bool isDie;
 
         ArenaController _arena;
-        public CollectableMonster _monster;
+        CollectableMonster _monster;
         BallsMonster _ballsMonster;
         SkinsController skinsController;
         Skin skin;
+
+        #endregion
 
         public bool IsMonsterStage()
         {
@@ -46,17 +50,6 @@ namespace BlueStellar.Cor
             LevelController.Instance.OnLevelCompleted.AddListener(Finish);
             if (!IsPlayerCharacter())
                 _arena.AddBot(this);
-        }
-
-        private void Update()
-        {
-            if (IsPlayerCharacter())
-            {
-                if (Input.GetKeyDown("d"))
-                {
-                    CharacterTransformation(_monster);
-                }
-            }
         }
 
         public void CharacterTransformation(CollectableMonster monster)

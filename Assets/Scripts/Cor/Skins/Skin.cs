@@ -6,6 +6,8 @@ namespace BlueStellar.Cor
 {
     public class Skin : MonoBehaviour
     {
+        #region Variables
+
         [Header("IdSkin")]
         [SerializeField] private string idSkin;
 
@@ -39,6 +41,8 @@ namespace BlueStellar.Cor
         private bool isSetProgress;
 
         SkinsController _skinsController;
+
+        #endregion
 
         public Transform Point()
         {

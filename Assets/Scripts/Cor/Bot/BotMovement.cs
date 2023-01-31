@@ -8,6 +8,8 @@ namespace BlueStellar.Cor
     [RequireComponent(typeof(NavMeshAgent))]
     public class BotMovement : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] Transform[] monsterPoints;
         [SerializeField] private float range;
         [SerializeField] private float timeToMonster;
@@ -28,6 +30,8 @@ namespace BlueStellar.Cor
         CollectableBallsField _collectableBallsField;
         Vector3 ball;
         public int index;
+
+        #endregion
 
         private void Start()
         {

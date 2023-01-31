@@ -5,6 +5,8 @@ namespace BlueStellar.Cor
 {
     public class CharacterSettings : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] CharacterColorType characterColorType;
         [SerializeField] List<CharacterMonsterType> monsterTypes = new List<CharacterMonsterType>();
         [SerializeField] string nameCharacter;
@@ -20,6 +22,8 @@ namespace BlueStellar.Cor
         CharacterStates _characterState;
         CharacterSkins _characterSkins;
         Character _character;
+
+        #endregion
 
         public CharacterColorType Type()
         {

@@ -13,9 +13,12 @@ namespace BlueStellar.Cor
             public CharacterColorType type;
         }
 
+        #region Variables
+
         [Header("BallTypes")]
         [SerializeField] List<BallType> ballTypes = new List<BallType>();
 
+        [Space]
         [Header("FieldPlacement")]
         [SerializeField] private int length;
         [SerializeField] private int line;
@@ -24,6 +27,7 @@ namespace BlueStellar.Cor
         [SerializeField] private float zPosition;
         [SerializeField] private float form;
 
+        [Space]
         [Header("TimerResetBall")]
         [SerializeField] private float timeToResetBall;
         [SerializeField] private float timer;
@@ -33,7 +37,9 @@ namespace BlueStellar.Cor
 
         List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
         List<SpawnedBall> respawnBalls = new List<SpawnedBall>();
-        
+
+        #endregion
+
         public List<Vector3> ListTypeBalls(CharacterColorType colorType)
         {
             List<Vector3> balls = new List<Vector3>();

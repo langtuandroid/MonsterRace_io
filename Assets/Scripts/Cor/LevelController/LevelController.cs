@@ -18,6 +18,8 @@ namespace BlueStellar.Cor
 
         #endregion
 
+        #region Variables
+
         [SerializeField] AnalyticsController analyticsController;
         [SerializeField] LevelSpawner levelSpawner;
         [SerializeField] LevelsProgress levelsProgress;
@@ -26,12 +28,18 @@ namespace BlueStellar.Cor
         [SerializeField] private bool isEditor;
         private int lvlIndex;
 
+        #endregion
+
+        #region LevelEvents
+
         [HideInInspector]
         public UnityEvent OnLevelStart;
         [HideInInspector]
         public UnityEvent OnLevelEnd;
         [HideInInspector]
         public UnityEvent OnLevelCompleted;
+
+        #endregion
 
         public int LvlNumber()
         {

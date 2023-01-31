@@ -20,4 +20,11 @@ namespace BlueStellar.Cor
         Siren,
         Venom
     }
+
+    public enum GatesType
+    {
+        Positive,
+        Negative,
+        Multyplying
+    }
 }

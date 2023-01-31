@@ -6,6 +6,8 @@ namespace BlueStellar.Cor
 {
     public class CollectableBall : MonoBehaviour
     {
+        #region Variables
+
         [Header("BallsSettings")]
         [SerializeField] Color colorBall;
         [SerializeField] Color colorClaim;
@@ -21,6 +23,8 @@ namespace BlueStellar.Cor
 
         CharacterColorType newType;
         CollectableBallsField _collectableBallsField;
+
+        #endregion
 
         public CharacterColorType Type()
         {
@@ -53,6 +57,7 @@ namespace BlueStellar.Cor
             cantStack = true;
             _rb.isKinematic = true;
             meshRenderer.material.DOColor(colorClaim, 0.2f);
+            _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
             _collectableBallsField.RemoveBall(this);
 
             StopAllCoroutines();

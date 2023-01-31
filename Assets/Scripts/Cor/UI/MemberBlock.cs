@@ -6,6 +6,8 @@ namespace BlueStellar.Cor
 {
     public class MemberBlock : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] GameObject crown;
         [SerializeField] Text textBlock;
         [SerializeField] Slider sliderBlock;
@@ -18,6 +20,8 @@ namespace BlueStellar.Cor
         [SerializeField] DOTweenAnimation blockPunch;
         [SerializeField] private float scaleNormal;
         [SerializeField] private float scaleMinimal;
+
+        #endregion
 
         public void SetColorBlock(Color _color)
         {
