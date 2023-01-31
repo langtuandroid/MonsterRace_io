@@ -62,19 +62,12 @@ namespace BlueStellar.Cor
             currencyBalls.Clear();
         }
 
-        public void Bonus(GatesType gatesType, int number)
+        public void RemoveColleactbleBall()
         {
-            switch (gatesType)
+            if(currencyBalls.Count > 0)
             {
-                case GatesType.Positive:
-
-                    break;
-                case GatesType.Negative:
-
-                    break;
-                case GatesType.Multyplying:
-
-                    break;
+                Destroy(currencyBalls[currencyBalls.Count - 1].gameObject, 0.1f);
+                currencyBalls.RemoveAt(currencyBalls.Count - 1);
             }
         }
     }
