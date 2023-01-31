@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class BallsMonster : MonoBehaviour
     {

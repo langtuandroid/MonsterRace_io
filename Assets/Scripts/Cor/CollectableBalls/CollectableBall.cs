@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class CollectableBall : MonoBehaviour
     {
@@ -66,7 +66,7 @@ namespace PlayKing.Cor
             gameObject.GetComponent<Collider>().isTrigger = false;
             meshRenderer.material.DOColor(neutral, 0.2f);
             _rb.isKinematic = false;
-            _rb.AddForce(new Vector3(0f, 9f, -2f), ForceMode.Impulse);
+            _rb.AddForce(new Vector3(0f, 6f, -1f), ForceMode.Impulse);
             _ballType = CharacterColorType.Neutral;
         }
 

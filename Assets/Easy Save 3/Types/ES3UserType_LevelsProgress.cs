@@ -9,26 +9,26 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_LevelsProgress() : base(typeof(PlayKing.Cor.LevelsProgress)){ Instance = this; priority = 1;}
+		public ES3UserType_LevelsProgress() : base(typeof(BlueStellar.Cor.LevelsProgress)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (PlayKing.Cor.LevelsProgress)obj;
+			var instance = (BlueStellar.Cor.LevelsProgress)obj;
 			
 			writer.WritePrivateField("indexProgress", instance);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (PlayKing.Cor.LevelsProgress)obj;
+			var instance = (BlueStellar.Cor.LevelsProgress)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "indexProgress":
-					instance = (PlayKing.Cor.LevelsProgress)reader.SetPrivateField("indexProgress", reader.Read<System.Int32>(), instance);
+					instance = (BlueStellar.Cor.LevelsProgress)reader.SetPrivateField("indexProgress", reader.Read<System.Int32>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -43,7 +43,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_LevelsProgressArray() : base(typeof(PlayKing.Cor.LevelsProgress[]), ES3UserType_LevelsProgress.Instance)
+		public ES3UserType_LevelsProgressArray() : base(typeof(BlueStellar.Cor.LevelsProgress[]), ES3UserType_LevelsProgress.Instance)
 		{
 			Instance = this;
 		}

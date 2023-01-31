@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class PlayerFight : MonoBehaviour
     {
@@ -78,6 +78,7 @@ namespace PlayKing.Cor
             if(weapon == null)
             {
                 weapon = GetComponentInChildren<Weapon>();
+                isAttack = false;
             }
             weapon.Attack();
         }
@@ -85,6 +86,13 @@ namespace PlayKing.Cor
         private IEnumerator IE_ReturnAttack()
         {
             yield return new WaitForSeconds(0.7f);
+
+
+            if (weapon == null)
+            {
+                weapon = GetComponentInChildren<Weapon>();
+                isAttack = false;
+            }
 
             weapon.StopAttack();
 

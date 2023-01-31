@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class LoadGame : MonoBehaviour
     {
@@ -37,6 +37,7 @@ namespace PlayKing.Cor
                 {
                     loadOperation.allowSceneActivation = true;
                     progressBar.value = 1.2f;
+                    canLoad = false;
                 }
             }
         }

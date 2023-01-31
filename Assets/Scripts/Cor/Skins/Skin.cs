@@ -2,12 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class Skin : MonoBehaviour
     {
         [Header("IdSkin")]
         [SerializeField] private string idSkin;
+
+        [Header("Buttons")]
+        [SerializeField] GameObject next;
+        [SerializeField] GameObject claim;
 
         [Header("FragmentsSkin")]
         [SerializeField] SkinnedMeshRenderer[] fragments;
@@ -15,7 +19,10 @@ namespace PlayKing.Cor
 
         [Header("SliderProgress")]
         [SerializeField] Slider _slider;
+        [SerializeField] Text textProgress;
         [SerializeField] private int ammountFramgents;
+        private int setProgress;
+        private int progress;
 
         [Header("PointSkin")]
         [SerializeField] Transform pointSkin;
@@ -55,10 +62,8 @@ namespace PlayKing.Cor
                 punchSkin.DOPlay();
                 fragments[ammountFramgents].material = mat;
 
-
                 UIManager.Instance.SettingsButtonScreen(false);
                 UIManager.Instance.MoneyScreen(false);
-                UIManager.Instance.BonusScreen(false);
                 UIManager.Instance.RewardScreen(true);
                 
                 SaveSkin();
@@ -69,17 +74,51 @@ namespace PlayKing.Cor
         public void UpdateSkin()
         {
             _slider.minValue = 0;
-            _slider.maxValue = 4;
+            _slider.maxValue = 100;
+
             if (!isSetProgress)
             {
-                _slider.value = ammountFramgents;
+                if (ammountFramgents == 0)
+                {
+                    progress = 0;
+                }
+                if (ammountFramgents == 1)
+                {
+                    progress = 25;
+                }
+                if (ammountFramgents == 2)
+                {
+                    progress = 50;
+                }
+                if (ammountFramgents == 3)
+                {
+                    progress = 75;
+                }
+                if (ammountFramgents == 4)
+                {
+                    progress = 100;
+                }
+                setProgress = progress;
+                _slider.value = progress;
+                textProgress.text = progress + "%";
+
                 UIManager.Instance.BonusScreen(true);
                 isSetProgress = true;
             }
-            if (_slider.value < ammountFramgents + 1)
-                _slider.value += 0.004f;
 
-            if(!effect.activeSelf)
+            if (_slider.value < setProgress + 25)
+                _slider.value += 0.1f;
+
+            if (_slider.value < 10)
+            {
+                textProgress.text = _slider.value.ToString().Substring(0, 1) + "%";
+            }
+
+            if (_slider.value >= 10) { 
+            textProgress.text = _slider.value.ToString().Substring(0, 2) + "%";
+        }
+
+            if (!effect.activeSelf)
                 effect.SetActive(true);
         }
 
@@ -108,11 +147,15 @@ namespace PlayKing.Cor
             ActiveFragmentsSkin();
             effect.SetActive(false);
             ammountFramgents++;
+
+          
             if (ammountFramgents >= 4)
                 isOpenSkin = true;
 
             if (ammountFramgents == 4)
             {
+                next.SetActive(false);
+                claim.SetActive(true);
                 isOpenSkin = true;
                 _skinsController.NewProgressSkin();
             }

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class BotFight : MonoBehaviour
     {
@@ -30,7 +30,7 @@ namespace PlayKing.Cor
         {
             _characterStatesAnimation.RunAnimation(false);
 
-            weapon.gameObject.SetActive(false);
+            //weapon.gameObject.SetActive(false);
 
             _characterMonster.AttackFieldActive(false);
         }

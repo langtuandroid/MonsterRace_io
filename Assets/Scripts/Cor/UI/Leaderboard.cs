@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class Leaderboard : MonoBehaviour
     {

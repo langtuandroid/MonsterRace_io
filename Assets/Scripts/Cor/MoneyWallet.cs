@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class MoneyWallet : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PlayKing.Cor.FPS
+namespace BlueStellar.Cor.FPS
 {
     public class FPSController : MonoBehaviour
     {

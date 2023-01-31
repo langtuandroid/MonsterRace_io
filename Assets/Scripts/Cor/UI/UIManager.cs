@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class UIManager : MonoBehaviour
     {

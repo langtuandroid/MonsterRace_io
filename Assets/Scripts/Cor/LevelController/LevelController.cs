@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class LevelController : MonoBehaviour
     {
@@ -18,6 +18,7 @@ namespace PlayKing.Cor
 
         #endregion
 
+        [SerializeField] AnalyticsController analyticsController;
         [SerializeField] LevelSpawner levelSpawner;
         [SerializeField] LevelsProgress levelsProgress;
         [SerializeField] Text textLvlNumber;
@@ -37,9 +38,15 @@ namespace PlayKing.Cor
             return lvlNumber;
         }
 
+        public int LvlIndex()
+        {
+            return lvlIndex;
+        }
+
         public void LevelStart()
         {
             OnLevelStart.Invoke();
+            analyticsController.LevelStart(lvlNumber);
             UIManager.Instance.TutorialScreen(false);   
             UIManager.Instance.StartScreen(false);
             UIManager.Instance.PointerScreen(true);
@@ -64,6 +71,7 @@ namespace PlayKing.Cor
         private void LevelEnd()
         {
             OnLevelEnd.Invoke();
+            analyticsController.LevelStart(lvlNumber);
             UIManager.Instance.JoystickScreen(false);
             UIManager.Instance.SettingsButtonScreen(false);
             UIManager.Instance.SettingsScreen(false);

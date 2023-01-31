@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class MonsterSpine : MonoBehaviour
     {

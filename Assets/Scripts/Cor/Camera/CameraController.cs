@@ -1,7 +1,7 @@
 using UnityEngine;
 using Cinemachine;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class CameraController : MonoBehaviour
     {

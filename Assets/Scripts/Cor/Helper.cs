@@ -1,4 +1,4 @@
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public enum CharacterColorType
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class CharacterSettings : MonoBehaviour
     {
@@ -12,6 +12,7 @@ namespace PlayKing.Cor
         [SerializeField] MeshRenderer basket;
         [SerializeField] Color basketColor;
         [SerializeField] NameGenerator nameGenerator;
+        [SerializeField] PlayerName playerName;
         [SerializeField] CollectableMonster ballsMonster;
 
         Leaderboard _leaderboard;
@@ -65,6 +66,10 @@ namespace PlayKing.Cor
             if(nameGenerator != null)
             {
                 nameCharacter = nameGenerator.Name();
+            }
+            if(playerName != null)
+            {
+                nameCharacter = playerName.Name();
             }
             _leaderboard.AddMember(_character, characterColorType, colorCharacter, nameCharacter);
             _character.SetCharacterSettings(characterColorType);

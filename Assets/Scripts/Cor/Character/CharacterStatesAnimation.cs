@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Animations;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class CharacterStatesAnimation : MonoBehaviour
     {

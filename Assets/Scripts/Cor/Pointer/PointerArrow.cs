@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     public class PointerArrow : MonoBehaviour
     {

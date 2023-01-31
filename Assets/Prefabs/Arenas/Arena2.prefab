@@ -8770,6 +8770,7 @@ MonoBehaviour:
   basket: {fileID: 2651512410484351122}
   basketColor: {r: 0.27410105, g: 0.67834914, b: 0.8207547, a: 1}
   nameGenerator: {fileID: 0}
+  playerName: {fileID: 209463893899776536}
   ballsMonster: {fileID: 4683113929000356059}
   _skinsController: {fileID: 0}
 --- !u!114 &2668412964122156664
@@ -23933,6 +23934,7 @@ GameObject:
   - component: {fileID: 2668412964122234249}
   - component: {fileID: 2668412964122156562}
   - component: {fileID: 2668412964122156563}
+  - component: {fileID: 209463893899776536}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -24027,6 +24029,20 @@ MonoBehaviour:
   _characterStates: {fileID: 2668412964122156664}
   _characterMonster: {fileID: 2668412964122156640}
   weapon: {fileID: 0}
+--- !u!114 &209463893899776536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668412964122222317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de2bad9a22cef24cb3fd9a13a24b9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textName: {fileID: 2668412964122156569}
+  playerName: PLAYER
 --- !u!1 &2668412964122222326
 GameObject:
   m_ObjectHideFlags: 0

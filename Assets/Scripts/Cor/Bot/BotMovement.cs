@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 
-namespace PlayKing.Cor
+namespace BlueStellar.Cor
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class BotMovement : MonoBehaviour
