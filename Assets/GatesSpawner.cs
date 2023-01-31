@@ -7,6 +7,9 @@ namespace BlueStellar.Cor
     {
         [SerializeField] GameObject prefabGates;
         [SerializeField] List<Transform> pointsSpawn = new List<Transform>();
+        [SerializeField] List<GatesType> gatesTypes = new List<GatesType>();
+        [SerializeField] private int minGates;
+        [SerializeField] private int maxGates;
         [SerializeField] private int ammountGates;
 
         private void Start()
@@ -16,14 +19,18 @@ namespace BlueStellar.Cor
 
         private void SpawnGate()
         {
-            ammountGates = Random.Range(1, 4);
+            if (LevelController.Instance.LvlNumber() == 1)
+                return;
+
+            ammountGates = Random.Range(minGates, maxGates);
             for(int i = 0; i < ammountGates; i++)
             {
                 int randomPoint = Random.Range(0, pointsSpawn.Count);
+                int randomType = Random.Range(0, gatesTypes.Count);
                 GameObject newGate = Instantiate(prefabGates, pointsSpawn[randomPoint].position, pointsSpawn[randomPoint].rotation);
                 pointsSpawn.Remove(pointsSpawn[randomPoint]);
                 Gates gates = newGate.GetComponent<Gates>();
-                gates.SetGatesSettings(GatesType.Negative);
+                gates.SetGatesSettings(gatesTypes[randomType]);
             }
         }
     }
