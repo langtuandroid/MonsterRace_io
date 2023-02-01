@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.Animations;
 
 namespace BlueStellar.Cor
 {
     public class CharacterStatesAnimation : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] Animator _animCharacter;
         [SerializeField] Animator _animMonster;
         private bool isMonsterStage;
+
+        #endregion
 
         public void IsMonsterStage(bool monsterStage)
         {

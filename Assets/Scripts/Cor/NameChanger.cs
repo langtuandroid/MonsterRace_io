@@ -11,7 +11,8 @@ namespace BlueStellar.Cor
         private void Start()
         {
             _playerName = GameObject.FindObjectOfType<PlayerName>();
-            //inputField.onSubmit(_playerName.NewName();
+            if(_playerName.Name() != "PLAYER")
+                inputField.text = _playerName.Name();
         }
 
         public void ChangeName()

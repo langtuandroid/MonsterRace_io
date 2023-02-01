@@ -25,6 +25,7 @@ namespace BlueStellar.Cor
 
         public void NextLevel()
         {
+            MoneyWallet.Instance.MoneyPlus(100);
             LevelController.Instance.NextLevel();
             SceneLoader(0);
         }

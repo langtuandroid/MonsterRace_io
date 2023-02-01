@@ -126,7 +126,6 @@ namespace BlueStellar.Cor
             {
                 Gates gates = other.gameObject.GetComponent<Gates>();
                 gates.ActivetedBonus(_stackBalls, _characterColorType);
-                //_stackBalls.Bonus(gates.GetGatesType(), gates.GetNumberGates());
             }
         }
 

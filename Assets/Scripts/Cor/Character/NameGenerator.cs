@@ -7,17 +7,18 @@ namespace BlueStellar.Cor
     {
         [SerializeField] TextMeshProUGUI textName;
         [SerializeField] string[] names;
-        string d;
+        private string _name;
+
         public string Name()
         {
-            return d;
+            return _name;
         }
 
         private void Start()
         {
             int randomIndex = Random.Range(0, names.Length);
             textName.text = names[randomIndex];
-            d = names[randomIndex];
+            _name = names[randomIndex];
         }
     }
 }

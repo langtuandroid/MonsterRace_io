@@ -24,9 +24,10 @@ namespace BlueStellar.Cor
 
             toggle.onValueChanged.AddListener(OnSwitch);
 
-            //toggle.isOn = vibrationController.ISOffVibration();
-            //if (toggle.isOn)
-            //    OnSwitch(true);
+            if (!vibrationController.ISOffVibration())
+                toggle.isOn = true;
+            if (toggle.isOn)
+                OnSwitch(true);
         }
 
         private void OnSwitch(bool on)

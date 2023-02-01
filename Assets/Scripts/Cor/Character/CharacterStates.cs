@@ -140,6 +140,12 @@ namespace BlueStellar.Cor
             StartCoroutine(CanMove());
         }
 
+        public void RootToFinish()
+        {
+            _characterStatesAnimation.LandingAnimation();
+            _playerMovement.transform.DORotate(new Vector3(0, -90f, 0f), 0.5f);
+        }
+
         private IEnumerator IE_CharacterInMonster()
         {
             yield return new WaitForSeconds(0.5f);
@@ -223,12 +229,6 @@ namespace BlueStellar.Cor
 
             skin = skinsController.GetProgressSkin();
             _playerMovement.JumpToTarget(skin.Point());
-        }
-
-        public void RootToFinish()
-        {
-            _characterStatesAnimation.LandingAnimation();
-            _playerMovement.transform.DORotate(new Vector3(0, -90f, 0f), 0.5f);
         }
     }
 }

@@ -68,13 +68,11 @@ namespace BlueStellar.Cor
         private void SetCharacterSettings()
         {
             if(nameGenerator != null)
-            {
                 nameCharacter = nameGenerator.Name();
-            }
+            
             if(playerName != null)
-            {
                 nameCharacter = playerName.Name();
-            }
+      
             _leaderboard.AddMember(_character, characterColorType, colorCharacter, nameCharacter);
             _character.SetCharacterSettings(characterColorType);
         }

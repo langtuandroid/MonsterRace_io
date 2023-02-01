@@ -21,7 +21,13 @@ namespace BlueStellar.Cor
 
         public bool ISOffVibration()
         {
+            Load();
             return isOffVibration;
+        }
+
+        private void Start()
+        {
+            Load();
         }
 
         public void SettingsActive(bool isActive)
@@ -32,6 +38,7 @@ namespace BlueStellar.Cor
         public void VibrationOffAndOn(bool isActive)
         {
             isOffVibration = isActive;
+            Save();
         }
 
         public void UnstackVibration()
@@ -65,5 +72,19 @@ namespace BlueStellar.Cor
 
             MMVibrationManager.Haptic(HapticTypes.Failure, false, true, this);
         }
+
+        #region Load&Save
+
+        private void Save()
+        {
+            ES3.Save("isOffVibration", isOffVibration);
+        }
+
+        private void Load()
+        {
+            isOffVibration = ES3.Load("isOffVibration", isOffVibration);
+        }
+
+        #endregion
     }
 }

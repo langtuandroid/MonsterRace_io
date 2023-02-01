@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,54 +48,42 @@ namespace BlueStellar.Cor
                     foreach (var i in spawnedBalls)
                     {
                         if (i.GetSpawnedBallType() == colorType)
-                        {
                             balls.Add(i.SpawnPosition());
-                        }
                     }
                     return balls;
                 case CharacterColorType.Yellow:
                     foreach (var i in spawnedBalls)
                     {
                         if (i.GetSpawnedBallType() == colorType)
-                        {
                             balls.Add(i.SpawnPosition());
-                        }
                     }
                     return balls;
                 case CharacterColorType.Green:
                     foreach (var i in spawnedBalls)
                     {
                         if (i.GetSpawnedBallType() == colorType)
-                        {
                             balls.Add(i.SpawnPosition());
-                        }
                     }
                     return balls;
                 case CharacterColorType.Violet:
                     foreach (var i in spawnedBalls)
                     {
                         if (i.GetSpawnedBallType() == colorType)
-                        {
                             balls.Add(i.SpawnPosition());
-                        }
                     }
                     return balls;
                 case CharacterColorType.Purple:
                     foreach (var i in spawnedBalls)
                     {
                         if (i.GetSpawnedBallType() == colorType)
-                        {
                             balls.Add(i.SpawnPosition());
-                        }
                     }
                     return balls;
                 case CharacterColorType.Red:
                     foreach (var i in spawnedBalls)
                     {
                         if (i.GetSpawnedBallType() == colorType)
-                        {
                             balls.Add(i.SpawnPosition());
-                        }
                     }
                     return balls;
             }
@@ -111,21 +98,10 @@ namespace BlueStellar.Cor
 
         private void Update()
         {
-            timer += Time.deltaTime;
-
-            if(timer >= timeToResetBall)
-            {
-                if (respawnBalls.Count == 0)
-                {
-                    timer = 0f;
-                    return;
-                }
-
-                GenerateRemovedBall(respawnBalls[0]);
-
-                timer = 0f;
-            }
+            ResetBall();
         }
+
+        #region GenerateBalls
 
         public void RemoveBall(CollectableBall collectableBall)
         {
@@ -180,6 +156,28 @@ namespace BlueStellar.Cor
             respawnBalls.Remove(spawnedBall);
         }
 
+        private void ResetBall()
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= timeToResetBall)
+            {
+                if (respawnBalls.Count == 0)
+                {
+                    timer = 0f;
+                    return;
+                }
+
+                GenerateRemovedBall(respawnBalls[0]);
+
+                timer = 0f;
+            }
+        }
+
+        #endregion
+
+        #region Placement
+
         private void SetStartPos()
         {
             startPoint = transform.position;
@@ -216,5 +214,7 @@ namespace BlueStellar.Cor
                 spawnedBalls.Add(spawnedBall);
             }
         }
+
+        #endregion
     }
 }

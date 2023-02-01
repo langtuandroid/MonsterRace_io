@@ -6,6 +6,8 @@ namespace BlueStellar.Cor
 {
     public class Gates : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] GatesType _gatesType;
         [SerializeField] GameObject phon;
         [SerializeField] TextMeshProUGUI textGates;
@@ -14,12 +16,16 @@ namespace BlueStellar.Cor
         private int index;
         private string symbolGate;
 
+        CharacterColorType _characterColor;
         StackBalls _stackBalls;
-        [SerializeField]CharacterColorType _characterColor;
+        GatesSpawner _gatesSpawner;
 
-        public void SetGatesSettings(GatesType gatesType)
+        #endregion
+
+        public void SetGatesSettings(GatesSpawner gatesSpawner,GatesType gatesType)
         {
             transform.DOScale(transform.localScale, 0.5f).From(0);
+            _gatesSpawner = gatesSpawner;
             _gatesType = gatesType;
             numberGates = Random.Range(1, 10);
             SwitchGatesText();
@@ -66,6 +72,7 @@ namespace BlueStellar.Cor
             }
 
             phon.SetActive(false);
+            _gatesSpawner.RemoveGate(this);
             transform.DOScale(0, 0.5f).OnComplete(() => Destroy(gameObject, 0.2f));
         }
 
@@ -75,7 +82,6 @@ namespace BlueStellar.Cor
             {
                 GameObject ball = Instantiate(collectableBalls[index].gameObject, transform.position, transform.rotation);
                 _stackBalls.AddCollectableBall(ball.GetComponent<CollectableBall>());
-                Debug.Log(index);
             }
         }
 

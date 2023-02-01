@@ -15,6 +15,8 @@ namespace BlueStellar.Cor
             public int ammountBallsType;
         }
 
+        #region Variables
+
         [Header("BallMonsterType")]
         [SerializeField] CharacterColorType _characterColorType;
         [SerializeField] CharacterMonsterType _monsterType;
@@ -54,6 +56,8 @@ namespace BlueStellar.Cor
         [SerializeField] CollectableMonsterSpawner _monsterSpawner;
 
         private bool isDeactivetedMonster;
+
+        #endregion
 
         public bool IsFullMonster()
         {

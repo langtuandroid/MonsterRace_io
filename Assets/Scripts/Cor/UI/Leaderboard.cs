@@ -19,10 +19,16 @@ namespace BlueStellar.Cor
             public int bestScoreMember;
         }
 
+        #region Variables
+
         [SerializeField] GameObject prefabBlockMember;
         [SerializeField] Transform[] pointSpawn;
 
         List<LeaderboardMember> leaderboradMembers = new List<LeaderboardMember>();
+
+        #endregion
+
+        #region LeaderboardMemberBlocks
 
         public void AddMember(Character _character, CharacterColorType type, Color color, string name)
         {
@@ -50,6 +56,21 @@ namespace BlueStellar.Cor
 
             SortLeaderboardMemebers();
         }
+
+        private void SpawnMemberBlock(LeaderboardMember leaderboard)
+        {
+            GameObject newBlock = Instantiate(prefabBlockMember, pointSpawn[leaderboradMembers.Count - 1].position,
+                pointSpawn[leaderboradMembers.Count - 1].rotation);
+            newBlock.transform.parent = pointSpawn[leaderboradMembers.Count - 1];
+            MemberBlock _memberBlock = newBlock.GetComponent<MemberBlock>();
+            _memberBlock.SetColorBlock(leaderboard.colorMember);
+            _memberBlock.SetProgressBlock(leaderboard.nameMemeber + " - " + leaderboard.bestScoreMember + "%", leaderboard.bestScoreMember);
+            leaderboard.memeberBlock = _memberBlock;
+        }
+
+        #endregion
+
+        #region ScoreLeaderboard
 
         public void AddScoreMemeber(CharacterColorType _characterColorType, int score)
         {
@@ -104,15 +125,6 @@ namespace BlueStellar.Cor
             }
         }
 
-        private void SpawnMemberBlock(LeaderboardMember leaderboard)
-        {
-            GameObject newBlock = Instantiate(prefabBlockMember, pointSpawn[leaderboradMembers.Count - 1].position,
-                pointSpawn[leaderboradMembers.Count - 1].rotation);
-            newBlock.transform.parent = pointSpawn[leaderboradMembers.Count - 1];
-            MemberBlock _memberBlock = newBlock.GetComponent<MemberBlock>();
-            _memberBlock.SetColorBlock(leaderboard.colorMember);
-            _memberBlock.SetProgressBlock(leaderboard.nameMemeber + " - " + leaderboard.bestScoreMember + "%", leaderboard.bestScoreMember);
-            leaderboard.memeberBlock = _memberBlock;
-        }
+        #endregion
     }
 }

@@ -1,15 +1,18 @@
 using UnityEngine;
-using TMPro;
 
 namespace BlueStellar.Cor
 {
     public class CharacterCanvas : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] Transform targetCharacter;
         [SerializeField] Transform targetMonster;
 
         Transform _target;
         Transform _transform;
+
+        #endregion
 
         private void Start()
         {
