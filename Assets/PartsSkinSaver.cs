@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,19 +28,11 @@ namespace BlueStellar.Cor
         private void Load()
         {
             partsID = ES3.Load("partsID", partsID);
-            //for(int i = 0; i < partsID.Count; i++)
-            //{
-            //    partsID[i] = (string)ES3.Load("partsID" + i, partsID[i]);
-            //}
         }
 
         private void Save()
         {
             ES3.Save("partsID", partsID);
-            //for (int i = 0; i < partsID.Count; i++)
-            //{
-            //    ES3.Save("partsID" + i, partsID[i]);
-            //}
         }
     }
 }
