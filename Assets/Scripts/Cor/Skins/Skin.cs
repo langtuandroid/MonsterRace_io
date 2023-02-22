@@ -18,6 +18,8 @@ namespace BlueStellar.Cor
         [Header("FragmentsSkin")]
         [SerializeField] SkinnedMeshRenderer[] fragments;
         [SerializeField] Material mat;
+        [SerializeField] string[] ids;
+        [SerializeField] int[] indx;
 
         [Header("SliderProgress")]
         [SerializeField] Slider _slider;
@@ -41,6 +43,7 @@ namespace BlueStellar.Cor
         private bool isSetProgress;
 
         SkinsController _skinsController;
+        PartsSkinSaver partsSkinSaver;
 
         #endregion
 
@@ -54,6 +57,7 @@ namespace BlueStellar.Cor
             LoadSave();
             CheckStatusSkin();
             _skinsController = GameObject.FindObjectOfType<SkinsController>();
+            partsSkinSaver = GameObject.FindObjectOfType<PartsSkinSaver>();
         }
 
         public void ActiveFragmentsSkin()
@@ -65,7 +69,7 @@ namespace BlueStellar.Cor
             {
                 punchSkin.DOPlay();
                 fragments[ammountFramgents].material = mat;
-
+                partsSkinSaver.AddNewIndex(ids[ammountFramgents], indx[ammountFramgents]);
                 UIManager.Instance.SettingsButtonScreen(false);
                 UIManager.Instance.MoneyScreen(false);
                 UIManager.Instance.RewardScreen(true);

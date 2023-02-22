@@ -22,6 +22,7 @@ namespace BlueStellar.Cor
         [SerializeField] CharacterMonsterType _armsType;
         [SerializeField] CharacterMonsterType _bodyType;
         [SerializeField] CharacterMonsterType _legsType;
+        [SerializeField] private bool isLobby;
 
         #endregion
 
@@ -32,9 +33,60 @@ namespace BlueStellar.Cor
 
         private void Start()
         {
-            LoadSkin();
-            CollectSkinChange();
+            if (!isLobby)
+            {
+                LoadSkin();
+                CollectSkinChange();
+            }
         }
+
+        #region CollectableSkin
+
+        public void AddHeadPart(CharacterMonsterType partType)
+        {
+            foreach(var i in skins)
+            {
+                if (i.skinType == partType)
+                    i.head.SetActive(true);
+            }
+            _headType = partType;
+            SaveSkin();
+        }
+
+        public void AddArmsPart(CharacterMonsterType partType)
+        {
+            foreach (var i in skins)
+            {
+                if (i.skinType == partType)
+                    i.arms.SetActive(true);
+            }
+            _armsType = partType;
+            SaveSkin();
+        }
+
+        public void AddBodyPart(CharacterMonsterType partType)
+        {
+            foreach (var i in skins)
+            {
+                if (i.skinType == partType)
+                    i.body.SetActive(true);
+            }
+            _bodyType = partType;
+            SaveSkin();
+        }
+
+        public void AddLegsPart(CharacterMonsterType partType)
+        {
+            foreach (var i in skins)
+            {
+                if (i.skinType == partType)
+                    i.legs.SetActive(true);
+            }
+            _legsType = partType;
+            SaveSkin();
+        }
+
+        #endregion
 
         private void CollectSkinChange()
         {

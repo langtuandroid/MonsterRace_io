@@ -73,6 +73,14 @@ namespace BlueStellar.Cor
             MMVibrationManager.Haptic(HapticTypes.Failure, false, true, this);
         }
 
+        public void PartOpenVibration()
+        {
+            if (isOffVibration)
+                return;
+
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact, false, true, this);
+        }
+
         #region Load&Save
 
         private void Save()

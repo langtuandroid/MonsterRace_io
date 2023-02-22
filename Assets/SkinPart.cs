@@ -7,15 +7,45 @@ namespace BlueStellar.Cor
 {
     public class SkinPart : MonoBehaviour
     {
-        [SerializeField] Vector3 positionOffset;
-        [SerializeField] Vector3 startPos;
+        #region Variables
+
+        [SerializeField] private string idPart;
+        [SerializeField] CharacterMonsterType typePart;
+        [SerializeField] Transform point;
+        [SerializeField] private float speedRotate;
+        [SerializeField] private float maxSpeedRotate;
+        [SerializeField] private bool isCharacterContact;
+        [SerializeField] private bool isUp;
+
+        Vector3 positionOffset;
+        Vector3 startPos;
+
         Camera _camera;
+
+        #endregion
+
+        public string GetIDPart()
+        {
+            return idPart;
+        }
+
+        public CharacterMonsterType GetPartType()
+        {
+            return typePart;
+        }
 
         private void Start()
         {
-            startPos = transform.position;
             _camera = Camera.main;
+            startPos = transform.position;
         }
+
+        private void Update()
+        {
+            point.transform.Rotate(0f, speedRotate, 0f);
+        }
+
+        #region PartMovement
 
         private Vector3 GetMousePosition()
         {
@@ -24,8 +54,9 @@ namespace BlueStellar.Cor
 
         private void OnMouseDown()
         {
+            speedRotate = 0f;
             positionOffset = Input.mousePosition - GetMousePosition();
-            //transform.DOMove(transform.position + 1f, 0.5f);
+            isUp = false;
         }
 
         private void OnMouseDrag()
@@ -39,7 +70,32 @@ namespace BlueStellar.Cor
 
         private void OnMouseUp()
         {
-            transform.position = startPos;
+            isUp = true;
+            transform.DOMove(startPos, 0.5f).OnComplete(() => speedRotate = maxSpeedRotate);
         }
+
+        #endregion
+
+        #region PartCollision
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("Character"))
+            {
+                isCharacterContact = true;
+                if (isUp)
+                {
+                    other.GetComponent<LobbyCharacter>().NewPartOpen(typePart);
+                    Destroy(gameObject);
+                }
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            isCharacterContact = false;
+        }
+
+        #endregion
     }
 }
