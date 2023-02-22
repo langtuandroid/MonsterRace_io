@@ -79,7 +79,7 @@ namespace BlueStellar.Cor
         private void LevelEnd()
         {
             OnLevelEnd.Invoke();
-            analyticsController.LevelStart(lvlNumber);
+            analyticsController.LevelFinished(lvlNumber);
             UIManager.Instance.JoystickScreen(false);
             UIManager.Instance.SettingsButtonScreen(false);
             UIManager.Instance.SettingsScreen(false);

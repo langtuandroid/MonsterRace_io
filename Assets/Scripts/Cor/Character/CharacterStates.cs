@@ -12,6 +12,7 @@ namespace BlueStellar.Cor
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
         [SerializeField] CharacterSkins _characterSkins;
+        [SerializeField] PlayerCharacterSkin _playerCharacterSkin;
         [SerializeField] CharacterCanvas _characterCanvas;
         [SerializeField] PlayerMovement _playerMovement;
         [SerializeField] BotMovement _botMovement;
@@ -163,7 +164,10 @@ namespace BlueStellar.Cor
             _ballsMonster.transform.parent = _characterMonster.transform;
             _ballsMonster.transform.position = _characterMonster.MonsterPoint().position;
             _ballsMonster.transform.rotation = _characterMonster.MonsterPoint().rotation;
-            _ballsMonster.ActiveMontserHead(_characterSkins.Type());
+            if(!isPlayerCharacter)
+                _ballsMonster.ActiveMontserHead(_characterSkins.Type());
+            if (isPlayerCharacter)
+                _ballsMonster.ActiveMontserHead(_playerCharacterSkin.GetHeadType());
             _ballsMonster.AddPhysicsBalls();
             _characterMonster.SetMonsterAnimator(_monster.Type());
 
