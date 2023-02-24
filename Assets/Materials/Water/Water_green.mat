@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FoamTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 2a2d71ee416d3c844adfa1a053ea32f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -85,13 +85,13 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DepthDistance: 0.27
+    - _DepthDistance: 0.86
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmisPulseMin: 0
     - _EmisPulseSpeed: 2
-    - _FoamSmooth: 0.257
-    - _FoamSpread: 5
+    - _FoamSmooth: 0.244
+    - _FoamSpread: 3.25
     - _FoamStrength: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -101,12 +101,12 @@ Material:
     - _NormalDepthInfluence: 0.5
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RampSmooth: 0.2
+    - _RampSmooth: 0.119
     - _RampSmoothAdd: 0.75
-    - _RampThreshold: 0.5
+    - _RampThreshold: 0.453
     - _ReflStrength: 1
     - _RimMax: 0.906
-    - _RimMin: 0.748
+    - _RimMin: 0.636
     - _RimStrength: 0.5
     - _Shininess: 0.1
     - _SmoothnessTextureChannel: 0
@@ -119,8 +119,8 @@ Material:
     - _TCP2_SPEC_TOON: 0
     - _TCP2_STYLIZED_FRESNEL: 0
     - _UVSec: 0
-    - _UVWaveAmplitude: 0.05
-    - _UVWaveFrequency: 1
+    - _UVWaveAmplitude: 0.227
+    - _UVWaveFrequency: 0.8
     - _UVWaveSpeed: 1
     - _WaveFrequency: 0
     - _WaveHeight: 0.1

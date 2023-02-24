@@ -14,7 +14,7 @@ namespace BlueStellar.Cor
         [SerializeField] ParticleSystem effectDie;
         [SerializeField] StackBalls _stackBalls;
         [SerializeField] CharacterStates _characterStates;
-        [SerializeField] private bool isDeactiveCharacter;
+        public bool isDeactiveCharacter;
          
         CollectableMonster _ballsMoster;
         Leaderboard leaderboard;
@@ -53,6 +53,7 @@ namespace BlueStellar.Cor
             effectDamage.Play();
             _stackBalls.DestroyedStack();
             _characterStates.Knock(m);
+            isDeactiveCharacter = true;
         }
 
         public void KillCharacter()
