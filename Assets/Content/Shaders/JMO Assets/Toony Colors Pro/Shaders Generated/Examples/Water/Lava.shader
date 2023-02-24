@@ -1,5 +1,5 @@
 ﻿// Toony Colors Pro+Mobile 2
-// (c) 2014-2019 Jean Moreno
+// (c) 2014-2021 Jean Moreno
 
 Shader "Toony Colors Pro 2/Examples/Water/Lava"
 {
@@ -214,7 +214,7 @@ Shader "Toony Colors Pro 2/Examples/Water/Lava"
 
 			//Main texture UVs
 			float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
-			float2 mainTexcoords = worldPos.xz * 0.1;
+			half2 mainTexcoords = v.texcoord.xy;
 			o.texcoord.xy = TRANSFORM_TEX(mainTexcoords.xy, _MainTex);
 			half2 x = ((v.vertex.xy+v.vertex.yz) * _UVWaveFrequency) + (TIME.xx * _UVWaveSpeed);
 			o.sinAnim = x;

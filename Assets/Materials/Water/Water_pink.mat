@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water_green
+  m_Name: Water_pink
   m_Shader: {fileID: 4800000, guid: 931c98f5451d03f4e83ec061ccc91c8a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -100,12 +100,12 @@ Material:
     - __dummy__: 0
     m_Colors:
     - _BumpSpeed: {r: 0.2, g: 0.2, b: 0.3, a: 0.3}
-    - _Color: {r: 0.5789605, g: 0.735849, b: 0.6574047, a: 1}
-    - _DepthColor: {r: 0.11764706, g: 0.5294118, b: 0.14319779, a: 1}
+    - _Color: {r: 0.8457043, g: 0.66803133, b: 0.8490566, a: 1}
+    - _DepthColor: {r: 0.5294118, g: 0.11764706, b: 0.496183, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 0.40079078, g: 0.8396226, b: 0.3912958, a: 1}
+    - _FoamColor: {r: 0.8392157, g: 0.3921569, b: 0.7542572, a: 1}
     - _FoamSpeed: {r: -1, g: -1, b: -2, a: -2}
-    - _HColor: {r: 0.60267, g: 0.9339623, b: 0.7825144, a: 1}
-    - _RimColor: {r: 0.19629666, g: 0.7264151, b: 0.18091846, a: 0.078431375}
-    - _SColor: {r: 0.33716625, g: 0.6226415, b: 0.35645512, a: 1}
+    - _HColor: {r: 0.8584906, g: 0.8293343, b: 0.8584906, a: 1}
+    - _RimColor: {r: 0.7254902, g: 0.18039216, b: 0.5988542, a: 0.078431375}
+    - _SColor: {r: 0.7387815, g: 0.48857242, b: 0.8867924, a: 1}
   m_BuildTextureStacks: []
