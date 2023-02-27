@@ -50,6 +50,9 @@ namespace BlueStellar.Cor
                 case CharacterMonsterType.Venom:
                     montserHeads[5].SetActive(true);
                     break;
+                case CharacterMonsterType.Freddy:
+                    montserHeads[6].SetActive(true);
+                    break;
             }
         }
 

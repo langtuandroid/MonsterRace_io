@@ -53,6 +53,27 @@ namespace BlueStellar.Cor
                 _arena.AddBot(this);
         }
 
+        public void SetSpeedPlatfrom(Transform platform)
+        {
+            if (IsPlayerCharacter()) 
+            {
+                _playerMovement.transform.parent = platform;
+                return;
+            }
+
+            _botMovement.transform.parent = platform;
+        }
+
+        public void SetNullPlaform()
+        {
+            if (IsPlayerCharacter())
+            {
+                _playerMovement.transform.parent = null;
+                return;
+            }
+            _botMovement.transform.parent = null;
+        }
+
         public void CharacterTransformation(CollectableMonster monster)
         {
             if (isMonsterStage)

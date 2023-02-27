@@ -5,11 +5,6 @@ namespace BlueStellar.Cor
 {
     public class ButtonManager : MonoBehaviour
     {
-        public void StartLevel()
-        {
-            LevelController.Instance.LevelStart();
-        }
-
         public void Continue()
         {
             UIManager.Instance.MoneyScreen(true);

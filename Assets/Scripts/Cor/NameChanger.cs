@@ -10,7 +10,6 @@ namespace BlueStellar.Cor
 
         private void Start()
         {
-            _playerName = GameObject.FindObjectOfType<PlayerName>();
             if(_playerName.Name() != "PLAYER")
                 inputField.text = _playerName.Name();
         }

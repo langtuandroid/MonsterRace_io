@@ -160,6 +160,21 @@ namespace BlueStellar.Cor
                 if (_characterStates.IsPlayerCharacter())
                     VibrationController.Instance.UnstackVibration();
             }
+
+            if(other.gameObject.tag == "Respawn")
+            {
+                _characterStates.SetSpeedPlatfrom(other.transform);
+            }
+
+            if(other.gameObject.tag == "EditorOnly")
+            {
+                _characterStates.SetNullPlaform();
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            _characterStates.SetNullPlaform();
         }
 
         #endregion

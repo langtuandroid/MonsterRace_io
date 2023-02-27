@@ -69,7 +69,7 @@ namespace BlueStellar.Cor
             {
                 punchSkin.DOPlay();
                 fragments[ammountFramgents].material = mat;
-                partsSkinSaver.AddNewIndex(ids[ammountFramgents], indx[ammountFramgents]);
+                //partsSkinSaver.AddNewIndex(ids[ammountFramgents], indx[ammountFramgents]);
                 UIManager.Instance.SettingsButtonScreen(false);
                 UIManager.Instance.MoneyScreen(false);
                 UIManager.Instance.RewardScreen(true);

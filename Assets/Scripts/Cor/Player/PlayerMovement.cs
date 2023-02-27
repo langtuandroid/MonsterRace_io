@@ -71,7 +71,7 @@ namespace BlueStellar.Cor
         {
             Vector3 pushDirection = new Vector3(transform.position.x - dir.position.x,
                 transform.position.y, transform.position.z - dir.position.z);
-            _transformPlayer.DOJump(pushDirection, 1f, 1, 0.5f);
+            //_transformPlayer.DOJump(new Vector3(0f,0f,0f), 1f, 1, 0.5f);
         }
 
         private void MovementControll()

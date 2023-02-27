@@ -48,7 +48,7 @@ namespace BlueStellar.Cor
 
             progressBar.value = currentValue = targetValue = 0;
 
-            loadOperation = SceneManager.LoadSceneAsync(2);
+            loadOperation = SceneManager.LoadSceneAsync(3);
 
             loadOperation.allowSceneActivation = false;
             canLoad = true;

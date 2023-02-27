@@ -14,11 +14,12 @@ namespace BlueStellar.Cor
     public enum CharacterMonsterType
     {
         HuggyWuggy,
-        Baldy,
         MotherSpider,
+        Baldy,
         CartoonCat,
         Siren,
-        Venom
+        Venom,
+        Freddy
     }
 
     public enum GatesType

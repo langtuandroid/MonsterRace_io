@@ -12,6 +12,12 @@ namespace BlueStellar.Cor
             public CharacterColorType type;
         }
 
+        public enum PlacementType
+        {
+            Linear,
+            Chaotic
+        }
+
         #region Variables
 
         [Header("BallTypes")]
@@ -19,12 +25,20 @@ namespace BlueStellar.Cor
 
         [Space]
         [Header("FieldPlacement")]
+        [SerializeField] PlacementType _placementType;
         [SerializeField] private int length;
         [SerializeField] private int line;
+
+        [Space]
+        [Header("LinearPlacement")]
         [SerializeField] private float xOrder;
         [SerializeField] private float xPosition;
         [SerializeField] private float zPosition;
         [SerializeField] private float form;
+
+        [Space]
+        [Header("ChaoticPlacement")]
+        [SerializeField] Transform[] points;
 
         [Space]
         [Header("TimerResetBall")]
@@ -34,8 +48,8 @@ namespace BlueStellar.Cor
         private Vector3 startPoint;
         private Vector3 position;
 
-        List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
-        List<SpawnedBall> respawnBalls = new List<SpawnedBall>();
+        private List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
+        private List<SpawnedBall> respawnBalls = new List<SpawnedBall>();
 
         #endregion
 
@@ -187,6 +201,19 @@ namespace BlueStellar.Cor
 
         private void BallsPlacement()
         {
+            switch (_placementType)
+            {
+                case PlacementType.Linear:
+                    LinearPlacement();
+                    break;
+                case PlacementType.Chaotic:
+                    ChaoticPlacement();
+                    break;
+            }
+        }
+
+        private void LinearPlacement()
+        {
             for (int i = 0; i < length; i++)
             {
                 xOrder += form;
@@ -201,6 +228,25 @@ namespace BlueStellar.Cor
                 {
                     position = new Vector3(xPosition + xOrder, startPoint.y, zPosition);
                 }
+
+                BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
+
+                GameObject newCollectableBall = Instantiate(ballType.ballPrefab,
+                 position, ballType.ballPrefab.transform.rotation);
+
+                newCollectableBall.transform.parent = transform;
+
+                SpawnedBall spawnedBall = new SpawnedBall();
+                spawnedBall.SetSpawnedBall(newCollectableBall.GetComponent<CollectableBall>(), position, this);
+                spawnedBalls.Add(spawnedBall);
+            }
+        }
+
+        private void ChaoticPlacement()
+        {
+            for (int i = 0; i < length; i++)
+            {
+                position = new Vector3(points[i].position.x, startPoint.y, points[i].position.z);
 
                 BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
 

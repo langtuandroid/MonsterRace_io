@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace BlueStellar.Cor
 {
@@ -22,8 +24,8 @@ namespace BlueStellar.Cor
 
         [SerializeField] AnalyticsController analyticsController;
         [SerializeField] LevelSpawner levelSpawner;
-        [SerializeField] LevelsProgress levelsProgress;
-        [SerializeField] Text textLvlNumber;
+        //[SerializeField] LevelsProgress levelsProgress;
+        //[SerializeField] Text textLvlNumber;
         [SerializeField] private int lvlNumber;
         [SerializeField] private bool isEditor;
         private int lvlIndex;
@@ -51,12 +53,21 @@ namespace BlueStellar.Cor
             return lvlIndex;
         }
 
-        public void LevelStart()
+        private void Start()
         {
+            if (isEditor)
+                return;
+
+            StartCoroutine(IE_LevelStart());
+        }
+
+        public IEnumerator IE_LevelStart()
+        {
+            yield return new WaitForSeconds(0.15f);
+
             OnLevelStart.Invoke();
             analyticsController.LevelStart(lvlNumber);
             UIManager.Instance.TutorialScreen(false);   
-            UIManager.Instance.StartScreen(false);
             UIManager.Instance.PointerScreen(true);
             UIManager.Instance.LeaderboardScreen(true);
         }
@@ -94,8 +105,8 @@ namespace BlueStellar.Cor
                 return;
 
             levelSpawner.SpawnLevel(lvlIndex);
-            levelsProgress.CheckLevelsProgress();
-            textLvlNumber.text = "Level " + lvlNumber;
+            //levelsProgress.CheckLevelsProgress();
+            //textLvlNumber.text = "Level " + lvlNumber;
         }
 
         public void NextLevel()
@@ -106,8 +117,15 @@ namespace BlueStellar.Cor
             {
                 lvlIndex = 0;
             }
-            levelsProgress.ProgressUp();
+           // levelsProgress.ProgressUp();
             Save();
+        }
+
+        public void SetLevelNumber(int indexLvl)
+        {
+            lvlIndex = indexLvl;
+            Save();
+            SceneManager.LoadScene(2);
         }
 
         #region Load&Save

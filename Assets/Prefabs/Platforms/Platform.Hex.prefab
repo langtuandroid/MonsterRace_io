@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 6295301365897968910}
   - component: {fileID: 6985853402860106411}
   - component: {fileID: 5122365058747123297}
+  - component: {fileID: 6783481471838719996}
+  - component: {fileID: 133049460684869183}
   m_Layer: 0
   m_Name: Platform.Hex
   m_TagString: Untagged
@@ -117,3 +119,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6783481471838719996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635692937039669172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4, z: 3.4641016}
+  m_Center: {x: 0, y: -2, z: 0.0000009536743}
+--- !u!114 &133049460684869183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635692937039669172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c59f069511a54478defc103980a3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

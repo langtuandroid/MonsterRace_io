@@ -35,7 +35,8 @@ namespace BlueStellar.Cor
 
         private void SetName()
         {
-            textName.text = playerName;
+            if(textName != null)
+                textName.text = playerName;
             Save();
         }
 
