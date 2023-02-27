@@ -42,6 +42,8 @@ MonoBehaviour:
     - MoreMountains.NiceVibrations
     - NavMeshComponents
     - KinoBloom.Runtime
+    - Autodesk.Fbx
+    - FbxBuildTestAssets
     - ToonyColorsPro.Editor
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - MoreMountains.NiceVibrations.Editor
@@ -49,6 +51,7 @@ MonoBehaviour:
     - NavMeshComponentsEditor
     - ToonyColorsPro.Demo.Editor
     - NavMeshComponentsExamplesEditor
+    - Autodesk.Fbx.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
