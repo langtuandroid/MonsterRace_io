@@ -51076,6 +51076,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4655599255684963024, guid: fec5096b84986bb44b22302f96becd68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4717049569850379257, guid: fec5096b84986bb44b22302f96becd68, type: 3}
       propertyPath: m_Name
       value: Obstacles.Fan_2
@@ -53366,6 +53370,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4655599255684963024, guid: fec5096b84986bb44b22302f96becd68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4717049569850379257, guid: fec5096b84986bb44b22302f96becd68, type: 3}
       propertyPath: m_Name
       value: Obstacles.Fan_1
