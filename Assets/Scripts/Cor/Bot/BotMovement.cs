@@ -27,7 +27,6 @@ namespace BlueStellar.Cor
         [SerializeField] NavMeshAgent _agent;
         [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
         [SerializeField] StackBalls _stackBalls;
-        [SerializeField] Transform point;
         CollectableBallsField _collectableBallsField;
         Vector3 ball;
         public int index;
@@ -147,7 +146,7 @@ namespace BlueStellar.Cor
             _rb.AddForce(pushDirection * 2f, ForceMode.Impulse);
         }
 
-        public void ThrowBot()
+        public void ThrowBot(Transform point)
         {
            // _agent.enabled = false;
             transform.DOLocalMove(new Vector3(point.position.x, transform.position.y, point.position.z), 0.5f);

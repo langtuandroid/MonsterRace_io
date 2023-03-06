@@ -161,19 +161,19 @@ namespace BlueStellar.Cor
             StartCoroutine(CanMove(1.5f));
         }
 
-        public void Push(Transform pushDir, float force, bool isBack)
+        public void Push(Transform pushDir)
         {
             if (_playerMovement != null)
             {
                 _playerMovement.LockControll(true);
-                _playerMovement.PushPlayer(pushDir, force, isBack);
+                _playerMovement.PushPlayer(pushDir);
                 StartCoroutine(CanMove(0.5f));
             }
 
             if (_botMovement != null)
             {
                 _botMovement.StopMovement(true);
-                _botMovement.ThrowBot();
+                _botMovement.ThrowBot(pushDir);
                 //_botMovement.PushBot(pushDir);
                 StartCoroutine(CanMove(1f));
             }

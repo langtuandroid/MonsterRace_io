@@ -791,12 +791,14 @@ MonoBehaviour:
     type: 4
   - ballPrefab: {fileID: 1089891139789347188, guid: 337ca8ac972267f4182b7e34bfdfc11f, type: 3}
     type: 5
+  _placementType: 0
   length: 500
   line: 50
   xOrder: 0
   xPosition: 0
   zPosition: 0
   form: 0.35
+  points: []
   timeToResetBall: 0.1
   timer: 0
 --- !u!1 &1456364535175585191
@@ -3827,6 +3829,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703794450901331506, guid: a80adce6002944c4982cf21e9530cad9, type: 3}
+      propertyPath: m_Name
+      value: Platform6Angle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703794450901331506, guid: a80adce6002944c4982cf21e9530cad9, type: 3}
       propertyPath: m_TagString
       value: Platform
       objectReference: {fileID: 0}
@@ -3887,7 +3893,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7d247dfdf6a5a6542886b9a1341e2244, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3d817429932e0af4ebe4422f17a2d05d, type: 2}
 --- !u!1001 &21513119079538221
 PrefabInstance:
   m_ObjectHideFlags: 0

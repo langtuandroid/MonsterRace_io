@@ -14,7 +14,6 @@ namespace BlueStellar.Cor
         [SerializeField] private float speedMovement;
         [SerializeField] private float speedRotate;
         [SerializeField] private bool isLockControll;
-        [SerializeField] Transform point;
 
         Vector3 gravityVelocity;
         Transform _transformPlayer;
@@ -74,7 +73,7 @@ namespace BlueStellar.Cor
             transform.parent = null;
         }
 
-        public void PushPlayer(Transform dir, float forcePush, bool isBack)
+        public void PushPlayer(Transform dir)
         {
             //Vector3 pushDirection = Vector3.zero;
 
@@ -83,7 +82,7 @@ namespace BlueStellar.Cor
             //if (isBack)
               // pushDirection = transform.position - dir.position;
 
-            _transformPlayer.DOLocalMove(new Vector3(point.position.x, transform.position.y, point.position.z) * forcePush, 0.5f);
+            _transformPlayer.DOLocalMove(new Vector3(dir.position.x, transform.position.y, dir.position.z), 0.5f);
             //_transformPlayer.DOJump(new Vector3(0f,0f,0f), 1f, 1, 0.5f);
             //_characterController.enabled = false;
             //_rb.isKinematic = false;

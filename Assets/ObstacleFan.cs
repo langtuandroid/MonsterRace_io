@@ -8,6 +8,7 @@ namespace BlueStellar.Cor
         #region Variables
 
         [SerializeField] Transform fan;
+        [SerializeField] Transform point;
         [SerializeField] Vector3 root;
         [SerializeField] Transform[] points;
         [SerializeField] private int indexMovement;
@@ -20,7 +21,7 @@ namespace BlueStellar.Cor
 
         private void Start()
         {
-            fan.DOLocalRotate(root, 0.35f, RotateMode.WorldAxisAdd).SetLoops(-1).SetEase(Ease.Linear);
+            fan.DOLocalRotate(root, 0.7f, RotateMode.WorldAxisAdd).SetLoops(-1).SetEase(Ease.Linear);
         }
 
         private void FixedUpdate()
@@ -48,7 +49,7 @@ namespace BlueStellar.Cor
         {
             if(other.gameObject.tag == "Character")
             {
-                other.GetComponentInParent<CharacterStates>().Push(transform, force, isBackFan);
+                other.GetComponentInParent<CharacterStates>().Push(point);
             }
 
             if (other.gameObject.tag == "EditorOnly")

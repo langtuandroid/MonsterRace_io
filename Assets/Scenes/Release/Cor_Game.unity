@@ -3372,14 +3372,14 @@ MonoBehaviour:
   - {fileID: 463214240024256363, guid: f9c52aa74e1e11c4f8364f74e2cd545c, type: 3}
   - {fileID: 1456364535703055049, guid: 6275a994deeebc74a8292f697af6dff8, type: 3}
   - {fileID: 5432690618952708056, guid: f56007d98ed1428468b0fd6ed4d2a718, type: 3}
-  - {fileID: 8447581646803955057, guid: 8a720dff28d0cb34eac691ea09520cb1, type: 3}
+  - {fileID: 7960772941970136668, guid: 8a720dff28d0cb34eac691ea09520cb1, type: 3}
   - {fileID: 1045101890941146177, guid: 77aedb7bcaddce943b52ce370bcb2c33, type: 3}
   - {fileID: 3272433768664765627, guid: c0af5dd2bdfd0ef489f6eb482b8844e9, type: 3}
   - {fileID: 2064038327486388574, guid: 98a705092d330d54196a49e79e5336d5, type: 3}
-  - {fileID: 9060195081542680427, guid: 160868de7f2ae8c4c9d99813e322ea06, type: 3}
-  - {fileID: 6698319417740942111, guid: 477e4088f5f8a8241a20b4ea2ddfd189, type: 3}
-  - {fileID: 8939597081590410, guid: 278b6d9414168074bb1c96611cab0ee2, type: 3}
-  - {fileID: 129388735835894958, guid: b120055253b4d584a9ca44cfb6352b0c, type: 3}
+  - {fileID: 3294586708257833812, guid: 160868de7f2ae8c4c9d99813e322ea06, type: 3}
+  - {fileID: 8583286007276450424, guid: 477e4088f5f8a8241a20b4ea2ddfd189, type: 3}
+  - {fileID: 1178640334506283399, guid: 278b6d9414168074bb1c96611cab0ee2, type: 3}
+  - {fileID: 4459330438447759702, guid: b120055253b4d584a9ca44cfb6352b0c, type: 3}
 --- !u!1 &804582807
 GameObject:
   m_ObjectHideFlags: 0
@@ -8811,7 +8811,7 @@ MonoBehaviour:
   levelSpawner: {fileID: 795198968}
   lvlNumber: 1
   isMain: 0
-  isEditor: 1
+  isEditor: 0
   OnLevelStart:
     m_PersistentCalls:
       m_Calls: []
