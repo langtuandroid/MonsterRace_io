@@ -14,12 +14,14 @@ namespace BlueStellar.Cor
         [SerializeField] private float speedMovement;
         [SerializeField] private float speedRotate;
         [SerializeField] private bool isLockControll;
+        [SerializeField] Transform point;
 
         Vector3 gravityVelocity;
         Transform _transformPlayer;
         CharacterController _characterController;
         FloatingJoystick _joystick;
         CharacterStatesAnimation _characterStatesAnimation;
+        Rigidbody _rb;
 
         private void Start()
         {
@@ -27,6 +29,8 @@ namespace BlueStellar.Cor
             _characterController = GetComponent<CharacterController>();
             _joystick = GameObject.FindObjectOfType<FloatingJoystick>();
             _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
+            _rb = GetComponent<Rigidbody>();
+
             LockControll(true);
             LevelController.Instance.OnLevelStart.AddListener(Move);
             LevelController.Instance.OnLevelEnd.AddListener(Stop);
@@ -43,6 +47,8 @@ namespace BlueStellar.Cor
         public void LockControll(bool lockControll)
         {
             isLockControll = lockControll;
+            _characterController.enabled = true;
+            _rb.isKinematic = true;
         }
 
         public void Move()
@@ -65,17 +71,27 @@ namespace BlueStellar.Cor
         {
             transform.DOJump(point.position, 15, 1, 1.8f);
             LockControll(true);
+            transform.parent = null;
         }
 
-        public void PushPlayer(Transform dir)
+        public void PushPlayer(Transform dir, float forcePush, bool isBack)
         {
-            Vector3 pushDirection = new Vector3(transform.position.x - dir.position.x,
-                transform.position.y, transform.position.z - dir.position.z);
+            //Vector3 pushDirection = Vector3.zero;
+
+            //if (!isBack)
+              // pushDirection = transform.position + dir.position;
+            //if (isBack)
+              // pushDirection = transform.position - dir.position;
+
+            _transformPlayer.DOLocalMove(new Vector3(point.position.x, transform.position.y, point.position.z) * forcePush, 0.5f);
             //_transformPlayer.DOJump(new Vector3(0f,0f,0f), 1f, 1, 0.5f);
+            //_characterController.enabled = false;
+            //_rb.isKinematic = false;
+            //_rb.AddForce(point.position * 8f, ForceMode.Impulse);
         }
 
         private void MovementControll()
-        {
+        { 
             if (Input.GetMouseButton(0))
             {
                 if (_joystick != null)
@@ -108,6 +124,33 @@ namespace BlueStellar.Cor
             if (Input.GetMouseButtonUp(0))
             {
                 _characterStatesAnimation.RunAnimation(false);
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (isLockControll)
+                return;
+
+            if (other.gameObject.tag == "Respawn")
+            {
+                if (other.GetComponent<MovingRoad>() == null)
+                {
+                    transform.parent = other.transform;
+                    return;
+                }
+
+                if (other.GetComponent<MovingRoad>() != null)
+                {
+                    if (transform.parent == null)
+                        other.GetComponent<MovingRoad>().AddPoint(transform);
+                }
+            }
+
+            if (other.gameObject.tag == "EditorOnly")
+            {
+                transform.parent = null;
+                speedMovement = 6f;
             }
         }
     }

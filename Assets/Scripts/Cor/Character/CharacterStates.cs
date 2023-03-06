@@ -148,7 +148,6 @@ namespace BlueStellar.Cor
             if (_playerMovement != null)
             {
                 _playerMovement.LockControll(true);
-                _playerMovement.PushPlayer(knockDir);
             }
 
             if (_botMovement != null)
@@ -159,7 +158,25 @@ namespace BlueStellar.Cor
             _characterStatesAnimation.KonckAnimation();
 
             StartCoroutine(IE_WakeUp());
-            StartCoroutine(CanMove());
+            StartCoroutine(CanMove(1.5f));
+        }
+
+        public void Push(Transform pushDir, float force, bool isBack)
+        {
+            if (_playerMovement != null)
+            {
+                _playerMovement.LockControll(true);
+                _playerMovement.PushPlayer(pushDir, force, isBack);
+                StartCoroutine(CanMove(0.5f));
+            }
+
+            if (_botMovement != null)
+            {
+                _botMovement.StopMovement(true);
+                _botMovement.ThrowBot();
+                //_botMovement.PushBot(pushDir);
+                StartCoroutine(CanMove(1f));
+            }
         }
 
         public void RootToFinish()
@@ -219,9 +236,9 @@ namespace BlueStellar.Cor
             _characterStatesAnimation.WakeUpAnimation();
         }
 
-        private IEnumerator CanMove()
+        private IEnumerator CanMove(float time)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(time);
 
             StopMovement(false);
             if(_botMovement != null)

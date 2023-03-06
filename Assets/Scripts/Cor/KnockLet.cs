@@ -11,7 +11,7 @@ namespace BlueStellar.Cor
 
         private void Start()
         {
-            LevelController.Instance.OnLevelStart.AddListener(ActivityLet);    
+            LevelController.Instance.OnLevelStart.AddListener(ActivityLet);
         }
 
         private void ActivityLet()

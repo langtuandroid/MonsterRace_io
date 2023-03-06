@@ -203,6 +203,9 @@ namespace BlueStellar.Cor
 
         private void ChangeGatesColor()
         {
+            if (meshGates.Length == 0)
+                return;
+
             foreach (var i in meshGates)
             {
                 i.material = SwithcColorBall(_characterColorType);

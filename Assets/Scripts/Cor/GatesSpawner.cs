@@ -32,9 +32,9 @@ namespace BlueStellar.Cor
 
         private void SpawnGate()
         {
-            if (LevelController.Instance.LvlNumber() == 1 ||
-                currencyGates.Count > 0)
-                return;
+            //if (LevelController.Instance.LvlNumber() == 1 ||
+              //  currencyGates.Count > 0)
+               // return;
 
             ammountGates = Random.Range(minGates, maxGates);
 
@@ -47,8 +47,9 @@ namespace BlueStellar.Cor
                 int randomType = Random.Range(0, gatesTypes.Count);
 
                 GameObject newGate = Instantiate(prefabGates, points[randomPoint].position, points[randomPoint].rotation);
+                newGate.transform.parent = points[randomPoint];
                 points.Remove(points[randomPoint]);
-
+     
                 Gates gates = newGate.GetComponent<Gates>();
                 gates.SetGatesSettings(this, gatesTypes[randomType]);
                 currencyGates.Add(gates);

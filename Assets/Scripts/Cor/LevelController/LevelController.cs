@@ -27,6 +27,7 @@ namespace BlueStellar.Cor
         //[SerializeField] LevelsProgress levelsProgress;
         //[SerializeField] Text textLvlNumber;
         [SerializeField] private int lvlNumber;
+        [SerializeField] private bool isMain;
         [SerializeField] private bool isEditor;
         private int lvlIndex;
 
@@ -55,7 +56,7 @@ namespace BlueStellar.Cor
 
         private void Start()
         {
-            if (isEditor)
+            if (isMain)
                 return;
 
             StartCoroutine(IE_LevelStart());

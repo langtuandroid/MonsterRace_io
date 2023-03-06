@@ -46,18 +46,19 @@ namespace BlueStellar.Cor
                 skeleton[3].SetActive(false);
             }
             indexProgress++;
-            if(indexProgress >= 4)
+            VibrationController.Instance.PartOpenVibration();
+            foreach (var i in placement)
+            {
+                i.SetActive(false);
+            }
+            if (indexProgress >= 4)
             {
                 transform.parent = point;
                 StartCoroutine(IE_PlatformActive());
                 StartCoroutine(IE_ToArena());
-            }
-            foreach(var i in placement)
-            {
-                i.SetActive(false);
+                return;
             }
             placement[indexProgress].SetActive(true);
-            VibrationController.Instance.PartOpenVibration();
         }
 
         private IEnumerator IE_PlatformActive()

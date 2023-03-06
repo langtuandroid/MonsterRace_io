@@ -22120,6 +22120,7 @@ GameObject:
   - component: {fileID: 9189296639026659253}
   - component: {fileID: 9189296639026650097}
   - component: {fileID: 9189296639026650096}
+  - component: {fileID: 411279249478087045}
   m_Layer: 8
   m_Name: Bot
   m_TagString: Untagged
@@ -22239,6 +22240,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStates: {fileID: 9189296639026650106}
+--- !u!65 &411279249478087045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9189296639026585301}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.44808513, z: 1}
+  m_Center: {x: 0, y: -0.90317464, z: 0}
 --- !u!1 &9189296639026585304
 GameObject:
   m_ObjectHideFlags: 0
@@ -23812,6 +23826,7 @@ MonoBehaviour:
   _characterMonster: {fileID: 9189296639026650074}
   _characterStatesAnimation: {fileID: 9189296639026650107}
   _characterSkins: {fileID: 9189296639026650109}
+  _playerCharacterSkin: {fileID: 0}
   _characterCanvas: {fileID: 9189296639026650089}
   _playerMovement: {fileID: 0}
   _botMovement: {fileID: 9189296639026650097}
