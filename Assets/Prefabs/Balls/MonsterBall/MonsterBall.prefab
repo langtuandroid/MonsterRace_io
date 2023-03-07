@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3508074934296565022}
   - component: {fileID: 3772703010608168705}
   - component: {fileID: 7725683684777132619}
-  - component: {fileID: 5477318393538241909}
   - component: {fileID: 7437312995023068099}
+  - component: {fileID: 5477318393538241909}
   m_Layer: 3
   m_Name: MonsterBall
   m_TagString: Untagged
@@ -102,28 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5477318393538241909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6037348913958691618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616243311dd8e5a4a91bf439cd7cadd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 3772703010608168705}
-  materials:
-  - {fileID: 2100000, guid: 3391e9e31bb3a7142b7fde700b78c2e0, type: 2}
-  - {fileID: 2100000, guid: 670f974a00a1a9049b00a35efe5b8e14, type: 2}
-  - {fileID: 2100000, guid: d3da0ad8701198d4ebc00b5c3f9958da, type: 2}
-  - {fileID: 2100000, guid: ef731cf10661d194fb4246c849de368b, type: 2}
-  - {fileID: 2100000, guid: 8a22d38f9d26008409ce4ef248ae835b, type: 2}
-  - {fileID: 2100000, guid: 49b0b0c5d544f2141a88f469e350af1d, type: 2}
-  force: -2
-  _rb: {fileID: 7725683684777132619}
 --- !u!135 &7437312995023068099
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -137,3 +115,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0000005
   m_Center: {x: -0.000000089407, y: 4.715639e-11, z: -0.020253507}
+--- !u!114 &5477318393538241909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037348913958691618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616243311dd8e5a4a91bf439cd7cadd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 3772703010608168705}
+  force: -2
+  isHeadBall: 0

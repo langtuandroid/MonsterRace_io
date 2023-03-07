@@ -73,20 +73,9 @@ namespace BlueStellar.Cor
             transform.parent = null;
         }
 
-        public void PushPlayer(Transform dir)
+        public void PushPlayer(Transform dir, float force)
         {
-            //Vector3 pushDirection = Vector3.zero;
-
-            //if (!isBack)
-              // pushDirection = transform.position + dir.position;
-            //if (isBack)
-              // pushDirection = transform.position - dir.position;
-
-            _transformPlayer.DOLocalMove(new Vector3(dir.position.x, transform.position.y, dir.position.z), 0.5f);
-            //_transformPlayer.DOJump(new Vector3(0f,0f,0f), 1f, 1, 0.5f);
-            //_characterController.enabled = false;
-            //_rb.isKinematic = false;
-            //_rb.AddForce(point.position * 8f, ForceMode.Impulse);
+            _transformPlayer.DOLocalMove(new Vector3(dir.position.x, transform.position.y, dir.position.z), force);
         }
 
         private void MovementControll()
@@ -136,6 +125,7 @@ namespace BlueStellar.Cor
                 if (other.GetComponent<MovingRoad>() == null)
                 {
                     transform.parent = other.transform;
+                    speedMovement = 9f;
                     return;
                 }
 

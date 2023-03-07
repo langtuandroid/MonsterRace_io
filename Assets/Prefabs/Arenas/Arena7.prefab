@@ -2789,6 +2789,8 @@ MonoBehaviour:
   - {fileID: 4096528699149811015}
   timeToResetBall: 0.1
   timer: 0
+  allBalls: []
+  maxBalls: 482
 --- !u!1 &1534576286810426789
 GameObject:
   m_ObjectHideFlags: 0

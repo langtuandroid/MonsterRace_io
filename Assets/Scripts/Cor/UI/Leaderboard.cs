@@ -61,7 +61,7 @@ namespace BlueStellar.Cor
         {
             GameObject newBlock = Instantiate(prefabBlockMember, pointSpawn[leaderboradMembers.Count - 1].position,
                 pointSpawn[leaderboradMembers.Count - 1].rotation);
-            newBlock.transform.parent = pointSpawn[leaderboradMembers.Count - 1];
+            newBlock.transform.SetParent(pointSpawn[leaderboradMembers.Count - 1]);
             MemberBlock _memberBlock = newBlock.GetComponent<MemberBlock>();
             _memberBlock.SetColorBlock(leaderboard.colorMember);
             _memberBlock.SetProgressBlock(leaderboard.nameMemeber + " - " + leaderboard.bestScoreMember + "%", leaderboard.bestScoreMember);
@@ -105,7 +105,7 @@ namespace BlueStellar.Cor
 
             for (int i = 0; i < leaderboradMembers.Count; i++) 
             {
-                leaderboradMembers[i].memeberBlock.transform.parent = pointSpawn[leaderboradMembers.Count - k];
+                leaderboradMembers[i].memeberBlock.transform.SetParent(pointSpawn[leaderboradMembers.Count - k]);
                 leaderboradMembers[i].memeberBlock.transform.position = pointSpawn[leaderboradMembers.Count - k].position;
                 k++;
             }

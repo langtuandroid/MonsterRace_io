@@ -1406,6 +1406,8 @@ MonoBehaviour:
   - {fileID: 1478697421603597914}
   timeToResetBall: 0.1
   timer: 0
+  allBalls: []
+  maxBalls: 600
 --- !u!1 &1045101890941144997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,7 +1474,6 @@ Transform:
   - {fileID: 1045101890941130411}
   - {fileID: 444516667938992534}
   - {fileID: 27502909967308}
-  - {fileID: 1478697420190504686}
   - {fileID: 555584872044228432}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -13147,52 +13148,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1478697420190504681
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1478697420190504686}
-  - component: {fileID: 1478697420190504687}
-  m_Layer: 0
-  m_Name: Fog
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1478697420190504686
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478697420190504681}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1045101890941140873}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1478697420190504687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478697420190504681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e8fcf56f189de438efb832a53744fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorFog: {r: 0.6392157, g: 0.7372549, b: 0.8666667, a: 1}
-  _fogOn: 1
 --- !u!1 &1478697420193153456
 GameObject:
   m_ObjectHideFlags: 0
@@ -55855,7 +55810,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1045101890941140873}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1983743409168587801
 MeshFilter:

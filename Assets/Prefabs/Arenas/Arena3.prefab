@@ -801,6 +801,8 @@ MonoBehaviour:
   points: []
   timeToResetBall: 0.1
   timer: 0
+  allBalls: []
+  maxBalls: 500
 --- !u!1 &1456364535175585191
 GameObject:
   m_ObjectHideFlags: 0

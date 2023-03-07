@@ -45,8 +45,13 @@ namespace BlueStellar.Cor
         [SerializeField] private float timeToResetBall;
         [SerializeField] private float timer;
 
-        private Vector3 startPoint;
-        private Vector3 position;
+        [Space]
+        [Header("Debug_AllBalls")]
+        [SerializeField] List<CollectableBall> allBalls = new List<CollectableBall>();
+        [SerializeField] private int maxBalls;
+
+        private Vector3 _startPoint;
+        private Vector3 _position;
 
         private List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
         private List<SpawnedBall> respawnBalls = new List<SpawnedBall>();
@@ -124,6 +129,7 @@ namespace BlueStellar.Cor
                 if (collectableBall == i.GetCollectableBall())
                 {
                     i.ClearSpawnedBall();
+                    allBalls.Remove(collectableBall);
                     respawnBalls.Add(i);
                 }
             }
@@ -164,14 +170,20 @@ namespace BlueStellar.Cor
             GameObject createdBall = Instantiate(ballType.ballPrefab, spawnedBall.SpawnPosition(),
                 Quaternion.identity);
 
+            CollectableBall ball = createdBall.GetComponent<CollectableBall>();
+
             createdBall.transform.parent = transform;
             createdBall.transform.position = spawnedBall.SpawnPosition();
-            spawnedBall.SetNewSpawnedBall(createdBall.GetComponent<CollectableBall>());
+            spawnedBall.SetNewSpawnedBall(ball);
+            allBalls.Add(ball);
             respawnBalls.Remove(spawnedBall);
         }
 
         private void ResetBall()
         {
+            if (allBalls.Count >= maxBalls)
+                return;
+            
             timer += Time.deltaTime;
 
             if (timer >= timeToResetBall)
@@ -194,7 +206,7 @@ namespace BlueStellar.Cor
 
         private void SetStartPos()
         {
-            startPoint = transform.position;
+            _startPoint = transform.position;
             zPosition = transform.position.z;
             xPosition = transform.position.x;
         }
@@ -222,23 +234,14 @@ namespace BlueStellar.Cor
                 {
                     zPosition -= 1f;
                     xOrder = 0;
-                    position = new Vector3(xPosition, startPoint.y, zPosition);
+                    _position = new Vector3(xPosition, _startPoint.y, zPosition);
                 }
                 else
                 {
-                    position = new Vector3(xPosition + xOrder, startPoint.y, zPosition);
+                    _position = new Vector3(xPosition + xOrder, _startPoint.y, zPosition);
                 }
 
-                BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
-
-                GameObject newCollectableBall = Instantiate(ballType.ballPrefab,
-                 position, ballType.ballPrefab.transform.rotation);
-
-                newCollectableBall.transform.parent = transform;
-
-                SpawnedBall spawnedBall = new SpawnedBall();
-                spawnedBall.SetSpawnedBall(newCollectableBall.GetComponent<CollectableBall>(), position, this);
-                spawnedBalls.Add(spawnedBall);
+                FirstSpawn(_position);
             }
         }
 
@@ -246,19 +249,26 @@ namespace BlueStellar.Cor
         {
             for (int i = 0; i < length; i++)
             {
-                position = new Vector3(points[i].position.x, startPoint.y, points[i].position.z);
+                _position = new Vector3(points[i].position.x, _startPoint.y, points[i].position.z);
 
-                BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
-
-                GameObject newCollectableBall = Instantiate(ballType.ballPrefab,
-                 position, ballType.ballPrefab.transform.rotation);
-
-                newCollectableBall.transform.parent = transform;
-
-                SpawnedBall spawnedBall = new SpawnedBall();
-                spawnedBall.SetSpawnedBall(newCollectableBall.GetComponent<CollectableBall>(), position, this);
-                spawnedBalls.Add(spawnedBall);
+                FirstSpawn(_position);
             }
+        }
+
+        private void FirstSpawn(Vector3 position)
+        {
+            BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
+
+            GameObject newCollectableBall = Instantiate(ballType.ballPrefab,
+             position, ballType.ballPrefab.transform.rotation);
+
+            newCollectableBall.transform.parent = transform;
+            CollectableBall ball = newCollectableBall.GetComponent<CollectableBall>();
+
+            SpawnedBall spawnedBall = new SpawnedBall();
+            spawnedBall.SetSpawnedBall(ball, position, this);
+            spawnedBalls.Add(spawnedBall);
+            allBalls.Add(ball);
         }
 
         #endregion
