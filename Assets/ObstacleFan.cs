@@ -13,7 +13,8 @@ namespace BlueStellar.Cor
         [SerializeField] Transform[] points;
         [SerializeField] private int indexMovement;
         [SerializeField] private float speedMovement;
-        [SerializeField] private float force;
+        [SerializeField] private float minForce;
+        [SerializeField] private float maxForce;
         [SerializeField] private bool isBackFan;
         [SerializeField] private bool isStatic;
 
@@ -44,12 +45,16 @@ namespace BlueStellar.Cor
 
             transform.position = Vector3.MoveTowards(transform.position, points[indexMovement].position, speedMovement);
         }
-
+        public float testDist;
         private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.tag == "Character")
             {
-                other.GetComponentInParent<CharacterStates>().Push(point);
+                testDist = Vector3.Distance(transform.position, other.transform.position);
+                if(testDist > 6.8f)
+                    other.GetComponentInParent<CharacterStates>().Push(point, maxForce);
+                if (testDist <= 6.8f)
+                    other.GetComponentInParent<CharacterStates>().Push(point, minForce);
             }
 
             if (other.gameObject.tag == "EditorOnly")

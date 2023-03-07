@@ -25974,9 +25974,11 @@ MonoBehaviour:
   points: []
   indexMovement: 0
   speedMovement: 0.1
-  force: 5
+  minForce: 2.5
+  maxForce: 1.2
   isBackFan: 1
   isStatic: 1
+  testDist: 0
 --- !u!1 &5566161804031007740
 GameObject:
   m_ObjectHideFlags: 0
@@ -29131,9 +29133,11 @@ MonoBehaviour:
   points: []
   indexMovement: 0
   speedMovement: 0.1
-  force: 5
+  minForce: 2.5
+  maxForce: 1.2
   isBackFan: 0
   isStatic: 1
+  testDist: 0
 --- !u!4 &3115063742233126629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 576169526003369320, guid: 9926816a372a7d3408449c004b9e921d, type: 3}

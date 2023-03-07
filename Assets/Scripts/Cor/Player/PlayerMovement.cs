@@ -46,8 +46,7 @@ namespace BlueStellar.Cor
         public void LockControll(bool lockControll)
         {
             isLockControll = lockControll;
-            _characterController.enabled = true;
-            _rb.isKinematic = true;
+            if (!lockControll) { _transformPlayer.DOKill(); }
         }
 
         public void Move()

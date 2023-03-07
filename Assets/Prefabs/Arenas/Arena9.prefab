@@ -50043,6 +50043,14 @@ PrefabInstance:
       value: 359
       objectReference: {fileID: 0}
     - target: {fileID: 6238821065636069111, guid: fec5096b84986bb44b22302f96becd68, type: 3}
+      propertyPath: maxForce
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238821065636069111, guid: fec5096b84986bb44b22302f96becd68, type: 3}
+      propertyPath: minForce
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238821065636069111, guid: fec5096b84986bb44b22302f96becd68, type: 3}
       propertyPath: isBackFan
       value: 1
       objectReference: {fileID: 0}
@@ -50124,6 +50132,14 @@ PrefabInstance:
     - target: {fileID: 6238821065636069111, guid: fec5096b84986bb44b22302f96becd68, type: 3}
       propertyPath: root.z
       value: 359
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238821065636069111, guid: fec5096b84986bb44b22302f96becd68, type: 3}
+      propertyPath: maxForce
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238821065636069111, guid: fec5096b84986bb44b22302f96becd68, type: 3}
+      propertyPath: minForce
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fec5096b84986bb44b22302f96becd68, type: 3}

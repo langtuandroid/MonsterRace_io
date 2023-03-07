@@ -146,15 +146,15 @@ namespace BlueStellar.Cor
             _rb.AddForce(pushDirection * 2f, ForceMode.Impulse);
         }
 
-        public void ThrowBot(Transform point)
+        public void ThrowBot(Transform point, float force)
         {
-           // _agent.enabled = false;
-            transform.DOLocalMove(new Vector3(point.position.x, transform.position.y, point.position.z), 0.5f);
+            transform.DOLocalMove(new Vector3(point.position.x, transform.position.y, point.position.z), force);
         }
 
         public void RestartMovement()
         {
             _agent.enabled = true;
+            transform.DOKill();
             SetPoints();
             NewPoint();
             UpdateMove();
@@ -193,16 +193,6 @@ namespace BlueStellar.Cor
                     toMonster = false;
                 }
             }
-
-            //if (other.gameObject.tag == "Respawn")
-            //{
-            //    transform.parent = other.transform;
-            //}
-
-            //if (other.gameObject.tag == "EditorOnly")
-            //{
-            //    transform.parent = null;
-            //}
         }
 
         private void OnTriggerExit(Collider other)
