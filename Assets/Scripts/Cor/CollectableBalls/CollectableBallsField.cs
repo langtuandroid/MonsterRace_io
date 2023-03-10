@@ -205,12 +205,12 @@ namespace BlueStellar.Cor
                 FirstSpawn(_position);
             }
 
-            //for(int i = 0; i < 50; i++)
-            //{
-            //   spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
+           // for(int i = 0; i < 140; i++)
+           // {
+              // spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
             //}
 
-           // StartCoroutine(IE_Step());
+            //StartCoroutine(IE_Step());
         }
 
         private void FirstSpawn(Vector3 position)

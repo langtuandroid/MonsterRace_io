@@ -61,7 +61,6 @@ namespace BlueStellar.Cor
             if (indexProgress >= 4)
             {
                 transform.parent = point;
-               // _loadGame.LoadGameScene();
                 StartCoroutine(IE_PlatformActive());
                 StartCoroutine(IE_ExitLobby());
                 return;
@@ -80,7 +79,7 @@ namespace BlueStellar.Cor
         {
             yield return new WaitForSeconds(3.2f);
 
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 }

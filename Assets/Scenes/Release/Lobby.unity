@@ -6065,6 +6065,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partsID:
   - Huggy_Head
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Huggy_Body
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Huggy_Arms
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Huggy_Legs
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  backUp:
+  - Huggy_Head
   - Mother_Head
   - Baldy_Head
   - Cat_Head
@@ -6092,35 +6121,6 @@ MonoBehaviour:
   - Siren_Legs
   - Venom_Legs
   - Freddy_Legs
-  backUp:
-  - Huggy_Head
-  - Mother_Head
-  - Baldy_Head
-  - Cat_Head
-  - Siren_Head
-  - Venom_Head
-  - Huggy_Body
-  - Mother_Body
-  - Baldy_Body
-  - Cat_Body
-  - Siren_Body
-  - Venom_Body
-  - Huggy_Arms
-  - Mother_Arms
-  - Baldy_Arms
-  - Cat_Arms
-  - Siren_Arms
-  - Venom_Arms
-  - Huggy_Legs
-  - Mother_Legs
-  - Baldy_Legs
-  - Cat_Legs
-  - Siren_Legs
-  - Venom_Legs
-  - 
-  - 
-  - 
-  - 
   indexID: 0
 --- !u!4 &918202448
 Transform:

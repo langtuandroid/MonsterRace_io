@@ -44,6 +44,8 @@ MonoBehaviour:
     - NavMeshComponents
     - KinoBloom.Runtime
     - FbxBuildTestAssets
+    - AppsFlyer
+    - Tests
     - ToonyColorsPro.Editor
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - Autodesk.Fbx.Editor
@@ -52,6 +54,7 @@ MonoBehaviour:
     - NavMeshComponentsEditor
     - ToonyColorsPro.Demo.Editor
     - NavMeshComponentsExamplesEditor
+    - AppsFlyer.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
