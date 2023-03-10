@@ -75,10 +75,10 @@ namespace BlueStellar.Cor
 
         #region PlatformMovement
 
-        public void SetMonsterPoints(Transform pointTarget, Transform nextTarget)
+        public void SetMonsterPoints(Transform pointTarget)
         {
             monsterPoints.Add(pointTarget);
-            monsterPoints.Add(nextTarget);
+            //monsterPoints.Add(nextTarget);
         }
 
         private void SetPoints()

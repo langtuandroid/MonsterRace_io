@@ -1425,7 +1425,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   analyticsController: {fileID: 0}
   levelSpawner: {fileID: 0}
-  lvlNumber: 0
+  memberSpawner: {fileID: 0}
+  gatesSpawner: {fileID: 0}
+  collectableBallsField: {fileID: 0}
+  lvlNumber: 1
   isMain: 1
   isEditor: 1
   OnLevelStart:

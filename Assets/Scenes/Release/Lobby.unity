@@ -6065,33 +6065,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partsID:
   - Huggy_Head
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mother_Head
+  - Baldy_Head
+  - Cat_Head
+  - Siren_Head
+  - Venom_Head
+  - Freddy_Head
   - Huggy_Body
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mother_Body
+  - Baldy_Body
+  - Cat_Body
+  - Siren_Body
+  - Venom_Body
+  - Freddy_Body
   - Huggy_Arms
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mother_Arms
+  - Baldy_Arms
+  - Cat_Arms
+  - Siren_Arms
+  - Venom_Arms
+  - Freddy_Arms
   - Huggy_Legs
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mother_Legs
+  - Baldy_Legs
+  - Cat_Legs
+  - Siren_Legs
+  - Venom_Legs
+  - Freddy_Legs
   backUp:
   - Huggy_Head
   - Mother_Head
@@ -6536,6 +6536,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   analyticsController: {fileID: 0}
   levelSpawner: {fileID: 0}
+  memberSpawner: {fileID: 0}
+  gatesSpawner: {fileID: 0}
+  collectableBallsField: {fileID: 0}
   lvlNumber: 1
   isMain: 1
   isEditor: 1
@@ -13475,7 +13478,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2037726411}
-  - component: {fileID: 2037726412}
   m_Layer: 0
   m_Name: Loader
   m_TagString: Untagged
@@ -13498,19 +13500,6 @@ Transform:
   m_Father: {fileID: 1908398843}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2037726412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037726410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7442456d17099324096a220da9c0fe10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progressAnimationMultiplier: 0.25
 --- !u!1 &2044367583
 GameObject:
   m_ObjectHideFlags: 0

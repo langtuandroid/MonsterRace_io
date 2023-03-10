@@ -43,20 +43,25 @@ namespace BlueStellar.Cor
             SetBasketColor();
         }
 
+        public void SetupCollectableMonster(CollectableMonster collectableMonster)
+        {
+            ballsMonster = collectableMonster;
+        }
+
         public void SetMonsterType()
         {
             if (!_characterState.IsPlayerCharacter())
             {
                 int random = Random.Range(0, monsterTypes.Count);
                 _characterSkins.SetType(monsterTypes[random]);
-                //ballsMonster.SetMonster(monsterTypes[random]);
+                ballsMonster.SetMonster(monsterTypes[random]);
                 return;
             }
 
             if (_characterState.IsPlayerCharacter())
             {
                 _characterSkins.SetType(monsterTypes[_skinsController.OpenSkinMumber()]);
-                //ballsMonster.SetMonster(monsterTypes[_skinsController.OpenSkinMumber()]);
+                ballsMonster.SetMonster(monsterTypes[_skinsController.OpenSkinMumber()]);
             }
         }
 

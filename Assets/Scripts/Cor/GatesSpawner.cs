@@ -19,8 +19,9 @@ namespace BlueStellar.Cor
 
         #endregion
 
-        private void Start()
+        public void SetupGatesPoints(Arena arena)
         {
+            pointsSpawn.AddRange(arena.GetGatesPoints().ToArray());
             LevelController.Instance.OnLevelStart.AddListener(SpawnGate);
         }
 
@@ -32,10 +33,6 @@ namespace BlueStellar.Cor
 
         private void SpawnGate()
         {
-            //if (LevelController.Instance.LvlNumber() == 1 ||
-              //  currencyGates.Count > 0)
-               // return;
-
             ammountGates = Random.Range(minGates, maxGates);
 
             List<Transform> points = new List<Transform>();

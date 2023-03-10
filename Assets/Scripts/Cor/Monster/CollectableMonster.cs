@@ -51,6 +51,11 @@ namespace BlueStellar.Cor
 
         #endregion
 
+        private void Start()
+        {
+            _monsterSpawner = GameObject.FindObjectOfType<CollectableMonsterSpawner>();
+        }
+
         public bool IsFullMonster()
         {
             if (ammountBalls >= needAmmountBalls)
@@ -122,6 +127,10 @@ namespace BlueStellar.Cor
 
         public void DeactiveMonster()
         {
+            if (_collectableBallsField == null)
+            {
+                _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
+            }
             _collectableBallsField.RemoveSpawnedBall(_characterColorType);
             monsterCanvas.transform.DOScale(0, 0.5f);
             isDeactivetedMonster = true;

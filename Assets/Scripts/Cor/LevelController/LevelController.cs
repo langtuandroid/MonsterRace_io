@@ -24,6 +24,7 @@ namespace BlueStellar.Cor
         [SerializeField] AnalyticsController analyticsController;
         [SerializeField] LevelSpawner levelSpawner;
         [SerializeField] MemberSpawner memberSpawner;
+        [SerializeField] GatesSpawner gatesSpawner;
         [SerializeField] CollectableBallsField collectableBallsField;
         [SerializeField] private int lvlNumber;
         [SerializeField] private bool isMain;
@@ -61,16 +62,6 @@ namespace BlueStellar.Cor
             StartCoroutine(IE_LevelStart());
         }
 
-        public IEnumerator IE_LevelStart()
-        {
-            yield return new WaitForSeconds(0.15f);
-
-            OnLevelStart.Invoke();
-            analyticsController.LevelStart(lvlNumber);  
-            UIManager.Instance.PointerScreen(true);
-            UIManager.Instance.LeaderboardScreen(true);
-        }
-
         public void LevelCompleted()
         {
             LevelEnd();
@@ -104,12 +95,13 @@ namespace BlueStellar.Cor
             if (isEditor)
                 return;
 
-            if (lvlNumber >= 13) { lvlIndex = Random.Range(0, 11); }
+            //if (lvlNumber >= 13) { lvlIndex = Random.Range(0, 11); }
             levelSpawner.SpawnLevel(lvlIndex);
             Arena newArena = levelSpawner.LevelArena();
-            memberSpawner.CreatePlayer(newArena.GetPlayerPoint());
-            //memberSpawner.CreateBots(newArena.GetPoints(), newArena.GetMonsterPoints());
             collectableBallsField.SetPlacementSettings(newArena);
+            memberSpawner.CreatePlayer(newArena);
+            memberSpawner.CreateBots(newArena);
+            gatesSpawner.SetupGatesPoints(newArena);
         }
 
         public void NextLevel()
@@ -124,7 +116,17 @@ namespace BlueStellar.Cor
         {
             lvlIndex = indexLvl;
             Save();
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
+        }
+
+        private IEnumerator IE_LevelStart()
+        {
+            yield return new WaitForSeconds(0.15f);
+
+            OnLevelStart.Invoke();
+            analyticsController.LevelStart(lvlNumber);
+            UIManager.Instance.PointerScreen(true);
+            UIManager.Instance.LeaderboardScreen(true);
         }
 
         #region Load&Save

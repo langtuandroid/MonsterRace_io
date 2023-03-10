@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 namespace BlueStellar.Cor
 {
@@ -22,6 +21,7 @@ namespace BlueStellar.Cor
         [Space]
         [Header("FieldPlacement")]
         [SerializeField] Transform[] points;
+        [SerializeField] private int typesAmmount;
         [SerializeField] private int length;
 
         [Space]
@@ -96,6 +96,7 @@ namespace BlueStellar.Cor
         public void SetPlacementSettings(Arena _arena)
         {
             points = _arena.GetBallsPoints();
+            typesAmmount = _arena.GetMaxTypes();
             length = _arena.GetAmmountBalls();
             maxBalls = length;
             GO();
@@ -157,7 +158,7 @@ namespace BlueStellar.Cor
             if (ballTypes.Count == 0)
                 return;
 
-            BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
+            BallType ballType = ballTypes[Random.Range(0, typesAmmount)];
             GameObject createdBall = Instantiate(ballType.ballPrefab, spawnedBall.SpawnPosition(),
                 Quaternion.identity);
 
@@ -204,12 +205,17 @@ namespace BlueStellar.Cor
                 FirstSpawn(_position);
             }
 
-            StartCoroutine(IE_Step());
+            //for(int i = 0; i < 50; i++)
+            //{
+            //   spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
+            //}
+
+           // StartCoroutine(IE_Step());
         }
 
         private void FirstSpawn(Vector3 position)
         {
-            BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
+            BallType ballType = ballTypes[Random.Range(0, typesAmmount)];
 
             GameObject newCollectableBall = Instantiate(ballType.ballPrefab,
              position, ballType.ballPrefab.transform.rotation);
@@ -221,14 +227,14 @@ namespace BlueStellar.Cor
             spawnedBall.SetSpawnedBall(ball, position, this);
             spawnedBalls.Add(spawnedBall);
             allBalls.Add(ball);
-            newCollectableBall.SetActive(false);
+            //newCollectableBall.SetActive(false);
         }
 
         private IEnumerator IE_Step()
         {
-            foreach(var i in spawnedBalls)
+            for(int i = 50; i < spawnedBalls.Count; i++)
             {
-                i.GetCollectableBall().gameObject.SetActive(true);
+                spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
                 yield return new WaitForSeconds(0f);
             }
         }
