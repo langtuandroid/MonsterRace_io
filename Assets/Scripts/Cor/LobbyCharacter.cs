@@ -16,15 +16,21 @@ namespace BlueStellar.Cor
         [SerializeField] ParticleSystem effectOpenPart;
         [SerializeField] private int indexProgress;
 
+        Tutorial _tutorial;
+       // LoadGame _loadGame;
+
         private void Start()
         {
             placement[indexProgress].SetActive(true);
+            _tutorial = GameObject.FindObjectOfType<Tutorial>();
+         //   _loadGame = GameObject.FindObjectOfType<LoadGame>();
         }
 
         public void NewPartOpen(CharacterMonsterType partType)
         {
             effectOpenPart.Play();
             _animCharacter.SetTrigger("Reaction");
+            _tutorial.Complet();
             if (indexProgress == 0) 
             { 
                 _playerCharacterSkin.AddHeadPart(partType);
@@ -51,11 +57,13 @@ namespace BlueStellar.Cor
             {
                 i.SetActive(false);
             }
+            
             if (indexProgress >= 4)
             {
                 transform.parent = point;
+               // _loadGame.LoadGameScene();
                 StartCoroutine(IE_PlatformActive());
-                StartCoroutine(IE_ToArena());
+                StartCoroutine(IE_ExitLobby());
                 return;
             }
             placement[indexProgress].SetActive(true);
@@ -68,11 +76,11 @@ namespace BlueStellar.Cor
             platformAnim.enabled = true;
         }
 
-        private IEnumerator IE_ToArena()
-        { 
-            yield return new WaitForSeconds(3.1f);
+        private IEnumerator IE_ExitLobby()
+        {
+            yield return new WaitForSeconds(3.2f);
 
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 }

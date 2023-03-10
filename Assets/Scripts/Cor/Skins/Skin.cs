@@ -24,6 +24,8 @@ namespace BlueStellar.Cor
         [Header("SliderProgress")]
         [SerializeField] Slider _slider;
         [SerializeField] Text textProgress;
+        [SerializeField] Image img;
+        [SerializeField] Sprite headImg;
         [SerializeField] private int ammountFramgents;
         private int setProgress;
         private int progress;
@@ -43,7 +45,7 @@ namespace BlueStellar.Cor
         private bool isSetProgress;
 
         SkinsController _skinsController;
-        PartsSkinSaver partsSkinSaver;
+        PartsSkinSaver _partsSkinSaver;
 
         #endregion
 
@@ -57,7 +59,7 @@ namespace BlueStellar.Cor
             LoadSave();
             CheckStatusSkin();
             _skinsController = GameObject.FindObjectOfType<SkinsController>();
-            partsSkinSaver = GameObject.FindObjectOfType<PartsSkinSaver>();
+            _partsSkinSaver = GameObject.FindObjectOfType<PartsSkinSaver>();
         }
 
         public void ActiveFragmentsSkin()
@@ -69,7 +71,7 @@ namespace BlueStellar.Cor
             {
                 punchSkin.DOPlay();
                 fragments[ammountFramgents].material = mat;
-                //partsSkinSaver.AddNewIndex(ids[ammountFramgents], indx[ammountFramgents]);
+                _partsSkinSaver.AddNewIndex(ids[ammountFramgents], indx[ammountFramgents]);
                 UIManager.Instance.SettingsButtonScreen(false);
                 UIManager.Instance.MoneyScreen(false);
                 UIManager.Instance.RewardScreen(true);
@@ -83,6 +85,7 @@ namespace BlueStellar.Cor
         {
             _slider.minValue = 0;
             _slider.maxValue = 100;
+            img.sprite = headImg;
 
             if (!isSetProgress)
             {
@@ -125,6 +128,11 @@ namespace BlueStellar.Cor
             if (_slider.value >= 10) { 
             textProgress.text = _slider.value.ToString().Substring(0, 2) + "%";
         }
+
+            if (_slider.value >= 100)
+            {
+                textProgress.text = _slider.value.ToString().Substring(0, 3) + "%";
+            }
 
             if (!effect.activeSelf)
                 effect.SetActive(true);

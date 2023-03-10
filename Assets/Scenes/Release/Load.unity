@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1807310126}
-  progressAnimationMultiplier: 0.253
+  progressAnimationMultiplier: 0.405
 --- !u!1 &583099443
 GameObject:
   m_ObjectHideFlags: 0

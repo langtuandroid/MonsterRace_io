@@ -29,6 +29,9 @@ namespace BlueStellar.Cor
                 case CharacterMonsterType.Venom:
                     MonsterSpawn(monsters[5], collectableMonster, pointSpawn);
                     break;
+                case CharacterMonsterType.Freddy:
+                    MonsterSpawn(monsters[6], collectableMonster, pointSpawn);
+                    break;
             }
         }
 

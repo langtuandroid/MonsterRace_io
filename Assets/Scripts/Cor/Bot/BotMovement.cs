@@ -10,7 +10,7 @@ namespace BlueStellar.Cor
     {
         #region Variables
 
-        [SerializeField] Transform[] monsterPoints;
+        [SerializeField] List<Transform> monsterPoints = new List<Transform>();
         [SerializeField] private float range;
         [SerializeField] private float timeToMonster;
         [SerializeField] private float timer;
@@ -75,6 +75,12 @@ namespace BlueStellar.Cor
 
         #region PlatformMovement
 
+        public void SetMonsterPoints(Transform pointTarget, Transform nextTarget)
+        {
+            monsterPoints.Add(pointTarget);
+            monsterPoints.Add(nextTarget);
+        }
+
         private void SetPoints()
         {
             points = _collectableBallsField.ListTypeBalls(colorType);
@@ -98,7 +104,7 @@ namespace BlueStellar.Cor
             ball = points[index];
             if(_agent.enabled)
                 _agent.SetDestination(ball);
-            _characterStatesAnimation.RunAnimation(true);
+            //_characterStatesAnimation.RunAnimation(true);
         }
 
         private void NewPoint()

@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace BlueStellar.Cor
 {
@@ -12,12 +14,6 @@ namespace BlueStellar.Cor
             public CharacterColorType type;
         }
 
-        public enum PlacementType
-        {
-            Linear,
-            Chaotic
-        }
-
         #region Variables
 
         [Header("BallTypes")]
@@ -25,20 +21,8 @@ namespace BlueStellar.Cor
 
         [Space]
         [Header("FieldPlacement")]
-        [SerializeField] PlacementType _placementType;
-        [SerializeField] private int length;
-        [SerializeField] private int line;
-
-        [Space]
-        [Header("LinearPlacement")]
-        [SerializeField] private float xOrder;
-        [SerializeField] private float xPosition;
-        [SerializeField] private float zPosition;
-        [SerializeField] private float form;
-
-        [Space]
-        [Header("ChaoticPlacement")]
         [SerializeField] Transform[] points;
+        [SerializeField] private int length;
 
         [Space]
         [Header("TimerResetBall")]
@@ -109,9 +93,16 @@ namespace BlueStellar.Cor
             return null;
         }
 
-        private void Start()
+        public void SetPlacementSettings(Arena _arena)
+        {
+            points = _arena.GetBallsPoints();
+            length = _arena.GetAmmountBalls();
+            maxBalls = length;
+            GO();
+        }
+
+        public void GO()
         { 
-            SetStartPos();
             BallsPlacement();
         }
 
@@ -204,55 +195,16 @@ namespace BlueStellar.Cor
 
         #region Placement
 
-        private void SetStartPos()
-        {
-            _startPoint = transform.position;
-            zPosition = transform.position.z;
-            xPosition = transform.position.x;
-        }
-
         private void BallsPlacement()
         {
-            switch (_placementType)
-            {
-                case PlacementType.Linear:
-                    LinearPlacement();
-                    break;
-                case PlacementType.Chaotic:
-                    ChaoticPlacement();
-                    break;
-            }
-        }
-
-        private void LinearPlacement()
-        {
             for (int i = 0; i < length; i++)
             {
-                xOrder += form;
-
-                if (i % line == 0)
-                {
-                    zPosition -= 1f;
-                    xOrder = 0;
-                    _position = new Vector3(xPosition, _startPoint.y, zPosition);
-                }
-                else
-                {
-                    _position = new Vector3(xPosition + xOrder, _startPoint.y, zPosition);
-                }
+                _position = new Vector3(points[i].position.x, transform.position.y, points[i].position.z);
 
                 FirstSpawn(_position);
             }
-        }
 
-        private void ChaoticPlacement()
-        {
-            for (int i = 0; i < length; i++)
-            {
-                _position = new Vector3(points[i].position.x, _startPoint.y, points[i].position.z);
-
-                FirstSpawn(_position);
-            }
+            StartCoroutine(IE_Step());
         }
 
         private void FirstSpawn(Vector3 position)
@@ -269,6 +221,16 @@ namespace BlueStellar.Cor
             spawnedBall.SetSpawnedBall(ball, position, this);
             spawnedBalls.Add(spawnedBall);
             allBalls.Add(ball);
+            newCollectableBall.SetActive(false);
+        }
+
+        private IEnumerator IE_Step()
+        {
+            foreach(var i in spawnedBalls)
+            {
+                i.GetCollectableBall().gameObject.SetActive(true);
+                yield return new WaitForSeconds(0f);
+            }
         }
 
         #endregion

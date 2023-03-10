@@ -5,11 +5,15 @@ namespace BlueStellar.Cor
 {
     public class SkinsController : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] List<Skin> currencySkins = new List<Skin>();
         [SerializeField] private int indexOpenSkin;
         [SerializeField] private int indexProgressSkin;
 
         Skin skin;
+
+        #endregion
 
         private void Start()
         {
@@ -21,6 +25,13 @@ namespace BlueStellar.Cor
             Load();
             return indexOpenSkin;
         }
+
+        public int GetIndexProgress()
+        {
+            Load();
+            return indexProgressSkin;
+        }
+
         public Skin GetProgressSkin()
         {
             return skin;
@@ -29,7 +40,8 @@ namespace BlueStellar.Cor
         public void SetTargetSkin()
         {
             Load();
-            skin = currencySkins[indexProgressSkin];
+            if(currencySkins.Count > 0)
+                skin = currencySkins[indexProgressSkin];
         }
 
         public void NewProgressSkin()

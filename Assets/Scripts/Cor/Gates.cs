@@ -15,6 +15,7 @@ namespace BlueStellar.Cor
         [SerializeField] CollectableBall[] collectableBalls;
         private int index;
         private string symbolGate;
+        private bool isActive;
 
         CharacterColorType _characterColor;
         StackBalls _stackBalls;
@@ -33,6 +34,10 @@ namespace BlueStellar.Cor
 
         public void ActivetedBonus(StackBalls stackBalls, CharacterColorType characterColorType)
         {
+            if (isActive)
+                return;
+
+            isActive = true;
             _stackBalls = stackBalls;
             _characterColor = characterColorType;
 

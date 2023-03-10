@@ -30,8 +30,6 @@ namespace BlueStellar.Cor
             _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
             _rb = GetComponent<Rigidbody>();
 
-            LockControll(true);
-            LevelController.Instance.OnLevelStart.AddListener(Move);
             LevelController.Instance.OnLevelEnd.AddListener(Stop);
         }
 

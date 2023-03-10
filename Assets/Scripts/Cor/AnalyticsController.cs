@@ -9,9 +9,9 @@ namespace BlueStellar.Cor
             TinySauce.OnGameStarted(levelNumber: lvlNumber);
         }
 
-        public void LevelFinished(int lvlNumber)
+        public void LevelFinished(bool result, int lvlNumber)
         {
-            TinySauce.OnGameFinished(true, score: 0, levelNumber: lvlNumber);
+            TinySauce.OnGameFinished(result, score: 0, levelNumber: lvlNumber);
         }
     }
 }

@@ -12,10 +12,17 @@ namespace BlueStellar.Cor
             if (!isCompletedTutorial)
             {
                 UIManager.Instance.TutorialScreen(true);
-                UIManager.Instance.StartScreen(false);
-                isCompletedTutorial = true;
-                Save();
             }
+        }
+
+        public void Complet()
+        {
+            if (isCompletedTutorial)
+                return;
+
+            UIManager.Instance.TutorialScreen(false);
+            isCompletedTutorial = true;
+            Save();
         }
 
         #region Load&Save

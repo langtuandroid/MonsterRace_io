@@ -26,6 +26,17 @@ namespace BlueStellar.Cor
             leaderboard = GameObject.FindObjectOfType<Leaderboard>();
         }
 
+        private void Update()
+        {
+            if (_characterStates.IsPlayerCharacter())
+            {
+                if (Input.GetKeyDown("g"))
+                {
+                    _characterStates.CharacterTransformation(_ballsMoster);
+                }
+            }
+        }
+
         public void SetCharacterSettings(CharacterColorType characterColorType)
         {
             _characterColorType = characterColorType;
@@ -98,7 +109,6 @@ namespace BlueStellar.Cor
 
             if (other.gameObject.tag == "Character")
             {
-                Character character = other.GetComponent<Character>();
                 StackBalls stackBalls = other.GetComponent<StackBalls>();
 
                 if (isDeactiveCharacter)

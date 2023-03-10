@@ -41,14 +41,6 @@ namespace BlueStellar.Cor
         [SerializeField] private int ammountBalls;
         [SerializeField] private int ammountActivetedBalls;
 
-        [Header("Monsters")]
-        [SerializeField] GameObject huggyWuggy;
-        [SerializeField] GameObject motherSpider;
-        [SerializeField] GameObject baldy;
-        [SerializeField] GameObject cartoonCat;
-        [SerializeField] GameObject siren;
-        [SerializeField] GameObject venom;
-
         [Header("BallsMonster")]
         [SerializeField] BallsMonster _ballsMonster;
 

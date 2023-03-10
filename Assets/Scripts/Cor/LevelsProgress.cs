@@ -5,88 +5,43 @@ namespace BlueStellar.Cor
 {
     public class LevelsProgress : MonoBehaviour
     {
-        [SerializeField] Image[] barIcons;
-        [SerializeField] Image arenaA;
-        [SerializeField] Image arenaB;
-        [SerializeField] Sprite[] arenasIcons;
-        [SerializeField] Sprite lockIcon;
-        [SerializeField] Sprite selectedIcon;
-        [SerializeField] Sprite completedIcon;
+        #region Variables
+
+        [SerializeField] Image[] lvlProgressImg;
+        [SerializeField] Text[] textLvls;
+        [SerializeField] GameObject[] heads;
         [SerializeField] private int indexProgress;
-        
-        public void CheckLevelsProgress()
-        {
-            LoadSave();
+        //??
+        [SerializeField] Sprite[] img1;
+        [SerializeField] Sprite[] img2;
+        [SerializeField] Sprite[] img3;
+        [SerializeField] Sprite[] img4;
+        [SerializeField] int[] lvl1;
+        [SerializeField] int[] lvl2;
+        [SerializeField] int[] lvl3;
 
-            for(int i = 0; i <= indexProgress; i++)
-            {
-                if(i < indexProgress)
-                {
-                    barIcons[i].sprite = completedIcon;
-                }
-
-                if(i == indexProgress)
-                {
-                    barIcons[i].sprite = selectedIcon;
-                }
-
-                if(i > indexProgress)
-                {
-                    barIcons[i].sprite = lockIcon;
-                }
-
-                if (indexProgress >= barIcons.Length)
-                {
-                    foreach(var k in barIcons)
-                    {
-                        k.sprite = lockIcon;
-                    }
-                    barIcons[0].sprite = selectedIcon;
-                }
-            }
-
-            if(LevelController.Instance.LvlIndex() <= 5)
-            {
-                arenaA.sprite = arenasIcons[0];
-                arenaB.sprite = arenasIcons[1];
-            }
-
-            if(LevelController.Instance.LvlIndex() > 5 
-                && LevelController.Instance.LvlIndex() <= 10)
-            {
-                arenaA.sprite = arenasIcons[1];
-                arenaB.sprite = arenasIcons[2];
-            }
-
-            if (LevelController.Instance.LvlIndex() > 10)
-            {
-                arenaA.sprite = arenasIcons[2];
-                arenaB.sprite = arenasIcons[0];
-            }
-        }
-
-        public void ProgressUp()
-        {
-            indexProgress++;
-            if (indexProgress >= barIcons.Length)
-            {
-                indexProgress = 0;
-            }
-            Save();
-        }
-
-        #region Load&Save
-
-        private void LoadSave()
-        {
-            indexProgress = ES3.Load("indexProgress", indexProgress);
-        }
-
-        private void Save()
-        {
-            ES3.Save("indexProgress", indexProgress);
-        }
+        SkinsController _skinsController;
 
         #endregion
+
+        private void Start()
+        {
+            _skinsController = GameObject.FindObjectOfType<SkinsController>();
+            CheckProgress();
+        }
+
+        public void CheckProgress()
+        {
+            foreach(var i in heads) { i.SetActive(false); }
+            heads[_skinsController.GetIndexProgress()].SetActive(true);
+            int progress = LevelController.Instance.LvlNumber() - 1;
+            lvlProgressImg[0].sprite = img1[progress];
+            lvlProgressImg[1].sprite = img2[progress];
+            lvlProgressImg[2].sprite = img3[progress];
+            lvlProgressImg[3].sprite = img4[progress];
+            textLvls[0].text = lvl1[progress].ToString();
+            textLvls[1].text = lvl2[progress].ToString();
+            textLvls[2].text = lvl3[progress].ToString();
+        }
     }
 }
