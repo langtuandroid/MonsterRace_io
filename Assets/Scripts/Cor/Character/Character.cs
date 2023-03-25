@@ -102,7 +102,7 @@ namespace BlueStellar.Cor
                 if (!_ball.IsTrueCharacter(_characterColorType))
                     return;
 
-                _stackBalls.AddCollectableBall(_ball);
+                _stackBalls.AddCollectableBall(_ball, _characterStates.IsPlayerCharacter());
                 if (_characterStates.IsPlayerCharacter())
                     VibrationController.Instance.ClaimVibration();
             }

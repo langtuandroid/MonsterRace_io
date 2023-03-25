@@ -14,7 +14,7 @@ namespace BlueStellar.Cor
             return currencyBalls.Count;
         }
 
-        public void AddCollectableBall(CollectableBall _ball)
+        public void AddCollectableBall(CollectableBall _ball, bool isAnim)
         {
             foreach (var i in currencyBalls)
             {
@@ -27,6 +27,7 @@ namespace BlueStellar.Cor
             _ball.transform.position = currencyStackPoints[indexBall].position;
             _ball.transform.parent = currencyStackPoints[indexBall];
             _ball.BallInStack();
+            if (isAnim) { _ball.ColorAnimation(); }
         }
 
         public void UnstackCollectablekBalls(CollectableMonster unstackMonster)

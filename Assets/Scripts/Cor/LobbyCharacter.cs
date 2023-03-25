@@ -9,6 +9,8 @@ namespace BlueStellar.Cor
     {
         [SerializeField] GameObject[] skeleton;
         [SerializeField] GameObject[] placement;
+        [SerializeField] GameObject placementFX;
+        [SerializeField] GameObject loadingPlacement;
         [SerializeField] Animator _animCharacter;
         [SerializeField] Animator platformAnim;
         [SerializeField] Transform point;
@@ -17,13 +19,11 @@ namespace BlueStellar.Cor
         [SerializeField] private int indexProgress;
 
         Tutorial _tutorial;
-       // LoadGame _loadGame;
 
         private void Start()
         {
             placement[indexProgress].SetActive(true);
             _tutorial = GameObject.FindObjectOfType<Tutorial>();
-         //   _loadGame = GameObject.FindObjectOfType<LoadGame>();
         }
 
         public void NewPartOpen(CharacterMonsterType partType)
@@ -61,6 +61,8 @@ namespace BlueStellar.Cor
             if (indexProgress >= 4)
             {
                 transform.parent = point;
+                placementFX.SetActive(false);
+                loadingPlacement.SetActive(true);
                 StartCoroutine(IE_PlatformActive());
                 StartCoroutine(IE_ExitLobby());
                 return;

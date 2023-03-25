@@ -6,13 +6,6 @@ namespace BlueStellar.Cor
 {
     public class CollectableBallsField : MonoBehaviour
     {
-        [System.Serializable]
-        public class BallType
-        {
-            public GameObject ballPrefab;
-            public CharacterColorType type;
-        }
-
         #region Variables
 
         [Header("BallTypes")]
@@ -95,6 +88,7 @@ namespace BlueStellar.Cor
 
         public void SetPlacementSettings(Arena _arena)
         {
+            ballTypes.AddRange(_arena.GetBallTypes().ToArray());
             points = _arena.GetBallsPoints();
             typesAmmount = _arena.GetMaxTypes();
             length = _arena.GetAmmountBalls();
@@ -205,12 +199,12 @@ namespace BlueStellar.Cor
                 FirstSpawn(_position);
             }
 
-           // for(int i = 0; i < 140; i++)
-           // {
-              // spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
-            //}
+            for(int i = 0; i < 80; i++)
+            {
+               spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
+            }
 
-            //StartCoroutine(IE_Step());
+            StartCoroutine(IE_Step());
         }
 
         private void FirstSpawn(Vector3 position)
@@ -227,18 +221,34 @@ namespace BlueStellar.Cor
             spawnedBall.SetSpawnedBall(ball, position, this);
             spawnedBalls.Add(spawnedBall);
             allBalls.Add(ball);
-            //newCollectableBall.SetActive(false);
+            newCollectableBall.SetActive(false);
         }
 
         private IEnumerator IE_Step()
         {
-            for(int i = 50; i < spawnedBalls.Count; i++)
+            for(int i = 80; i < spawnedBalls.Count; i += 5)
             {
                 spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
+                if(spawnedBalls[i + 1] != null)
+                    spawnedBalls[i + 1].GetCollectableBall().gameObject.SetActive(true);
+                if(spawnedBalls[i + 2] != null)
+                    spawnedBalls[i + 2].GetCollectableBall().gameObject.SetActive(true);
+                if(spawnedBalls[i + 3] != null)
+                    spawnedBalls[i + 3].GetCollectableBall().gameObject.SetActive(true);
+                if (spawnedBalls[i + 4] != null)
+                    spawnedBalls[i + 4].GetCollectableBall().gameObject.SetActive(true);
                 yield return new WaitForSeconds(0f);
             }
         }
 
         #endregion
     }
+
+    [System.Serializable]
+    public class BallType
+    {
+        public GameObject ballPrefab;
+        public CharacterColorType type;
+    }
+
 }

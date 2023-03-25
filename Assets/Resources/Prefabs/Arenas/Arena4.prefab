@@ -560,6 +560,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c16bdeffb1281a4fa7fccb106cb2a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballTypes:
+  - ballPrefab: {fileID: 7323274382640280931, guid: c2fe36c3f54c038479882276ff4d5096, type: 3}
+    type: 0
+  - ballPrefab: {fileID: 1089891139789347188, guid: c2fc359314049ff4092d07c9685fc224, type: 3}
+    type: 1
+  - ballPrefab: {fileID: 1089891139789347188, guid: 3a370a26ad4e8874f9a2cfca2f78e889, type: 3}
+    type: 2
+  - ballPrefab: {fileID: 1089891139789347188, guid: d589c439e0df9d54680e2fe95259e9f4, type: 3}
+    type: 3
+  - ballPrefab: {fileID: 7323274382640280931, guid: c2fe36c3f54c038479882276ff4d5096, type: 3}
+    type: 0
   placementBallsPoints:
   - {fileID: 8343177405567783455}
   - {fileID: 4020348482480261476}
@@ -1161,7 +1172,7 @@ MonoBehaviour:
   - {fileID: 4020348481398735502}
   - {fileID: 4020348482943164686}
   - {fileID: 4020348480872152636}
-  maxTypes: 4
+  maxTypes: 5
   ammountBalls: 600
   playerPoint: {fileID: 6221607200077439920}
   botsPoints:
@@ -1177,6 +1188,7 @@ MonoBehaviour:
   - {fileID: 6228239315673665021}
   - {fileID: 6228239316763406969}
   - {fileID: 6228239316548740867}
+  gatesTypes: 000000000100000002000000
   points:
   - {fileID: 3950912602014431710}
   - {fileID: 2544076252284886283}

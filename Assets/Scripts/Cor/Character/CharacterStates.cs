@@ -213,6 +213,8 @@ namespace BlueStellar.Cor
             {
                 CameraController.Instance.CharacterCam(false);
                 CameraController.Instance.ChangeMonsterCam(true);
+                PopupController popupController = GameObject.FindObjectOfType<PopupController>();
+                popupController.NextPopupActive();
             }
         }
 

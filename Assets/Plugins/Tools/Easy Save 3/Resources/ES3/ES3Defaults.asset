@@ -37,6 +37,7 @@ MonoBehaviour:
     - Cinemachine
     - Autodesk.Fbx
     - ToonyColorsPro2.Demo
+    - AppsFlyer
     - NavMeshComponentsExamples
     - Sirenix.OdinInspector.CompatibilityLayer
     - ToonyColorsPro.Runtime
@@ -44,8 +45,8 @@ MonoBehaviour:
     - NavMeshComponents
     - KinoBloom.Runtime
     - FbxBuildTestAssets
-    - AppsFlyer
     - Tests
+    - TextMeshProEffect
     - ToonyColorsPro.Editor
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - Autodesk.Fbx.Editor
@@ -53,8 +54,9 @@ MonoBehaviour:
     - NavMeshComponentsTestsEditmode
     - NavMeshComponentsEditor
     - ToonyColorsPro.Demo.Editor
-    - NavMeshComponentsExamplesEditor
     - AppsFlyer.Editor
+    - NavMeshComponentsExamplesEditor
+    - TextMeshProEffect.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

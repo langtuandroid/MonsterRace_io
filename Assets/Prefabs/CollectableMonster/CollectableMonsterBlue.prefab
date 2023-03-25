@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7877512952207843801
 Transform:
@@ -47,7 +47,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &8289541390581684692
 RectTransform:
@@ -185,7 +185,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &8289541390858757008
 RectTransform:
@@ -304,7 +304,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289541391631887715
 Transform:
@@ -368,12 +368,6 @@ MonoBehaviour:
   needAmmountBalls: 0
   ammountBalls: 0
   ammountActivetedBalls: -1
-  huggyWuggy: {fileID: 0}
-  motherSpider: {fileID: 0}
-  baldy: {fileID: 0}
-  cartoonCat: {fileID: 0}
-  siren: {fileID: 0}
-  venom: {fileID: 0}
   _ballsMonster: {fileID: 0}
   _collectableBallsField: {fileID: 0}
   _monsterSpawner: {fileID: 0}
@@ -392,7 +386,7 @@ GameObject:
   m_TagString: MonsterFields
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289541392028801142
 Transform:

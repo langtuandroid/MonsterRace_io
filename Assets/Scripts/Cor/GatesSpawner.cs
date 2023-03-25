@@ -21,6 +21,7 @@ namespace BlueStellar.Cor
 
         public void SetupGatesPoints(Arena arena)
         {
+            gatesTypes.AddRange(arena.GetGateTypes().ToArray());
             pointsSpawn.AddRange(arena.GetGatesPoints().ToArray());
             LevelController.Instance.OnLevelStart.AddListener(SpawnGate);
         }
@@ -46,9 +47,10 @@ namespace BlueStellar.Cor
                 GameObject newGate = Instantiate(prefabGates, points[randomPoint].position, points[randomPoint].rotation);
                 newGate.transform.parent = points[randomPoint];
                 points.Remove(points[randomPoint]);
-     
+                
                 Gates gates = newGate.GetComponent<Gates>();
                 gates.SetGatesSettings(this, gatesTypes[randomType]);
+                if (gatesTypes[randomType] == GatesType.Multyplying) gatesTypes.RemoveAt((int)gatesTypes[randomType]);
                 currencyGates.Add(gates);
             }
         }

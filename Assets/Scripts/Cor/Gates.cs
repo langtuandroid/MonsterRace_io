@@ -28,7 +28,10 @@ namespace BlueStellar.Cor
             transform.DOScale(transform.localScale, 0.5f).From(0);
             _gatesSpawner = gatesSpawner;
             _gatesType = gatesType;
-            numberGates = Random.Range(1, 10);
+            if(_gatesType != GatesType.Multyplying)
+                numberGates = Random.Range(1, 10);
+            if (_gatesType == GatesType.Multyplying)
+                numberGates = Random.Range(2, 3);
             SwitchGatesText();
         }
 
@@ -72,7 +75,7 @@ namespace BlueStellar.Cor
                     NegativeBonus();
                     break;
                 case GatesType.Multyplying:
-                    symbolGate = "X";
+                    MultiplyBonus();
                     break;
             }
 
@@ -86,7 +89,7 @@ namespace BlueStellar.Cor
             for (int i = 0; i < numberGates; i++)
             {
                 GameObject ball = Instantiate(collectableBalls[index].gameObject, transform.position, transform.rotation);
-                _stackBalls.AddCollectableBall(ball.GetComponent<CollectableBall>());
+                _stackBalls.AddCollectableBall(ball.GetComponent<CollectableBall>(), false);
             }
         }
 
@@ -95,6 +98,21 @@ namespace BlueStellar.Cor
             for (int i = 0; i < numberGates; i++)
             {
                 _stackBalls.RemoveColleactbleBall();
+            }
+        }
+
+        private void MultiplyBonus()
+        {
+            int number = _stackBalls.AmmountBalls() + (_stackBalls.AmmountBalls() / 2);
+            float timer = 0;
+
+            for (int i = 0; i < number; i++)
+            {
+                GameObject ball = Instantiate(collectableBalls[index].gameObject, transform.position, transform.rotation);
+                _stackBalls.AddCollectableBall(ball.GetComponent<CollectableBall>(), false);
+                ball.SetActive(false);
+                DOVirtual.DelayedCall(timer, () => ball.SetActive(true));
+                timer += 0.05f;
             }
         }
 

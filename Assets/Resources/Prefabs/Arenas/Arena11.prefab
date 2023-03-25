@@ -13770,6 +13770,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c16bdeffb1281a4fa7fccb106cb2a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballTypes:
+  - ballPrefab: {fileID: 7323274382640280931, guid: c2fe36c3f54c038479882276ff4d5096, type: 3}
+    type: 0
+  - ballPrefab: {fileID: 1089891139789347188, guid: c2fc359314049ff4092d07c9685fc224, type: 3}
+    type: 1
+  - ballPrefab: {fileID: 1089891139789347188, guid: 3a370a26ad4e8874f9a2cfca2f78e889, type: 3}
+    type: 2
+  - ballPrefab: {fileID: 1089891139789347188, guid: d589c439e0df9d54680e2fe95259e9f4, type: 3}
+    type: 3
+  - ballPrefab: {fileID: 1089891139789347188, guid: b543b62f069467847a3c7ea2598fccfd, type: 3}
+    type: 4
   placementBallsPoints:
   - {fileID: 7751473842836767967}
   - {fileID: 7751473843741635969}
@@ -14333,6 +14344,7 @@ MonoBehaviour:
   - {fileID: 3604426580305368957}
   - {fileID: 3604426580117176839}
   - {fileID: 3760042170803684066}
+  gatesTypes: 000000000100000002000000
   points:
   - {fileID: 5840067384660856468}
   - {fileID: 7830905735742312455}

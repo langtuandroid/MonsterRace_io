@@ -56,10 +56,14 @@ namespace BlueStellar.Cor
         {
             cantStack = true;
             if(_rb != null) _rb.isKinematic = true;
-            meshRenderer.material.DOColor(colorClaim, 0.2f);
-            _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
-            _collectableBallsField.RemoveBall(this);
 
+            if(_collectableBallsField != null)
+                _collectableBallsField.RemoveBall(this);
+        }
+
+        public void ColorAnimation()
+        {
+            meshRenderer.material.DOColor(colorClaim, 0.2f);
             StopAllCoroutines();
             StartCoroutine(IE_ReturnColorBall());
         }
@@ -93,8 +97,6 @@ namespace BlueStellar.Cor
                 ballsMonster.BallActiveted(_ballType);
                 isBallDestroyed = true;
                 Invoke("Deactive", 0.3f);
-                //gameObject.SetActive(false);
-                //Destroy(gameObject, 0.28f);
             }
         }
 

@@ -8,6 +8,7 @@ namespace BlueStellar.Cor {
         #region Variables
 
         [Header("ArenaBallsPlacement")]
+        [SerializeField] List<BallType> ballTypes = new List<BallType>();
         [SerializeField] Transform[] placementBallsPoints;
         [SerializeField] private int maxTypes;
         [SerializeField] private int ammountBalls;
@@ -23,6 +24,7 @@ namespace BlueStellar.Cor {
         [SerializeField] CollectableMonster[] collectableMonsters;
 
         [Header("ArenaGates")]
+        [SerializeField] List<GatesType> gatesTypes = new List<GatesType>();
         [SerializeField] List<Transform> points = new List<Transform>();
 
         #endregion
@@ -35,6 +37,11 @@ namespace BlueStellar.Cor {
         public int GetAmmountBalls()
         {
             return ammountBalls;
+        }
+
+        public List<BallType> GetBallTypes()
+        {
+            return ballTypes;
         }
 
         public Transform[] GetBallsPoints()
@@ -55,6 +62,11 @@ namespace BlueStellar.Cor {
         public Transform[] GetMonsterPoints()
         {
             return monsterPoints;
+        }
+
+        public List<GatesType> GetGateTypes()
+        {
+            return gatesTypes;
         }
 
         public List<Transform> GetGatesPoints()
