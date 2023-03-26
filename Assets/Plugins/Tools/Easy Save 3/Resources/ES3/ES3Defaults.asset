@@ -42,11 +42,11 @@ MonoBehaviour:
     - Sirenix.OdinInspector.CompatibilityLayer
     - ToonyColorsPro.Runtime
     - MoreMountains.NiceVibrations
+    - TextMeshProEffect
     - NavMeshComponents
     - KinoBloom.Runtime
     - FbxBuildTestAssets
     - Tests
-    - TextMeshProEffect
     - ToonyColorsPro.Editor
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - Autodesk.Fbx.Editor
