@@ -3948,7 +3948,7 @@ MonoBehaviour:
   - {fileID: 1853364978475544418}
   - {fileID: 1365042441687972178}
   - {fileID: 28085597815165286}
-  maxTypes: 5
+  maxTypes: 4
   ammountBalls: 462
   playerPoint: {fileID: 4147713243718617904}
   botsPoints:

@@ -14,11 +14,6 @@ namespace BlueStellar.Cor.SDK
 
         #endregion
 
-        private void Start()
-        {
-            Load();
-        }
-
         public void LevelStartEvent()
         {
             _time = (int)Time.time;
@@ -60,25 +55,25 @@ namespace BlueStellar.Cor.SDK
         {
             _levelNumber++;
             _levelName++;
-            Save();
+            SaveData();
         }
 
         public void NewAttempt()
         {
             _levelCount++;
-            Save();
+            SaveData();
         }
 
         public void NewLevelLoop()
         {
             _levelLoop++;
             _levelName = 1;
-            Save();
+            SaveData();
         }
 
         #region Load&Save
 
-        private void Load()
+        public void LoadData()
         {
             _levelNumber = ES3.Load("_levelNumber", _levelNumber);
             _levelName = ES3.Load("_levelName", _levelName);
@@ -86,7 +81,7 @@ namespace BlueStellar.Cor.SDK
             _levelLoop = ES3.Load("_levelLoop", _levelLoop);
         }
 
-        private void Save()
+        private void SaveData()
         {
             ES3.Save("_levelNumber", _levelNumber);
             ES3.Save("_levelName", _levelName);

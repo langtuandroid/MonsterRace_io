@@ -14,7 +14,6 @@ namespace BlueStellar.Cor
         [Space]
         [Header("FieldPlacement")]
         [SerializeField] Transform[] points;
-        [SerializeField] private int typesAmmount;
         [SerializeField] private int length;
 
         [Space]
@@ -90,7 +89,6 @@ namespace BlueStellar.Cor
         {
             ballTypes.AddRange(_arena.GetBallTypes().ToArray());
             points = _arena.GetBallsPoints();
-            typesAmmount = _arena.GetMaxTypes();
             length = _arena.GetAmmountBalls();
             maxBalls = length;
             GO();
@@ -152,7 +150,7 @@ namespace BlueStellar.Cor
             if (ballTypes.Count == 0)
                 return;
 
-            BallType ballType = ballTypes[Random.Range(0, typesAmmount)];
+            BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
             GameObject createdBall = Instantiate(ballType.ballPrefab, spawnedBall.SpawnPosition(),
                 Quaternion.identity);
 
@@ -209,7 +207,7 @@ namespace BlueStellar.Cor
 
         private void FirstSpawn(Vector3 position)
         {
-            BallType ballType = ballTypes[Random.Range(0, typesAmmount)];
+            BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
 
             GameObject newCollectableBall = Instantiate(ballType.ballPrefab,
              position, ballType.ballPrefab.transform.rotation);

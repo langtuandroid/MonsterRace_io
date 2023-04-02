@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using BlueStellar.Cor.SDK;
 
 namespace BlueStellar.Cor
 {
@@ -21,7 +22,7 @@ namespace BlueStellar.Cor
 
         #region Variables
 
-        [SerializeField] AnalyticsController analyticsController;
+        [SerializeField] AppMetricaAnalytics _analytics;
         [SerializeField] LevelSpawner levelSpawner;
         [SerializeField] MemberSpawner memberSpawner;
         [SerializeField] GatesSpawner gatesSpawner;
@@ -30,6 +31,7 @@ namespace BlueStellar.Cor
         [SerializeField] private bool isMain;
         [SerializeField] private bool isEditor;
         private int lvlIndex;
+        private bool isLevelEnd;
 
         #endregion
 
@@ -66,22 +68,27 @@ namespace BlueStellar.Cor
         {
             LevelEnd();
             OnLevelCompleted?.Invoke();
-            analyticsController.LevelFinished(true, lvlNumber);
+            _analytics.LevelFinishEvent("win");
             CameraController.Instance.ChangeMonsterCam(false);
             CameraController.Instance.JumpStateCam(true);
+            NextLevel();
         }
 
         public void LevelFailed()
         {
             LevelEnd();
-            analyticsController.LevelFinished(false, lvlNumber);
+            _analytics.LevelFinishEvent("lose");
             UIManager.Instance.MoneyScreen(false);
             UIManager.Instance.LoseScreen(true);
         }
 
         private void LevelEnd()
         {
+            if (isLevelEnd)
+                return;
+
             OnLevelEnd.Invoke();
+            isLevelEnd = true;
             UIManager.Instance.JoystickScreen(false);
             UIManager.Instance.SettingsButtonScreen(false);
             UIManager.Instance.SettingsScreen(false);
@@ -95,7 +102,7 @@ namespace BlueStellar.Cor
             if (isEditor)
                 return;
 
-            //if (lvlNumber >= 13) { lvlIndex = Random.Range(0, 11); }
+            if (lvlNumber >= 13) { lvlIndex = Random.Range(0, 11); }
             levelSpawner.SpawnLevel(lvlIndex);
             Arena newArena = levelSpawner.LevelArena();
             collectableBallsField.SetPlacementSettings(newArena);
@@ -108,7 +115,15 @@ namespace BlueStellar.Cor
         {
             lvlIndex++;
             lvlNumber++;
-            if(lvlNumber >= 13) { lvlIndex = Random.Range(0, 11); }
+            if(lvlNumber >= 13) 
+            { 
+                lvlIndex = Random.Range(0, 11);
+            }
+            if(lvlIndex >= 12)
+            {
+                _analytics.NewLevelLoop();
+            }
+            _analytics.NewLevel();
             Save();
         }
 
@@ -124,7 +139,9 @@ namespace BlueStellar.Cor
             yield return new WaitForSeconds(0.15f);
 
             OnLevelStart.Invoke();
-            analyticsController.LevelStart(lvlNumber);
+            _analytics.LoadData();
+            _analytics.NewAttempt();
+            _analytics.LevelStartEvent();
             UIManager.Instance.PointerScreen(true);
             UIManager.Instance.LeaderboardScreen(true);
         }

@@ -53,10 +53,11 @@ namespace BlueStellar.Cor
 
                 _characterStates.Attack();
                 _characterStates.StopMovement(true);
-                StartCoroutine(IE_Kick());
-                StartCoroutine(IE_ReturnAttack());
                 isAttack = true;
                 canAttack = false;
+                if(weapon != null)
+                    StartCoroutine(IE_Kick());
+                StartCoroutine(IE_ReturnAttack());
             }
         }
 
@@ -84,7 +85,9 @@ namespace BlueStellar.Cor
                 weapon = GetComponentInChildren<Weapon>();
                 isAttack = false;
             }
-            weapon.Attack();
+
+            if(weapon != null)
+                weapon.Attack();
         }
 
         private IEnumerator IE_ReturnAttack()
@@ -98,7 +101,8 @@ namespace BlueStellar.Cor
                 isAttack = false;
             }
 
-            weapon.StopAttack();
+            if(weapon != null)
+                weapon.StopAttack();
 
             isAttack = false;
             _characterStates.StopMovement(false);

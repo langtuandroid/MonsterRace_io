@@ -872,7 +872,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2064445251}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &134464386
 MonoBehaviour:
@@ -1319,7 +1319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &406410531
 RectTransform:
   m_ObjectHideFlags: 0
@@ -72600,7 +72600,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2064445251}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &924448858
 MonoBehaviour:
@@ -72857,7 +72857,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballTypes: []
   points: []
-  typesAmmount: 0
   length: 647
   timeToResetBall: 0.1
   timer: 0
@@ -74123,50 +74122,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1218434877
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1218434879}
-  - component: {fileID: 1218434878}
-  m_Layer: 0
-  m_Name: AnalyticsController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1218434878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218434877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54653f1173e47d349adf6d703311bbc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1218434879
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218434877}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2064445251}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1222609925 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3985770459888905695, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
@@ -74682,7 +74637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2064445251}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1420813640
 MonoBehaviour:
@@ -74983,7 +74938,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2064445251}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1498222285
 MonoBehaviour:
@@ -77026,7 +76981,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2064445251}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1967437204
 MonoBehaviour:
@@ -77040,7 +76995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af5165e95347c746b06ebb5a32dd177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  analyticsController: {fileID: 1218434878}
+  _analytics: {fileID: 889954117}
   levelSpawner: {fileID: 795198968}
   memberSpawner: {fileID: 1617961470}
   gatesSpawner: {fileID: 524478871}
@@ -77346,7 +77301,6 @@ Transform:
   m_Children:
   - {fileID: 1835813175}
   - {fileID: 1701833452}
-  - {fileID: 1218434879}
   - {fileID: 1967437203}
   - {fileID: 1498222284}
   - {fileID: 134464385}
