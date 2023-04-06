@@ -10,6 +10,7 @@ namespace BlueStellar.Cor.SDK
         [SerializeField] private int _levelName;
         [SerializeField] private int _levelCount;
         [SerializeField] private int _levelLoop;
+        [SerializeField] private int _loopAttempt;
         [SerializeField] private int _time;
 
         #endregion
@@ -64,10 +65,15 @@ namespace BlueStellar.Cor.SDK
             SaveData();
         }
 
-        public void NewLevelLoop()
+        public void LevelLoop()
         {
-            _levelLoop++;
-            _levelName = 1;
+            _loopAttempt++;
+            if (_loopAttempt >= 12)
+            {
+                _levelLoop++;
+                _levelName = 1;
+                _loopAttempt = 0;
+            }
             SaveData();
         }
 
@@ -79,6 +85,7 @@ namespace BlueStellar.Cor.SDK
             _levelName = ES3.Load("_levelName", _levelName);
             _levelCount = ES3.Load("_levelCount", _levelCount);
             _levelLoop = ES3.Load("_levelLoop", _levelLoop);
+            _loopAttempt = ES3.Load("_loopAttempt", _loopAttempt);
         }
 
         private void SaveData()
@@ -87,6 +94,7 @@ namespace BlueStellar.Cor.SDK
             ES3.Save("_levelName", _levelName);
             ES3.Save("_levelCount", _levelCount);
             ES3.Save("_levelLoop", _levelLoop);
+            ES3.Save("_loopAttempt", _loopAttempt);
         }
 
         #endregion

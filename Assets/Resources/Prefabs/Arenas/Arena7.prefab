@@ -23085,6 +23085,8 @@ MonoBehaviour:
     type: 3
   - ballPrefab: {fileID: 1089891139789347188, guid: b543b62f069467847a3c7ea2598fccfd, type: 3}
     type: 4
+  - ballPrefab: {fileID: 7323274382640280931, guid: c2fe36c3f54c038479882276ff4d5096, type: 3}
+    type: 0
   placementBallsPoints:
   - {fileID: 4692415247437762670}
   - {fileID: 3237294420730055979}

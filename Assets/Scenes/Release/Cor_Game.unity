@@ -72532,7 +72532,7 @@ GameObject:
   - component: {fileID: 889954116}
   - component: {fileID: 889954117}
   m_Layer: 0
-  m_Name: AppMetrica
+  m_Name: AppMetricaAnalytics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72569,6 +72569,7 @@ MonoBehaviour:
   _levelName: 1
   _levelCount: 0
   _levelLoop: 1
+  _loopAttempt: 0
   _time: 0
 --- !u!1 &924448856
 GameObject:

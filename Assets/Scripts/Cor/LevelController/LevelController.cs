@@ -119,10 +119,8 @@ namespace BlueStellar.Cor
             { 
                 lvlIndex = Random.Range(0, 11);
             }
-            if(lvlIndex >= 12)
-            {
-                _analytics.NewLevelLoop();
-            }
+
+            _analytics.LevelLoop();
             _analytics.NewLevel();
             Save();
         }
