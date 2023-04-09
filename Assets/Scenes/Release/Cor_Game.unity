@@ -1654,7 +1654,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1908398843}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &437728502
 MonoBehaviour:
@@ -1983,66 +1983,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485483588}
   m_CullTransparentMesh: 1
---- !u!1 &496215198
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 496215199}
-  - component: {fileID: 496215200}
-  m_Layer: 0
-  m_Name: RewardMoney
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &496215199
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496215198}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.92999995, z: -6.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1908398843}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &496215200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496215198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e075202d433b53468deb0772f39ccf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonManager: {fileID: 1094591315}
-  prefabMoney: {fileID: 3209811123858918113, guid: e34f2f3a555f1d54f83fae95411e541f, type: 3}
-  pointSpawn:
-  - {fileID: 8040867587669264529}
-  - {fileID: 2079436789}
-  - {fileID: 2076595015}
-  - {fileID: 644727188}
-  - {fileID: 646640569}
-  - {fileID: 1595772376}
-  - {fileID: 656658306}
-  - {fileID: 1117470738}
-  - {fileID: 953050494}
-  - {fileID: 1078399027}
-  button: {fileID: 871859553}
-  rewardMoney: 100
-  coins: []
 --- !u!1 &509519717
 GameObject:
   m_ObjectHideFlags: 0
@@ -70818,7 +70758,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496215200}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayKing.Cor.RewardMoney, Assembly-CSharp
         m_MethodName: SpawnMoney
         m_Mode: 1
@@ -72364,7 +72304,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496215200}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayKing.Cor.RewardMoney, Assembly-CSharp
         m_MethodName: SpawnMoney
         m_Mode: 1
@@ -72876,7 +72816,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1908398843}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &975888017
 GameObject:
@@ -73899,7 +73839,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1908398843}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1133123834
 GameObject:
@@ -76611,7 +76551,6 @@ Transform:
   - {fileID: 108607630}
   - {fileID: 1844644323}
   - {fileID: 21057509}
-  - {fileID: 496215199}
   - {fileID: 437728501}
   - {fileID: 966022034}
   - {fileID: 1126941790}
