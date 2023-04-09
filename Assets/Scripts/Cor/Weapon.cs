@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class Weapon : MonoBehaviour
     {

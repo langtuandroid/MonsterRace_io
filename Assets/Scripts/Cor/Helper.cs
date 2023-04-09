@@ -1,4 +1,4 @@
-namespace BlueStellar.Cor
+namespace Cor
 {
     public enum CharacterColorType
     {

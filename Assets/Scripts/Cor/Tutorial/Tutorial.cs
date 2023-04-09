@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class Tutorial : MonoBehaviour
     {

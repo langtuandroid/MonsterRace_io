@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using DG.Tweening;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class CollectableMonster : MonoBehaviour
     {

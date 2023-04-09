@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class Character : MonoBehaviour
     {

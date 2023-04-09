@@ -9,26 +9,26 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_VibrationController() : base(typeof(BlueStellar.Cor.VibrationController)){ Instance = this; priority = 1;}
+		public ES3UserType_VibrationController() : base(typeof(Cor.VibrationController)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (BlueStellar.Cor.VibrationController)obj;
+			var instance = (Cor.VibrationController)obj;
 			
 			writer.WritePrivateField("isOffVibration", instance);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (BlueStellar.Cor.VibrationController)obj;
+			var instance = (Cor.VibrationController)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "isOffVibration":
-					instance = (BlueStellar.Cor.VibrationController)reader.SetPrivateField("isOffVibration", reader.Read<System.Boolean>(), instance);
+					instance = (Cor.VibrationController)reader.SetPrivateField("isOffVibration", reader.Read<System.Boolean>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -43,7 +43,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_VibrationControllerArray() : base(typeof(BlueStellar.Cor.VibrationController[]), ES3UserType_VibrationController.Instance)
+		public ES3UserType_VibrationControllerArray() : base(typeof(Cor.VibrationController[]), ES3UserType_VibrationController.Instance)
 		{
 			Instance = this;
 		}

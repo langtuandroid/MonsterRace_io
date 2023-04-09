@@ -41,6 +41,7 @@ MonoBehaviour:
     - NavMeshComponentsExamples
     - Sirenix.OdinInspector.CompatibilityLayer
     - ToonyColorsPro.Runtime
+    - MaxSdk.Scripts
     - MoreMountains.NiceVibrations
     - TextMeshProEffect
     - NavMeshComponents
@@ -49,6 +50,8 @@ MonoBehaviour:
     - Tests
     - ToonyColorsPro.Editor
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
+    - MaxSdk.Scripts.IntegrationManager.Editor
+    - MaxSdk.Scripts.Editor
     - Autodesk.Fbx.Editor
     - MoreMountains.NiceVibrations.Editor
     - NavMeshComponentsTestsEditmode

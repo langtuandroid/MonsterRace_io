@@ -9,26 +9,26 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_Tutorial() : base(typeof(BlueStellar.Cor.Tutorial)){ Instance = this; priority = 1;}
+		public ES3UserType_Tutorial() : base(typeof(Cor.Tutorial)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (BlueStellar.Cor.Tutorial)obj;
+			var instance = (Cor.Tutorial)obj;
 			
 			writer.WritePrivateField("isCompletedTutorial", instance);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (BlueStellar.Cor.Tutorial)obj;
+			var instance = (Cor.Tutorial)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "isCompletedTutorial":
-					instance = (BlueStellar.Cor.Tutorial)reader.SetPrivateField("isCompletedTutorial", reader.Read<System.Boolean>(), instance);
+					instance = (Cor.Tutorial)reader.SetPrivateField("isCompletedTutorial", reader.Read<System.Boolean>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -43,7 +43,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_TutorialArray() : base(typeof(BlueStellar.Cor.Tutorial[]), ES3UserType_Tutorial.Instance)
+		public ES3UserType_TutorialArray() : base(typeof(Cor.Tutorial[]), ES3UserType_Tutorial.Instance)
 		{
 			Instance = this;
 		}

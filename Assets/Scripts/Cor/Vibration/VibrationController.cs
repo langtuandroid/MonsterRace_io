@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class VibrationController : MonoBehaviour
     {

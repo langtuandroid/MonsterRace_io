@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class Platform : MonoBehaviour
     {

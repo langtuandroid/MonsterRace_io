@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class LevelsProgress : MonoBehaviour
     {

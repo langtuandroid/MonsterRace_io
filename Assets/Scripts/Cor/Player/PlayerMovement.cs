@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour

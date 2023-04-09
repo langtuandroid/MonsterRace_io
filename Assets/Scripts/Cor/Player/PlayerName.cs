@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class PlayerName : MonoBehaviour
     {

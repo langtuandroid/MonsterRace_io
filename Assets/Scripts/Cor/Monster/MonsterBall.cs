@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     [RequireComponent(typeof(Rigidbody), typeof(SphereCollider))]
     public class MonsterBall : MonoBehaviour

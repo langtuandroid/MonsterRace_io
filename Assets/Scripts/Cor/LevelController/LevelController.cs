@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using BlueStellar.Cor.SDK;
+using Cor.SDK;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class LevelController : MonoBehaviour
     {

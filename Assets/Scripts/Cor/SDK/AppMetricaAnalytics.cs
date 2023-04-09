@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BlueStellar.Cor.SDK
+namespace Cor.SDK
 {
     public class AppMetricaAnalytics : MonoBehaviour
     {

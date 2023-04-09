@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class ButtonManager : MonoBehaviour
     {

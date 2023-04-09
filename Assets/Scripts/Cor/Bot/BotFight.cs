@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace BlueStellar.Cor
+namespace Cor
 {
     public class BotFight : MonoBehaviour
     {
