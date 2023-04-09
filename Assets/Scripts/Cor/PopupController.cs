@@ -17,7 +17,7 @@ namespace Cor
             Load();
             if (!isClosedPopups)
             {
-                if (LevelController.Instance.LvlNumber() > 1)
+                if (LevelManager.Instance.LvlNumber() > 1)
                 {
                     isClosedPopups = true;
                     Save();

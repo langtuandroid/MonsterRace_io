@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Cor
 {
-    public class PointerController : MonoBehaviour
+    public class PointerManager : MonoBehaviour
     {
         #region Singelton
 
-        public static PointerController Instance;
+        public static PointerManager Instance;
 
         private void Awake()
         {
@@ -27,7 +27,7 @@ namespace Cor
         private void Start()
         {
             _playerTransform = GameObject.FindObjectOfType<PlayerMovement>();
-            LevelController.Instance.OnLevelStart.AddListener(ShowedPointer);
+            LevelManager.Instance.OnLevelStart.AddListener(ShowedPointer);
         }
 
         public void AddToList(BotPointer enemyPointer)

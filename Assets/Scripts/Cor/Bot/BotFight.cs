@@ -18,7 +18,7 @@ namespace Cor
 
         private void Start()
         {
-            LevelController.Instance.OnLevelEnd.AddListener(StopFight);
+            LevelManager.Instance.OnLevelEnd.AddListener(StopFight);
             if(weapon == null)
             {
                 SetWeapon(GetComponentInChildren<Weapon>());

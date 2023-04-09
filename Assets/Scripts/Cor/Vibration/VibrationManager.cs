@@ -3,11 +3,11 @@ using MoreMountains.NiceVibrations;
 
 namespace Cor
 {
-    public class VibrationController : MonoBehaviour
+    public class VibrationManager : MonoBehaviour
     {
         #region Singelton
 
-        public static VibrationController Instance;
+        public static VibrationManager Instance;
 
         private void Awake()
         {

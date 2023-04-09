@@ -6,11 +6,11 @@ using Cor.SDK;
 
 namespace Cor
 {
-    public class LevelController : MonoBehaviour
+    public class LevelManager : MonoBehaviour
     {
         #region Singelton
 
-        public static LevelController Instance;
+        public static LevelManager Instance;
 
         private void Awake()
         {

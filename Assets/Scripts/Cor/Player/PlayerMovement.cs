@@ -30,7 +30,7 @@ namespace Cor
             _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
             _rb = GetComponent<Rigidbody>();
 
-            LevelController.Instance.OnLevelEnd.AddListener(Stop);
+            LevelManager.Instance.OnLevelEnd.AddListener(Stop);
         }
 
         private void Update()

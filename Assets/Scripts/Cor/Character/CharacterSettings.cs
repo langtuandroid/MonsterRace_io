@@ -38,7 +38,7 @@ namespace Cor
             _characterSkins = GetComponent<CharacterSkins>();
             _character = GetComponentInChildren<Character>();
 
-            LevelController.Instance.OnLevelStart.AddListener(SetCharacterSettings);
+            LevelManager.Instance.OnLevelStart.AddListener(SetCharacterSettings);
             SetMonsterType();
             SetBasketColor();
         }

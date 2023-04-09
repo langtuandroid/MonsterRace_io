@@ -34,7 +34,7 @@ namespace Cor
         {
             foreach(var i in heads) { i.SetActive(false); }
             heads[_skinsController.GetIndexProgress()].SetActive(true);
-            int progress = LevelController.Instance.LvlNumber() - 1;
+            int progress = LevelManager.Instance.LvlNumber() - 1;
             lvlProgressImg[0].sprite = img1[progress];
             lvlProgressImg[1].sprite = img2[progress];
             lvlProgressImg[2].sprite = img3[progress];

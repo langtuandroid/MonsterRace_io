@@ -48,7 +48,7 @@ namespace Cor
         {
             _arena = GameObject.FindObjectOfType<ArenaController>();
             skinsController = GameObject.FindObjectOfType<SkinsController>();
-            LevelController.Instance.OnLevelCompleted.AddListener(Finish);
+            LevelManager.Instance.OnLevelCompleted.AddListener(Finish);
             if (!IsPlayerCharacter())
                 _arena.AddBot(this);
         }

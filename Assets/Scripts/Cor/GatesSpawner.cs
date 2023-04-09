@@ -23,7 +23,7 @@ namespace Cor
         {
             gatesTypes.AddRange(arena.GetGateTypes().ToArray());
             pointsSpawn.AddRange(arena.GetGatesPoints().ToArray());
-            LevelController.Instance.OnLevelStart.AddListener(SpawnGate);
+            LevelManager.Instance.OnLevelStart.AddListener(SpawnGate);
         }
 
         public void RemoveGate(Gates gates)

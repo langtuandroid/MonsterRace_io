@@ -18,9 +18,9 @@ namespace Cor
 
         private void Start()
         {
-            LevelController.Instance.OnLevelStart.AddListener(Fight);
-            LevelController.Instance.OnLevelEnd.AddListener(StopFight);
-            LevelController.Instance.OnLevelEnd.AddListener(Test);
+            LevelManager.Instance.OnLevelStart.AddListener(Fight);
+            LevelManager.Instance.OnLevelEnd.AddListener(StopFight);
+            LevelManager.Instance.OnLevelEnd.AddListener(Test);
         }
 
         private void Update()

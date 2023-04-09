@@ -19,13 +19,13 @@ namespace Cor
             if (currencyBots.Count == 0)
             {
                 finishPlatform.SetActive(true);
-                LevelController.Instance.LevelCompleted();
+                LevelManager.Instance.LevelCompleted();
             }
         }
 
         public void RemovePlayer()
         {
-            LevelController.Instance.LevelFailed();
+            LevelManager.Instance.LevelFailed();
         }
     }
 }

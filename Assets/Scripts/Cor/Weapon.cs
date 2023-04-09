@@ -39,7 +39,7 @@ namespace Cor
                 character.KillCharacter();
 
                 if(characterStates.IsPlayerCharacter())
-                    VibrationController.Instance.AttackVibration();
+                    VibrationManager.Instance.AttackVibration();
             }
 
             if (other.gameObject.tag == "Monster")
@@ -51,7 +51,7 @@ namespace Cor
                 characterMonster.ExplosionCharacterMonster(transform);
 
                 if (characterStates.IsPlayerCharacter())
-                    VibrationController.Instance.AttackVibration();
+                    VibrationManager.Instance.AttackVibration();
             }
         }
     }

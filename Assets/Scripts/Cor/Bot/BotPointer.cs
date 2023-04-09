@@ -8,12 +8,12 @@ namespace Cor
         
         private void Start()
         {
-            PointerController.Instance.AddToList(this);
+            PointerManager.Instance.AddToList(this);
         }
 
         public void Remove()
         {
-            PointerController.Instance.RemoveFromList(this);
+            PointerManager.Instance.RemoveFromList(this);
         }
     }
 }

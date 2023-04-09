@@ -14,7 +14,7 @@ namespace Cor
         [SerializeField] Sprite offBg;
         [SerializeField] Sprite offImg;
         [SerializeField] Toggle toggle;
-        [SerializeField] VibrationController vibrationController;
+        [SerializeField] VibrationManager vibrationController;
 
         Vector2 handlePosition;
 

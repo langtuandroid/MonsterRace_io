@@ -51,7 +51,7 @@ namespace Cor
                 skeleton[3].SetActive(false);
             }
             indexProgress++;
-            VibrationController.Instance.PartOpenVibration();
+            VibrationManager.Instance.PartOpenVibration();
             foreach (var i in placement)
             {
                 i.SetActive(false);

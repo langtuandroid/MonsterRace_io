@@ -104,7 +104,7 @@ namespace Cor
 
                 _stackBalls.AddCollectableBall(_ball, _characterStates.IsPlayerCharacter());
                 if (_characterStates.IsPlayerCharacter())
-                    VibrationController.Instance.ClaimVibration();
+                    VibrationManager.Instance.ClaimVibration();
             }
 
             if (other.gameObject.tag == "Character")
@@ -122,13 +122,13 @@ namespace Cor
                 {
                     other.GetComponent<Character>().KnockCharacter(transform);
                     if (_characterStates.IsPlayerCharacter())
-                        VibrationController.Instance.KnockVibration();
+                        VibrationManager.Instance.KnockVibration();
 
                     return;
                 }
 
                 if (_characterStates.IsPlayerCharacter())
-                    VibrationController.Instance.KnockVibration();
+                    VibrationManager.Instance.KnockVibration();
 
                 KnockCharacter(other.transform);
             }
@@ -168,7 +168,7 @@ namespace Cor
                     return; 
 
                 if (_characterStates.IsPlayerCharacter())
-                    VibrationController.Instance.UnstackVibration();
+                    VibrationManager.Instance.UnstackVibration();
             }
         }
 
