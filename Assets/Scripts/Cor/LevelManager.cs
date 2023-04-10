@@ -39,6 +39,10 @@ namespace Cor
         [HideInInspector]
         public UnityEvent OnLevelStart;
         [HideInInspector]
+        public UnityEvent OnLevelPause;
+        [HideInInspector]
+        public UnityEvent OnLevelContinue;
+        [HideInInspector]
         public UnityEvent OnLevelEnd;
         [HideInInspector]
         public UnityEvent OnLevelCompleted;
@@ -132,6 +136,18 @@ namespace Cor
             lvlIndex = indexLvl;
             Save();
             SceneManager.LoadScene(1);
+        }
+
+        public void LevelPause()
+        {
+            OnLevelPause?.Invoke();
+            Debug.Log("Pause");
+        }
+
+        public void LevelContinue()
+        {
+            OnLevelContinue?.Invoke();
+            Debug.Log("Continue");
         }
 
         #region Load&Save
