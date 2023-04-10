@@ -8,7 +8,7 @@ namespace Cor
         [SerializeField] Collider _collider;
         [SerializeField] DOTweenAnimation punchAnim;
         [SerializeField] ParticleSystem dust;
-        CharacterStates characterStates;
+        private CharacterStates characterStates;
 
         private void Start()
         {

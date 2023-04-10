@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Cor
 {
@@ -15,6 +14,7 @@ namespace Cor
         [SerializeField] Transform point;
         [SerializeField] PlayerCharacterSkin _playerCharacterSkin;
         [SerializeField] ParticleSystem effectOpenPart;
+        [SerializeField] SceneLoader _sceneLoader;
         [SerializeField] private int indexProgress;
 
         Tutorial _tutorial;
@@ -78,9 +78,9 @@ namespace Cor
 
         private IEnumerator IE_ExitLobby()
         {
-            yield return new WaitForSeconds(3.2f);
+            yield return new WaitForSeconds(2.1f);
 
-            SceneManager.LoadScene(1);
+            _sceneLoader.Loaded(1);
         }
     }
 }
