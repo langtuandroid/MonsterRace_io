@@ -19,7 +19,20 @@ namespace Cor
         CartoonCat,
         Siren,
         Venom,
-        Freddy
+        Freddy,
+        CartoonDog,
+        KissyMissy,
+        BunzoBunny,
+        EvilSonnik,
+        Foxy,
+        FreddyRabbit,
+        RoxanneWolf,
+        CircusBaldy,
+        Animatronic,
+        Demorgoron,
+        Vecna,
+        GlamrockFreddy,
+        ToyChica
     }
 
     public enum GatesType

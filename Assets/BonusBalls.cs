@@ -38,7 +38,7 @@ namespace Cor
                 DOVirtual.DelayedCall(timer, () => ball.SetActive(true));
                 timer += 0.03f;
             }
-            LevelManager.Instance.LevelStart();
+            //LevelManager.Instance.LevelStart();
         }
     }
 }

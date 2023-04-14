@@ -6710,7 +6710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterColorType: 4
-  monsterTypes: 010000000000000002000000030000000400000005000000
+  monsterTypes: 000000000300000004000000010000000200000005000000
   nameCharacter: 
   colorCharacter: {r: 0.93333334, g: 0.24313726, b: 0.27450982, a: 1}
   basket: {fileID: 6114698477292880774}

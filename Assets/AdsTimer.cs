@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 namespace Cor
 {
@@ -8,8 +8,12 @@ namespace Cor
     {
         #region Variables
 
+        [SerializeField] GameObject screenTimer;
+        [SerializeField] Slider sliderTimer;
+        [SerializeField] Text textCouter;
         [SerializeField] private float timer;
         [SerializeField] private float timeToShow;
+        [SerializeField] private bool isShowTimer;
         [SerializeField] private bool isBlockTimer;
 
         #endregion
@@ -23,17 +27,35 @@ namespace Cor
 
         private void FixedUpdate()
         {
-            if (isBlockTimer)
-                return;
+            //if (LevelManager.Instance.LvlNumber() == 1)
+            //    return;
 
-            timer += Time.deltaTime;
+            //if (isBlockTimer)
+            //    return;
 
-            if(timer >= timeToShow)
-            {
-                AdsManager.Instance.LoadInterstitial();
-                timer = 0;
-                isBlockTimer = true;
-            }
+            //timer -= Time.deltaTime;
+
+            //if(timer <= 6)
+            //{
+            //    if (!isShowTimer)
+            //    {
+            //        screenTimer.SetActive(true);
+            //        screenTimer.transform.DOScale(1, 0.5f).From(0);
+            //        isShowTimer = true;
+            //    }
+            //}
+
+            //if(timer <= 0)
+            //{
+            //    AdsManager.Instance.ShowInter();
+            //    CloseTimer();
+            //}
+
+            //if (!isShowTimer)
+            //    return;
+
+            //textCouter.text = "0:0" + (int)timer;
+            //sliderTimer.value = timer;
         }
 
         private void StartTimer()
@@ -48,6 +70,10 @@ namespace Cor
 
         private void CloseTimer()
         {
+            if (screenTimer.activeSelf)
+                screenTimer.transform.DOScale(0, 0.5f).OnComplete(() => screenTimer.SetActive(false));
+            timer = 30;
+            isShowTimer = false;
             isBlockTimer = true;
         }
     }

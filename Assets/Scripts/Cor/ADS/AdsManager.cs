@@ -18,77 +18,118 @@ namespace Cor
 
         #region Variables
 
-        [Header("Banner")]
-        private string bannerAdUnitId = "c1586ad841a06c22";
+        private string bannerAdUnitId = "ca13aa5cf3b4bfbc";
         private bool isDeactiveBanner;
 
-        [Space]
-        [Header("Interstitial")]
-        private string interAdID = "";
+        private string interAdID = "b596f35c134506d4";
         private int retryAttempt;
 
-        [Space]
-        [Header("Rewarder")]
-        private string rewardAdId = "";
+        private string rewardAdId = "5aa20f2c3ce005a6";
         private int retryAttemptReward;
+
+        public static bool IsReadyReward;
+
+        private SkinPart _skinPart;
 
         #endregion
 
         private void Start()
         {
-            MaxSdkCallbacks.Interstitial.OnAdLoadedEvent += OnInterstitialLoadedEvent;
-            MaxSdkCallbacks.Interstitial.OnAdLoadFailedEvent += OnInterstitialLoadFailedEvent;
-            MaxSdkCallbacks.Interstitial.OnAdDisplayedEvent += OnInterstitialDisplayedEvent;
-            MaxSdkCallbacks.Interstitial.OnAdClickedEvent += OnInterstitialClickedEvent;
-            MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += OnInterstitialHiddenEvent;
-            MaxSdkCallbacks.Interstitial.OnAdDisplayFailedEvent += OnInterstitialAdFailedToDisplayEvent;
+            //CheckBannerStatus();
+            //InitzalizationIntersyichalAd();
+            //InitzalizationRewardAd();
 
-            MaxSdkCallbacks.Rewarded.OnAdLoadedEvent += OnRewardedAdLoadedEvent;
-            MaxSdkCallbacks.Rewarded.OnAdLoadFailedEvent += OnRewardedAdLoadFailedEvent;
-            MaxSdkCallbacks.Rewarded.OnAdDisplayedEvent += OnRewardedAdDisplayedEvent;
-            MaxSdkCallbacks.Rewarded.OnAdClickedEvent += OnRewardedAdClickedEvent;
-            MaxSdkCallbacks.Rewarded.OnAdRevenuePaidEvent += OnRewardedAdRevenuePaidEvent;
-            MaxSdkCallbacks.Rewarded.OnAdHiddenEvent += OnRewardedAdHiddenEvent;
-            MaxSdkCallbacks.Rewarded.OnAdDisplayFailedEvent += OnRewardedAdFailedToDisplayEvent;
-            MaxSdkCallbacks.Rewarded.OnAdReceivedRewardEvent += OnRewardedAdReceivedRewardEvent;
-
-            CheckBannerStatus();
-           
-            MaxSdk.SetSdkKey("iBJBZKgGo-0qqAq7TEpTUwQvhiD-rH6vTDqDeKyQxBOFCH-OBJt8nFs7dP_-A715Z1pu4UC6HSTG-EISryHdg2");
-            MaxSdk.SetUserId("USER_ID");
-            MaxSdk.InitializeSdk();
+            //MaxSdk.SetSdkKey("6AQkyPv9b4u7yTtMH9PT40gXg00uJOTsmBOf7hDxa_-FnNZvt_qTLnJAiKeb5-2_T8GsI_dGQKKKrtwZTlCzAR");
+            //MaxSdk.InitializeSdk();
         }
 
         #region BannerActions
 
         private void CheckBannerStatus() 
         {
-            if (!isDeactiveBanner)
-            {
-                MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>
-                {
-                    MaxSdk.CreateBanner(bannerAdUnitId, MaxSdkBase.BannerPosition.BottomCenter);
+            //MaxSdkCallbacks.Banner.OnAdLoadedEvent += OnBannerAdLoadedEvent;
+            //MaxSdkCallbacks.Banner.OnAdLoadFailedEvent += OnBannerAdFailedEvent;
+            //MaxSdkCallbacks.Banner.OnAdClickedEvent += OnBannerAdClickedEvent;
+            //MaxSdkCallbacks.Banner.OnAdRevenuePaidEvent += OnBannerAdRevenuePaidEvent;
+            //if (LevelManager.Instance.LvlNumber() == 1) 
+            //    isDeactiveBanner = true;
+            //if (!isDeactiveBanner)
+            //{
+            //    MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>
+            //    {
+            //        MaxSdk.CreateBanner(bannerAdUnitId, MaxSdkBase.BannerPosition.BottomCenter);
 
-                    MaxSdk.SetBannerBackgroundColor(bannerAdUnitId, Color.black);
-                    MaxSdk.ShowBanner(bannerAdUnitId);
-                };
-            }
+            //        MaxSdk.SetBannerBackgroundColor(bannerAdUnitId, Color.white);
+            //        MaxSdk.ShowBanner(bannerAdUnitId);
+            //        MaxSdk.SetBannerExtraParameter(bannerAdUnitId, "ad_refresh_seconds", "30");
+            //    };
+            //}
+        }
+
+        private void OnBannerAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+        {
+            // Banner ad is ready to be shown.
+            // If you have already called MaxSdk.ShowBanner(BannerAdUnitId) it will automatically be shown on the next ad refresh.
+            Debug.Log("Banner ad loaded");
+        }
+
+        private void OnBannerAdFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
+        {
+            // Banner ad failed to load. MAX will automatically try loading a new ad internally.
+            Debug.Log("Banner ad failed to load with error code: " + errorInfo.Code);
+        }
+
+        private void OnBannerAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+        {
+            Debug.Log("Banner ad clicked");
+        }
+
+        private void OnBannerAdRevenuePaidEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+        {
+            // Banner ad revenue paid. Use this callback to track user revenue.
+            Debug.Log("Banner ad revenue paid");
+
+            // Ad revenue
+            double revenue = adInfo.Revenue;
+
+            // Miscellaneous data
+            string countryCode = MaxSdk.GetSdkConfiguration().CountryCode; // "US" for the United States, etc - Note: Do not confuse this with currency code which is "USD" in most cases!
+            string networkName = adInfo.NetworkName; // Display name of the network that showed the ad (e.g. "AdColony")
+            string adUnitIdentifier = adInfo.AdUnitIdentifier; // The MAX Ad Unit ID
+            string placement = adInfo.Placement; // The placement this ad's postbacks are tied to
         }
 
         #endregion
 
         #region InterstitionalActions
 
-        public void LoadInterstitial()
+        public void ShowInter()
         {
-            MaxSdk.LoadInterstitial(interAdID);
+            //MaxSdk.ShowInterstitial(interAdID);
+            //LevelManager.Instance.LevelPause();
+        }
+
+        private void LoadInterstitial()
+        {
+           // MaxSdk.LoadInterstitial(interAdID);
+        }
+
+        private void InitzalizationIntersyichalAd()
+        {
+            //MaxSdkCallbacks.Interstitial.OnAdLoadedEvent += OnInterstitialLoadedEvent;
+            //MaxSdkCallbacks.Interstitial.OnAdLoadFailedEvent += OnInterstitialLoadFailedEvent;
+            //MaxSdkCallbacks.Interstitial.OnAdDisplayedEvent += OnInterstitialDisplayedEvent;
+            //MaxSdkCallbacks.Interstitial.OnAdClickedEvent += OnInterstitialClickedEvent;
+            //MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += OnInterstitialHiddenEvent;
+            //MaxSdkCallbacks.Interstitial.OnAdDisplayFailedEvent += OnInterstitialAdFailedToDisplayEvent;
+
+            //LoadInterstitial();
         }
 
         private void OnInterstitialLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
-            LevelManager.Instance.LevelPause();
             // Interstitial ad is ready for you to show. MaxSdk.IsInterstitialReady(adUnitId) now returns 'true'
-            MaxSdk.ShowInterstitial(adUnitId);
+            Debug.Log(adUnitId);
             // Reset retry attempt
             retryAttempt = 0;
         }
@@ -114,11 +155,13 @@ namespace Cor
 
         private void OnInterstitialClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) 
         {
+            LoadInterstitial();
             Debug.Log("AddcClicked");
         }
 
         private void OnInterstitialHiddenEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
+            LoadInterstitial();
             LevelManager.Instance.LevelContinue();
         }
 
@@ -126,16 +169,47 @@ namespace Cor
 
         #region RewarderActions
 
-        public void LoadRewardedAd()
+        public void CheckReadyReward()
+        {
+            if (MaxSdk.IsRewardedAdReady(rewardAdId))
+            {
+                IsReadyReward = true;
+            }
+            else
+            {
+                IsReadyReward = false;
+            }
+        }
+
+        public void PartReward(SkinPart skinPart)
+        {
+            _skinPart = skinPart;
+            MaxSdk.ShowRewardedAd(rewardAdId);
+        }
+
+        private void InitzalizationRewardAd()
+        {
+            //MaxSdkCallbacks.Rewarded.OnAdLoadedEvent += OnRewardedAdLoadedEvent;
+            //MaxSdkCallbacks.Rewarded.OnAdLoadFailedEvent += OnRewardedAdLoadFailedEvent;
+            //MaxSdkCallbacks.Rewarded.OnAdDisplayedEvent += OnRewardedAdDisplayedEvent;
+            //MaxSdkCallbacks.Rewarded.OnAdClickedEvent += OnRewardedAdClickedEvent;
+            //MaxSdkCallbacks.Rewarded.OnAdRevenuePaidEvent += OnRewardedAdRevenuePaidEvent;
+            //MaxSdkCallbacks.Rewarded.OnAdHiddenEvent += OnRewardedAdHiddenEvent;
+            //MaxSdkCallbacks.Rewarded.OnAdDisplayFailedEvent += OnRewardedAdFailedToDisplayEvent;
+            //MaxSdkCallbacks.Rewarded.OnAdReceivedRewardEvent += OnRewardedAdReceivedRewardEvent;
+
+            //LoadRewardedAd();
+        }
+
+        private void LoadRewardedAd()
         {
             MaxSdk.LoadRewardedAd(rewardAdId);
         }
 
         private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
-            // Rewarded ad is ready for you to show. MaxSdk.IsRewardedAdReady(adUnitId) now returns 'true'.
-            MaxSdk.ShowRewardedAd(adUnitId);
-            // Reset retry attempt
+            IsReadyReward = true;
+            Debug.Log(adUnitId);
             retryAttemptReward = 0;
         }
 
@@ -157,18 +231,34 @@ namespace Cor
             LoadRewardedAd();
         }
 
-        private void OnRewardedAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) { }
+        private void OnRewardedAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) 
+        {
+            LoadRewardedAd();
+        }
 
         private void OnRewardedAdHiddenEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
+            LoadRewardedAd();
         }
 
         private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward, MaxSdkBase.AdInfo adInfo)
         {
+            ClaimReward();
+            Debug.Log("ClaimReward");
         }
 
         private void OnRewardedAdRevenuePaidEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
+
+        }
+
+        private void ClaimReward()
+        {
+            if(_skinPart != null)
+            {
+                _skinPart.AddCount();
+            }
+            LoadRewardedAd();
         }
 
         #endregion

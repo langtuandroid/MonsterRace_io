@@ -9,7 +9,8 @@ namespace Cor
 
         [SerializeField] Image[] lvlProgressImg;
         [SerializeField] Text[] textLvls;
-        [SerializeField] GameObject[] heads;
+        [SerializeField] Image head;
+        [SerializeField] Sprite[] heads;
         [SerializeField] private int indexProgress;
         //??
         [SerializeField] Sprite[] img1;
@@ -32,8 +33,7 @@ namespace Cor
 
         public void CheckProgress()
         {
-            foreach(var i in heads) { i.SetActive(false); }
-            heads[_skinsController.GetIndexProgress()].SetActive(true);
+            head.sprite = heads[_skinsController.GetIndexProgress()];
             int progress = LevelManager.Instance.LvlNumber() - 1;
             lvlProgressImg[0].sprite = img1[progress];
             lvlProgressImg[1].sprite = img2[progress];

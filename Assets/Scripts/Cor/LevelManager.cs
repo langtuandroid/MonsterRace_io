@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -59,13 +60,23 @@ namespace Cor
             return lvlIndex;
         }
 
-        public void LevelStart()
+        private void Start()
         {
+            if (isMain)
+                return;
+
+            StartCoroutine(IE_LevelStart());
+        }
+
+        public IEnumerator IE_LevelStart()
+        {
+            yield return new WaitForSeconds(0.2f);
+
             OnLevelStart.Invoke();
             _analytics.LoadData();
             _analytics.NewAttempt();
             _analytics.LevelStartEvent();
-            UIManager.Instance.StartScreen(false);
+            //UIManager.Instance.StartScreen(false);
             UIManager.Instance.PointerScreen(true);
             UIManager.Instance.LeaderboardScreen(true);
         }

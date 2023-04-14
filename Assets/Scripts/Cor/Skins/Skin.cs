@@ -71,7 +71,7 @@ namespace Cor
             {
                 punchSkin.DOPlay();
                 fragments[ammountFramgents].material = mat;
-                _partsSkinSaver.AddNewIndex(ids[ammountFramgents], indx[ammountFramgents]);
+                _partsSkinSaver.AddNewID(ids[ammountFramgents]);
                 UIManager.Instance.SettingsButtonScreen(false);
                 UIManager.Instance.MoneyScreen(false);
                 UIManager.Instance.RewardScreen(true);

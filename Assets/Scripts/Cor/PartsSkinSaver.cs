@@ -19,9 +19,9 @@ namespace Cor
             Load();
         }
 
-        public void AddNewIndex(string _newId, int idList)
+        public void AddNewID(string _newId)
         {
-            partsID[idList] = _newId;
+            partsID.Add(_newId);
             Save();
         }
 

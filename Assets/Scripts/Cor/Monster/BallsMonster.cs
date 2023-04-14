@@ -34,23 +34,62 @@ namespace Cor
                 case CharacterMonsterType.HuggyWuggy:
                     montserHeads[0].SetActive(true);
                     break;
-                case CharacterMonsterType.MotherSpider:
+                case CharacterMonsterType.CartoonCat:
                     montserHeads[1].SetActive(true);
                     break;
-                case CharacterMonsterType.Baldy:
+                case CharacterMonsterType.Siren:
                     montserHeads[2].SetActive(true);
                     break;
-                case CharacterMonsterType.CartoonCat:
+                case CharacterMonsterType.Baldy:
                     montserHeads[3].SetActive(true);
                     break;
-                case CharacterMonsterType.Siren:
+                case CharacterMonsterType.CartoonDog:
                     montserHeads[4].SetActive(true);
                     break;
-                case CharacterMonsterType.Venom:
+                case CharacterMonsterType.KissyMissy:
                     montserHeads[5].SetActive(true);
                     break;
-                case CharacterMonsterType.Freddy:
+                case CharacterMonsterType.BunzoBunny:
                     montserHeads[6].SetActive(true);
+                    break;
+                case CharacterMonsterType.EvilSonnik:
+                    montserHeads[7].SetActive(true);
+                    break;
+                case CharacterMonsterType.Freddy:
+                    montserHeads[8].SetActive(true);
+                    break;
+                case CharacterMonsterType.Foxy:
+                    montserHeads[9].SetActive(true);
+                    break;
+                case CharacterMonsterType.FreddyRabbit:
+                    montserHeads[10].SetActive(true);
+                    break;
+                case CharacterMonsterType.MotherSpider:
+                    montserHeads[11].SetActive(true);
+                    break;
+                case CharacterMonsterType.RoxanneWolf:
+                    montserHeads[12].SetActive(true);
+                    break;
+                case CharacterMonsterType.CircusBaldy:
+                    montserHeads[13].SetActive(true);
+                    break;
+                case CharacterMonsterType.Animatronic:
+                    montserHeads[14].SetActive(true);
+                    break;
+                case CharacterMonsterType.Demorgoron:
+                    montserHeads[15].SetActive(true);
+                    break;
+                case CharacterMonsterType.Vecna:
+                    montserHeads[16].SetActive(true);
+                    break;
+                case CharacterMonsterType.Venom:
+                    montserHeads[17].SetActive(true);
+                    break;
+                case CharacterMonsterType.GlamrockFreddy:
+                    montserHeads[18].SetActive(true);
+                    break;
+                case CharacterMonsterType.ToyChica:
+                    montserHeads[19].SetActive(true);
                     break;
             }
         }

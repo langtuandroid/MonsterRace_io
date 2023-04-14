@@ -1,10 +1,11 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Cor
 {
     public class ButtonManager : MonoBehaviour
     {
+        [SerializeField] SceneLoader _sceneLoader;
+
         public void Continue()
         {
             UIManager.Instance.MoneyScreen(true);
@@ -15,18 +16,13 @@ namespace Cor
         public void RestartLevel()
         {
             MoneyWallet.Instance.MoneyPlus(50);
-            SceneLoader(0);
+            _sceneLoader.Loaded(0);
         }
 
         public void NextLevel()
         {
             MoneyWallet.Instance.MoneyPlus(100);
-            SceneLoader(0);
-        }
-
-        private void SceneLoader(int indexScene)
-        {
-            SceneManager.LoadScene(indexScene);
+            _sceneLoader.Loaded(0);
         }
     }
 }
