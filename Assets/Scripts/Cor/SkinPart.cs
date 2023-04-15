@@ -33,6 +33,8 @@ namespace Cor
         [Header("RewardPart")]
         [SerializeField] GameObject buttonReward;
         [SerializeField] GameObject lockRWPopup;
+        [SerializeField] GameObject loadIcon;
+        [SerializeField] GameObject rwIcon;
         [SerializeField] Text counterRW;
         [SerializeField] private int ammountRW;
         [SerializeField] private int maxRW;
@@ -76,6 +78,22 @@ namespace Cor
             CheckPartForPrice();
             if(!isMoneyPart && !isRewardPart) 
                 if (canvas != null) canvas.SetActive(false);
+        }
+
+        private void FixedUpdate()
+        {
+            if (!isRewardPart)
+                return;
+
+            if (AdsManager.IsReadyReward) 
+            {
+                loadIcon.SetActive(false);
+                rwIcon.SetActive(true);
+                return;
+            }
+
+            loadIcon.SetActive(true);
+            rwIcon.SetActive(false);
         }
 
         private void Update()

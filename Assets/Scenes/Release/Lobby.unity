@@ -437,6 +437,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -529,6 +531,8 @@ MonoBehaviour:
   canvas: {fileID: 773632391}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -536,7 +540,7 @@ MonoBehaviour:
   buttonPrice: {fileID: 623345709}
   counterMoney: {fileID: 1970489936}
   price: 200
-  isMoneyPart: 0
+  isMoneyPart: 1
 --- !u!65 &12954024
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -961,6 +965,11 @@ Transform:
   m_Father: {fileID: 1118034548}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &35143601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 25107391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &36481917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1102,8 @@ MonoBehaviour:
   canvas: {fileID: 1066459230}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -1100,7 +1111,7 @@ MonoBehaviour:
   buttonPrice: {fileID: 1281600822}
   counterMoney: {fileID: 846017994}
   price: 300
-  isMoneyPart: 0
+  isMoneyPart: 1
 --- !u!65 &44122880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2200,6 +2211,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -2318,10 +2331,12 @@ MonoBehaviour:
   canvas: {fileID: 1600438799}
   buttonReward: {fileID: 1600438798}
   lockRWPopup: {fileID: 1600438796}
+  loadIcon: {fileID: 831244864}
+  rwIcon: {fileID: 502655632}
   counterRW: {fileID: 1600438797}
   ammountRW: 0
   maxRW: 2
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -2598,6 +2613,8 @@ MonoBehaviour:
   canvas: {fileID: 666526282}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -2605,7 +2622,7 @@ MonoBehaviour:
   buttonPrice: {fileID: 541277434}
   counterMoney: {fileID: 1172031874}
   price: 100
-  isMoneyPart: 0
+  isMoneyPart: 1
 --- !u!65 &153949918
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2633,7 +2650,7 @@ Transform:
   m_Children:
   - {fileID: 1843908623}
   m_Father: {fileID: 621103362}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &154871426 stripped
 GameObject:
@@ -2816,6 +2833,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -3090,6 +3109,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170761441}
   m_Mesh: {fileID: 111624194737806576, guid: 668c95e7907cad049ac6382aeb596bcb, type: 3}
+--- !u!1 &173790249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1894272913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &174282139
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,6 +3169,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -3767,10 +3793,12 @@ MonoBehaviour:
   canvas: {fileID: 1727903807}
   buttonReward: {fileID: 2145731541}
   lockRWPopup: {fileID: 189199684}
+  loadIcon: {fileID: 515199694}
+  rwIcon: {fileID: 399360975}
   counterRW: {fileID: 1114322495}
   ammountRW: 0
   maxRW: 3
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -3859,10 +3887,12 @@ MonoBehaviour:
   canvas: {fileID: 1649187166}
   buttonReward: {fileID: 1649187165}
   lockRWPopup: {fileID: 1649187163}
+  loadIcon: {fileID: 562868565}
+  rwIcon: {fileID: 1739992259}
   counterRW: {fileID: 1649187164}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -4079,6 +4109,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3f402931ab206641bda9702a21b59b3, type: 3}
+--- !u!1 &239709737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 8228376474112226755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &242140683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 433904, guid: 3f97cdb2dde8d7f44a37ce3a93c2bf69, type: 3}
@@ -4191,6 +4226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &278011012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1216349022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &280874866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4658,6 +4698,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -4898,6 +4940,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -5121,6 +5165,11 @@ GameObject:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8228376473344187437, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 1091159252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &368639067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1173735410}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &371053656
 PrefabInstance:
@@ -5349,6 +5398,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -5370,6 +5421,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &399360975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1732105343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &403041918
 GameObject:
   m_ObjectHideFlags: 0
@@ -5641,10 +5697,12 @@ MonoBehaviour:
   canvas: {fileID: 586337101}
   buttonReward: {fileID: 586337100}
   lockRWPopup: {fileID: 586337098}
+  loadIcon: {fileID: 1291193091}
+  rwIcon: {fileID: 1781524526}
   counterRW: {fileID: 586337099}
   ammountRW: 0
   maxRW: 2
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -6042,6 +6100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 087da436576d35542825d392925d79c4, type: 3}
+--- !u!1 &454171054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 755803691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &456273455
 GameObject:
   m_ObjectHideFlags: 0
@@ -6097,6 +6160,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -7051,6 +7116,11 @@ Transform:
   m_Father: {fileID: 210983485}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &502655632 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1600438794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &508728938
 GameObject:
   m_ObjectHideFlags: 0
@@ -7106,6 +7176,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -7182,6 +7254,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -7203,6 +7277,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &515199694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1732105343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &516023427
 GameObject:
   m_ObjectHideFlags: 0
@@ -7499,10 +7578,12 @@ MonoBehaviour:
   canvas: {fileID: 854417576}
   buttonReward: {fileID: 1855430525}
   lockRWPopup: {fileID: 1264726492}
+  loadIcon: {fileID: 949964689}
+  rwIcon: {fileID: 1276373983}
   counterRW: {fileID: 44653822}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -7545,6 +7626,11 @@ GameObject:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8228376473344187437, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 755803691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &530329003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 8228376474112226755}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &534046710
 PrefabInstance:
@@ -7822,6 +7908,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -7882,10 +7970,12 @@ MonoBehaviour:
   canvas: {fileID: 1645385783}
   buttonReward: {fileID: 1165672945}
   lockRWPopup: {fileID: 1190934119}
+  loadIcon: {fileID: 1375190863}
+  rwIcon: {fileID: 173790249}
   counterRW: {fileID: 1581585209}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -7917,12 +8007,17 @@ Transform:
   m_Children:
   - {fileID: 1468361825}
   m_Father: {fileID: 621103362}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &557943695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5823819709098924247, guid: c3f402931ab206641bda9702a21b59b3, type: 3}
   m_PrefabInstance: {fileID: 80508757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &562868565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1649187161}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &564516499
 GameObject:
@@ -8142,6 +8237,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -8253,6 +8350,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -9119,10 +9218,10 @@ Transform:
   - {fileID: 885246597}
   - {fileID: 1558278676}
   - {fileID: 650218236}
-  - {fileID: 555783562}
   - {fileID: 1723845660}
-  - {fileID: 153949919}
+  - {fileID: 555783562}
   - {fileID: 1645385789}
+  - {fileID: 153949919}
   - {fileID: 666526283}
   m_Father: {fileID: 1964582954}
   m_RootOrder: 3
@@ -9182,6 +9281,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -9822,10 +9923,12 @@ MonoBehaviour:
   canvas: {fileID: 1723845659}
   buttonReward: {fileID: 548615982}
   lockRWPopup: {fileID: 2091981150}
+  loadIcon: {fileID: 1497712756}
+  rwIcon: {fileID: 1047785104}
   counterRW: {fileID: 1022454822}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -10063,10 +10166,12 @@ MonoBehaviour:
   canvas: {fileID: 944614652}
   buttonReward: {fileID: 168304490}
   lockRWPopup: {fileID: 162605108}
+  loadIcon: {fileID: 2074808134}
+  rwIcon: {fileID: 885203340}
   counterRW: {fileID: 1676731877}
   ammountRW: 0
   maxRW: 3
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -11338,6 +11443,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8228376473344187437, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 723396953}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &736332903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 4446614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &741996382 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6600462344117207661, guid: c3f402931ab206641bda9702a21b59b3, type: 3}
@@ -11515,6 +11625,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8228376473344187435, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 742273775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &743190952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1674781992}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &750564042 stripped
 GameObject:
@@ -11787,6 +11902,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -11946,6 +12063,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -12473,6 +12592,11 @@ Transform:
   m_Father: {fileID: 1543924032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &812678731 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 2115605883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &817922357
 GameObject:
   m_ObjectHideFlags: 0
@@ -12778,6 +12902,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5823819709098924247, guid: c3f402931ab206641bda9702a21b59b3, type: 3}
   m_PrefabInstance: {fileID: 1559820728}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &831244864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1600438794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &838481124
 GameObject:
   m_ObjectHideFlags: 0
@@ -12817,10 +12946,12 @@ MonoBehaviour:
   canvas: {fileID: 2132192083}
   buttonReward: {fileID: 646624271}
   lockRWPopup: {fileID: 1044928604}
+  loadIcon: {fileID: 368639067}
+  rwIcon: {fileID: 929647108}
   counterRW: {fileID: 1924885307}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -12909,6 +13040,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -13173,6 +13306,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -13194,6 +13329,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &863248988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1216349022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &865633122
 GameObject:
   m_ObjectHideFlags: 0
@@ -13226,6 +13366,11 @@ Transform:
   m_Father: {fileID: 1964582954}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &866037718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 592026266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &872327713
 GameObject:
   m_ObjectHideFlags: 0
@@ -13341,6 +13486,11 @@ Transform:
   m_Father: {fileID: 818827190}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &885203340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 953324178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &885246596
 GameObject:
   m_ObjectHideFlags: 0
@@ -13396,6 +13546,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -13456,10 +13608,12 @@ MonoBehaviour:
   canvas: {fileID: 139322207}
   buttonReward: {fileID: 602361872}
   lockRWPopup: {fileID: 893769239}
+  loadIcon: {fileID: 1578691263}
+  rwIcon: {fileID: 35143601}
   counterRW: {fileID: 1073471203}
   ammountRW: 0
   maxRW: 2
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -13836,6 +13990,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -13923,50 +14079,6 @@ MonoBehaviour:
   - ToyChica_Body
   - ToyChica_Legs
   - ToyChica_Arms
-  - Dog_Head
-  - Dog_Body
-  - Dog_Arms
-  - Dog_Legs
-  - Sonnik_Head
-  - Sonnik_Body
-  - Sonnik_Arms
-  - Sonnik_Legs
-  - Bunny_Head
-  - Bunny_Body
-  - Bunny_Arms
-  - Bunny_Legs
-  - KissyMissy_Head
-  - KissyMissy_Body
-  - KissyMissy_Arms
-  - KissyMissy_Legs
-  - Baldy_Head
-  - Baldy_Body
-  - Baldy_Arms
-  - Baldy_Legs
-  - Siren_Head
-  - Siren_Body
-  - Siren_Arms
-  - Siren_Legs
-  - Cat_Head
-  - Cat_Body
-  - Cat_Arms
-  - Cat_Legs
-  - Foxy_Head
-  - Foxy_Body
-  - Foxy_Arms
-  - Foxy_Legs
-  - CircusBaby_Head
-  - CircusBaby_Body
-  - CircusBaby_Arms
-  - CircusBaby_Legs
-  - Rebbit_Head
-  - Rebbit_Body
-  - Rebbit_Arms
-  - Rebbit_Legs
-  - Freddy_Head
-  - Freddy_Body
-  - Freddy_Arms
-  - Freddy_Legs
   backUp:
   - Huggy_Head
   - Huggy_Body
@@ -14283,6 +14395,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928616039}
   m_Mesh: {fileID: -2071962519950956670, guid: 668c95e7907cad049ac6382aeb596bcb, type: 3}
+--- !u!1 &929647108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1173735410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &934160083
 GameObject:
   m_ObjectHideFlags: 0
@@ -14599,6 +14716,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -14620,6 +14739,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &949964689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 958152910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &951802020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14913,6 +15037,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -15126,6 +15252,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -15429,6 +15557,8 @@ MonoBehaviour:
   canvas: {fileID: 1034783436}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -15436,7 +15566,7 @@ MonoBehaviour:
   buttonPrice: {fileID: 1225704590}
   counterMoney: {fileID: 1296281875}
   price: 100
-  isMoneyPart: 0
+  isMoneyPart: 1
 --- !u!65 &965440291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15930,6 +16060,8 @@ MonoBehaviour:
   canvas: {fileID: 1708378294}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -15937,7 +16069,7 @@ MonoBehaviour:
   buttonPrice: {fileID: 1708378293}
   counterMoney: {fileID: 1708378292}
   price: 100
-  isMoneyPart: 0
+  isMoneyPart: 1
 --- !u!65 &996162603
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16365,6 +16497,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -16634,6 +16768,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 457352, guid: 087da436576d35542825d392925d79c4, type: 3}
   m_PrefabInstance: {fileID: 1045638784}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1047785104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1404486268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1049512048
 GameObject:
   m_ObjectHideFlags: 0
@@ -16880,10 +17019,12 @@ MonoBehaviour:
   canvas: {fileID: 2115605888}
   buttonReward: {fileID: 2115605887}
   lockRWPopup: {fileID: 2115605885}
+  loadIcon: {fileID: 812678731}
+  rwIcon: {fileID: 1254941613}
   counterRW: {fileID: 2115605886}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -16950,10 +17091,12 @@ MonoBehaviour:
   canvas: {fileID: 1963457432}
   buttonReward: {fileID: 802394860}
   lockRWPopup: {fileID: 1781071818}
+  loadIcon: {fileID: 2029258169}
+  rwIcon: {fileID: 1393520867}
   counterRW: {fileID: 810329012}
   ammountRW: 0
   maxRW: 2
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -17453,6 +17596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneLoader: {fileID: 0}
+  _adsTimer: {fileID: 0}
 --- !u!1 &1094758259
 GameObject:
   m_ObjectHideFlags: 0
@@ -17849,6 +17993,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -17943,10 +18089,12 @@ MonoBehaviour:
   canvas: {fileID: 902101676}
   buttonReward: {fileID: 1652186768}
   lockRWPopup: {fileID: 1365299506}
+  loadIcon: {fileID: 1194396160}
+  rwIcon: {fileID: 866037718}
   counterRW: {fileID: 1687376158}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -18226,6 +18374,8 @@ MonoBehaviour:
   canvas: {fileID: 2117132930}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -18233,7 +18383,7 @@ MonoBehaviour:
   buttonPrice: {fileID: 2058768776}
   counterMoney: {fileID: 1787053230}
   price: 300
-  isMoneyPart: 0
+  isMoneyPart: 1
 --- !u!65 &1161454467
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18781,10 +18931,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1020376123158855619, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 1894272913}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1194396160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 592026266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1194924977 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6600462344117207661, guid: c3f402931ab206641bda9702a21b59b3, type: 3}
   m_PrefabInstance: {fileID: 1073721042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1195464294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 742273775}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1198365087
 PrefabInstance:
@@ -19116,10 +19276,12 @@ MonoBehaviour:
   canvas: {fileID: 4446619}
   buttonReward: {fileID: 4446618}
   lockRWPopup: {fileID: 4446616}
+  loadIcon: {fileID: 736332903}
+  rwIcon: {fileID: 1306025719}
   counterRW: {fileID: 4446617}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -19208,10 +19370,12 @@ MonoBehaviour:
   canvas: {fileID: 41570543}
   buttonReward: {fileID: 1658586317}
   lockRWPopup: {fileID: 1645798397}
+  loadIcon: {fileID: 1595937580}
+  rwIcon: {fileID: 1814661031}
   counterRW: {fileID: 1313490478}
   ammountRW: 0
   maxRW: 2
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -19395,6 +19559,11 @@ Transform:
   m_Father: {fileID: 143912872}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1248429099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1674781992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252189941
 GameObject:
   m_ObjectHideFlags: 0
@@ -19515,6 +19684,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1254941613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 2115605883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1263924863
 GameObject:
   m_ObjectHideFlags: 0
@@ -19635,6 +19809,11 @@ Transform:
   m_Father: {fileID: 1231073178}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1276373983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 958152910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1281600822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4926958069306640183, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
@@ -19644,6 +19823,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 457352, guid: 087da436576d35542825d392925d79c4, type: 3}
   m_PrefabInstance: {fileID: 1777235593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1291193091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 586337096}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292153783
 GameObject:
@@ -19739,6 +19923,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1306025719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 4446614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1308398832
 GameObject:
   m_ObjectHideFlags: 0
@@ -19953,6 +20142,8 @@ MonoBehaviour:
   canvas: {fileID: 907070102}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -19960,7 +20151,7 @@ MonoBehaviour:
   buttonPrice: {fileID: 1685781423}
   counterMoney: {fileID: 1894795405}
   price: 200
-  isMoneyPart: 0
+  isMoneyPart: 1
 --- !u!65 &1314704216
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20029,10 +20220,12 @@ MonoBehaviour:
   canvas: {fileID: 742273780}
   buttonReward: {fileID: 742273779}
   lockRWPopup: {fileID: 742273777}
+  loadIcon: {fileID: 1784045490}
+  rwIcon: {fileID: 1195464294}
   counterRW: {fileID: 742273778}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -20660,10 +20853,12 @@ MonoBehaviour:
   canvas: {fileID: 3092352}
   buttonReward: {fileID: 704542422}
   lockRWPopup: {fileID: 1800119465}
+  loadIcon: {fileID: 1248429099}
+  rwIcon: {fileID: 743190952}
   counterRW: {fileID: 1655075959}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -20741,10 +20936,12 @@ MonoBehaviour:
   canvas: {fileID: 901280359}
   buttonReward: {fileID: 1434271399}
   lockRWPopup: {fileID: 1084932012}
+  loadIcon: {fileID: 1861504631}
+  rwIcon: {fileID: 1917534173}
   counterRW: {fileID: 219580590}
   ammountRW: 0
   maxRW: 2
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -20815,6 +21012,16 @@ Transform:
   m_Father: {fileID: 857077411}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1365404005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 721447298}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1375190863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1894272913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1379447947
 GameObject:
   m_ObjectHideFlags: 0
@@ -20969,6 +21176,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -21045,6 +21254,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -21081,6 +21292,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1020376123158855619, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 755803691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1393520867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1792972341}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1393946174
 GameObject:
@@ -21224,7 +21440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8228376473344187437, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8228376473344187437, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -21746,6 +21962,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -21913,10 +22131,12 @@ MonoBehaviour:
   canvas: {fileID: 359720548}
   buttonReward: {fileID: 69744438}
   lockRWPopup: {fileID: 840189208}
+  loadIcon: {fileID: 1628619532}
+  rwIcon: {fileID: 1729304985}
   counterRW: {fileID: 1564973744}
   ammountRW: 0
   maxRW: 3
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -22350,6 +22570,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -22371,6 +22593,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1455981963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 721447298}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1456535880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1489282385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1462000026
 GameObject:
   m_ObjectHideFlags: 0
@@ -22911,6 +23143,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5823819709098924247, guid: c3f402931ab206641bda9702a21b59b3, type: 3}
   m_PrefabInstance: {fileID: 1593282749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1497712756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1404486268}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1498872048 stripped
 Transform:
@@ -23502,10 +23739,12 @@ MonoBehaviour:
   canvas: {fileID: 847210984}
   buttonReward: {fileID: 648408216}
   lockRWPopup: {fileID: 2089752949}
+  loadIcon: {fileID: 530329003}
+  rwIcon: {fileID: 239709737}
   counterRW: {fileID: 924153803}
   ammountRW: 0
   maxRW: 3
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -23954,6 +24193,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -24282,6 +24523,11 @@ Transform:
   m_Father: {fileID: 1765896340}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1578691263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 25107391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1579716503
 GameObject:
   m_ObjectHideFlags: 0
@@ -24337,6 +24583,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -24490,6 +24738,11 @@ Transform:
   m_Father: {fileID: 1808769126}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1595937580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 113637808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1596026840
 GameObject:
   m_ObjectHideFlags: 0
@@ -24529,10 +24782,12 @@ MonoBehaviour:
   canvas: {fileID: 981735013}
   buttonReward: {fileID: 719579453}
   lockRWPopup: {fileID: 1717672072}
+  loadIcon: {fileID: 1730749729}
+  rwIcon: {fileID: 1456535880}
   counterRW: {fileID: 1391485797}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -25225,6 +25480,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -25246,6 +25503,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1628619532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1091159252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1630001357
 GameObject:
   m_ObjectHideFlags: 0
@@ -26920,10 +27182,12 @@ MonoBehaviour:
   canvas: {fileID: 990935082}
   buttonReward: {fileID: 1186643319}
   lockRWPopup: {fileID: 1823751694}
+  loadIcon: {fileID: 278011012}
+  rwIcon: {fileID: 863248988}
   counterRW: {fileID: 1644881056}
   ammountRW: 0
   maxRW: 1
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -27362,6 +27626,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8228376473344187437, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 1732105343}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1729304985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1091159252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1730749729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1489282385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1732105343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27499,6 +27773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+--- !u!1 &1739992259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1649187161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1741085939
 GameObject:
   m_ObjectHideFlags: 0
@@ -27650,6 +27929,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -27763,6 +28044,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -27839,10 +28122,12 @@ MonoBehaviour:
   canvas: {fileID: 721447303}
   buttonReward: {fileID: 721447302}
   lockRWPopup: {fileID: 721447300}
+  loadIcon: {fileID: 1365404005}
+  rwIcon: {fileID: 1455981963}
   counterRW: {fileID: 721447301}
   ammountRW: 0
   maxRW: 3
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -27920,6 +28205,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -28229,6 +28516,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1020376123158855619, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 1792972341}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1781524526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 586337096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1781900472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28385,6 +28677,11 @@ Transform:
   m_Father: {fileID: 988680000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1784045490 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 742273775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1785210715
 GameObject:
   m_ObjectHideFlags: 0
@@ -28975,6 +29272,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -29231,6 +29530,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812914931}
   m_CullTransparentMesh: 1
+--- !u!1 &1814661031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 113637808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823751694 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1020376123158855619, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
@@ -29567,6 +29871,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -29954,6 +30260,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6306618832812826258, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
   m_PrefabInstance: {fileID: 958152910}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1861504631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 2069243302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1877026441
 GameObject:
   m_ObjectHideFlags: 0
@@ -30009,6 +30320,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -30283,6 +30596,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -30359,6 +30674,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -30477,7 +30794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8228376473344187437, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8228376473344187437, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -30765,6 +31082,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -30922,6 +31241,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -30998,6 +31319,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -31019,6 +31342,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1917534173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 2069243302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1918066967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31561,6 +31889,8 @@ MonoBehaviour:
   canvas: {fileID: 342984725}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -31568,7 +31898,7 @@ MonoBehaviour:
   buttonPrice: {fileID: 1533235281}
   counterMoney: {fileID: 1831350207}
   price: 100
-  isMoneyPart: 0
+  isMoneyPart: 1
 --- !u!65 &1977478347
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32010,10 +32340,12 @@ MonoBehaviour:
   canvas: {fileID: 524642801}
   buttonReward: {fileID: 312307471}
   lockRWPopup: {fileID: 1391901929}
+  loadIcon: {fileID: 454171054}
+  rwIcon: {fileID: 2035467681}
   counterRW: {fileID: 276460122}
   ammountRW: 0
   maxRW: 3
-  isRewardPart: 0
+  isRewardPart: 1
   buttonPrice: {fileID: 0}
   counterMoney: {fileID: 0}
   price: 0
@@ -32102,6 +32434,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -32316,6 +32650,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027932349}
   m_CullTransparentMesh: 1
+--- !u!1 &2029258169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 1792972341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2033346295
 GameObject:
   m_ObjectHideFlags: 0
@@ -32348,6 +32687,11 @@ Transform:
   m_Father: {fileID: 26800663}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &2035467681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6306618833848636594, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 755803691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2037726410
 GameObject:
   m_ObjectHideFlags: 0
@@ -32448,6 +32792,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -32841,6 +33187,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -32862,6 +33210,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2074808134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7611270525634367445, guid: 5272d4e4cbb66874c9f11685367ce1a1, type: 3}
+  m_PrefabInstance: {fileID: 953324178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079972405
 GameObject:
   m_ObjectHideFlags: 0
@@ -33349,6 +33702,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0
@@ -34891,6 +35246,8 @@ MonoBehaviour:
   canvas: {fileID: 0}
   buttonReward: {fileID: 0}
   lockRWPopup: {fileID: 0}
+  loadIcon: {fileID: 0}
+  rwIcon: {fileID: 0}
   counterRW: {fileID: 0}
   ammountRW: 0
   maxRW: 0

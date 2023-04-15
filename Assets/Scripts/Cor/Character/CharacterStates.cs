@@ -155,8 +155,8 @@ namespace Cor
                 _botMovement.StopMovement(true);
                 _botMovement.PushBot(knockDir);
             }
-            _characterStatesAnimation.KonckAnimation();
 
+            _characterStatesAnimation.KonckAnimation();
             StartCoroutine(IE_WakeUp());
             StartCoroutine(CanMove(1.5f));
         }
