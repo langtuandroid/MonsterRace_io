@@ -474,6 +474,7 @@ MonoBehaviour:
   pointEnd: {fileID: 2708586393347678396}
   points: []
   scrollSpeed: -1
+  speedMovement: 1.5
 --- !u!1 &7804250718526567944
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,14 +498,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7804250718526567944}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.00018847431, y: 0.35998613, z: -0.0001947436, w: 0.93295765}
   m_LocalPosition: {x: -15.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6335355020988347039}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.028, y: 42.199, z: -0.013}
 --- !u!1 &8403256451721816155
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +531,7 @@ Transform:
   m_GameObject: {fileID: 8403256451721816155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.375, y: 0.48735, z: 0.6091875}
+  m_LocalScale: {x: 0.3000001, y: 0.48735002, z: 0.48735008}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6335355020988347039}

@@ -8,7 +8,8 @@ namespace Cor
     {
         [SerializeField] Transform pointEnd;
         [SerializeField] List<GameObject> points;
-        [SerializeField] private float scrollSpeed = 0.5f;
+        [SerializeField] private float scrollSpeed;
+        [SerializeField] private float speedMovement;
         Renderer rend;
 
         private void Start()
@@ -32,7 +33,7 @@ namespace Cor
                 points.RemoveAt(0);
             }
             pos.transform.parent = point.transform;
-            point.transform.DOLocalMove(new Vector3(pointEnd.position.x, pos.position.y, pointEnd.position.z), 1.5f).SetEase(Ease.Linear).OnComplete(() => pos.transform.parent = null);
+            point.transform.DOLocalMove(new Vector3(pointEnd.position.x, pos.position.y, pointEnd.position.z), speedMovement).SetEase(Ease.Linear).OnComplete(() => pos.transform.parent = null);
         }
     }
 }

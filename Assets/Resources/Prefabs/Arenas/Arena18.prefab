@@ -36705,15 +36705,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950815520131659758, guid: 03b6bc1aea5d6e24da6263f718aab07a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.86086
+      value: 0.7218387
       objectReference: {fileID: 0}
     - target: {fileID: 4950815520131659758, guid: 03b6bc1aea5d6e24da6263f718aab07a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.86086
+      value: 0.7218387
       objectReference: {fileID: 0}
     - target: {fileID: 4950815520131659758, guid: 03b6bc1aea5d6e24da6263f718aab07a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.86086
+      value: 0.7218387
       objectReference: {fileID: 0}
     - target: {fileID: 4950815520131659758, guid: 03b6bc1aea5d6e24da6263f718aab07a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36807,8 +36807,8 @@ MonoBehaviour:
   points:
   - {fileID: 1202166658234247459}
   - {fileID: 8588866293872074146}
-  speedMovement: 0.01
-  speedRotate: 7
+  speedMovement: 1.8
+  speedRotate: 10
 --- !u!4 &2455629116485751199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4950815520131659758, guid: 03b6bc1aea5d6e24da6263f718aab07a, type: 3}
