@@ -49932,10 +49932,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9152117661204189746}
-  - component: {fileID: 9152117661204189748}
   - component: {fileID: 9152117661204189747}
   - component: {fileID: 9152117661204189750}
   - component: {fileID: 9152117661204189749}
+  - component: {fileID: 9152117661204189751}
+  - component: {fileID: 9152117661204189752}
   m_Layer: 0
   m_Name: LobiCharacter
   m_TagString: Character
@@ -52060,20 +52061,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &9152117661204189748
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8379239753984755848}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 2.2146146
-  m_Height: 4.6145973
-  m_Direction: 1
-  m_Center: {x: -0, y: 0.84729284, z: -0.21140331}
 --- !u!114 &9152117661204189749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52240,3 +52227,29 @@ MonoBehaviour:
   buttonRight: {fileID: 1770529184}
   indexProgress: 0
   scroll: 0
+--- !u!65 &9152117661204189751
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379239753984755848}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.0324554, y: 5.0078673, z: 0.36091417}
+  m_Center: {x: 0.079499416, y: 2.018799, z: 0.6315304}
+--- !u!65 &9152117661204189752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379239753984755848}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.7193074, y: 0.039014917, z: 3.3495986}
+  m_Center: {x: 0.046394933, y: 0.87685865, z: 1.1747973}
