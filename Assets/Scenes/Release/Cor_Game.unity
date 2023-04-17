@@ -72056,7 +72056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName:
-  - Arena1
+  - Arena13
   - Arena2
   - Arena3
   - Arena4
@@ -72068,14 +72068,14 @@ MonoBehaviour:
   - Arena10
   - Arena11
   - Arena12
-  - Arena1
-  - Arena1
-  - Arena1
+  - Arena13
+  - Arena14
+  - Arena15
   - Arena16
   - Arena17
   - Arena18
   - Arena19
-  - Arena2
+  - Arena20
   - Arena21
 --- !u!1 &804582807
 GameObject:

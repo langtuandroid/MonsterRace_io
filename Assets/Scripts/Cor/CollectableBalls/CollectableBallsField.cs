@@ -192,7 +192,7 @@ namespace Cor
         {
             for (int i = 0; i < length; i++)
             {
-                _position = new Vector3(points[i].position.x, transform.position.y, points[i].position.z);
+                _position = new Vector3(points[i].position.x, points[i].position.y, points[i].position.z);
 
                 FirstSpawn(_position);
             }

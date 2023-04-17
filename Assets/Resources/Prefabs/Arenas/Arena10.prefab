@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 5430790303895495359}
   - component: {fileID: 5430790303895495358}
   m_Layer: 0
-  m_Name: Platform.Arena4
+  m_Name: Platform.Arena10
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -832,7 +832,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 6fe2b275151cced47b2418ca3c5c870a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d4b8c34b9f4d3b24899576db3815ae72, type: 2}
 --- !u!114 &5430790303895495358
 MonoBehaviour:
   m_ObjectHideFlags: 0

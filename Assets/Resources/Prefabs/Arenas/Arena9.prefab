@@ -2378,7 +2378,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3947087196396485880}
   - component: {fileID: 7726976378638913294}
-  - component: {fileID: 7726976378638913295}
   m_Layer: 0
   m_Name: Platform.Arena9
   m_TagString: Untagged
@@ -2435,19 +2434,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: bb9f4c53eb6e2484193d73c35cbe2368, type: 2}
---- !u!114 &7726976378638913295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4435216914255717954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1c59f069511a54478defc103980a3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_NavMeshData: {fileID: 23800000, guid: 2f03b2b9922719b408ee42cc8505c72e, type: 2}
 --- !u!1 &4687772190850522301
 GameObject:
   m_ObjectHideFlags: 0
