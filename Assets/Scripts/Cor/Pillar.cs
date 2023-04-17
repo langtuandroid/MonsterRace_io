@@ -17,7 +17,7 @@ namespace Cor
             LevelManager.Instance.OnLevelStart.AddListener(ActivityLet);
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (!isActive)
                 return;
@@ -29,7 +29,7 @@ namespace Cor
                     index = 0;
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, points[index].position, speedMovement);
+            transform.position = Vector3.MoveTowards(transform.position, points[index].position, speedMovement * Time.deltaTime);
         }
 
         private void ActivityLet()

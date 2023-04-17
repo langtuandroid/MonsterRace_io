@@ -93705,6 +93705,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3998516710634909646, guid: 3b041562db552944087dc745b62c6783, type: 3}
+      propertyPath: speedMovement
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b041562db552944087dc745b62c6783, type: 3}
 --- !u!4 &5947966281658189710 stripped
@@ -93770,6 +93774,10 @@ PrefabInstance:
     - target: {fileID: 1316003655276119209, guid: 3b041562db552944087dc745b62c6783, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998516710634909646, guid: 3b041562db552944087dc745b62c6783, type: 3}
+      propertyPath: speedMovement
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b041562db552944087dc745b62c6783, type: 3}
@@ -94459,6 +94467,10 @@ PrefabInstance:
     - target: {fileID: 1316003655276119209, guid: 3b041562db552944087dc745b62c6783, type: 3}
       propertyPath: m_Name
       value: Pillar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998516710634909646, guid: 3b041562db552944087dc745b62c6783, type: 3}
+      propertyPath: speedMovement
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b041562db552944087dc745b62c6783, type: 3}

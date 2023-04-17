@@ -132,9 +132,9 @@ namespace Cor
         {
             lvlIndex++;
             lvlNumber++;
-            if(lvlNumber >= 13) 
+            if(lvlNumber >= 22) 
             { 
-                lvlIndex = Random.Range(0, 11);
+                lvlIndex = Random.Range(0, 20);
             }
 
             _analytics.LevelLoop();

@@ -21,11 +21,11 @@ namespace Cor
         [SerializeField] private bool isMonsterStage;
         [SerializeField] private bool isDie;
 
-        ArenaController _arena;
-        CollectableMonster _monster;
-        BallsMonster _ballsMonster;
-        SkinsController skinsController;
-        Skin skin;
+        private ArenaController _arena;
+        private CollectableMonster _monster;
+        private BallsMonster _ballsMonster;
+        private SkinsController skinsController;
+        private Skin skin;
 
         #endregion
 
@@ -72,6 +72,11 @@ namespace Cor
                 return;
             }
             _botMovement.transform.parent = null;
+        }
+
+        public void SetFlying(bool isFlying)
+        {
+            _characterStatesAnimation.FlyingAnimation(isFlying);
         }
 
         public void CharacterTransformation(CollectableMonster monster)

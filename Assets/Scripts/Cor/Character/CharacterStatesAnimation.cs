@@ -53,6 +53,19 @@ namespace Cor
             _animMonster.enabled = false;
         }
 
+        public void FlyingAnimation(bool isFlying)
+        {
+            if(isMonsterStage)
+            {
+                if (_animMonster != null)
+                    _animMonster.SetBool("Flying", isFlying);
+                return;
+            }
+
+            if (_animCharacter != null)
+                _animCharacter.SetBool("Flying", isFlying);
+        }
+
         public void KonckAnimation()
         {
             _animCharacter.SetTrigger("Knock");

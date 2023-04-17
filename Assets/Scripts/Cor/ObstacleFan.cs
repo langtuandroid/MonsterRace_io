@@ -45,7 +45,9 @@ namespace Cor
 
             transform.position = Vector3.MoveTowards(transform.position, points[indexMovement].position, speedMovement);
         }
+
         public float testDist;
+
         private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.tag == "Character")
