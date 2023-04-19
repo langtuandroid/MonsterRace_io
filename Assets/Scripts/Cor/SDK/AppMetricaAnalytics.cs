@@ -15,6 +15,8 @@ namespace Cor.SDK
 
         #endregion
 
+        #region GameplayEvents
+
         public void LevelStartEvent()
         {
             _time = (int)Time.time;
@@ -68,7 +70,7 @@ namespace Cor.SDK
         public void LevelLoop()
         {
             _loopAttempt++;
-            if (_loopAttempt >= 12)
+            if (_loopAttempt >= 20)
             {
                 _levelLoop++;
                 _levelName = 1;
@@ -76,6 +78,8 @@ namespace Cor.SDK
             }
             SaveData();
         }
+
+        #endregion
 
         #region Load&Save
 

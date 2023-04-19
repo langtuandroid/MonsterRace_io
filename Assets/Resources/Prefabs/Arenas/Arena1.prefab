@@ -10494,8 +10494,8 @@ MonoBehaviour:
   - {fileID: 7634310230976982876}
   collectableMonsters:
   - {fileID: 866763198698514326}
-  - {fileID: 1320423723171685595}
   - {fileID: 1320423721776582181}
+  - {fileID: 1320423723171685595}
   gatesTypes: 0000000001000000
   points:
   - {fileID: 8279945833341997304}

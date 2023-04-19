@@ -44,8 +44,8 @@ namespace Cor
         private bool isPartOpen;
         private bool isSetProgress;
 
-        SkinsController _skinsController;
-        PartsSkinSaver _partsSkinSaver;
+        [SerializeField] SkinsController _skinsController;
+        [SerializeField] PartsSkinSaver _partsSkinSaver;
 
         #endregion
 
@@ -58,8 +58,6 @@ namespace Cor
         {
             LoadSave();
             CheckStatusSkin();
-            _skinsController = GameObject.FindObjectOfType<SkinsController>();
-            _partsSkinSaver = GameObject.FindObjectOfType<PartsSkinSaver>();
         }
 
         public void ActiveFragmentsSkin()
@@ -74,7 +72,6 @@ namespace Cor
                 _partsSkinSaver.AddNewID(ids[ammountFramgents]);
                 UIManager.Instance.SettingsButtonScreen(false);
                 UIManager.Instance.MoneyScreen(false);
-                UIManager.Instance.RewardScreen(true);
                 
                 SaveSkin();
                 isPartOpen = true;
@@ -160,11 +157,13 @@ namespace Cor
 
         public void OpenFramgentSkin()
         {
+            LoadSave();
+
             ActiveFragmentsSkin();
             effect.SetActive(false);
             ammountFramgents++;
+            next.SetActive(true);
 
-          
             if (ammountFramgents >= 4)
                 isOpenSkin = true;
 

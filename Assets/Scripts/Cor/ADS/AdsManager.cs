@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Cor.SDK;
 
 namespace Cor
 {
@@ -27,11 +28,32 @@ namespace Cor
         private string rewardAdId = "5aa20f2c3ce005a6";
         private int retryAttemptReward;
 
+        public static bool IsReadyInter;
         public static bool IsReadyReward;
 
+        private string _placement;
+
+        private RewardAdsType _rewardAdsType;
+
+        private AppMetricaAnalytics _appMetricaAnalytics;
+        private AdsTimer _adsTimer;
         private SkinPart _skinPart;
+        private MultiplyMoneyButton _moneyButton;
+        private BonusButton _bonusButton;
 
         #endregion
+
+        private bool CheckInternetConnection()
+        {
+            if (Application.internetReachability != NetworkReachability.NotReachable)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         private void Start()
         {
@@ -41,6 +63,8 @@ namespace Cor
 
             MaxSdk.SetSdkKey("6AQkyPv9b4u7yTtMH9PT40gXg00uJOTsmBOf7hDxa_-FnNZvt_qTLnJAiKeb5-2_T8GsI_dGQKKKrtwZTlCzAR");
             MaxSdk.InitializeSdk();
+
+            _adsTimer = GameObject.FindObjectOfType<AdsTimer>();
         }
 
         #region BannerActions
@@ -70,23 +94,21 @@ namespace Cor
 
         private void OnBannerAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
-            Debug.Log("Banner ad loaded");
+         
         }
 
         private void OnBannerAdFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
         {
-            Debug.Log("Banner ad failed to load with error code: " + errorInfo.Code);
+         
         }
 
         private void OnBannerAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
-            Debug.Log("Banner ad clicked");
+        
         }
 
         private void OnBannerAdRevenuePaidEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
-            Debug.Log("Banner ad revenue paid");
-
             double revenue = adInfo.Revenue;
 
             string countryCode = MaxSdk.GetSdkConfiguration().CountryCode; // "US" for the United States, etc - Note: Do not confuse this with currency code which is "USD" in most cases!
@@ -99,9 +121,22 @@ namespace Cor
 
         #region InterstitionalActions
 
-        public void ShowInter()
+        public void ShowInter(string placement)
         {
+            if (!IsReadyInter)
+            {
+                if (!IsReadyReward)
+                {
+                    AdsAvailableEvent("interstitial", "not_available");
+                    return;
+                }
+                return;
+            }
+
             MaxSdk.ShowInterstitial(interAdID);
+            _placement = placement;
+            AdsAvailableEvent("interstitial", "success");
+            AdsStartedEvent("interstitial", "success");
             LevelManager.Instance.LevelPause();
         }
 
@@ -124,35 +159,32 @@ namespace Cor
 
         private void OnInterstitialLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
-            // Interstitial ad is ready for you to show. MaxSdk.IsInterstitialReady(adUnitId) now returns 'true'
-            Debug.Log(adUnitId);
-            // Reset retry attempt
+            IsReadyInter = true;
             retryAttempt = 0;
         }
 
         private void OnInterstitialLoadFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
         {
-            // Interstitial ad failed to load 
-            // AppLovin recommends that you retry with exponentially higher delays, up to a maximum delay (in this case 64 seconds)
-
             retryAttempt++;
             double retryDelay = Math.Pow(2, Math.Min(6, retryAttempt));
 
             Invoke("LoadInterstitial", (float)retryDelay);
         }
 
-        private void OnInterstitialDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) { }
+        private void OnInterstitialDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) 
+        {
+            AdsWatchEvent("interstitial", "watched");
+        }
 
         private void OnInterstitialAdFailedToDisplayEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo, MaxSdkBase.AdInfo adInfo)
         {
-            // Interstitial ad failed to display. AppLovin recommends that you load the next ad.
             LoadInterstitial();
         }
 
         private void OnInterstitialClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) 
         {
             LoadInterstitial();
-            Debug.Log("AddcClicked");
+            AdsWatchEvent("interstitial", "clicked");
         }
 
         private void OnInterstitialHiddenEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -165,22 +197,63 @@ namespace Cor
 
         #region RewarderActions
 
-        public void CheckReadyReward()
-        {
-            if (MaxSdk.IsRewardedAdReady(rewardAdId))
-            {
-                IsReadyReward = true;
-            }
-            else
-            {
-                IsReadyReward = false;
-            }
-        }
-
         public void PartReward(SkinPart skinPart)
         {
+            if (!IsReadyReward)
+            {
+                AdsAvailableEvent("rewarded", "not_available");
+                return;
+            }
             _skinPart = skinPart;
+            _rewardAdsType = RewardAdsType.PartSkin;
+            _placement = "part_open";
             MaxSdk.ShowRewardedAd(rewardAdId);
+            AdsAvailableEvent("rewarded", "success");
+            AdsStartedEvent("rewarded", "success");
+        }
+
+        public void MultyplyMoneyReward(MultiplyMoneyButton moneyButton)
+        {
+            if (!IsReadyReward)
+            {
+                AdsAvailableEvent("rewarded", "not_available");
+                return;
+            }
+            _moneyButton = moneyButton;
+            _rewardAdsType = RewardAdsType.MultiplyMoney;
+            _placement = "lose_getX2";
+            MaxSdk.ShowRewardedAd(rewardAdId);
+            AdsAvailableEvent("rewarded", "success");
+            AdsStartedEvent("rewarded", "success");
+        }
+
+        public void BonusMoneyReward(BonusButton bonusButton)
+        {
+            if (!IsReadyReward)
+            {
+                AdsAvailableEvent("rewarded", "not_available");
+                return;
+            }
+            _bonusButton = bonusButton;
+            _rewardAdsType = RewardAdsType.BonusMoney;
+            _placement = "win_bonus_money";
+            MaxSdk.ShowRewardedAd(rewardAdId);
+            AdsAvailableEvent("rewarded", "success");
+            AdsStartedEvent("rewarded", "success");
+        }
+
+        public void SkipReward()
+        {
+            if(!IsReadyReward)
+            {
+                AdsAvailableEvent("rewarded", "not_available");
+                return;
+            }
+            _rewardAdsType = RewardAdsType.SkipLevel;
+            _placement = "skip_level";
+            MaxSdk.ShowRewardedAd(rewardAdId);
+            AdsAvailableEvent("rewarded", "successe");
+            AdsStartedEvent("rewarded", "successe");
         }
 
         private void InitzalizationRewardAd()
@@ -205,22 +278,21 @@ namespace Cor
         private void OnRewardedAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
             IsReadyReward = true;
-            Debug.Log(adUnitId);
             retryAttemptReward = 0;
         }
 
         private void OnRewardedAdLoadFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
         {
-            // Rewarded ad failed to load 
-            // AppLovin recommends that you retry with exponentially higher delays, up to a maximum delay (in this case 64 seconds).
-
             retryAttemptReward++;
             double retryDelay = Math.Pow(2, Math.Min(6, retryAttemptReward));
 
             Invoke("LoadRewardedAd", (float)retryDelay);
         }
 
-        private void OnRewardedAdDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) { }
+        private void OnRewardedAdDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) 
+        {
+            AdsWatchEvent("rewarded", "watched");
+        }
 
         private void OnRewardedAdFailedToDisplayEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo, MaxSdkBase.AdInfo adInfo)
         {
@@ -230,6 +302,7 @@ namespace Cor
         private void OnRewardedAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo) 
         {
             LoadRewardedAd();
+            AdsWatchEvent("rewarded", "clicked");
         }
 
         private void OnRewardedAdHiddenEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -250,11 +323,67 @@ namespace Cor
 
         private void ClaimReward()
         {
-            if(_skinPart != null)
+            switch (_rewardAdsType)
             {
-                _skinPart.AddCount();
+                case RewardAdsType.PartSkin:
+                    if (_skinPart != null)
+                        _skinPart.AddCount();
+                    break;
+                case RewardAdsType.MultiplyMoney:
+                    if (_moneyButton != null) 
+                        _moneyButton.ClaimMoney();
+                    break;
+                case RewardAdsType.BonusMoney:
+                    if (_bonusButton != null)
+                        _bonusButton.ClaimBonus();
+                    break;
+                case RewardAdsType.SkipLevel:
+                    LevelManager.Instance.SkipLevel();
+                    break;
             }
+            if (_adsTimer != null) _adsTimer.StopTimer();
+            _rewardAdsType = RewardAdsType.Null;
             LoadRewardedAd();
+        }
+
+        #endregion
+
+        #region AnalyticsEvents
+
+        public void AdsAvailableEvent(string _adType, string _result)
+        {
+            var eventVariables = "{\"ad_type\":\"" + _adType + "\"," +
+                               "\"placement\":\"" + _placement + "\"," +
+                               "\"result\":\"" + _result + "\"," +
+                               "\"conection\":\"" + CheckInternetConnection() + "\"," +
+                               "}";
+
+            AppMetrica.Instance.ReportEvent("video_ads_available", eventVariables);
+            AppMetrica.Instance.SendEventsBuffer();
+        }
+
+        public void AdsStartedEvent(string _adType, string _result)
+        {
+            var eventVariables = "{\"ad_type\":\"" + _adType + "\"," +
+                               "\"placement\":\"" + _placement + "\"," +
+                               "\"result\":\"" + _result + "\"," +
+                               "\"conection\":\"" + CheckInternetConnection() + "\"," +
+                               "}";
+
+            AppMetrica.Instance.ReportEvent("video_ads_started", eventVariables);
+            AppMetrica.Instance.SendEventsBuffer();
+        }
+
+        public void AdsWatchEvent(string _adType, string _result)
+        {
+            var eventVariables = "{\"ad_type\":\"" + _adType + "\"," +
+                               "\"placement\":\"" + _placement + "\"," +
+                               "\"result\":\"" + _result + "\"," +
+                               "\"conection\":\"" + CheckInternetConnection() + "\"," +
+                               "}";
+
+            AppMetrica.Instance.ReportEvent("video_ads_watch", eventVariables);
+            AppMetrica.Instance.SendEventsBuffer();
         }
 
         #endregion

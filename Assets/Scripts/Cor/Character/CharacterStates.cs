@@ -53,6 +53,14 @@ namespace Cor
                 _arena.AddBot(this);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown("f"))
+            {
+                if (IsPlayerCharacter()) CharacterDie();
+            }
+        }
+
         public void SetSpeedPlatfrom(Transform platform)
         {
             if (IsPlayerCharacter()) 
@@ -163,7 +171,7 @@ namespace Cor
 
             _characterStatesAnimation.KonckAnimation();
             StartCoroutine(IE_WakeUp());
-            StartCoroutine(CanMove(1.5f));
+            StartCoroutine(IE_CanMove(1.5f));
         }
 
         public void Push(Transform pushDir, float force)
@@ -172,7 +180,7 @@ namespace Cor
             {
                 _playerMovement.LockControll(true);
                 _playerMovement.PushPlayer(pushDir, force);
-                StartCoroutine(CanMove(0.5f));
+                StartCoroutine(IE_CanMove(0.5f));
             }
 
             if (_botMovement != null)
@@ -180,7 +188,7 @@ namespace Cor
                 _botMovement.StopMovement(true);
                 _botMovement.ThrowBot(pushDir, force);
                 //_botMovement.PushBot(pushDir);
-                StartCoroutine(CanMove(1f));
+                StartCoroutine(IE_CanMove(1f));
             }
         }
 
@@ -188,6 +196,15 @@ namespace Cor
         {
             _characterStatesAnimation.LandingAnimation();
             _playerMovement.transform.DORotate(new Vector3(0, -90f, 0f), 0.5f);
+        }
+
+        private void Finish()
+        {
+            if (!IsPlayerCharacter())
+                return;
+
+            StartCoroutine(IE_StartJump());
+            StartCoroutine(IE_Jump());
         }
 
         private IEnumerator IE_CharacterInMonster()
@@ -243,7 +260,7 @@ namespace Cor
             _characterStatesAnimation.WakeUpAnimation();
         }
 
-        private IEnumerator CanMove(float time)
+        private IEnumerator IE_CanMove(float time)
         {
             yield return new WaitForSeconds(time);
 
@@ -253,21 +270,13 @@ namespace Cor
             _character.ActiveCharacter(false);
         }
 
-        private void Finish()
-        {
-            if (!IsPlayerCharacter())
-                return;
-
-            StartCoroutine(IE_StartJump());
-            StartCoroutine(IE_Jump());
-        }
-
         private IEnumerator IE_StartJump()
         {
             yield return new WaitForSeconds(0.5f);
 
             if(_characterCanvas != null)
                 _characterCanvas.transform.DOScale(0, 0.5f);
+
             _characterStatesAnimation.JumpAnimation();
             _playerMovement.transform.DORotate(new Vector3(0f, 90f, 0f), 0.5f);
         }

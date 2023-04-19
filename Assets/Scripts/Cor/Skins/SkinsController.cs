@@ -48,10 +48,10 @@ namespace Cor
         {
             indexOpenSkin++;
             indexProgressSkin++;
-            if(indexProgressSkin == 6)
+            if(indexProgressSkin == 8)
             {
                 indexProgressSkin = 0;
-                for(int i = 0; i < 5; i++)
+                for(int i = 0; i < 7; i++)
                 {
                     currencySkins[i].CloseSkin();
                 }
@@ -62,6 +62,11 @@ namespace Cor
                 currencySkins[currencySkins.Count - 1].CloseSkin();
             }
             Save();
+        }
+
+        public void BonusPart()
+        {
+            currencySkins[indexProgressSkin].OpenFramgentSkin();
         }
 
         #region Load&Save

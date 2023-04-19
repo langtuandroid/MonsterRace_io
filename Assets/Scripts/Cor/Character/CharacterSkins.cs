@@ -27,20 +27,35 @@ namespace Cor
                 case CharacterMonsterType.HuggyWuggy:
                     skins[0].SetActive(true);
                     break;
-                case CharacterMonsterType.MotherSpider:
+                case CharacterMonsterType.CartoonCat:
                     skins[1].SetActive(true);
                     break;
-                case CharacterMonsterType.Baldy:
+                case CharacterMonsterType.Siren:
                     skins[2].SetActive(true);
                     break;
-                case CharacterMonsterType.CartoonCat:
+                case CharacterMonsterType.Baldy:
                     skins[3].SetActive(true);
                     break;
-                case CharacterMonsterType.Siren:
+                case CharacterMonsterType.CartoonDog:
                     skins[4].SetActive(true);
                     break;
-                case CharacterMonsterType.Venom:
+                case CharacterMonsterType.KissyMissy:
                     skins[5].SetActive(true);
+                    break;
+                case CharacterMonsterType.BunzoBunny:
+                    skins[6].SetActive(true);
+                    break;
+                case CharacterMonsterType.EvilSonnik:
+                    skins[7].SetActive(true);
+                    break;
+                case CharacterMonsterType.Freddy:
+                    skins[8].SetActive(true);
+                    break;
+                case CharacterMonsterType.MotherSpider:
+                    skins[9].SetActive(true);
+                    break;
+                case CharacterMonsterType.Venom:
+                    skins[10].SetActive(true);
                     break;
             }
         }

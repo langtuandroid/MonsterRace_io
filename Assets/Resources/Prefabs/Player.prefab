@@ -31021,14 +31021,24 @@ MonoBehaviour:
   monsters:
   - monsterType: 0
     monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
-  - monsterType: 2
-    monsterAnimator: {fileID: 9100000, guid: 8a0b7eedd59df7748b26b8dbde2202be, type: 2}
-  - monsterType: 1
-    monsterAnimator: {fileID: 9100000, guid: f8c58b27c3eb57b42bd88ccc045de9f9, type: 2}
   - monsterType: 3
     monsterAnimator: {fileID: 9100000, guid: 546d33e35481f194d96ac0e94536a981, type: 2}
   - monsterType: 4
     monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
+  - monsterType: 2
+    monsterAnimator: {fileID: 9100000, guid: f8c58b27c3eb57b42bd88ccc045de9f9, type: 2}
+  - monsterType: 7
+    monsterAnimator: {fileID: 9100000, guid: 546d33e35481f194d96ac0e94536a981, type: 2}
+  - monsterType: 8
+    monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
+  - monsterType: 9
+    monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
+  - monsterType: 10
+    monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
+  - monsterType: 6
+    monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
+  - monsterType: 1
+    monsterAnimator: {fileID: 9100000, guid: 8a0b7eedd59df7748b26b8dbde2202be, type: 2}
   - monsterType: 5
     monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
   monsterPoint: {fileID: 7249519130363916524}
@@ -35415,7 +35425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterColorType: 0
-  monsterTypes: 00000000010000000200000003000000040000000500000006000000
+  monsterTypes: 000000000300000004000000020000000700000008000000090000000a000000060000000000000000000000
   nameCharacter: PLAYER
   colorCharacter: {r: 0.4392157, g: 0.78431374, b: 0.90588236, a: 1}
   basket: {fileID: 7304693681339357737}
@@ -35475,12 +35485,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skins:
   - {fileID: 7249519130363899826}
-  - {fileID: 7249519130363896217}
-  - {fileID: 7249519130363897589}
   - {fileID: 7249519130363897338}
   - {fileID: 7249519130363899898}
-  - {fileID: 7249519130363896749}
+  - {fileID: 7249519130363897589}
+  - {fileID: 9178058236768074366}
+  - {fileID: 4392865561777434974}
+  - {fileID: 5234209522432306463}
+  - {fileID: 1711112629636264867}
   - {fileID: 5877193678330996239}
+  - {fileID: 3624281044592742377}
+  - {fileID: 6308044646480051888}
+  - {fileID: 7249519130363896217}
+  - {fileID: 5343323359544009027}
+  - {fileID: 373510050092982390}
+  - {fileID: 5878615721243104398}
+  - {fileID: 5156389940023434639}
+  - {fileID: 7287410471864270584}
+  - {fileID: 7249519130363896749}
+  - {fileID: 8001259292677870664}
+  - {fileID: 7249519130363897824}
   _skinType: 0
 --- !u!114 &2218471878532433627
 MonoBehaviour:
