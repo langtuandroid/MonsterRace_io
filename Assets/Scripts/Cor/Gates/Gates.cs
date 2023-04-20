@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using Cor.MyPool;
 
 namespace Cor
 {
@@ -88,7 +89,7 @@ namespace Cor
         {
             for (int i = 0; i < numberGates; i++)
             {
-                GameObject ball = Instantiate(collectableBalls[index].gameObject, transform.position, transform.rotation);
+                GameObject ball = NightPool.Spawn(collectableBalls[index].gameObject, transform.position, transform.rotation);
                 _stackBalls.AddCollectableBall(ball.GetComponent<CollectableBall>(), false);
             }
         }
@@ -108,11 +109,11 @@ namespace Cor
 
             for (int i = 0; i < number; i++)
             {
-                GameObject ball = Instantiate(collectableBalls[index].gameObject, transform.position, transform.rotation);
+                GameObject ball = NightPool.Spawn(collectableBalls[index].gameObject, transform.position, transform.rotation);
                 _stackBalls.AddCollectableBall(ball.GetComponent<CollectableBall>(), false);
                 ball.SetActive(false);
                 DOVirtual.DelayedCall(timer, () => ball.SetActive(true));
-                timer += 0.05f;
+                timer += 0.03f;
             }
         }
 

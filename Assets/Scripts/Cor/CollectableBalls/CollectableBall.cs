@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using Cor.MyPool;
 
 namespace Cor
 {
@@ -96,7 +97,7 @@ namespace Cor
             {
                 ballsMonster.BallActiveted(_ballType);
                 isBallDestroyed = true;
-                Invoke("Deactive", 0.3f);
+                NightPool.Despawn(gameObject, 0.2f);
             }
         }
 
@@ -131,11 +132,6 @@ namespace Cor
                     colorBall = colors[5];
                     break;
             }
-        }
-
-        private void Deactive()
-        {
-            gameObject.SetActive(false);
         }
     }
 }

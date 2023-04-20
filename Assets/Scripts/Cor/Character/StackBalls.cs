@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Cor.MyPool;
 
 namespace Cor
 {
@@ -67,7 +68,7 @@ namespace Cor
         {
             if(currencyBalls.Count > 0)
             {
-                Destroy(currencyBalls[currencyBalls.Count - 1].gameObject, 0.1f);
+                NightPool.Despawn(currencyBalls[currencyBalls.Count - 1].gameObject, 0.1f);
                 currencyBalls.RemoveAt(currencyBalls.Count - 1);
             }
         }

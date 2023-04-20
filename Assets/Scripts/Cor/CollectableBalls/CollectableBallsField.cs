@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cor.MyPool;
 
 namespace Cor
 {
@@ -26,9 +27,12 @@ namespace Cor
         [SerializeField] List<CollectableBall> allBalls = new List<CollectableBall>();
         [SerializeField] private int maxBalls;
 
-        private Vector3 _startPoint;
-        private Vector3 _position;
+        [Space]
+        [Header("Pool")]
+        [SerializeField] GameObject P;
+        [SerializeField] List<Pool> pools = new List<Pool>();
 
+        private Vector3 _position;
         private List<SpawnedBall> spawnedBalls = new List<SpawnedBall>();
         private List<SpawnedBall> respawnBalls = new List<SpawnedBall>();
 
@@ -91,6 +95,15 @@ namespace Cor
             points = _arena.GetBallsPoints();
             length = _arena.GetAmmountBalls();
             maxBalls = length;
+        }
+
+        private void Start()
+        {
+            foreach(var i in GameObject.FindObjectsOfType<Pool>())
+            {
+                pools.Add(i);
+            }
+ 
             GO();
         }
 
@@ -135,7 +148,7 @@ namespace Cor
                 {
                     if (spawnedBalls[i].GetCollectableBall() != null)
                     {
-                        Destroy(spawnedBalls[i].GetCollectableBall().gameObject);
+                        NightPool.Despawn(spawnedBalls[i].GetCollectableBall().gameObject);
                         spawnedBalls[i].ClearSpawnedBall();
                         if (ballTypes.Count == 0)
                             return;
@@ -151,7 +164,7 @@ namespace Cor
                 return;
 
             BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
-            GameObject createdBall = Instantiate(ballType.ballPrefab, spawnedBall.SpawnPosition(),
+            GameObject createdBall = NightPool.Spawn(ballType.ballPrefab, spawnedBall.SpawnPosition(),
                 Quaternion.identity);
 
             CollectableBall ball = createdBall.GetComponent<CollectableBall>();
@@ -197,29 +210,28 @@ namespace Cor
                 FirstSpawn(_position);
             }
 
-            for(int i = 0; i < 80; i++)
-            {
-               spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
-            }
+            //for(int i = 0; i < 80; i++)
+            //{
+            //   spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
+            //}
 
-            StartCoroutine(IE_Step());
+            //StartCoroutine(IE_Step());
         }
 
         private void FirstSpawn(Vector3 position)
         {
             BallType ballType = ballTypes[Random.Range(0, ballTypes.Count)];
 
-            GameObject newCollectableBall = Instantiate(ballType.ballPrefab,
-             position, ballType.ballPrefab.transform.rotation);
-
+            GameObject newCollectableBall = NightPool.Spawn(ballType.ballPrefab,
+            position, ballType.ballPrefab.transform.rotation);
             newCollectableBall.transform.parent = transform;
+
             CollectableBall ball = newCollectableBall.GetComponent<CollectableBall>();
 
             SpawnedBall spawnedBall = new SpawnedBall();
             spawnedBall.SetSpawnedBall(ball, position, this);
             spawnedBalls.Add(spawnedBall);
             allBalls.Add(ball);
-            newCollectableBall.SetActive(false);
         }
 
         private IEnumerator IE_Step()
@@ -248,5 +260,4 @@ namespace Cor
         public GameObject ballPrefab;
         public CharacterColorType type;
     }
-
 }
