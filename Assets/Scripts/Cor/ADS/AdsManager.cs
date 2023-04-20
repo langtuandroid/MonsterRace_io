@@ -17,6 +17,8 @@ namespace Cor
 
         #endregion
 
+        public static Action StopedTimer;
+
         #region Variables
 
         private string bannerAdUnitId = "ca13aa5cf3b4bfbc";
@@ -35,8 +37,6 @@ namespace Cor
 
         private RewardAdsType _rewardAdsType;
 
-        private AppMetricaAnalytics _appMetricaAnalytics;
-        private AdsTimer _adsTimer;
         private SkinPart _skinPart;
         private MultiplyMoneyButton _moneyButton;
         private BonusButton _bonusButton;
@@ -55,6 +55,16 @@ namespace Cor
             }
         }
 
+        private void OnEnable()
+        {
+            
+        }
+
+        private void OnDisable()
+        {
+            
+        }
+
         private void Start()
         {
             CheckBannerStatus();
@@ -63,8 +73,6 @@ namespace Cor
 
             MaxSdk.SetSdkKey("6AQkyPv9b4u7yTtMH9PT40gXg00uJOTsmBOf7hDxa_-FnNZvt_qTLnJAiKeb5-2_T8GsI_dGQKKKrtwZTlCzAR");
             MaxSdk.InitializeSdk();
-
-            _adsTimer = GameObject.FindObjectOfType<AdsTimer>();
         }
 
         #region BannerActions
@@ -238,8 +246,7 @@ namespace Cor
             _rewardAdsType = RewardAdsType.BonusMoney;
             _placement = "win_bonus_money";
             MaxSdk.ShowRewardedAd(rewardAdId);
-            AdsAvailableEvent("rewarded", "success");
-            AdsStartedEvent("rewarded", "success");
+           
         }
 
         public void SkipReward()
@@ -254,6 +261,13 @@ namespace Cor
             MaxSdk.ShowRewardedAd(rewardAdId);
             AdsAvailableEvent("rewarded", "successe");
             AdsStartedEvent("rewarded", "successe");
+        }
+
+        public void ShowReward(RewardAdsType rewardAdsType)
+        {
+            _rewardAdsType = rewardAdsType;
+            AdsAvailableEvent("rewarded", "success");
+            AdsStartedEvent("rewarded", "success");
         }
 
         private void InitzalizationRewardAd()
@@ -341,7 +355,7 @@ namespace Cor
                     LevelManager.Instance.SkipLevel();
                     break;
             }
-            if (_adsTimer != null) _adsTimer.StopTimer();
+            StopedTimer?.Invoke();
             _rewardAdsType = RewardAdsType.Null;
             LoadRewardedAd();
         }
