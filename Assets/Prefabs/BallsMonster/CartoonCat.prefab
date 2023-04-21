@@ -22732,12 +22732,10 @@ MonoBehaviour:
   - {fileID: 4604248248280942310}
   - {fileID: 4604248248403413369}
   - {fileID: 4604248249318357275}
-  weapon: {fileID: 2270054199273420492}
+  pointWeapon: {fileID: 2407107798124015539}
   anim: {fileID: 7795004980011248751}
   namePose: Pose4
   scale: 0.4984658
-  _playerFight: {fileID: 0}
-  _botFight: {fileID: 0}
 --- !u!1 &7795004980912891940
 GameObject:
   m_ObjectHideFlags: 0
@@ -23230,17 +23228,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
---- !u!114 &2270054199273420492 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3573222410404109891, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-  m_PrefabInstance: {fileID: 3320974394746562703}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fc9490dcbeea64b87010a4113f18ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2407107798124015539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}

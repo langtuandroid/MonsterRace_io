@@ -22880,6 +22880,7 @@ MonoBehaviour:
   - {fileID: 3114456883309867412}
   - {fileID: 3114456883943631285}
   - {fileID: 3114456882348212125}
+  poolPreset: {fileID: 11400000, guid: 33e7cf90bc7fdae419549e4f69b8d891, type: 2}
   maxTypes: 5
   ammountBalls: 629
   playerPoint: {fileID: 5397672769645245525}

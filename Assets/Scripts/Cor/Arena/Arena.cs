@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Cor.MyPool;
 
 namespace Cor
 {
@@ -10,6 +11,7 @@ namespace Cor
         [Header("ArenaBallsPlacement")]
         [SerializeField] List<BallType> ballTypes = new List<BallType>();
         [SerializeField] Transform[] placementBallsPoints;
+        [SerializeField] PoolPreset poolPreset;
         [SerializeField] private int maxTypes;
         [SerializeField] private int ammountBalls;
 
@@ -42,6 +44,11 @@ namespace Cor
         public List<BallType> GetBallTypes()
         {
             return ballTypes;
+        }
+
+        public PoolPreset GetPreset()
+        {
+            return poolPreset;
         }
 
         public Transform[] GetBallsPoints()

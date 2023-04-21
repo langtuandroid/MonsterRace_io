@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Cor.SDK;
+using Cor.MyPool;
 
 namespace Cor
 {
@@ -30,6 +31,7 @@ namespace Cor
         [SerializeField] SkinsController skinsController;
         [SerializeField] SceneLoader sceneLoader;
         [SerializeField] LevelRewards levelRewards;
+        [SerializeField] NightPoolEntry nightPoolEntry;
         [SerializeField] private int lvlNumber;
         [SerializeField] private bool isMain;
         [SerializeField] private bool isEditor;
@@ -75,7 +77,7 @@ namespace Cor
         {
             yield return new WaitForSeconds(0.2f);
 
-            OnLevelStart.Invoke();
+            OnLevelStart?.Invoke();
             _analytics.LoadData();
             _analytics.NewAttempt();
             _analytics.LevelStartEvent();
@@ -129,6 +131,7 @@ namespace Cor
             memberSpawner.CreatePlayer(newArena);
             memberSpawner.CreateBots(newArena);
             gatesSpawner.SetupGatesPoints(newArena);
+            nightPoolEntry.SetupPool(newArena.GetPreset());
         }
 
         private void NextLevel()

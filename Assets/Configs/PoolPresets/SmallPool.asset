@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eee53b7d005f1e48ade29590bf30ed7, type: 3}
+  m_Name: SmallPool
+  m_EditorClassIdentifier: 
+  poolName: Level1
+  poolItems:
+  - prefab: {fileID: 7323274382640280931, guid: c2fe36c3f54c038479882276ff4d5096, type: 3}
+    size: 300
+  - prefab: {fileID: 1089891139789347188, guid: c2fc359314049ff4092d07c9685fc224, type: 3}
+    size: 200
+  - prefab: {fileID: 1089891139789347188, guid: 3a370a26ad4e8874f9a2cfca2f78e889, type: 3}
+    size: 200

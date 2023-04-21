@@ -1858,12 +1858,10 @@ MonoBehaviour:
   - {fileID: 8103677533398111949}
   - {fileID: 8103677534349050213}
   - {fileID: 8103677533777767725}
-  weapon: {fileID: 6837302191342438155}
+  pointWeapon: {fileID: 4764628751430734072}
   anim: {fileID: 2575763293929452498}
   namePose: Pose3
   scale: 0.4984658
-  _playerFight: {fileID: 0}
-  _botFight: {fileID: 0}
 --- !u!1 &2575763293685506741
 GameObject:
   m_ObjectHideFlags: 0
@@ -27204,14 +27202,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5480190836685763922, guid: 7adfa3c13a3448f45830934bfa02b2f8, type: 3}
   m_PrefabInstance: {fileID: 1014101689850209706}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6837302191342438155 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5832207710846870177, guid: 7adfa3c13a3448f45830934bfa02b2f8, type: 3}
-  m_PrefabInstance: {fileID: 1014101689850209706}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fc9490dcbeea64b87010a4113f18ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

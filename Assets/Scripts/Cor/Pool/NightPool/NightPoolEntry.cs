@@ -4,11 +4,12 @@ namespace Cor.MyPool
 {
     public class NightPoolEntry : MonoBehaviour
     {
-        [SerializeField] private PoolPreset poolPreset;
+        [SerializeField] private PoolPreset _poolPreset;
 
-        private void Awake()
+        public void SetupPool(PoolPreset poolPreset)
         {
-            NightPool.InstallPoolItems(poolPreset);
+            _poolPreset = poolPreset;
+            NightPool.InstallPoolItems(_poolPreset);
         }
 
         private void OnDestroy()

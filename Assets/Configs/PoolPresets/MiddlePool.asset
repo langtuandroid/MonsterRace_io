@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4eee53b7d005f1e48ade29590bf30ed7, type: 3}
-  m_Name: Test
+  m_Name: MiddlePool
   m_EditorClassIdentifier: 
   poolName: Level1
   poolItems:
@@ -21,6 +21,4 @@ MonoBehaviour:
   - prefab: {fileID: 1089891139789347188, guid: 3a370a26ad4e8874f9a2cfca2f78e889, type: 3}
     size: 200
   - prefab: {fileID: 1089891139789347188, guid: d589c439e0df9d54680e2fe95259e9f4, type: 3}
-    size: 200
-  - prefab: {fileID: 1089891139789347188, guid: b543b62f069467847a3c7ea2598fccfd, type: 3}
     size: 200

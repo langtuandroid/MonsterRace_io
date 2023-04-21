@@ -224,11 +224,19 @@ namespace Cor
             _ballsMonster.transform.parent = _characterMonster.transform;
             _ballsMonster.transform.position = _characterMonster.MonsterPoint().position;
             _ballsMonster.transform.rotation = _characterMonster.MonsterPoint().rotation;
-            if(!isPlayerCharacter)
+
+            if (!isPlayerCharacter)
+            {
                 _ballsMonster.ActiveMontserHead(_characterSkins.Type());
+                _ballsMonster.SetupMonster(Random.Range(0, 1));
+            }
+
             if (isPlayerCharacter)
+            { 
                 _ballsMonster.ActiveMontserHead(_playerCharacterSkin.GetHeadType());
-            _ballsMonster.AddPhysicsBalls();
+                _ballsMonster.SetupMonster(0);
+            }
+           
             _characterMonster.SetMonsterAnimator(_monster.Type());
 
             if (IsPlayerCharacter())

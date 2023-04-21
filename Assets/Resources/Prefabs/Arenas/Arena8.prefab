@@ -22422,6 +22422,7 @@ MonoBehaviour:
   - {fileID: 7946043213001850901}
   - {fileID: 7946043213035099766}
   - {fileID: 7946043212992149013}
+  poolPreset: {fileID: 11400000, guid: 33e7cf90bc7fdae419549e4f69b8d891, type: 2}
   maxTypes: 5
   ammountBalls: 676
   playerPoint: {fileID: 4855688030964634904}
@@ -25347,6 +25348,7 @@ MonoBehaviour:
   pointEnd: {fileID: 2283670453720044459}
   points: []
   scrollSpeed: -1
+  speedMovement: 0
 --- !u!1001 &1437856119589663070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25745,6 +25747,7 @@ MonoBehaviour:
   pointEnd: {fileID: 2283670453171566491}
   points: []
   scrollSpeed: -1
+  speedMovement: 0
 --- !u!1001 &1437856120204486190
 PrefabInstance:
   m_ObjectHideFlags: 0

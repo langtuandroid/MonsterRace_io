@@ -8,13 +8,15 @@ namespace Cor
         [SerializeField] GameObject bodyMonster;
         [SerializeField] List<GameObject> montserHeads = new List<GameObject>();
         [SerializeField] List<GameObject> balls = new List<GameObject>();
-        [SerializeField] Weapon weapon;
+        [SerializeField] Transform pointWeapon;
         [SerializeField] Animator anim;
         [SerializeField] private string namePose;
         [SerializeField] private float scale;
 
-        [SerializeField] PlayerFight _playerFight;
-        [SerializeField] BotFight _botFight;
+        private Weapon _weapon;
+        private WeaponSpawner _weaponSpawner;
+        private PlayerFight _playerFight;
+        private BotFight _botFight;
 
         public List<GameObject> Balls()
         {
@@ -94,27 +96,29 @@ namespace Cor
             }
         }
 
-        public void AddPhysicsBalls()
+        public void SetupMonster(int indexWeapon)
         {
-            weapon.gameObject.SetActive(true);
+            bodyMonster.SetActive(false);
 
             foreach (var i in balls)
             {
                 i.AddComponent<MonsterBall>();
             }
 
+            _weaponSpawner = GameObject.FindObjectOfType<WeaponSpawner>();
+            _weapon = _weaponSpawner.SpawnWeapon(pointWeapon, indexWeapon);
+
             if (GetComponentInParent<PlayerFight>() != null)
             {
                 _playerFight = GetComponentInParent<PlayerFight>();
-                _playerFight.SetWeapon(weapon);
+                _playerFight.SetWeapon(_weapon);
             }
 
             if (GetComponentInParent<BotFight>() != null)
             {
                 _botFight = GetComponentInParent<BotFight>();
-                _botFight.SetWeapon(weapon);
+                _botFight.SetWeapon(_weapon);
             }
-            bodyMonster.SetActive(false);
         }
     }
 }

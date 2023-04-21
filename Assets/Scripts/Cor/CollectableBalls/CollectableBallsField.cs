@@ -210,12 +210,12 @@ namespace Cor
                 FirstSpawn(_position);
             }
 
-            //for(int i = 0; i < 80; i++)
-            //{
-            //   spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
-            //}
+            for (int i = 0; i < 80; i++)
+            {
+                spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
+            }
 
-            //StartCoroutine(IE_Step());
+            StartCoroutine(IE_Step());
         }
 
         private void FirstSpawn(Vector3 position)
@@ -232,6 +232,7 @@ namespace Cor
             spawnedBall.SetSpawnedBall(ball, position, this);
             spawnedBalls.Add(spawnedBall);
             allBalls.Add(ball);
+            newCollectableBall.gameObject.SetActive(false);
         }
 
         private IEnumerator IE_Step()
