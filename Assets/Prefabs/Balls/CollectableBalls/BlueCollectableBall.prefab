@@ -122,5 +122,5 @@ MonoBehaviour:
   - {r: 0.5176471, g: 0, b: 1, a: 1}
   meshRenderer: {fileID: 158420933701036352}
   _rb: {fileID: 0}
-  cantStack: 0
+  _collider: {fileID: 2379087013684395009}
   _ballType: 0

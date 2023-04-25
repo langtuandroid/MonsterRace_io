@@ -2043,7 +2043,6 @@ MonoBehaviour:
   effectDie: {fileID: 8676934510390393946}
   _stackBalls: {fileID: 290052693258741866}
   _characterStates: {fileID: 290052693258741838}
-  isDeactiveCharacter: 0
 --- !u!114 &290052693258741866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2987,6 +2986,9 @@ MonoBehaviour:
   colorCharacter: {r: 0.93333334, g: 0.8235294, b: 0.24313726, a: 1}
   basket: {fileID: 2408055886601672580}
   basketColor: {r: 0.8207547, g: 0.71777326, b: 0.17344245, a: 1}
+  _characterState: {fileID: 290052693258741838}
+  _characterSkins: {fileID: 290052693258741833}
+  _character: {fileID: 290052693258741861}
   nameGenerator: {fileID: 290052693258741826}
   playerName: {fileID: 0}
   ballsMonster: {fileID: 0}

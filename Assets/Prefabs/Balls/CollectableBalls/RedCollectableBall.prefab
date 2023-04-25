@@ -109,8 +109,9 @@ MonoBehaviour:
   - {r: 0.5176471, g: 0, b: 1, a: 1}
   meshRenderer: {fileID: 7544584392840889687}
   _rb: {fileID: 0}
-  cantStack: 0
+  _collider: {fileID: 5441855226445795350}
   _ballType: 4
+  _savedType: 4
 --- !u!135 &5441855226445795350
 SphereCollider:
   m_ObjectHideFlags: 0

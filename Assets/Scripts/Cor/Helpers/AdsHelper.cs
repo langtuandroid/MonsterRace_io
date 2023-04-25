@@ -6,6 +6,8 @@ namespace Cor
         PartSkin,
         MultiplyMoney,
         BonusMoney,
-        SkipLevel
+        ExtraMoney,
+        Shop,
+        SkipLevel,
     }
 }

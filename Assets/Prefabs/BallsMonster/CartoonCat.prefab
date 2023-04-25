@@ -1545,6 +1545,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3960773133393170680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2407107798124015539}
+  m_Layer: 0
+  m_Name: 'WeaponHammer (Missing Prefab with guid: 2324b16a70dda5e47af2a0f785c727c8)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2407107798124015539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960773133393170680}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7795004979381720391}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4237908512238445615
 GameObject:
   m_ObjectHideFlags: 0
@@ -23167,69 +23198,3 @@ MonoBehaviour:
   meshRenderer: {fileID: 0}
   force: -3
   isHeadBall: 0
---- !u!1001 &3320974394746562703
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 7795004979381720391}
-    m_Modifications:
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.019
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.14018643
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.12524381
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.77231
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.606794
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 103.49701
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -343.94702
-      objectReference: {fileID: 0}
-    - target: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -185.736
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107063416320500183, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_Name
-      value: WeaponHammer
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107063416320500183, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
---- !u!4 &2407107798124015539 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1112876552796260156, guid: 2324b16a70dda5e47af2a0f785c727c8, type: 3}
-  m_PrefabInstance: {fileID: 3320974394746562703}
-  m_PrefabAsset: {fileID: 0}

@@ -40,6 +40,8 @@ namespace Cor
         private SkinPart _skinPart;
         private MultiplyMoneyButton _moneyButton;
         private BonusButton _bonusButton;
+        private ExtraMoneyButton _extraMoneyButton;
+        private ShopButton _shopButton;
 
         #endregion
 
@@ -53,16 +55,6 @@ namespace Cor
             {
                 return false;
             }
-        }
-
-        private void OnEnable()
-        {
-            
-        }
-
-        private void OnDisable()
-        {
-            
         }
 
         private void Start()
@@ -249,6 +241,34 @@ namespace Cor
            
         }
 
+        public void ExtraMoneyReward(ExtraMoneyButton extraButton)
+        {
+            if (!IsReadyReward)
+            {
+                AdsAvailableEvent("rewarded", "not_available");
+                return;
+            }
+            _extraMoneyButton = extraButton;
+            _rewardAdsType = RewardAdsType.ExtraMoney;
+            _placement = "win_bonus_money";
+            MaxSdk.ShowRewardedAd(rewardAdId);
+
+        }
+
+        public void ShopReward(ShopButton shopButton)
+        {
+            if (!IsReadyReward)
+            {
+                AdsAvailableEvent("rewarded", "not_available");
+                return;
+            }
+            _shopButton = shopButton;
+            _rewardAdsType = RewardAdsType.Shop;
+            _placement = "win_bonus_money";
+            MaxSdk.ShowRewardedAd(rewardAdId);
+
+        }
+
         public void SkipReward()
         {
             if(!IsReadyReward)
@@ -350,6 +370,14 @@ namespace Cor
                 case RewardAdsType.BonusMoney:
                     if (_bonusButton != null)
                         _bonusButton.ClaimBonus();
+                    break;
+                case RewardAdsType.ExtraMoney:
+                    if (_extraMoneyButton != null)
+                        _extraMoneyButton.ClaimBonus();
+                    break;
+                case RewardAdsType.Shop:
+                    if (_shopButton != null)
+                        _shopButton.Open();
                     break;
                 case RewardAdsType.SkipLevel:
                     LevelManager.Instance.SkipLevel();

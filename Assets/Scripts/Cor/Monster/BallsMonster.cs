@@ -96,7 +96,7 @@ namespace Cor
             }
         }
 
-        public void SetupMonster(int indexWeapon)
+        public void SetupMonster(bool ok)
         {
             bodyMonster.SetActive(false);
 
@@ -106,8 +106,10 @@ namespace Cor
             }
 
             _weaponSpawner = GameObject.FindObjectOfType<WeaponSpawner>();
-            _weapon = _weaponSpawner.SpawnWeapon(pointWeapon, indexWeapon);
-
+            if(ok)
+                _weapon = _weaponSpawner.SpawnWeapon(pointWeapon, _weaponSpawner.GetIndex());
+            if(!ok)
+                _weapon = _weaponSpawner.SpawnWeapon(pointWeapon, Random.Range(0, 4));
             if (GetComponentInParent<PlayerFight>() != null)
             {
                 _playerFight = GetComponentInParent<PlayerFight>();

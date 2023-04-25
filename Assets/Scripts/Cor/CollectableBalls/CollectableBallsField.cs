@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cor.MyPool;
+using DG.Tweening;
 
 namespace Cor
 {
@@ -203,6 +204,7 @@ namespace Cor
 
         private void BallsPlacement()
         {
+          
             for (int i = 0; i < length; i++)
             {
                 _position = new Vector3(points[i].position.x, points[i].position.y, points[i].position.z);
@@ -242,11 +244,11 @@ namespace Cor
                 spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
                 if(spawnedBalls[i + 1] != null)
                     spawnedBalls[i + 1].GetCollectableBall().gameObject.SetActive(true);
-                if(spawnedBalls[i + 2] != null)
+                if (i + 2 < spawnedBalls.Count)
                     spawnedBalls[i + 2].GetCollectableBall().gameObject.SetActive(true);
-                if(spawnedBalls[i + 3] != null)
+                if (i + 3 < spawnedBalls.Count)
                     spawnedBalls[i + 3].GetCollectableBall().gameObject.SetActive(true);
-                if (spawnedBalls[i + 4] != null)
+                if (i + 4 < spawnedBalls.Count)
                     spawnedBalls[i + 4].GetCollectableBall().gameObject.SetActive(true);
                 yield return new WaitForSeconds(0f);
             }

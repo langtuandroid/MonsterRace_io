@@ -53,14 +53,6 @@ namespace Cor
                 _arena.AddBot(this);
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown("f"))
-            {
-                if (IsPlayerCharacter()) CharacterDie();
-            }
-        }
-
         public void SetSpeedPlatfrom(Transform platform)
         {
             if (IsPlayerCharacter()) 
@@ -228,13 +220,13 @@ namespace Cor
             if (!isPlayerCharacter)
             {
                 _ballsMonster.ActiveMontserHead(_characterSkins.Type());
-                _ballsMonster.SetupMonster(Random.Range(0, 1));
+                _ballsMonster.SetupMonster(false);
             }
 
             if (isPlayerCharacter)
             { 
                 _ballsMonster.ActiveMontserHead(_playerCharacterSkin.GetHeadType());
-                _ballsMonster.SetupMonster(0);
+                _ballsMonster.SetupMonster(true);
             }
            
             _characterMonster.SetMonsterAnimator(_monster.Type());

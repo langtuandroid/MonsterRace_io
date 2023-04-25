@@ -13,15 +13,15 @@ namespace Cor
         [SerializeField] Color colorCharacter;
         [SerializeField] MeshRenderer basket;
         [SerializeField] Color basketColor;
+        [SerializeField] CharacterStates _characterState;
+        [SerializeField] CharacterSkins _characterSkins;
+        [SerializeField] Character _character;
         [SerializeField] NameGenerator nameGenerator;
         [SerializeField] PlayerName playerName;
         [SerializeField] CollectableMonster ballsMonster;
 
-        Leaderboard _leaderboard;
-        SkinsController _skinsController;
-        CharacterStates _characterState;
-        CharacterSkins _characterSkins;
-        Character _character;
+        private Leaderboard _leaderboard;
+        private SkinsController _skinsController;
 
         #endregion
 
@@ -34,9 +34,6 @@ namespace Cor
         {
             _skinsController = GameObject.FindObjectOfType<SkinsController>();
             _leaderboard = GameObject.FindObjectOfType<Leaderboard>();
-            _characterState = GetComponent<CharacterStates>();
-            _characterSkins = GetComponent<CharacterSkins>();
-            _character = GetComponentInChildren<Character>();
 
             LevelManager.Instance.OnLevelStart.AddListener(SetCharacterSettings);
             SetMonsterType();

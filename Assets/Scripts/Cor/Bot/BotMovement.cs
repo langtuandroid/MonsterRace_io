@@ -104,6 +104,7 @@ namespace Cor
         private void UpdateMove()
         {
             ball = points[index];
+
             if(_agent.enabled)
                 _agent.SetDestination(ball);
             //_characterStatesAnimation.RunAnimation(true);

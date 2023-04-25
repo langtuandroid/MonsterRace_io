@@ -16,25 +16,23 @@ namespace Cor
         [SerializeField] Color[] colors;
         [SerializeField] MeshRenderer meshRenderer;
         [SerializeField] Rigidbody _rb;
-        private bool isBallDestroyed;
-        public bool cantStack;
+        [SerializeField] Collider _collider;
 
         [Header("BallType")]
         [SerializeField] CharacterColorType _ballType;
+        [SerializeField] CharacterColorType _savedType;
 
-        CharacterColorType newType;
-        CollectableBallsField _collectableBallsField;
+        private bool isBallDestroyed;
+        private bool cantStack;
+
+        private CharacterColorType newType;
+        private CollectableBallsField _collectableBallsField;
 
         #endregion
 
         public CharacterColorType Type()
         {
             return _ballType;
-        }
-
-        private void Start()
-        {
-            _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
         }
 
         public bool IsTrueCharacter(CharacterColorType characterColorType)
@@ -51,6 +49,24 @@ namespace Cor
             }
 
             return false;
+        }
+
+        private void OnEnable()
+        {
+            SetupBall();
+        }
+
+        private void Start()
+        {
+            _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
+        }
+
+        public void SetupBall()
+        {
+            cantStack = false;
+            _ballType = _savedType;
+            SwitchColor(_ballType);
+            meshRenderer.material.color = colorBall;
         }
 
         public void BallInStack()
@@ -73,11 +89,10 @@ namespace Cor
         {
             cantStack = true;
             transform.SetParent(null);
-            gameObject.GetComponent<Collider>().isTrigger = false;
+            _collider.isTrigger = false;
             meshRenderer.material.DOColor(neutral, 0.2f);
-            if(_rb == null){
+            if(_rb == null) 
                 _rb = gameObject.AddComponent<Rigidbody>();
-            }
             _rb.isKinematic = false;
             _rb.AddForce(new Vector3(0f, 6f, -1f), ForceMode.Impulse);
             _ballType = CharacterColorType.Neutral;
@@ -86,7 +101,7 @@ namespace Cor
         public void Normal()
         {
             _ballType = CharacterColorType.Neutral;
-            gameObject.GetComponent<Collider>().isTrigger = true;
+            _collider.isTrigger = true;
             if(_rb != null)_rb.isKinematic = true;
             cantStack = false;
         }
@@ -101,20 +116,12 @@ namespace Cor
             }
         }
 
-        private IEnumerator IE_ReturnColorBall()
-        {
-            yield return new WaitForSeconds(0.2f);
-
-            meshRenderer.material.DOColor(colorBall, 0.2f);
-            _ballType = newType;
-        }
-
         private void SwitchColor(CharacterColorType _characterColorType)
         {
             switch (_characterColorType)
             {
                 case CharacterColorType.Blue:
-                    colorBall = colors[0];
+                    colorBall = BallSkins.Instance.GetColorSkin();
                     break;
                 case CharacterColorType.Green:
                     colorBall = colors[1];
@@ -132,6 +139,14 @@ namespace Cor
                     colorBall = colors[5];
                     break;
             }
+        }
+
+        private IEnumerator IE_ReturnColorBall()
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            meshRenderer.material.DOColor(colorBall, 0.2f);
+            _ballType = newType;
         }
     }
 }

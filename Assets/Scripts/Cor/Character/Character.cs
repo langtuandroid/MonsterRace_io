@@ -14,7 +14,7 @@ namespace Cor
         [SerializeField] ParticleSystem effectDie;
         [SerializeField] StackBalls _stackBalls;
         [SerializeField] CharacterStates _characterStates;
-        public bool isDeactiveCharacter;
+        private bool isDeactiveCharacter;
          
         CollectableMonster _ballsMoster;
         Leaderboard leaderboard;
@@ -24,17 +24,6 @@ namespace Cor
         private void Start()
         {
             leaderboard = GameObject.FindObjectOfType<Leaderboard>();
-        }
-
-        private void Update()
-        {
-            if (_characterStates.IsPlayerCharacter())
-            {
-                if (Input.GetKeyDown("g"))
-                {
-                    _characterStates.CharacterTransformation(_ballsMoster);
-                }
-            }
         }
 
         public void SetCharacterSettings(CharacterColorType characterColorType)
@@ -98,10 +87,8 @@ namespace Cor
             if (other.gameObject.tag == "Ball")
             {
                 CollectableBall _ball = other.GetComponent<CollectableBall>();
-                
                 if (!_ball.IsTrueCharacter(_characterColorType))
                     return;
-
                 _stackBalls.AddCollectableBall(_ball, _characterStates.IsPlayerCharacter());
                 if (_characterStates.IsPlayerCharacter())
                     VibrationManager.Instance.ClaimVibration();
@@ -170,11 +157,6 @@ namespace Cor
                 if (_characterStates.IsPlayerCharacter())
                     VibrationManager.Instance.UnstackVibration();
             }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            //_characterStates.SetNullPlaform();
         }
 
         #endregion

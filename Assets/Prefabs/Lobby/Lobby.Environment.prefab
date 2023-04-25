@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2618981112281996074
 Transform:
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2166592020949771569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.8364897, y: 2.8364897, z: 2.8364897}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4569873248616853618}
@@ -92,7 +92,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4569873248616853618
 Transform:
@@ -480,6 +480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lobby.Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 4437955306974978035, guid: 1d817ea42ca9fef418f61b58fd2b18c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3391e9e31bb3a7142b7fde700b78c2e0, type: 2}
     - target: {fileID: 7276456225033451427, guid: 1d817ea42ca9fef418f61b58fd2b18c6, type: 3}
       propertyPath: m_RootOrder
       value: 0
