@@ -20,35 +20,21 @@ namespace Cor
 
         public bool ISOffVibration()
         {
-            Load();
             return isOffVibration;
         }
 
         private void Start()
         {
-            Load();
-        }
-
-        public void SettingsActive(bool isActive)
-        {
-            UIManager.Instance.SettingsScreen(isActive);
+            LoadData();
         }
 
         public void VibrationOffAndOn(bool isActive)
         {
             isOffVibration = isActive;
-            Save();
+            SaveData();
         }
 
-        public void UnstackVibration()
-        {
-            if (isOffVibration)
-                return;
-
-            MMVibrationManager.Haptic(HapticTypes.Success, false, true, this);
-        }
-
-        public void ClaimVibration()
+        public void WeakVibration()
         {
             if (isOffVibration)
                 return;
@@ -56,23 +42,24 @@ namespace Cor
             MMVibrationManager.Haptic(HapticTypes.Selection, false, true, this);
         }
 
-        public void KnockVibration()
+        public void LowVibration()
         {
             if (isOffVibration)
                 return;
 
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact, false, true, this);
+            MMVibrationManager.Haptic(HapticTypes.Success, false, true, this);
         }
 
-        public void AttackVibration()
+        public void MediumVibration()
         {
             if (isOffVibration)
                 return;
+
 
             MMVibrationManager.Haptic(HapticTypes.Failure, false, true, this);
         }
 
-        public void PartOpenVibration()
+        public void HeavyVibration()
         {
             if (isOffVibration)
                 return;
@@ -80,16 +67,16 @@ namespace Cor
             MMVibrationManager.Haptic(HapticTypes.HeavyImpact, false, true, this);
         }
 
-        #region Load&Save
+        #region Load&SaveData
 
-        private void Save()
-        {
-            ES3.Save("isOffVibration", isOffVibration);
-        }
-
-        private void Load()
+        private void LoadData()
         {
             isOffVibration = ES3.Load("isOffVibration", isOffVibration);
+        }
+
+        private void SaveData()
+        {
+            ES3.Save("isOffVibration", isOffVibration);
         }
 
         #endregion

@@ -72666,7 +72666,7 @@ MonoBehaviour:
   - {r: 0.16067994, g: 0.41128477, b: 0.4811321, a: 1}
   - {r: 0.195283, g: 0.2772617, b: 0.5, a: 1}
   - {r: 0.15094338, g: 0.3773585, b: 0.37026483, a: 1}
-  testLobby: {fileID: 0}
+  isBonusSkin: 0
 --- !u!1 &778778836
 GameObject:
   m_ObjectHideFlags: 0
@@ -77364,21 +77364,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb25b64c266513f47abe0b7fc659dc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testLobby: {fileID: 0}
   weaponPrefabs:
-  - {fileID: 4587855736513926249, guid: 7adfa3c13a3448f45830934bfa02b2f8, type: 3}
+  - {fileID: 4587855736513926249, guid: 689b21a77f2f661459adb78c208277a7, type: 3}
   - {fileID: 4587855736513926249, guid: 670ee85f0e9963e4cbb37adaad96bd2d, type: 3}
-  - {fileID: 4587855736513926249, guid: 6678aaa1ef5027043bdd8f2c3b865867, type: 3}
-  - {fileID: 4587855736513926249, guid: fd8277194fb83954cb5d564f7c0b9d9b, type: 3}
-  - {fileID: 4587855736513926249, guid: 5db07389a172f7548a94a0665025e0e3, type: 3}
-  - {fileID: 4587855736513926249, guid: aa845f6746e94d94c8f396afe7069bb6, type: 3}
-  - {fileID: 4587855736513926249, guid: 74a72800dd8017545bf85cf0e422c44a, type: 3}
-  - {fileID: 4587855736513926249, guid: 96409613d8b6fca45b4af02b4060e664, type: 3}
-  - {fileID: 4587855736513926249, guid: 87fe3f2b0b8c1ad47a09fe5a18d0517b, type: 3}
-  - {fileID: 4587855736513926249, guid: 9b1b4ca6bc7d0af448dd256df2c729bc, type: 3}
+  - {fileID: 4587855736513926249, guid: 569e35179142b0e4c9c90f616baf79bd, type: 3}
+  - {fileID: 4587855736513926249, guid: 0d89bd860fdcc554c85adcd83b2cfb1e, type: 3}
+  - {fileID: 4587855736513926249, guid: d78a66d69c8adca4d83def0b4ba9ad64, type: 3}
+  - {fileID: 4587855736513926249, guid: 7e68eaaffe3357643b2e5f62bdb0e96d, type: 3}
+  - {fileID: 4587855736513926249, guid: 568c8334a4555d04e946994448862f4b, type: 3}
+  - {fileID: 4587855736513926249, guid: 7adfa3c13a3448f45830934bfa02b2f8, type: 3}
+  - {fileID: 4587855736513926249, guid: c6d4fedd2fe5262459402adff48109b2, type: 3}
   - {fileID: 4587855736513926249, guid: 239e4e3efe6a956439e1ba93adc5d9c1, type: 3}
+  - {fileID: 4587855736513926249, guid: 8a17c03378334a340b74e3a0f7ccce49, type: 3}
+  - {fileID: 4587855736513926249, guid: 42c9ca4f8b9f8304fa2cbfd970bafb6b, type: 3}
+  - {fileID: 4587855736513926249, guid: 96409613d8b6fca45b4af02b4060e664, type: 3}
+  - {fileID: 4587855736513926249, guid: 14975f8deb5f2954e8bb7c486a0d1398, type: 3}
+  - {fileID: 4587855736513926249, guid: 5db07389a172f7548a94a0665025e0e3, type: 3}
+  - {fileID: 4587855736513926249, guid: 864e16713c64097418aab69740e79282, type: 3}
+  - {fileID: 4587855736513926249, guid: aa93cb2791a08624b93d1cd4cf8c5acc, type: 3}
+  - {fileID: 4587855736513926249, guid: 5fb15cc30819853479349681c60ea0f0, type: 3}
+  - {fileID: 4587855736513926249, guid: aa845f6746e94d94c8f396afe7069bb6, type: 3}
+  - {fileID: 4587855736513926249, guid: 9b1b4ca6bc7d0af448dd256df2c729bc, type: 3}
+  - {fileID: 4587855736513926249, guid: 3f928dc734d82fb4d9b96e393f3b3a8d, type: 3}
+  - {fileID: 4587855736513926249, guid: fd8277194fb83954cb5d564f7c0b9d9b, type: 3}
+  - {fileID: 4587855736513926249, guid: c1136523cb8a231489ef01f56ae9596e, type: 3}
+  - {fileID: 4587855736513926249, guid: 90cee99a2eb763f478fbf0dfd9e26a76, type: 3}
+  - {fileID: 4587855736513926249, guid: 202a0176c11d7e748b278c210f37b682, type: 3}
+  - {fileID: 4587855736513926249, guid: 328d40b071eaaef4baa49b9c5c34095a, type: 3}
+  - {fileID: 4587855736513926249, guid: 1f69a787964160a41a56f526169d19d4, type: 3}
+  - {fileID: 4587855736513926249, guid: 6678aaa1ef5027043bdd8f2c3b865867, type: 3}
+  - {fileID: 4587855736513926249, guid: 97a60f1262987414993ae796d106521a, type: 3}
+  - {fileID: 4587855736513926249, guid: 74a72800dd8017545bf85cf0e422c44a, type: 3}
+  - {fileID: 4587855736513926249, guid: bfa5bf60c87cf7c4f86b09ac76eb3df9, type: 3}
   - {fileID: 4587855736513926249, guid: d02acb9017c7b484a91c68c9c6c6d720, type: 3}
-  indexPlayerWeapon: 0
+  - {fileID: 4587855736513926249, guid: 87fe3f2b0b8c1ad47a09fe5a18d0517b, type: 3}
+  indexPlayerWeapon: 7
 --- !u!1 &1602688993
 GameObject:
   m_ObjectHideFlags: 0
@@ -81029,7 +81049,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 62e27fa6ea00319498c18d5a918d1ed8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a06b4ac25544d104eaad0afd350bcdfb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

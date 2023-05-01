@@ -76,7 +76,7 @@ namespace Cor
             LoadData();
             CheckPartForReward();
             CheckPartForPrice();
-            if(!isMoneyPart && !isRewardPart) 
+            if(!isMoneyPart && !isRewardPart)
                 if (canvas != null) canvas.SetActive(false);
         }
 
@@ -99,6 +99,16 @@ namespace Cor
         private void Update()
         {
             point.transform.Rotate(0f, speedRotate, 0f);
+        }
+
+        public void OpenPart()
+        {
+            LoadData();
+            isMoneyPart = false;
+            isRewardPart = false;
+            canvas.SetActive(false);
+            Debug.Log("kl");
+            SaveData();
         }
 
         #region PartMovement

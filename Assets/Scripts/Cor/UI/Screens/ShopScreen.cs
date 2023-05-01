@@ -14,11 +14,10 @@ namespace Cor
         [SerializeField] GameObject bonusTitle;
         [SerializeField] GameObject bonusButton;
         [SerializeField] GameObject lockObj;
-        [SerializeField] GameObject ballsGroup;
         [SerializeField] GameObject weaponGroup;
-        [SerializeField] Toggle tabBalls;
-        [SerializeField] Toggle tabWeapons;
-        [SerializeField] TestLobby testLobby;
+        [SerializeField] GameObject ballsGroup;
+        [SerializeField] GameObject skinsGroup;
+        [SerializeField] ShopItems _shopItems;
 
         #endregion
 
@@ -40,20 +39,28 @@ namespace Cor
             shopTitle.transform.DOLocalMoveY(-1640f, 0.7f).OnComplete(() => gameObject.SetActive(false));
         }
 
-        public void ActiveBallsGroup()
-        {
-            ballsGroup.SetActive(true);
-            weaponGroup.SetActive(false);
-            tabWeapons.isOn = false;
-            testLobby.SetTest(false);
-        }
-
         public void ActiveWeaponGroup()
         {
-            ballsGroup.SetActive(false);
             weaponGroup.SetActive(true);
-            tabBalls.isOn = false;
-            testLobby.SetTest(true);
+            ballsGroup.SetActive(false);
+            skinsGroup.SetActive(false);
+            _shopItems.ActiveGroup(0);
+        }
+
+        public void ActiveBallsGroup()
+        {
+            weaponGroup.SetActive(false);
+            ballsGroup.SetActive(true);
+            skinsGroup.SetActive(false);
+            _shopItems.ActiveGroup(1);
+        }
+
+        public void ActiveSkinsGroup()
+        {
+            weaponGroup.SetActive(false);
+            ballsGroup.SetActive(false);
+            skinsGroup.SetActive(true);
+            _shopItems.ActiveGroup(2);
         }
     }
 }

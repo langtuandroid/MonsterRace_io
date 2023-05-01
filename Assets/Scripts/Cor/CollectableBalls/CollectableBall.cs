@@ -15,6 +15,7 @@ namespace Cor
         [SerializeField] Color neutral;
         [SerializeField] Color[] colors;
         [SerializeField] MeshRenderer meshRenderer;
+        [SerializeField] GameObject[] balls;
         [SerializeField] Rigidbody _rb;
         [SerializeField] Collider _collider;
 
@@ -66,6 +67,16 @@ namespace Cor
             cantStack = false;
             _ballType = _savedType;
             SwitchColor(_ballType);
+
+            if (_ballType == CharacterColorType.Blue)
+            {
+                if (BallSkins.Instance.IsBonusSkin())
+                {
+                    meshRenderer.enabled = false;
+                    balls[BallSkins.Instance.GetIndex()].SetActive(true);
+                    return;
+                }
+            }
             meshRenderer.material.color = colorBall;
         }
 

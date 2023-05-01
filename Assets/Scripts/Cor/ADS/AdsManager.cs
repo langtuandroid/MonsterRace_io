@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Cor.SDK;
 
 namespace Cor
 {
@@ -41,7 +40,7 @@ namespace Cor
         private MultiplyMoneyButton _moneyButton;
         private BonusButton _bonusButton;
         private ExtraMoneyButton _extraMoneyButton;
-        private ShopButton _shopButton;
+        private Shop _shop;
 
         #endregion
 
@@ -195,7 +194,9 @@ namespace Cor
 
         #endregion
 
-        #region RewarderActions
+        #region RewardActions
+
+        #region SetRewardType
 
         public void PartReward(SkinPart skinPart)
         {
@@ -207,9 +208,7 @@ namespace Cor
             _skinPart = skinPart;
             _rewardAdsType = RewardAdsType.PartSkin;
             _placement = "part_open";
-            MaxSdk.ShowRewardedAd(rewardAdId);
-            AdsAvailableEvent("rewarded", "success");
-            AdsStartedEvent("rewarded", "success");
+            ShowReward();
         }
 
         public void MultyplyMoneyReward(MultiplyMoneyButton moneyButton)
@@ -222,9 +221,7 @@ namespace Cor
             _moneyButton = moneyButton;
             _rewardAdsType = RewardAdsType.MultiplyMoney;
             _placement = "lose_getX2";
-            MaxSdk.ShowRewardedAd(rewardAdId);
-            AdsAvailableEvent("rewarded", "success");
-            AdsStartedEvent("rewarded", "success");
+            ShowReward();
         }
 
         public void BonusMoneyReward(BonusButton bonusButton)
@@ -237,8 +234,7 @@ namespace Cor
             _bonusButton = bonusButton;
             _rewardAdsType = RewardAdsType.BonusMoney;
             _placement = "win_bonus_money";
-            MaxSdk.ShowRewardedAd(rewardAdId);
-           
+            ShowReward();
         }
 
         public void ExtraMoneyReward(ExtraMoneyButton extraButton)
@@ -251,22 +247,20 @@ namespace Cor
             _extraMoneyButton = extraButton;
             _rewardAdsType = RewardAdsType.ExtraMoney;
             _placement = "win_bonus_money";
-            MaxSdk.ShowRewardedAd(rewardAdId);
-
+            ShowReward();
         }
 
-        public void ShopReward(ShopButton shopButton)
+        public void ShopReward(Shop shop)
         {
             if (!IsReadyReward)
             {
                 AdsAvailableEvent("rewarded", "not_available");
                 return;
             }
-            _shopButton = shopButton;
+            _shop = shop;
             _rewardAdsType = RewardAdsType.Shop;
-            _placement = "win_bonus_money";
-            MaxSdk.ShowRewardedAd(rewardAdId);
-
+            _placement = "shop";
+            ShowReward();
         }
 
         public void SkipReward()
@@ -278,17 +272,10 @@ namespace Cor
             }
             _rewardAdsType = RewardAdsType.SkipLevel;
             _placement = "skip_level";
-            MaxSdk.ShowRewardedAd(rewardAdId);
-            AdsAvailableEvent("rewarded", "successe");
-            AdsStartedEvent("rewarded", "successe");
+            ShowReward();
         }
 
-        public void ShowReward(RewardAdsType rewardAdsType)
-        {
-            _rewardAdsType = rewardAdsType;
-            AdsAvailableEvent("rewarded", "success");
-            AdsStartedEvent("rewarded", "success");
-        }
+        #endregion
 
         private void InitzalizationRewardAd()
         {
@@ -355,6 +342,13 @@ namespace Cor
 
         }
 
+        private void ShowReward()
+        {
+            MaxSdk.ShowRewardedAd(rewardAdId);
+            AdsAvailableEvent("rewarded", "success");
+            AdsStartedEvent("rewarded", "success");
+        }
+
         private void ClaimReward()
         {
             switch (_rewardAdsType)
@@ -376,13 +370,14 @@ namespace Cor
                         _extraMoneyButton.ClaimBonus();
                     break;
                 case RewardAdsType.Shop:
-                    if (_shopButton != null)
-                        _shopButton.Open();
+                    if (_shop != null)
+                        _shop.ClaimAdsBonus();
                     break;
                 case RewardAdsType.SkipLevel:
                     LevelManager.Instance.SkipLevel();
                     break;
             }
+
             StopedTimer?.Invoke();
             _rewardAdsType = RewardAdsType.Null;
             LoadRewardedAd();

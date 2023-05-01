@@ -73,8 +73,9 @@ namespace Cor
             {
                 i.SetActive(false);
             }
+
             indexProgress++;
-            VibrationManager.Instance.PartOpenVibration();
+            VibrationManager.Instance.HeavyVibration();
 
             if (indexProgress >= 4)
             {
