@@ -12,7 +12,6 @@ namespace Cor
         [SerializeField] Image head;
         [SerializeField] Sprite[] heads;
         [SerializeField] private int indexProgress;
-        //??
         [SerializeField] Sprite[] img1;
         [SerializeField] Sprite[] img2;
         [SerializeField] Sprite[] img3;

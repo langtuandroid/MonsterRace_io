@@ -32,6 +32,12 @@ namespace Cor
         Demorgoron,
         Vecna,
         GlamrockFreddy,
-        ToyChica
+        ToyChica,
+        BlueFriend,
+        GreenFriend,
+        OrangeFriend,
+        PurpleFriend,
+        RedFriend,
+        Tanos
     }
 }

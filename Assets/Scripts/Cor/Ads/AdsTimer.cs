@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -28,7 +27,7 @@ namespace Cor
             LevelManager.Instance.OnLevelStart.AddListener(StartTimer);
             LevelManager.Instance.OnLevelContinue.AddListener(RestartTimer);
             LevelManager.Instance.OnLevelEnd.AddListener(ResultReward);
-            AdsManager.StopedTimer += StopTimerAction;
+            AdsManager.Instance.StopedTimer += StopTimerAction;
         }
 
         private void FixedUpdate()

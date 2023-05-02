@@ -16,8 +16,6 @@ namespace Cor
 
         #endregion
 
-        public static Action StopedTimer;
-
         #region Variables
 
         private string bannerAdUnitId = "ca13aa5cf3b4bfbc";
@@ -41,6 +39,12 @@ namespace Cor
         private BonusButton _bonusButton;
         private ExtraMoneyButton _extraMoneyButton;
         private Shop _shop;
+
+        #endregion
+
+        #region Actions
+
+        public Action StopedTimer;
 
         #endregion
 
@@ -246,7 +250,7 @@ namespace Cor
             }
             _extraMoneyButton = extraButton;
             _rewardAdsType = RewardAdsType.ExtraMoney;
-            _placement = "win_bonus_money";
+            _placement = "shop_bonus_money";
             ShowReward();
         }
 
@@ -259,7 +263,7 @@ namespace Cor
             }
             _shop = shop;
             _rewardAdsType = RewardAdsType.Shop;
-            _placement = "shop";
+            _placement = "shop_product";
             ShowReward();
         }
 

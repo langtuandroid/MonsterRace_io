@@ -75205,6 +75205,18 @@ MonoBehaviour:
   - ToyChica_Body
   - ToyChica_Legs
   - ToyChica_Arms
+  - BlueFriend_Head
+  - BlueFriend_Body
+  - BlueFriend_Legs
+  - BlueFriend_Arms
+  - GreenFriend_Head
+  - GreenFriend_Body
+  - GreenFriend_Legs
+  - GreenFriend_Arms
+  - Tanos_Head
+  - Tanos_Body
+  - Tanos_Legs
+  - Tanos_Arms
   backUp:
   - Huggy_Head
   - Huggy_Body

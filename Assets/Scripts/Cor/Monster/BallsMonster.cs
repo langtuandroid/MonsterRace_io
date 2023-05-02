@@ -93,6 +93,15 @@ namespace Cor
                 case CharacterMonsterType.ToyChica:
                     montserHeads[19].SetActive(true);
                     break;
+                case CharacterMonsterType.BlueFriend:
+                    montserHeads[20].SetActive(true);
+                    break;
+                case CharacterMonsterType.GreenFriend:
+                    montserHeads[21].SetActive(true);
+                    break;
+                case CharacterMonsterType.Tanos:
+                    montserHeads[22].SetActive(true);
+                    break;
             }
         }
 

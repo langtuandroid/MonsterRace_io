@@ -18,6 +18,8 @@ namespace Cor
         [SerializeField] GameObject ballsGroup;
         [SerializeField] GameObject skinsGroup;
         [SerializeField] ShopItems _shopItems;
+        [SerializeField] Image[] imgs;
+        [SerializeField] Color selected;
 
         #endregion
 
@@ -29,6 +31,7 @@ namespace Cor
             shopTitle.transform.DOLocalMoveY(0f, 0.7f).From(-1640f).OnComplete(() => bg.SetActive(true));
             bonusTitle.transform.DOScale(bonusTitle.transform.localScale, 0.7f).From(0).SetDelay(0.5f);
             bonusButton.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 1f, 1).SetEase(Ease.Linear).SetLoops(-1);
+            ActiveWeaponGroup();
         }
 
         public void DeactvieShop()
@@ -44,6 +47,9 @@ namespace Cor
             weaponGroup.SetActive(true);
             ballsGroup.SetActive(false);
             skinsGroup.SetActive(false);
+            imgs[0].color = Color.white;
+            imgs[1].color = selected;
+            imgs[2].color = selected;
             _shopItems.ActiveGroup(0);
         }
 
@@ -52,6 +58,9 @@ namespace Cor
             weaponGroup.SetActive(false);
             ballsGroup.SetActive(true);
             skinsGroup.SetActive(false);
+            imgs[1].color = Color.white;
+            imgs[0].color = selected;
+            imgs[2].color = selected;
             _shopItems.ActiveGroup(1);
         }
 
@@ -60,6 +69,9 @@ namespace Cor
             weaponGroup.SetActive(false);
             ballsGroup.SetActive(false);
             skinsGroup.SetActive(true);
+            imgs[2].color = Color.white;
+            imgs[0].color = selected;
+            imgs[1].color = selected;
             _shopItems.ActiveGroup(2);
         }
     }

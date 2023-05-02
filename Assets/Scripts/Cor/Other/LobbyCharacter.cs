@@ -98,10 +98,10 @@ namespace Cor
         {
             scroll -= 8.8f;
             buttonLeft.SetActive(true);
-            if (scroll <= -17.6f)
+            if (scroll <= -26.4f)
             {
                 buttonRight.SetActive(false);
-                scroll = -17.6f;
+                scroll = -26.4f;
             }
             scrollPoint.DOLocalMoveX(scroll, 0.5f);
         }
