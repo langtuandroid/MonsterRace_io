@@ -2794,6 +2794,7 @@ RectTransform:
   - {fileID: 1750446736}
   - {fileID: 1077395265}
   - {fileID: 1415051524112423919}
+  - {fileID: 1645797024}
   m_Father: {fileID: 282903491}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5391,7 +5392,6 @@ RectTransform:
   - {fileID: 1702952065}
   - {fileID: 922729807}
   - {fileID: 859362252}
-  - {fileID: 1645797024}
   m_Father: {fileID: 282903491}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16861,7 +16861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1645797024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16875,8 +16875,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1838956977}
-  m_Father: {fileID: 629724437}
-  m_RootOrder: 8
+  m_Father: {fileID: 303841008}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16924,7 +16924,7 @@ MonoBehaviour:
   _emitterThickness: 0
   _loop: 0
   _duration: 0.3
-  _playMode: 1
+  _playMode: 0
   _startSize:
     separable: 1
     separated: 0
@@ -17887,7 +17887,7 @@ MonoBehaviour:
     m_ConstantMax: -9.81
   _targetModule:
     enabled: 1
-  _attractorTarget: {fileID: 8650254575439550465}
+  _attractorTarget: {fileID: 1468002687}
   _toTarget:
     m_Mode: 2
     m_CurveMultiplier: 1
@@ -18141,7 +18141,7 @@ MonoBehaviour:
   _rateOverDistance: 0
   _bursts:
   - time: 0
-    count: 0
+    count: 38
     used: 0
   _particleTrailRenderer: {fileID: 1838956978}
   _trailModule:
@@ -18244,7 +18244,7 @@ MonoBehaviour:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     m_ColorMin: {r: 0, g: 0, b: 0, a: 1}
-    m_ColorMax: {r: 1, g: 0.8219493, b: 0.0141509175, a: 0.3254902}
+    m_ColorMax: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 0.3254902}
   _trailColorOverTrail:
     m_Mode: 1
     m_GradientMin:
@@ -18356,7 +18356,7 @@ MonoBehaviour:
   moduleParticleFoldout: 1
   moduleMovementFoldout: 1
   moduleEventsFoldout: 1
-  m_Texture: {fileID: 2800000, guid: a5d7e8b886e4c2e45a6566566251bff3, type: 3}
+  m_Texture: {fileID: 2800000, guid: 51d7f922c45630741b685d317b4a71cd, type: 3}
 --- !u!222 &1645797026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19783,9 +19783,9 @@ RectTransform:
   m_Father: {fileID: 303841008}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1798726328

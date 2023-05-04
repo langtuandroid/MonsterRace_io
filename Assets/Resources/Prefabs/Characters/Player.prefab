@@ -260,7 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackField: {fileID: 7249519130363897598}
-  weapon: {fileID: 0}
 --- !u!114 &8332643490788640797
 MonoBehaviour:
   m_ObjectHideFlags: 0

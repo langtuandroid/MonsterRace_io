@@ -21,6 +21,12 @@ namespace Cor
 
         #endregion
 
+        private void OnDestroy()
+        {
+            LevelManager.Instance.OnLevelFight -= ActiveFight;
+            LevelManager.Instance.OnLevelEnd -= DeactiveFight;
+        }
+
         private void Start()
         {
             LevelManager.Instance.OnLevelFight += ActiveFight;
@@ -44,13 +50,13 @@ namespace Cor
 
         private void ActiveFight()
         {
-            attackField.SetActive(true);
-            attackField.transform.DOScale(attackField.transform.localScale, 0.5f).From(0);
+           // attackField.SetActive(true);
+            //attackField.transform.DOScale(attackField.transform.localScale, 0.5f).From(0);
         }
 
         private void DeactiveFight()
         {
-            attackField.transform.DOScale(0, 0.5f).OnComplete(() => attackField.SetActive(false));
+            //attackField.transform.DOScale(0, 0.5f).OnComplete(() => attackField.SetActive(false));
             //DOVirtual.DelayedCall(0.5f, () => weapon.gameObject.SetActive(false));
         }
     }
