@@ -5,24 +5,28 @@ namespace Cor
 {
     public class Weapon : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] Collider _collider;
         [SerializeField] DOTweenAnimation punchAnim;
         [SerializeField] ParticleSystem dust;
-        private CharacterStates characterStates;
+
+        private CharacterFight _characterFight;
+
+        #endregion
 
         private void Start()
         {
-            characterStates = GetComponentInParent<CharacterStates>();    
+            _characterFight = GetComponentInParent<CharacterFight>();
+            _characterFight.OnStartAttack += Attack;
         }
 
-        public void Attack()
-        {
-            _collider.enabled = true;
-        }
+        public void Attack() => DOVirtual.DelayedCall(0.5f, () => _collider.enabled = true);
 
         public void StopAttack()
         {
-            _collider.enabled = false;
+            DOVirtual.DelayedCall(0.1f, () => _collider.enabled = false);
+            DOVirtual.DelayedCall(0.1f, () => _characterFight.ReturnAttack());
         }
 
         private void OnTriggerEnter(Collider other)
@@ -31,15 +35,13 @@ namespace Cor
             {
                 punchAnim.DORestart();
                 dust.Play();
+                StopAttack();
             }
 
             if (other.gameObject.tag == "Character")
             {
                 Character character = other.GetComponent<Character>();
                 character.KillCharacter();
-
-                if (characterStates.IsPlayerCharacter())
-                    VibrationManager.Instance.HeavyVibration();
             }
 
             if (other.gameObject.tag == "Monster")
@@ -49,9 +51,6 @@ namespace Cor
                     return;
 
                 characterMonster.ExplosionCharacterMonster(transform);
-
-                if (characterStates.IsPlayerCharacter())
-                    VibrationManager.Instance.HeavyVibration();
             }
         }
     }

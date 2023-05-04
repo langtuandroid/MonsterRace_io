@@ -79,9 +79,6 @@ namespace Cor
             MaxSdkCallbacks.Banner.OnAdClickedEvent += OnBannerAdClickedEvent;
             MaxSdkCallbacks.Banner.OnAdRevenuePaidEvent += OnBannerAdRevenuePaidEvent;
 
-            if (LevelManager.Instance.LvlNumber() == 1)
-                return;
-
             if (!isDeactiveBanner)
             {
                 MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>

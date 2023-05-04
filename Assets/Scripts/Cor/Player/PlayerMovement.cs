@@ -23,8 +23,6 @@ namespace Cor
         private Vector3 gravityVelocity;
         private Transform _transformPlayer;
         private CharacterController _characterController;
-        private FloatingJoystick _joystick;
-        private Rigidbody _rb;
 
         #endregion
 
@@ -42,11 +40,9 @@ namespace Cor
         {
             _transformPlayer = GetComponent<Transform>();
             _characterController = GetComponent<CharacterController>();
-            _joystick = GameObject.FindObjectOfType<FloatingJoystick>();
-            _rb = GetComponent<Rigidbody>();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (isLockControll)
                 return;
@@ -84,26 +80,33 @@ namespace Cor
 
         private void Movement()
         {
-            _rb.MovePosition(transform.position + (Vector3.right * xInput + Vector3.forward * yInput) * speedMovement * Time.deltaTime);
+            _characterController.Move((Vector3.right * xInput + Vector3.forward * yInput) * speedMovement * Time.deltaTime);
+
             _transformPlayer.LookAt(transform.position + (Vector3.right * xInput + Vector3.forward * yInput) * speedRotate * Time.deltaTime);
+
+            var isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+            if (isGrounded && gravityVelocity.y < 0 && isGrounded && gravityVelocity.y > 1)
+            {
+                gravityVelocity.y = -2f;
+            }
+
+            gravityVelocity += Vector3.up * gravityMultyplier * Time.deltaTime;
+            _characterController.Move(gravityVelocity);
         }
 
-        public void MovementControll(bool isMove)
+        public void MovementControll(float horizontal, float vertical, bool isMove)
         { 
             if (isMove)
             {
-                if (_joystick != null)
+                xInput = horizontal;
+                yInput = vertical;
+                if (xInput >= 0.1f || xInput <= -0.1f ||
+                      yInput >= 0.1f || yInput <= -0.1f)
                 {
-                    xInput = _joystick.Horizontal;
-                    yInput = _joystick.Vertical;
-
-                    if (xInput >= 0.1f || xInput <= -0.1f ||
-                        yInput >= 0.1f || yInput <= -0.1f)
-                    {
-                        _characterStatesAnimation.RunAnimation(true);
-                    }
-                    else { _characterStatesAnimation.RunAnimation(false); }
+                    _characterStatesAnimation.RunAnimation(true);
                 }
+                else { _characterStatesAnimation.RunAnimation(false); }
                 return;
             }
 
@@ -140,14 +143,4 @@ namespace Cor
             }
         }
     }
-
-    //OLD Movement
-    //_characterController.Move((Vector3.right * xInput + Vector3.forward * yInput) * speedMovement * Time.deltaTime);
-    //var isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-    //if (isGrounded && gravityVelocity.y < 0 && isGrounded && gravityVelocity.y > 1)
-    //{
-    //    gravityVelocity.y = -2f;
-    //}
-    //gravityVelocity += Vector3.up * gravityMultyplier * Time.deltaTime;
-    //_characterController.Move(gravityVelocity);
 }

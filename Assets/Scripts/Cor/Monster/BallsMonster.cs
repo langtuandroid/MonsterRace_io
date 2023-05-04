@@ -119,9 +119,6 @@ namespace Cor
                 _weapon = _weaponSpawner.SpawnWeapon(pointWeapon, _weaponSpawner.GetIndex());
             if(!ok)
                 _weapon = _weaponSpawner.SpawnWeapon(pointWeapon, Random.Range(0, 4));
-
-            _characterFight = GetComponentInParent<CharacterFight>();
-            _characterFight.SetWeapon(_weapon);
         }
     }
 }

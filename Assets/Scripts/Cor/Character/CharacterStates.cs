@@ -23,7 +23,7 @@ namespace Cor
         [SerializeField] private bool isMonsterStage;
         [SerializeField] private bool isDie;
 
-        private ArenaController _arena;
+        private ArenaManager _arena;
         private CollectableMonster _monster;
         private BallsMonster _ballsMonster;
         private SkinsController skinsController;
@@ -49,16 +49,18 @@ namespace Cor
         private void OnEnable()
         {
             _characterFight.OnStartAttack += Attack;
+            _characterFight.OnEndAttack += MoveRetrun;
         }
 
         private void OnDestroy()
         {
             _characterFight.OnStartAttack -= Attack;
+            _characterFight.OnEndAttack -= MoveRetrun;
         }
 
         private void Start()
         {
-            _arena = GameObject.FindObjectOfType<ArenaController>();
+            _arena = GameObject.FindObjectOfType<ArenaManager>();
             skinsController = GameObject.FindObjectOfType<SkinsController>();
             LevelManager.Instance.OnLevelCompleted += Finish;
             if (!IsPlayerCharacter())
@@ -161,6 +163,11 @@ namespace Cor
             StopMovement(true);
         }
 
+        public void MoveRetrun()
+        {
+            StopMovement(false);
+        }
+
         public void Knock(Transform knockDir)
         {
             if (_playerMovement != null)
@@ -192,7 +199,6 @@ namespace Cor
             {
                 _botMovement.StopMovement(true);
                 _botMovement.ThrowBot(pushDir, force);
-                //_botMovement.PushBot(pushDir);
                 StartCoroutine(IE_CanMove(1f));
             }
         }
@@ -249,7 +255,7 @@ namespace Cor
                 CameraController.Instance.CharacterCam(false);
                 CameraController.Instance.ChangeMonsterCam(true);
                 LevelManager.Instance.LevelFight();
-                PopupController popupController = GameObject.FindObjectOfType<PopupController>();
+                TutorialPopup popupController = GameObject.FindObjectOfType<TutorialPopup>();
                 popupController.NextPopupActive();
             }
         }

@@ -9,7 +9,8 @@ namespace Cor
         #region Variables
 
         [SerializeField] GameObject attackField;
-        [SerializeField] Weapon weapon;
+
+        private bool isAttack;
 
         #endregion
 
@@ -20,34 +21,37 @@ namespace Cor
 
         #endregion
 
-        private void OnEnable()
+        private void Start()
         {
             LevelManager.Instance.OnLevelFight += ActiveFight;
             LevelManager.Instance.OnLevelEnd += DeactiveFight;
         }
 
-        private void OnDisable()
+        public void Attack()
         {
-            LevelManager.Instance.OnLevelFight -= ActiveFight;
-            LevelManager.Instance.OnLevelEnd -= DeactiveFight;
+            if (isAttack)
+                return;
+
+            OnStartAttack?.Invoke();
+            isAttack = true;
         }
 
-        public void SetWeapon(Weapon monsterWeapon) => weapon = monsterWeapon;
-
-        public void Attack() => OnStartAttack?.Invoke();
-
-        public void ReturnAttack() => OnEndAttack?.Invoke();
+        public void ReturnAttack()
+        {
+            OnEndAttack?.Invoke();
+            isAttack = false;
+        }
 
         private void ActiveFight()
         {
-           // attackField.SetActive(true);
-           // attackField.transform.DOScale(attackField.transform.localScale, 0.5f).From(0);
+            attackField.SetActive(true);
+            attackField.transform.DOScale(attackField.transform.localScale, 0.5f).From(0);
         }
 
         private void DeactiveFight()
         {
             attackField.transform.DOScale(0, 0.5f).OnComplete(() => attackField.SetActive(false));
-            DOVirtual.DelayedCall(0.5f, () => weapon.gameObject.SetActive(false));
+            //DOVirtual.DelayedCall(0.5f, () => weapon.gameObject.SetActive(false));
         }
     }
 }
