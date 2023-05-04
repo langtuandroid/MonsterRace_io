@@ -18,7 +18,7 @@ namespace Cor
 
         private void Start()
         {
-            LevelManager.Instance.OnLevelEnd.AddListener(StopFight);
+            LevelManager.Instance.OnLevelEnd += StopFight;
             if(weapon == null)
             {
                 SetWeapon(GetComponentInChildren<Weapon>());
@@ -33,10 +33,6 @@ namespace Cor
         private void StopFight()
         {
             _characterStatesAnimation.RunAnimation(false);
-
-            //weapon.gameObject.SetActive(false);
-
-            _characterMonster.AttackFieldActive(false);
         }
 
         private IEnumerator IE_Kick()

@@ -24,9 +24,9 @@ namespace Cor
 
         private void Start()
         {
-            LevelManager.Instance.OnLevelStart.AddListener(StartTimer);
-            LevelManager.Instance.OnLevelContinue.AddListener(RestartTimer);
-            LevelManager.Instance.OnLevelEnd.AddListener(ResultReward);
+            LevelManager.Instance.OnLevelStart += StartTimer;
+            LevelManager.Instance.OnLevelContinue += RestartTimer;
+            LevelManager.Instance.OnLevelEnd += ResultReward;
             AdsManager.Instance.StopedTimer += StopTimerAction;
         }
 

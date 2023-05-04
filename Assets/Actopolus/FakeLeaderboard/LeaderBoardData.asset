@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0581513116c71994ea3e3759f550e31f, type: 3}
+  m_Name: LeaderBoardData
+  m_EditorClassIdentifier: 
+  playerName: Player
+  usernamesText: {fileID: 4900000, guid: 3538583bf26924844a1a8db93d2504f1, type: 3}
+  countries:
+  - {fileID: 21300000, guid: 3966135749bae3c47a71975e2b16cea3, type: 3}
+  - {fileID: 21300000, guid: da19c6cecd6aa474f9312f96ca0d070e, type: 3}
+  - {fileID: 21300000, guid: ac62009761921754291780f4ea21e834, type: 3}
+  - {fileID: 21300000, guid: ce2fda3eed0db494c99b8c00051b04a0, type: 3}
+  - {fileID: 21300000, guid: 82138615e7a2ff949926e55ac14c4aae, type: 3}
+  - {fileID: 21300000, guid: 0ae00bacc59683a4b8c79ac5b3ab9ccd, type: 3}
+  - {fileID: 21300000, guid: 426a01097234a844f951f95a4f928f85, type: 3}
+  - {fileID: 21300000, guid: 24ae331940b2e8442b94f3d4194daae8, type: 3}
+  - {fileID: 21300000, guid: 90946dfdf1ff7ab40a9727d9589529cd, type: 3}
+  - {fileID: 21300000, guid: 0a2e3f2319b104e41952e3052f23bcfe, type: 3}
+  - {fileID: 21300000, guid: 24cd568116d6d3743bd7ac9ee32ba0c4, type: 3}
+  - {fileID: 21300000, guid: 4c8469c351046ca4b82a14de5a2ec382, type: 3}
+  - {fileID: 21300000, guid: 2f0a38bbec24d654ba1de58f425fe21b, type: 3}
+  - {fileID: 21300000, guid: 238e4c046167cce45b64ba8305e1fcc3, type: 3}
+  - {fileID: 21300000, guid: 2041ee4008d356c428f1e63e4ce41c1d, type: 3}
+  - {fileID: 21300000, guid: 28333b6f1c6328542adeb8479d72826b, type: 3}
+  - {fileID: 21300000, guid: bc12ae295f63b4d4cb7371d0273019cc, type: 3}
+  - {fileID: 21300000, guid: 86dc507d0c8ded54b89d866115d3da73, type: 3}
+  - {fileID: 21300000, guid: 4acd05c18159f3c42a6e58e6d51d521c, type: 3}
+  - {fileID: 21300000, guid: 20678e1a1f6343c48b261663b26e9c04, type: 3}
+  popupTitle: SMASHER RANK
+  rankUpSprite: {fileID: 21300000, guid: e3ec5f4bfd75a1147954c78e4b5256cb, type: 3}
+  rankUpColor: {r: 0, g: 0.5294118, b: 0.11764706, a: 1}
+  rankDownSprite: {fileID: 21300000, guid: 324f3dcde3d0fcf488799b9c7da1d4e7, type: 3}
+  rankDownColor: {r: 0.764151, g: 0.082903184, b: 0.082903184, a: 1}
+  rankCounterAnimationDuration: 2.48
+  popupAppearDuration: 0.3
+  popupDisappearDuration: 0.2
+  minInitialRankPosition: 38
+  maxInitialRankPosition: 54
+  minRankDecrement: 2
+  maxRankDecrement: 2

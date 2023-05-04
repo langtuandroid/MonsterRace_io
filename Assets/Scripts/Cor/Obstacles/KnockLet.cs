@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -7,11 +5,20 @@ namespace Cor
 {
     public class KnockLet : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] private float speedRotate;
 
-        private void Start()
+        #endregion
+
+        private void OnEnable()
         {
-            LevelManager.Instance.OnLevelStart.AddListener(ActivityLet);
+            LevelManager.Instance.OnLevelStart += ActivityLet;
+        }
+
+        private void OnDisable()
+        {
+            LevelManager.Instance.OnLevelStart -= ActivityLet;
         }
 
         private void ActivityLet()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
@@ -17,6 +18,7 @@ namespace Cor
         [SerializeField] PlayerMovement _playerMovement;
         [SerializeField] BotMovement _botMovement;
         [SerializeField] BotPointer _botPointer;
+        [SerializeField] CharacterFight _characterFight;
         [SerializeField] private bool isPlayerCharacter;
         [SerializeField] private bool isMonsterStage;
         [SerializeField] private bool isDie;
@@ -44,11 +46,21 @@ namespace Cor
             return isPlayerCharacter;
         }
 
+        private void OnEnable()
+        {
+            _characterFight.OnStartAttack += Attack;
+        }
+
+        private void OnDestroy()
+        {
+            _characterFight.OnStartAttack -= Attack;
+        }
+
         private void Start()
         {
             _arena = GameObject.FindObjectOfType<ArenaController>();
             skinsController = GameObject.FindObjectOfType<SkinsController>();
-            LevelManager.Instance.OnLevelCompleted.AddListener(Finish);
+            LevelManager.Instance.OnLevelCompleted += Finish;
             if (!IsPlayerCharacter())
                 _arena.AddBot(this);
         }
@@ -146,6 +158,7 @@ namespace Cor
         public void Attack()
         {
             _characterStatesAnimation.AttackAnimation();
+            StopMovement(true);
         }
 
         public void Knock(Transform knockDir)
@@ -235,6 +248,7 @@ namespace Cor
             {
                 CameraController.Instance.CharacterCam(false);
                 CameraController.Instance.ChangeMonsterCam(true);
+                LevelManager.Instance.LevelFight();
                 PopupController popupController = GameObject.FindObjectOfType<PopupController>();
                 popupController.NextPopupActive();
             }
@@ -246,7 +260,6 @@ namespace Cor
 
             _character.gameObject.SetActive(false);
             _characterMonster.gameObject.SetActive(true);
-            _characterMonster.AttackFieldActive(true);
             _monster.DeactiveMonster();
 
             if (_playerMovement != null)

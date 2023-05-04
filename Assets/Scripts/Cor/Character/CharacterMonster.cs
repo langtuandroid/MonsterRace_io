@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 namespace Cor
 {
@@ -50,12 +49,6 @@ namespace Cor
             _characterStates.CharacterDie();
             _characterStates.Die();
             _monsterSpine.CrushSpine(target);
-        }
-
-        public void AttackFieldActive(bool isActive)
-        {
-            if (isActive) { attackField.transform.DOScale(attackField.transform.localScale, 0.5f).From(0); }
-            if (!isActive) { attackField.transform.DOScale(0, 0.5f); }
         }
     }
 }

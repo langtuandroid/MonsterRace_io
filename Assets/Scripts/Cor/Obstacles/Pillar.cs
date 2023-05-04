@@ -14,7 +14,7 @@ namespace Cor
 
         private void Start()
         {
-            LevelManager.Instance.OnLevelStart.AddListener(ActivityLet);
+            LevelManager.Instance.OnLevelStart += ActivityLet;
         }
 
         private void Update()

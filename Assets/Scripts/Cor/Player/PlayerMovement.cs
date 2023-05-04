@@ -6,7 +6,9 @@ namespace Cor
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour
     {
-        [Header("MovementSettings")]
+        #region Variables
+
+        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
         [SerializeField] Transform groundCheck;
         [SerializeField] LayerMask groundMask;
         [SerializeField] private float gravityMultyplier;
@@ -15,30 +17,41 @@ namespace Cor
         [SerializeField] private float speedRotate;
         [SerializeField] private bool isLockControll;
 
-        Vector3 gravityVelocity;
-        Transform _transformPlayer;
-        CharacterController _characterController;
-        FloatingJoystick _joystick;
-        CharacterStatesAnimation _characterStatesAnimation;
-        Rigidbody _rb;
+        private float xInput;
+        private float yInput;
+
+        private Vector3 gravityVelocity;
+        private Transform _transformPlayer;
+        private CharacterController _characterController;
+        private FloatingJoystick _joystick;
+        private Rigidbody _rb;
+
+        #endregion
+
+        private void OnEnable()
+        {
+            LevelManager.Instance.OnLevelEnd += StopedMovement;
+        }
+
+        private void OnDisable()
+        {
+            LevelManager.Instance.OnLevelEnd -= StopedMovement;
+        }
 
         private void Start()
         {
             _transformPlayer = GetComponent<Transform>();
             _characterController = GetComponent<CharacterController>();
             _joystick = GameObject.FindObjectOfType<FloatingJoystick>();
-            _characterStatesAnimation = GetComponentInChildren<CharacterStatesAnimation>();
             _rb = GetComponent<Rigidbody>();
-
-            LevelManager.Instance.OnLevelEnd.AddListener(Stop);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (isLockControll)
                 return;
 
-            MovementControll();
+            Movement();
         }
 
         public void LockControll(bool lockControll)
@@ -47,15 +60,9 @@ namespace Cor
             if (!lockControll) { _transformPlayer.DOKill(); }
         }
 
-        public void Move()
-        {
-            LockControll(false);
-        }
+        public void Move() => LockControll(false);
 
-        public void Stop()
-        {
-            LockControll(true);
-        }
+        public void StopedMovement() => LockControll(true);
 
         public void MovementToTarget(Transform target)
         {
@@ -75,41 +82,34 @@ namespace Cor
             _transformPlayer.DOLocalMove(new Vector3(dir.position.x, transform.position.y, dir.position.z), force);
         }
 
-        private void MovementControll()
+        private void Movement()
+        {
+            _rb.MovePosition(transform.position + (Vector3.right * xInput + Vector3.forward * yInput) * speedMovement * Time.deltaTime);
+            _transformPlayer.LookAt(transform.position + (Vector3.right * xInput + Vector3.forward * yInput) * speedRotate * Time.deltaTime);
+        }
+
+        public void MovementControll(bool isMove)
         { 
-            if (Input.GetMouseButton(0))
+            if (isMove)
             {
                 if (_joystick != null)
                 {
-                    var xInput = _joystick.Horizontal;
-                    var yInput = _joystick.Vertical;
-
-                    _characterController.Move((Vector3.right * xInput + Vector3.forward * yInput) * speedMovement * Time.deltaTime);
-
-                    _transformPlayer.LookAt(transform.position + (Vector3.right * xInput + Vector3.forward * yInput) * speedRotate * Time.deltaTime);
-
-                    var isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-                    if (isGrounded && gravityVelocity.y < 0 && isGrounded && gravityVelocity.y > 1)
-                    {
-                        gravityVelocity.y = -2f;
-                    }
-
-                    gravityVelocity += Vector3.up * gravityMultyplier * Time.deltaTime;
-                    _characterController.Move(gravityVelocity);
+                    xInput = _joystick.Horizontal;
+                    yInput = _joystick.Vertical;
 
                     if (xInput >= 0.1f || xInput <= -0.1f ||
-                        yInput >= 0.1f || yInput <= -0.1f){
+                        yInput >= 0.1f || yInput <= -0.1f)
+                    {
                         _characterStatesAnimation.RunAnimation(true);
                     }
                     else { _characterStatesAnimation.RunAnimation(false); }
                 }
+                return;
             }
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                _characterStatesAnimation.RunAnimation(false);
-            }
+            xInput = 0;
+            yInput = 0;
+            _characterStatesAnimation.RunAnimation(false);
         }
 
         private void OnTriggerStay(Collider other)
@@ -140,4 +140,14 @@ namespace Cor
             }
         }
     }
+
+    //OLD Movement
+    //_characterController.Move((Vector3.right * xInput + Vector3.forward * yInput) * speedMovement * Time.deltaTime);
+    //var isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    //if (isGrounded && gravityVelocity.y < 0 && isGrounded && gravityVelocity.y > 1)
+    //{
+    //    gravityVelocity.y = -2f;
+    //}
+    //gravityVelocity += Vector3.up * gravityMultyplier * Time.deltaTime;
+    //_characterController.Move(gravityVelocity);
 }

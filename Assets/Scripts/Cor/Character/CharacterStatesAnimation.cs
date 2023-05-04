@@ -66,24 +66,12 @@ namespace Cor
                 _animCharacter.SetBool("Flying", isFlying);
         }
 
-        public void KonckAnimation()
-        {
-            _animCharacter.SetTrigger("Knock");
-        }
+        public void KonckAnimation() => _animCharacter.SetTrigger("Knock");
 
-        public void WakeUpAnimation()
-        {
-            _animCharacter.SetTrigger("WakeUp");
-        }
+        public void WakeUpAnimation() => _animCharacter.SetTrigger("WakeUp");
 
-        public void DecreaseAnimation()
-        {
-            _animCharacter.SetTrigger("Decrease");
-        }
+        public void DecreaseAnimation() => _animCharacter.SetTrigger("Decrease");
 
-        public void LandingAnimation()
-        {
-            _animMonster.SetTrigger("Landing");
-        }
+        public void LandingAnimation() => _animMonster.SetTrigger("Landing");
     }
 }

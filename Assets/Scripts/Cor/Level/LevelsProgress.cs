@@ -11,7 +11,7 @@ namespace Cor
         [SerializeField] Text[] textLvls;
         [SerializeField] Image head;
         [SerializeField] Sprite[] heads;
-        [SerializeField] private int indexProgress;
+
         [SerializeField] Sprite[] img1;
         [SerializeField] Sprite[] img2;
         [SerializeField] Sprite[] img3;
@@ -19,14 +19,12 @@ namespace Cor
         [SerializeField] int[] lvl1;
         [SerializeField] int[] lvl2;
         [SerializeField] int[] lvl3;
-
-        SkinsController _skinsController;
+        [SerializeField] SkinsController _skinsController;
 
         #endregion
 
         private void Start()
         {
-            _skinsController = GameObject.FindObjectOfType<SkinsController>();
             CheckProgress();
         }
 

@@ -37,10 +37,10 @@ namespace Cor
         {
             _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
             isStopMovement = true;
-            LevelManager.Instance.OnLevelStart.AddListener(Move);
-            LevelManager.Instance.OnLevelPause.AddListener(Stop);
-            LevelManager.Instance.OnLevelContinue.AddListener(Move);
-            LevelManager.Instance.OnLevelEnd.AddListener(Stop);
+            LevelManager.Instance.OnLevelStart += Move;
+            LevelManager.Instance.OnLevelPause += Stop;
+            LevelManager.Instance.OnLevelContinue += Move;
+            LevelManager.Instance.OnLevelEnd += Stop;
         }
 
         private void Update()

@@ -11,7 +11,7 @@ namespace Cor
         [SerializeField] private int indexOpenSkin;
         [SerializeField] private int indexProgressSkin;
 
-        Skin skin;
+        private Skin skin;
 
         #endregion
 

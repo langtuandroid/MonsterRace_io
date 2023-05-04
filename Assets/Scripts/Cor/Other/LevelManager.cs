@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Cor.SDK;
 using Cor.MyPool;
+using Random = UnityEngine.Random;
 
 namespace Cor
 {
@@ -33,25 +34,20 @@ namespace Cor
         [SerializeField] LevelRewards levelRewards;
         [SerializeField] NightPoolEntry nightPoolEntry;
         [SerializeField] private int lvlNumber;
-        [SerializeField] private bool isMain;
-        [SerializeField] private bool isEditor;
+        [SerializeField] GameModeType _gameMode;
         private int lvlIndex;
         private bool isLevelEnd;
 
         #endregion
 
-        #region LevelEvents
+        #region Actions
 
-        [HideInInspector]
-        public UnityEvent OnLevelStart;
-        [HideInInspector]
-        public UnityEvent OnLevelPause;
-        [HideInInspector]
-        public UnityEvent OnLevelContinue;
-        [HideInInspector]
-        public UnityEvent OnLevelEnd;
-        [HideInInspector]
-        public UnityEvent OnLevelCompleted;
+        public Action OnLevelStart;
+        public Action OnLevelFight;
+        public Action OnLevelPause;
+        public Action OnLevelContinue;
+        public Action OnLevelEnd;
+        public Action OnLevelCompleted;
 
         #endregion
 
@@ -67,7 +63,7 @@ namespace Cor
 
         private void Start()
         {
-            if (isMain)
+            if (_gameMode == GameModeType.Lobby)
                 return;
 
             StartCoroutine(IE_LevelStart());
@@ -81,9 +77,13 @@ namespace Cor
             _analytics.LoadData();
             _analytics.NewAttempt();
             _analytics.LevelStartEvent();
-            //UIManager.Instance.StartScreen(false);
             UIManager.Instance.PointerScreen(true);
             UIManager.Instance.LeaderboardScreen(true);
+        }
+
+        public void LevelFight()
+        {
+            OnLevelFight?.Invoke();
         }
 
         public void LevelCompleted()
@@ -121,16 +121,21 @@ namespace Cor
         private void NewLevel()
         {
             LoadSave();
-            if (isEditor)
+
+            if (_gameMode == GameModeType.Lobby)
                 return;
 
             if (lvlNumber >= 13) { lvlIndex = Random.Range(0, 11); }
             levelSpawner.SpawnLevel(lvlIndex);
             Arena newArena = levelSpawner.LevelArena();
-            collectableBallsField.SetPlacementSettings(newArena);
             memberSpawner.CreatePlayer(newArena);
             memberSpawner.CreateBots(newArena);
+
+            if (_gameMode == GameModeType.Bonus)
+                return;
+
             gatesSpawner.SetupGatesPoints(newArena);
+            collectableBallsField.SetPlacementSettings(newArena);
             nightPoolEntry.SetupPool(newArena.GetPreset());
         }
 
