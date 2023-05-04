@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   clientTokens:
-  - addfccea99052cb9942a35ff6b641cc2
+  - 04dfa45f77359757dda516ac72c85dcd
   appIds:
-  - 930531115026586
+  - 238146928806804
   appLabels:
-  - Monster Race IO
+  - Race and Smash
   cookie: 1
   logging: 1
   status: 1
