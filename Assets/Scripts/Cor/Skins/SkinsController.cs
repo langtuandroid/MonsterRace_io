@@ -64,8 +64,14 @@ namespace Cor
             Save();
         }
 
+        public void OpenPart()
+        {
+            currencySkins[indexProgressSkin].AddSkinPart();
+        }
+
         public void BonusPart()
         {
+            currencySkins[indexProgressSkin].AddSkinPart();
             currencySkins[indexProgressSkin].OpenFramgentSkin();
         }
 

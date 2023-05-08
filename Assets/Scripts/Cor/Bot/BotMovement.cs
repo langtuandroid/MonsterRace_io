@@ -11,13 +11,13 @@ namespace Cor
         #region Variables
 
         [SerializeField] List<Transform> monsterPoints = new List<Transform>();
+        [SerializeField] CharacterColorType colorType;
+        [SerializeField] List<Vector3> points = new List<Vector3>();
         [SerializeField] private float range;
         [SerializeField] private float timeToMonster;
         [SerializeField] private float timer;
         [SerializeField] private bool isStopMovement;
         [SerializeField] private bool toMonster;
-        [SerializeField] CharacterColorType colorType;
-        [SerializeField] List<Vector3> points = new List<Vector3>();
         [SerializeField] int min;
         [SerializeField] int max;
         private int indexMonsterPoint;
@@ -25,7 +25,7 @@ namespace Cor
 
         [SerializeField] Rigidbody _rb;
         [SerializeField] NavMeshAgent _agent;
-        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] CharacterAnimation _characterStatesAnimation;
         [SerializeField] StackBalls _stackBalls;
         CollectableBallsField _collectableBallsField;
         Vector3 ball;

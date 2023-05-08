@@ -8,7 +8,7 @@ namespace Cor
         #region Variables
 
         [SerializeField] CharacterStates _characterStates;
-        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] CharacterAnimation _characterStatesAnimation;
         [SerializeField] CharacterMonster _characterMonster;
         [SerializeField] Weapon weapon;
         [SerializeField] BotMovement botMovement;

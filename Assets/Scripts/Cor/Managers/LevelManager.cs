@@ -75,8 +75,7 @@ namespace Cor
             _analytics.LoadData();
             _analytics.NewAttempt();
             _analytics.LevelStartEvent();
-            UIManager.Instance.PointerScreen(true);
-            UIManager.Instance.LeaderboardScreen(true);
+            UIManager.Instance.GameScreen(true);
         }
 
         public void LevelCompleted()
@@ -84,7 +83,7 @@ namespace Cor
             LevelEnd();
             OnLevelCompleted?.Invoke();
             _analytics.LevelFinishEvent("win");
-            skinsController.BonusPart();
+            skinsController.OpenPart();
             CameraController.Instance.ChangeMonsterCam(false);
             CameraController.Instance.JumpStateCam(true);
             NextLevel();
@@ -105,11 +104,7 @@ namespace Cor
 
             OnLevelEnd.Invoke();
             isLevelEnd = true;
-            UIManager.Instance.JoystickScreen(false);
-            UIManager.Instance.SettingsButtonScreen(false);
-            UIManager.Instance.SettingsScreen(false);
-            UIManager.Instance.PointerScreen(false);
-            UIManager.Instance.LeaderboardScreen(false);
+            UIManager.Instance.GameScreen(false);
         }
 
         private void NewLevel()

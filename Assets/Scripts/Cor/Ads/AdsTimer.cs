@@ -76,20 +76,11 @@ namespace Cor
             }
         }
 
-        public void StopTimerAction()
-        {
-            isStop = true;
-        }
+        public void StopTimerAction() => isStop = true;
 
-        private void StartTimer()
-        {
-            isBlockTimer = false;
-        }
+        private void StartTimer() => isBlockTimer = false;
 
-        private void RestartTimer()
-        {
-            isBlockTimer = false;
-        }
+        private void RestartTimer() => isBlockTimer = false;
 
         private void ResultReward()
         {

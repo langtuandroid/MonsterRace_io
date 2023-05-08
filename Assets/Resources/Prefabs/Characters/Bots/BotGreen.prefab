@@ -317,7 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef1bfa6febfb3b4095d736dc28f4092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStates: {fileID: 1437897824514399556}
 --- !u!65 &7622246319578576699
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -343,8 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfe4b38ad64f6148ae9bde23bd51409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackField: {fileID: 0}
-  weapon: {fileID: 0}
+  attackField: {fileID: 1437897824514464044}
 --- !u!1 &1437897824514464044
 GameObject:
   m_ObjectHideFlags: 0

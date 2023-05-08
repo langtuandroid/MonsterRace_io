@@ -18,7 +18,7 @@ namespace Cor
         [SerializeField] Transform monsterPoint;
         [SerializeField] CharacterStates _characterStates;
         [SerializeField] CharacterSkins _characterSkins;
-        [SerializeField] CharacterStatesAnimation characterStatesAnimation;
+        [SerializeField] CharacterAnimation characterStatesAnimation;
         [SerializeField] MonsterSpine _monsterSpine;
         [SerializeField] GameObject attackField;
         [SerializeField] Animator _anim;
@@ -38,7 +38,7 @@ namespace Cor
                 if (i.monsterType == _monsterType)
                 {
                     _anim.runtimeAnimatorController = i.monsterAnimator;
-                    characterStatesAnimation.AddMonsterAnimator(_anim);
+                    characterStatesAnimation.SetAnimator(_anim);
                     break;
                 }
             }

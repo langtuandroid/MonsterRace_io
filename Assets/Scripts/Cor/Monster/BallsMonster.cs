@@ -5,6 +5,8 @@ namespace Cor
 {
     public class BallsMonster : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] GameObject bodyMonster;
         [SerializeField] List<GameObject> montserHeads = new List<GameObject>();
         [SerializeField] List<GameObject> balls = new List<GameObject>();
@@ -16,6 +18,8 @@ namespace Cor
         private Weapon _weapon;
         private WeaponSpawner _weaponSpawner;
         private CharacterFight _characterFight;
+
+        #endregion
 
         public List<GameObject> Balls()
         {

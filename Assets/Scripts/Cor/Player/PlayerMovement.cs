@@ -8,7 +8,7 @@ namespace Cor
     {
         #region Variables
 
-        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] CharacterAnimation _characterStatesAnimation;
         [SerializeField] Transform groundCheck;
         [SerializeField] LayerMask groundMask;
         [SerializeField] private float gravityMultyplier;

@@ -76,7 +76,6 @@ namespace Cor
             {
                 punchSkin.DOPlay();
                 fragments[ammountFramgents].material = mat;
-                UIManager.Instance.SettingsButtonScreen(false);
                 UIManager.Instance.MoneyScreen(false);
                 
                 SaveSkin();
@@ -138,6 +137,12 @@ namespace Cor
 
             if (!effect.activeSelf)
                 effect.SetActive(true);
+        }
+
+        public void AddSkinPart()
+        {
+            LoadSave();
+            _partsSkinSaver.AddNewID(ids[ammountFramgents]);
         }
 
         public void OpenFramgentSkin()

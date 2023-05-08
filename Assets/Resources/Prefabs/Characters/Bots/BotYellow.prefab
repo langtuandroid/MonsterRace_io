@@ -1087,7 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef1bfa6febfb3b4095d736dc28f4092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStates: {fileID: 290052693258741838}
 --- !u!65 &9094352817340777009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1113,8 +1112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfe4b38ad64f6148ae9bde23bd51409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackField: {fileID: 0}
-  weapon: {fileID: 0}
+  attackField: {fileID: 290052693258677286}
 --- !u!1 &290052693258677883
 GameObject:
   m_ObjectHideFlags: 0

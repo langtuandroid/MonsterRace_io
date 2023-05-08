@@ -24,7 +24,7 @@ namespace Cor
         [SerializeField] GameObject prefabBlockMember;
         [SerializeField] Transform[] pointSpawn;
 
-        List<LeaderboardMember> leaderboradMembers = new List<LeaderboardMember>();
+        private List<LeaderboardMember> leaderboradMembers = new List<LeaderboardMember>();
 
         #endregion
 

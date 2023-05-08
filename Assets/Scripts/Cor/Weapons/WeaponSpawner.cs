@@ -33,6 +33,7 @@ namespace Cor
         {
             GameObject newWeapon = Instantiate(weaponPrefabs[indexWeapon], point.position, point.rotation);
             newWeapon.transform.parent = point.parent;
+            newWeapon.transform.localScale = point.transform.localScale;
             return newWeapon.GetComponent<Weapon>();
         }
 

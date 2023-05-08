@@ -16,15 +16,10 @@ namespace Cor
         [SerializeField] CharacterStates _characterStates;
         private bool isDeactiveCharacter;
          
-        CollectableMonster _ballsMoster;
-        Leaderboard leaderboard;
+        private CollectableMonster _ballsMoster;
+        private Leaderboard leaderboard;
 
         #endregion
-
-        private void Start()
-        {
-            leaderboard = GameObject.FindObjectOfType<Leaderboard>();
-        }
 
         public void SetCharacterSettings(CharacterColorType characterColorType)
         {
@@ -61,15 +56,9 @@ namespace Cor
             effectDie.transform.parent = null;
             effectDie.Play();
             gameObject.GetComponent<Collider>().enabled = false;
-            _characterStates.CharacterDie();
-            leaderboard.RemoveMember(_characterColorType);
+            if(_characterStates != null) _characterStates.CharacterDie();
+            if(leaderboard != null) leaderboard.RemoveMember(_characterColorType);
             StartCoroutine(IE_Die());
-        }
-
-        public void KilledField(Transform p)
-        {
-            _characterStates.CharacterDie();
-            transform.LookAt(p);
         }
 
         private IEnumerator IE_Die()

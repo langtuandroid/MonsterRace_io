@@ -41,6 +41,12 @@ namespace Cor
             if (other.gameObject.tag == "Character")
             {
                 Character character = other.GetComponent<Character>();
+                if(GetComponentInParent<CharacterBonus>() != null)
+                {
+                    CharacterBonus characterBonus = GetComponentInParent<CharacterBonus>();
+                    float scale = character.transform.localScale.x / 2;
+                    characterBonus.Upgrade(scale);
+                }
                 character.KillCharacter();
             }
 

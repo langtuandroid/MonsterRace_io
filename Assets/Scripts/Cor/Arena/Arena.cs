@@ -15,19 +15,27 @@ namespace Cor
         [SerializeField] private int maxTypes;
         [SerializeField] private int ammountBalls;
 
+        [Space]
         [Header("ArenaPlayer")]
         [SerializeField] Transform playerPoint;
 
+        [Space]
         [Header("ArenaBots")]
         [SerializeField] Transform[] botsPoints;
         [SerializeField] Transform[] monsterPoints;
 
+        [Space]
         [Header("ArenaMonsters")]
         [SerializeField] CollectableMonster[] collectableMonsters;
 
+        [Space]
         [Header("ArenaGates")]
         [SerializeField] List<GatesType> gatesTypes = new List<GatesType>();
         [SerializeField] List<Transform> points = new List<Transform>();
+
+        [Space]
+        [Header("Points")]
+        [SerializeField] List<Transform> pointsPlacement = new List<Transform>();
 
         #endregion
 
@@ -79,6 +87,11 @@ namespace Cor
         public List<Transform> GetGatesPoints()
         {
             return points;
+        }
+
+        public List<Transform> GetPointsPlacement()
+        {
+            return pointsPlacement;
         }
 
         public CollectableMonster[] GetCollectableMonsters()

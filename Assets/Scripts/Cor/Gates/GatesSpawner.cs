@@ -15,7 +15,7 @@ namespace Cor
         [SerializeField] private int maxGates;
         [SerializeField] private int ammountGates;
 
-        List<Gates> currencyGates = new List<Gates>();
+        private List<Gates> currencyGates = new List<Gates>();
 
         #endregion
 

@@ -15,12 +15,11 @@ namespace Cor
         [SerializeField] private int numberGates;
         [SerializeField] CollectableBall[] collectableBalls;
         private int index;
-        private string symbolGate;
         private bool isActive;
 
-        CharacterColorType _characterColor;
-        StackBalls _stackBalls;
-        GatesSpawner _gatesSpawner;
+        private CharacterColorType _characterColor;
+        private StackBalls _stackBalls;
+        private GatesSpawner _gatesSpawner;
 
         #endregion
 
@@ -62,21 +61,18 @@ namespace Cor
                 case CharacterColorType.Red:
                     index = 4;
                     break;
-                case CharacterColorType.Purple:
-                    index = 5;
-                    break;
             }
 
             switch (_gatesType)
             {
                 case GatesType.Positive:
-                    PositiveBonus();
+                    PositiveGate();
                     break;
                 case GatesType.Negative:
-                    NegativeBonus();
+                    NegativeGate();
                     break;
                 case GatesType.Multyplying:
-                    MultiplyBonus();
+                    MultiplyGate();
                     break;
             }
 
@@ -85,7 +81,7 @@ namespace Cor
             transform.DOScale(0, 0.5f).OnComplete(() => Destroy(gameObject, 0.2f));
         }
 
-        private void PositiveBonus()
+        private void PositiveGate()
         {
             for (int i = 0; i < numberGates; i++)
             {
@@ -94,7 +90,7 @@ namespace Cor
             }
         }
 
-        private void NegativeBonus()
+        private void NegativeGate()
         {
             for (int i = 0; i < numberGates; i++)
             {
@@ -102,7 +98,7 @@ namespace Cor
             }
         }
 
-        private void MultiplyBonus()
+        private void MultiplyGate()
         {
             int number = _stackBalls.AmmountBalls() + (_stackBalls.AmmountBalls() / 2);
             float timer = 0;
@@ -119,6 +115,8 @@ namespace Cor
 
         private void SwitchGatesText()
         {
+            string symbolGate = null;
+
             switch (_gatesType)
             {
                 case GatesType.Positive:

@@ -11,7 +11,7 @@ namespace Cor
 
         [SerializeField] Character _character;
         [SerializeField] CharacterMonster _characterMonster;
-        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] CharacterAnimation _characterStatesAnimation;
         [SerializeField] CharacterSkins _characterSkins;
         [SerializeField] PlayerCharacterSkin _playerCharacterSkin;
         [SerializeField] CharacterCanvas _characterCanvas;
@@ -106,7 +106,6 @@ namespace Cor
                 _playerMovement.LockControll(true);
 
             _characterStatesAnimation.JumpAnimation();
-            _characterStatesAnimation.IsMonsterStage(true);
             _characterCanvas.SetMonsterTarget();
 
             StartCoroutine(IE_CharacterInMonster());
