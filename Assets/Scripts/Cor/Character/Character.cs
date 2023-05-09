@@ -8,6 +8,7 @@ namespace Cor
     {
         #region Variables
 
+        [SerializeField] GameModeType gameMode;
         [SerializeField] CharacterColorType _characterColorType;
         [SerializeField] GameObject crown;
         [SerializeField] ParticleSystem effectDamage;
@@ -88,6 +89,9 @@ namespace Cor
 
             if (other.gameObject.tag == "Character")
             {
+                if (gameMode == GameModeType.Bonus)
+                    return;
+
                 StackBalls stackBalls = other.GetComponent<StackBalls>();
 
                 if (isDeactiveCharacter)

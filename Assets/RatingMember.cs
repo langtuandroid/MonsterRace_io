@@ -66,5 +66,19 @@ namespace Cor
             textRating.text = numberRating.ToString();
             textSmashes.text = ammountSmashes.ToString();
         }
+
+        #region Load&SaveData
+
+        private void LoadData()
+        {
+            ammountSmashes = ES3.Load("ammountSmashes" + id, ammountSmashes);
+        }
+
+        private void SaveData()
+        {
+            ES3.Save("ammountSmashes" + id, ammountSmashes);
+        }
+
+        #endregion
     }
 }

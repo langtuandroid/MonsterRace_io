@@ -54,10 +54,9 @@ namespace Cor
             attackField.transform.DOScale(attackField.transform.localScale, 0.5f).From(0);
         }
 
-        private void DeactiveFight()
+        public void DeactiveFight()
         {
             attackField.transform.DOScale(0, 0.5f).OnComplete(() => attackField.SetActive(false));
-            //DOVirtual.DelayedCall(0.5f, () => weapon.gameObject.SetActive(false));
         }
     }
 }

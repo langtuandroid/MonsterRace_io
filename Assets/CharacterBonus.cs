@@ -9,6 +9,7 @@ namespace Cor
 
         [SerializeField] Transform weaponPoint;
         [SerializeField] CharacterFight _characterFight;
+        [SerializeField] BotFight botFight;
         [SerializeField] CharacterAnimation _characterAnimation;
         [SerializeField] PlayerMovement _playerMovement;
         [SerializeField] BotMovement _botMovement;
@@ -84,7 +85,10 @@ namespace Cor
                 _playerMovement.LockControll(false);
 
             if (_botMovement != null)
+            {
+                _botMovement.RestartMovement();
                 _botMovement.StopMovement(false);
+            }
         }
 
         public void Upgrade(float number)
@@ -103,17 +107,23 @@ namespace Cor
             _characterAnimation.DecreaseAnimation();
             if (!isPlayer) 
             {
+                botFight.StopFight();
                 botPointer.Remove();
                 ArenaManager.Instance.RemoveBot(character);
             }
             if (isPlayer) { ArenaManager.Instance.RemovePlayer(); }
 
             Destroy(characterCanvas.gameObject);
+            _characterFight.DeactiveFight();
             StopMovement(true);
+            DOVirtual.DelayedCall(2f, () => transform.DOScale(0, 0.5f).OnComplete(() => Destroy(gameObject)));
         }
 
         private void Victory()
         {
+            if (isDie)
+                return;
+
             StopMovement(true);
             _characterAnimation.DanceAnimation();
             DOVirtual.DelayedCall(2f, () => UIManager.Instance.RewardScreen(true));
