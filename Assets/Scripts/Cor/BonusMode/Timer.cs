@@ -10,6 +10,7 @@ namespace Cor
         TimeSpan currentTime;
         TimeSpan oneDay = new TimeSpan(24, 0, 0);
         public Text text;
+
         void Start()
         {
             StartTime();

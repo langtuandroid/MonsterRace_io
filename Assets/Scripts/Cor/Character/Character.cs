@@ -61,7 +61,7 @@ namespace Cor
             gameObject.GetComponent<Collider>().enabled = false;
             if(_characterStates != null) _characterStates.CharacterDie();
             if(leaderboard != null) leaderboard.RemoveMember(_characterColorType);
-            if (_characterBonus) _characterBonus.DieCharacter();
+            if (_characterBonus != null) _characterBonus.DieCharacter();
             StartCoroutine(IE_Die());
         }
 

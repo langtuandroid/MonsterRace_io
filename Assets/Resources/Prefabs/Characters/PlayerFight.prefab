@@ -13083,6 +13083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPoint: {fileID: 2468658626481932807}
   _characterFight: {fileID: 7249519130363831464}
+  botFight: {fileID: 0}
   _characterAnimation: {fileID: 7249519130363831488}
   _playerMovement: {fileID: 7249519130363831465}
   _botMovement: {fileID: 0}
@@ -13587,38 +13588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCharacter: {fileID: 3364304789873839906}
-  targetMonster: {fileID: 7249519130363918678}
---- !u!1 &7249519130363898275
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7249519130363918678}
-  m_Layer: 8
-  m_Name: TargetMonster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7249519130363918678
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7249519130363898275}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.62, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7249519130363916520}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  targetMonster: {fileID: 0}
 --- !u!1 &7249519130363898471
 GameObject:
   m_ObjectHideFlags: 0
@@ -13706,7 +13676,7 @@ MonoBehaviour:
   effectDie: {fileID: 1226117451546228423}
   _stackBalls: {fileID: 0}
   _characterStates: {fileID: 0}
-  _characterBonus: {fileID: 0}
+  _characterBonus: {fileID: 5959427542921439907}
 --- !u!1 &7249519130363898838
 GameObject:
   m_ObjectHideFlags: 0
@@ -13864,7 +13834,6 @@ Transform:
   m_Children:
   - {fileID: 7249519130363918022}
   - {fileID: 7249519130363918206}
-  - {fileID: 7249519130363918678}
   m_Father: {fileID: 7249519130363917339}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

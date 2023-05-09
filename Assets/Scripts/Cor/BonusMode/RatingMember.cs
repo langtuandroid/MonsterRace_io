@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Cor
 {
@@ -41,7 +42,11 @@ namespace Cor
 
         #endregion
 
-        #region SetVariablesMemeber
+        public void SetupMemberSmashes()
+        {
+            LoadData();
+            ChangeText();
+        }
 
         public void SetNumberRating(int number)
         {
@@ -53,13 +58,18 @@ namespace Cor
             ChangeText();
         }
 
-        public void SetSmashes(int ammount)
+        public void AddSmashes(int ammount)
         {
             ammountSmashes += ammount;
             ChangeText();
+            SaveData();
         }
 
-        #endregion
+        public void AnimationMember(Transform pos)
+        {
+            transform.DOScale(1.05f, 0.5f);
+            transform.DOMoveY(pos.position.y, 0.8f).SetDelay(0.7f).OnComplete(() => transform.DOScale(1f, 0.5f));
+        }
 
         private void ChangeText()
         {

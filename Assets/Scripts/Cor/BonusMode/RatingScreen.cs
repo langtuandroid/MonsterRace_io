@@ -14,7 +14,7 @@ namespace Cor
         public void ActiveScreen()
         {
             buttonPlay.SetActive(true);
-            buttonPlay.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 3f, 1).SetEase(Ease.Linear).SetLoops(-1);
+            buttonPlay.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f), 1f, 1).SetEase(Ease.Linear).SetLoops(-1);
         }
 
         public void DeactiveScreen()

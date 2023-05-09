@@ -31,6 +31,7 @@ namespace Cor
         public void AddSmashes(int numberAdd)
         {
             countSmashes += numberAdd;
+            SaveData();
         }
 
         #region Load&SaveData

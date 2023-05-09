@@ -47,12 +47,16 @@ namespace Cor
         private void Start()
         {
             weaponSpawner = GameObject.FindObjectOfType<WeaponSpawner>();
-            weaponSpawner.SpawnWeapon(weaponPoint, weaponSpawner.GetIndex());
+           
             if (!isPlayer)
             {
                 characterSkins.RandomSkin();
                 ArenaManager.Instance.AddBot(character);
+                weaponSpawner.SpawnWeapon(weaponPoint, Random.Range(0, 16));
+                return;
             }
+
+            weaponSpawner.SpawnWeapon(weaponPoint, weaponSpawner.GetIndex());
         }
 
         private void Attack()
@@ -95,6 +99,8 @@ namespace Cor
         {
             scale += number;
             transform.DOScale(scale, 0.3f);
+            VibrationManager.Instance.HeavyVibration();
+            if (isPlayer) PlayerSmashes.Instance.AddSmashes(1);
         }
 
         public void DieCharacter()
@@ -105,18 +111,22 @@ namespace Cor
             isDie = true;
 
             _characterAnimation.DecreaseAnimation();
-            if (!isPlayer) 
-            {
-                botFight.StopFight();
-                botPointer.Remove();
-                ArenaManager.Instance.RemoveBot(character);
+            if (isPlayer) 
+            { 
+                ArenaManager.Instance.RemovePlayer();
+                Debug.Log("Die");
             }
-            if (isPlayer) { ArenaManager.Instance.RemovePlayer(); }
 
             Destroy(characterCanvas.gameObject);
             _characterFight.DeactiveFight();
             StopMovement(true);
-            DOVirtual.DelayedCall(2f, () => transform.DOScale(0, 0.5f).OnComplete(() => Destroy(gameObject)));
+            if (!isPlayer)
+            {
+                botFight.StopFight();
+                botPointer.Remove();
+                ArenaManager.Instance.RemoveBot(character);
+                DOVirtual.DelayedCall(2f, () => transform.DOScale(0, 0.5f).OnComplete(() => Destroy(gameObject)));
+            }
         }
 
         private void Victory()

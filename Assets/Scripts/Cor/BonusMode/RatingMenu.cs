@@ -40,13 +40,25 @@ namespace Cor
             skinTitle.transform.parent = targetSkin.parent;
             skinTitle.transform.position = targetSkin.position;
             skinTitle.transform.localScale = targetSkin.localScale;
-            ratingScreen.ActiveScreen();
+
+            if (!RatingLeaderboard.isCompletedFight)
+            {
+                ratingScreen.ActiveScreen();
+                return;
+            }
+
+            DOVirtual.DelayedCall(3f, () => ratingScreen.ActiveScreen());
         }
 
         public void FirstOpen()
         {
             DOVirtual.DelayedCall(0.8f, () => _ratingLeaderboard.ScrollAnimation());
             DOVirtual.DelayedCall(4f, () => ratingScreen.ActiveScreen());
+        }
+
+        public void ChangeChestReward()
+        {
+            screenReward.ActiveScreen();
         }
 
         #region Load&SaveData

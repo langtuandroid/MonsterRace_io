@@ -113,6 +113,8 @@ namespace Cor
             OnLevelEnd.Invoke();
             isLevelEnd = true;
             UIManager.Instance.GameScreen(false);
+            if (_gameMode == GameModeType.Bonus) 
+                RatingLeaderboard.isCompletedFight = true;
         }
 
         private void NewLevel()
