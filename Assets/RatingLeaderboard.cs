@@ -13,8 +13,14 @@ namespace Cor
         [SerializeField] List<RatingMember> currencyMembers = new List<RatingMember>();
         [SerializeField] List<RatingMember> test = new List<RatingMember>();
         [SerializeField] List<Transform> pointsRating = new List<Transform>();
+        [SerializeField] Transform group;
 
         #endregion
+
+        private void Start()
+        {
+            SortMembers();
+        }
 
         private void Update()
         {
@@ -27,6 +33,12 @@ namespace Cor
             {
                 AddSmashes();
             }
+        }
+
+        public void ScrollAnimation()
+        {
+            group.DOLocalMoveY(-5376f, 0.8f).OnComplete(() =>
+               DOVirtual.DelayedCall(1.5f, () => group.DOLocalMoveY(407f, 0.8f)));
         }
 
         private void AddSmashes()
@@ -43,7 +55,10 @@ namespace Cor
             for (int i = 0; i < test.Count; i++)
             {
                 test[i].SetNumberRating(i + 1);
-                test[i].transform.DOMoveY(pointsRating[i].position.y, 0.3f);
+                if (!test[i].IsPlayerMemeber())
+                {
+                    test[i].transform.DOMoveY(pointsRating[i].position.y, 0.3f);
+                }
             }
         }
     }

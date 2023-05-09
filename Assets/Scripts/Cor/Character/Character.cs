@@ -14,6 +14,7 @@ namespace Cor
         [SerializeField] ParticleSystem effectDie;
         [SerializeField] StackBalls _stackBalls;
         [SerializeField] CharacterStates _characterStates;
+        [SerializeField] CharacterBonus _characterBonus;
         private bool isDeactiveCharacter;
          
         private CollectableMonster _ballsMoster;
@@ -24,6 +25,7 @@ namespace Cor
         public void SetCharacterSettings(CharacterColorType characterColorType)
         {
             _characterColorType = characterColorType;
+            leaderboard = GameObject.FindObjectOfType<Leaderboard>();
         }
 
         public void CrownActive(bool isActive)
@@ -58,6 +60,7 @@ namespace Cor
             gameObject.GetComponent<Collider>().enabled = false;
             if(_characterStates != null) _characterStates.CharacterDie();
             if(leaderboard != null) leaderboard.RemoveMember(_characterColorType);
+            if (_characterBonus) _characterBonus.DieCharacter();
             StartCoroutine(IE_Die());
         }
 

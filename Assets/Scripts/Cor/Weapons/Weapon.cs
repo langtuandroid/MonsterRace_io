@@ -19,6 +19,7 @@ namespace Cor
         {
             _characterFight = GetComponentInParent<CharacterFight>();
             _characterFight.OnStartAttack += Attack;
+            LevelManager.Instance.OnLevelCompleted += DeactiveWeapon;
         }
 
         public void Attack() => DOVirtual.DelayedCall(0.5f, () => _collider.enabled = true);
@@ -27,6 +28,11 @@ namespace Cor
         {
             DOVirtual.DelayedCall(0.1f, () => _collider.enabled = false);
             DOVirtual.DelayedCall(0.1f, () => _characterFight.ReturnAttack());
+        }
+
+        private void DeactiveWeapon()
+        {
+            transform.DOScale(0, 0.3f).OnComplete(() => Destroy(gameObject));
         }
 
         private void OnTriggerEnter(Collider other)
@@ -41,7 +47,9 @@ namespace Cor
             if (other.gameObject.tag == "Character")
             {
                 Character character = other.GetComponent<Character>();
-                if(GetComponentInParent<CharacterBonus>() != null)
+                if (character == GetComponentInParent<Character>())
+                    return;
+                if (GetComponentInParent<CharacterBonus>() != null)
                 {
                     CharacterBonus characterBonus = GetComponentInParent<CharacterBonus>();
                     float scale = character.transform.localScale.x / 2;
@@ -58,6 +66,11 @@ namespace Cor
 
                 characterMonster.ExplosionCharacterMonster(transform);
             }
+        }
+
+        private void OnDestroy()
+        {
+            LevelManager.Instance.OnLevelCompleted -= DeactiveWeapon;
         }
     }
 }

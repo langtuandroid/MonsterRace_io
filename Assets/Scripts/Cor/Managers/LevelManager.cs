@@ -35,7 +35,9 @@ namespace Cor
         [SerializeField] NightPoolEntry nightPoolEntry;
         [SerializeField] private int lvlNumber;
         [SerializeField] GameModeType _gameMode;
+
         private int lvlIndex;
+        private int bonusLvlIndex;
         private bool isLevelEnd;
 
         #endregion
@@ -82,8 +84,11 @@ namespace Cor
         {
             LevelEnd();
             OnLevelCompleted?.Invoke();
-            _analytics.LevelFinishEvent("win");
-            skinsController.OpenPart();
+            if (_gameMode == GameModeType.Game)
+            {
+                _analytics.LevelFinishEvent("win");
+                skinsController.OpenPart();
+            }
             CameraController.Instance.ChangeMonsterCam(false);
             CameraController.Instance.JumpStateCam(true);
             NextLevel();
@@ -92,7 +97,10 @@ namespace Cor
         public void LevelFailed()
         {
             LevelEnd();
-            _analytics.LevelFinishEvent("lose");
+            if (_gameMode == GameModeType.Game)
+            {
+                _analytics.LevelFinishEvent("lose");
+            }
             UIManager.Instance.MoneyScreen(true);
             UIManager.Instance.LoseScreen(true);
         }
@@ -111,8 +119,13 @@ namespace Cor
         {
             LoadSave();
 
+            int lvlCreate = 0;
             if (lvlNumber >= 13) { lvlIndex = Random.Range(0, 11); }
-            levelSpawner.SpawnLevel(lvlIndex);
+
+            if (_gameMode == GameModeType.Game) lvlCreate = lvlIndex;
+            if (_gameMode == GameModeType.Bonus) lvlCreate = bonusLvlIndex;
+
+            levelSpawner.SpawnLevel(lvlCreate);
             Arena newArena = levelSpawner.LevelArena();
             memberSpawner.CreatePlayer(newArena);
             memberSpawner.CreateBots(newArena);
@@ -127,16 +140,23 @@ namespace Cor
 
         private void NextLevel()
         {
-            lvlIndex++;
-            lvlNumber++;
-            if(lvlNumber >= 22) 
-            { 
-                lvlIndex = Random.Range(0, 20);
-            }
+            if (_gameMode == GameModeType.Game)
+            {
+                lvlIndex++;
+                lvlNumber++;
+                if (lvlNumber >= 22)
+                {
+                    lvlIndex = Random.Range(0, 20);
+                }
 
-            _analytics.LevelLoop();
-            _analytics.NewLevel();
-            levelRewards.UpdateReward();
+                _analytics.LevelLoop();
+                _analytics.NewLevel();
+                levelRewards.UpdateReward();
+            }
+            if (_gameMode == GameModeType.Bonus)
+            {
+                bonusLvlIndex++;
+            }
             Save();
         }
 
@@ -166,12 +186,14 @@ namespace Cor
         {
             lvlIndex = ES3.Load("lvlIndex", lvlIndex);
             lvlNumber = ES3.Load("lvlNumber", lvlNumber);
+            bonusLvlIndex = ES3.Load("bonusLvlIndex", bonusLvlIndex);
         }
 
         private void Save()
         {
             ES3.Save("lvlIndex", lvlIndex);
             ES3.Save("lvlNumber", lvlNumber);
+            ES3.Save("bonusLvlIndex", bonusLvlIndex);
         }
 
         #endregion

@@ -21,6 +21,10 @@ namespace Cor
         [SerializeField] Text textSmashes;
         [SerializeField] private int ammountSmashes;
 
+        [Space]
+        [Header("PlayerMember")]
+        [SerializeField] private bool isPlayerMember;
+
         #endregion
 
         #region GetVariablesMember
@@ -28,6 +32,11 @@ namespace Cor
         public int GetSmashes()
         {
             return ammountSmashes;
+        }
+
+        public bool IsPlayerMemeber()
+        {
+            return isPlayerMember;
         }
 
         #endregion

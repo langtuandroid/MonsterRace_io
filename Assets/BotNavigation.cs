@@ -1,55 +1,91 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Cor
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class BotNavigation : MonoBehaviour
     {
         #region Variables
 
+        [Header("Agent")]
         [SerializeField] NavMeshAgent _agent;
-        [SerializeField] List<Transform> points = new List<Transform>();
+
+        [Space]
+        [Header("WayPoints")]
+        [SerializeField] List<Transform> wayPoints = new List<Transform>();
         [SerializeField] Vector3 point;
+
+        [Space]
+        [Header("Animations")]
         [SerializeField] CharacterAnimation _characterAnimation;
+
         private int index;
-        private Arena arena;
+        private bool canMovement;
 
         #endregion
 
-        private void Start()
+        private void OnEnable()
         {
-            arena = GameObject.FindObjectOfType<Arena>();
             LevelManager.Instance.OnLevelStart += StartMovement;
+            LevelManager.Instance.OnLevelEnd += StopMovement;
+        }
+
+        private void OnDestroy()
+        {
+            LevelManager.Instance.OnLevelStart -= StartMovement;
+            LevelManager.Instance.OnLevelEnd -= StopMovement;
         }
 
         private void Update()
         {
-            NewMove();
+            Movement();
         }
 
-        private void SetPoints()
+        #region SetVariablesNavigation
+
+        public void SetMovementStatus(bool isMovement)
         {
-            points = arena.GetPointsPlacement();
+            if (isMovement)
+            {
+                StartMovement();
+                return;
+            }
+
+            StopMovement();
         }
 
-        private void NewMove()
+        public void SetWayPoints(List<Transform> points)
         {
+            wayPoints.Clear();
+            wayPoints = points;
+        }
+
+        public void SetTargetPoint(Vector3 target) => point = target;
+
+        #endregion
+
+        #region Movement
+
+        private void Movement()
+        {
+            if (!canMovement)
+                return;
+
             if (Vector3.Distance(transform.position, point) < 1)
             {
                 NewPoint();
                 UpdateMove();
+                return;
             }
-            else
-            {
-                _characterAnimation.RunAnimation(true);
-            }
+
+            _characterAnimation.RunAnimation(true);
         }
 
         private void UpdateMove()
         {
-            point = points[index].position;
+            point = wayPoints[index].position;
 
             if (_agent.enabled)
                 _agent.SetDestination(point);
@@ -57,13 +93,20 @@ namespace Cor
 
         private void NewPoint()
         {
-            index = Random.Range(0, points.Count - 1);
+            index = Random.Range(0, wayPoints.Count - 1);
         }
 
         private void StartMovement()
         {
-            SetPoints();
+            canMovement = true;
             UpdateMove();
         }
+
+        private void StopMovement()
+        {
+            canMovement = false;
+        }
+
+        #endregion
     }
 }

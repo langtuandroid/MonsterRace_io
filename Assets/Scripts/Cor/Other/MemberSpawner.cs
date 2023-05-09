@@ -7,6 +7,7 @@ namespace Cor
     {
         #region Variables
 
+        [SerializeField] GameModeType _gameModeType;
         [SerializeField] private string playerName;
         [SerializeField] List<string> bots = new List<string>();
 
@@ -16,7 +17,7 @@ namespace Cor
         {
             GameObject loadPlayer = Resources.Load("Prefabs/Characters/" + playerName) as GameObject;
             GameObject player = Instantiate(loadPlayer, arena.GetPlayerPoint().position, arena.GetPlayerPoint().rotation);
-            if(player.GetComponentInChildren<CharacterSettings>() != null)
+            if (_gameModeType == GameModeType.Game)
                 player.GetComponentInChildren<CharacterSettings>().SetupCollectableMonster(arena.GetCollectableMonsters()[0]);
         }
 
@@ -26,10 +27,11 @@ namespace Cor
             {
                 GameObject loadBot = Resources.Load("Prefabs/Characters/Bots/" + bots[i]) as GameObject;
                 GameObject bot = Instantiate(loadBot, arena.GetPoints()[i].position, arena.GetPoints()[i].rotation);
-                if (bot.GetComponentInChildren<BotMovement>() != null)
+                if (_gameModeType == GameModeType.Game)
+                {
                     bot.GetComponent<BotMovement>().SetMonsterPoints(arena.GetMonsterPoints()[i]);
-                if (bot.GetComponentInChildren<CharacterSettings>() != null)
-                    bot.GetComponentInChildren<CharacterSettings>().SetupCollectableMonster(arena.GetCollectableMonsters()[i+1]);
+                    bot.GetComponentInChildren<CharacterSettings>().SetupCollectableMonster(arena.GetCollectableMonsters()[i + 1]);
+                }
             }
         }
     }

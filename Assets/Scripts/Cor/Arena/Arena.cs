@@ -89,9 +89,11 @@ namespace Cor
             return points;
         }
 
-        public List<Transform> GetPointsPlacement()
+        public List<Vector3> GetWayPoints()
         {
-            return pointsPlacement;
+            List<Vector3> points = new List<Vector3>();
+            foreach (var i in pointsPlacement) points.Add(i.position);
+            return points;
         }
 
         public CollectableMonster[] GetCollectableMonsters()

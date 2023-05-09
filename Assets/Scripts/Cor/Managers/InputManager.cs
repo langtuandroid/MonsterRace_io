@@ -9,6 +9,7 @@ namespace Cor
         [SerializeField] FloatingJoystick _joystick;
         [SerializeField] private bool isFightMode;
 
+        private bool isLockControll;
         private PlayerMovement _playerMovement;
         private CharacterFight _characterFight;
 
@@ -18,6 +19,7 @@ namespace Cor
         {
             SetPlayer(GameObject.FindObjectOfType<PlayerMovement>());
             LevelManager.Instance.OnLevelFight += Fight;
+            LevelManager.Instance.OnLevelEnd += LockedControll;
         }
 
         public void SetPlayer(PlayerMovement player)
@@ -28,10 +30,8 @@ namespace Cor
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-    
-            }
+            if (isLockControll)
+                return;
 
             if (Input.GetMouseButton(0))
             {
@@ -48,5 +48,7 @@ namespace Cor
         }
 
         private void Fight() => isFightMode = true;
+
+        private void LockedControll() => isLockControll = true;
     }
 }

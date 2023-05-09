@@ -20,6 +20,11 @@ namespace Cor
             SetCharacterSkin(_skinType);
         }
 
+        public void RandomSkin()
+        {
+            skins[Random.Range(0, skins.Count)].SetActive(true);
+        }
+
         public void SetCharacterSkin(CharacterMonsterType _characterSkinType)
         {
             switch (_characterSkinType)

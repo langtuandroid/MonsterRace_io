@@ -7,6 +7,7 @@ namespace Cor
     {
         #region Variables
 
+        [SerializeField] GameModeType gameMode;
         [SerializeField] List<Skin> currencySkins = new List<Skin>();
         [SerializeField] private int indexOpenSkin;
         [SerializeField] private int indexProgressSkin;
@@ -66,6 +67,9 @@ namespace Cor
 
         public void OpenPart()
         {
+            if (gameMode == GameModeType.Bonus)
+                return;
+
             currencySkins[indexProgressSkin].AddSkinPart();
         }
 

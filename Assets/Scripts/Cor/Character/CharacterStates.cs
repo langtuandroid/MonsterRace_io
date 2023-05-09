@@ -64,29 +64,29 @@ namespace Cor
             skinsController = GameObject.FindObjectOfType<SkinsController>();
             LevelManager.Instance.OnLevelCompleted += Finish;
             if (!IsPlayerCharacter())
-                _arena.AddBot(this);
+                _arena.AddBot(_character);
         }
 
-        public void SetSpeedPlatfrom(Transform platform)
-        {
-            if (IsPlayerCharacter()) 
-            {
-                _playerMovement.transform.parent = platform;
-                return;
-            }
+        //public void SetSpeedPlatfrom(Transform platform)
+        //{
+        //    if (IsPlayerCharacter()) 
+        //    {
+        //        _playerMovement.transform.parent = platform;
+        //        return;
+        //    }
 
-            _botMovement.transform.parent = platform;
-        }
+        //    _botMovement.transform.parent = platform;
+        //}
 
-        public void SetNullPlaform()
-        {
-            if (IsPlayerCharacter())
-            {
-                _playerMovement.transform.parent = null;
-                return;
-            }
-            _botMovement.transform.parent = null;
-        }
+        //public void SetNullPlaform()
+        //{
+        //    if (IsPlayerCharacter())
+        //    {
+        //        _playerMovement.transform.parent = null;
+        //        return;
+        //    }
+        //    _botMovement.transform.parent = null;
+        //}
 
         public void SetFlying(bool isFlying)
         {
@@ -146,7 +146,7 @@ namespace Cor
             if (_botMovement != null)
                 _botMovement.StopMovement(true);
 
-            if (!IsPlayerCharacter()) { _arena.RemoveBot(this); }
+            if (!IsPlayerCharacter()) { _arena.RemoveBot(_character); }
             if (IsPlayerCharacter()) { _arena.RemovePlayer(); }
         }
 

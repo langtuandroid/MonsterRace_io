@@ -27,7 +27,7 @@ namespace Cor
 
         public void MoneyScreen(bool isActive) => moneyScreen.SetActive(isActive);
 
-        public void GameScreen(bool isActive) => gameScreen.SetActive(true);
+        public void GameScreen(bool isActive) => gameScreen.SetActive(isActive);
 
         public void BonusScreen(bool isActive) => bonusScreen.SetActive(isActive);
 

@@ -32,8 +32,8 @@ namespace Cor
 
         private void FixedUpdate()
         {
-            if (LevelManager.Instance.LvlNumber() == 1)
-                return;
+            //if (LevelManager.Instance.LvlNumber() == 1)
+            //    return;
 
             if (!isResultAds)
             {

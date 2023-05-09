@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &147942257724620876
 Transform:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147942257724641292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.59234, z: -0}
+  m_LocalPosition: {x: 0.05000002, y: 0.59234, z: 0}
   m_LocalScale: {x: 1.0873529, y: 1.0873529, z: 1.0873529}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animCharacter: {fileID: 8211012899097130967}
-  _animMonster: {fileID: 0}
 --- !u!114 &147942257724707939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,13 +340,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPoints: []
+  colorType: 3
+  points: []
   range: 15
   timeToMonster: 3
   timer: 0
   isStopMovement: 0
   toMonster: 0
-  colorType: 3
-  points: []
   min: 8
   max: 20
   _rb: {fileID: 147942257724655596}
@@ -367,7 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef1bfa6febfb3b4095d736dc28f4092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStates: {fileID: 147942257724707940}
 --- !u!65 &8664433532532031003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -393,8 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfe4b38ad64f6148ae9bde23bd51409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackField: {fileID: 0}
-  weapon: {fileID: 0}
+  attackField: {fileID: 147942257724641292}
 --- !u!1 &147942257724641873
 GameObject:
   m_ObjectHideFlags: 0

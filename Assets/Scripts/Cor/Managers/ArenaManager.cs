@@ -5,20 +5,31 @@ namespace Cor
 {
     public class ArenaManager : MonoBehaviour
     {
-        #region Variables
+        #region Singelton
 
-        [SerializeField] List<CharacterStates> currencyBots = new List<CharacterStates>();
+        public static ArenaManager Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         #endregion
 
-        public void AddBot(CharacterStates characterStates)
+        #region Variables
+
+        [SerializeField] List<Character> currencyBots = new List<Character>();
+
+        #endregion
+
+        public void AddBot(Character _character)
         {
-            currencyBots.Add(characterStates);
+            currencyBots.Add(_character);
         }
 
-        public void RemoveBot(CharacterStates _characterStates)
+        public void RemoveBot(Character _character)
         {
-            currencyBots.Remove(_characterStates);
+            currencyBots.Remove(_character);
             if (currencyBots.Count == 0)
             {
                 LevelManager.Instance.LevelCompleted();

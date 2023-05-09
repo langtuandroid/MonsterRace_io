@@ -198,10 +198,10 @@ GameObject:
   - component: {fileID: 1437897824514405646}
   - component: {fileID: 1437897824514412236}
   - component: {fileID: 1437897824514406667}
-  - component: {fileID: 1437897824514399567}
-  - component: {fileID: 1437897824514399566}
   - component: {fileID: 7622246319578576699}
+  - component: {fileID: 1437897824514399567}
   - component: {fileID: 6023928729728067115}
+  - component: {fileID: 1437897824514399566}
   m_Layer: 8
   m_Name: BotGreen
   m_TagString: Untagged
@@ -278,45 +278,6 @@ CapsuleCollider:
   m_Height: 1.7424517
   m_Direction: 1
   m_Center: {x: 0, y: 0.37122583, z: 0}
---- !u!114 &1437897824514399567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437897824514463851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddd11f24931778043b84222efaa46251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterPoints: []
-  range: 15
-  timeToMonster: 3
-  timer: 0
-  isStopMovement: 0
-  toMonster: 0
-  colorType: 1
-  points: []
-  min: 8
-  max: 20
-  _rb: {fileID: 1437897824514412236}
-  _agent: {fileID: 1437897824514405646}
-  _characterStatesAnimation: {fileID: 1437897824514399557}
-  _stackBalls: {fileID: 8123363861526266267}
-  index: 0
---- !u!114 &1437897824514399566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1437897824514463851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef1bfa6febfb3b4095d736dc28f4092, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &7622246319578576699
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -330,6 +291,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.44808513, z: 1}
   m_Center: {x: 0, y: -0.90317464, z: 0}
+--- !u!114 &1437897824514399567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437897824514463851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd11f24931778043b84222efaa46251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameModeType: 0
+  monsterPoints: []
+  colorType: 1
+  points: []
+  range: 15
+  timeToMonster: 3
+  timer: 0
+  isStopMovement: 0
+  toMonster: 0
+  min: 8
+  max: 20
+  _rb: {fileID: 1437897824514412236}
+  _agent: {fileID: 1437897824514405646}
+  _characterStatesAnimation: {fileID: 1437897824514399557}
+  _stackBalls: {fileID: 8123363861526266267}
+  index: 0
 --- !u!114 &6023928729728067115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +332,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackField: {fileID: 1437897824514464044}
+--- !u!114 &1437897824514399566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437897824514463851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef1bfa6febfb3b4095d736dc28f4092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1437897824514464044
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +477,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animCharacter: {fileID: 2047219348541862934}
-  _animMonster: {fileID: 0}
 --- !u!114 &1437897824514399555
 MonoBehaviour:
   m_ObjectHideFlags: 0

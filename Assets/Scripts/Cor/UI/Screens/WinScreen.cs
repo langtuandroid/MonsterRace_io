@@ -17,6 +17,12 @@ namespace Cor
 
         #endregion
 
+        private void Start()
+        {
+            if(_levelRewards == null)
+                ActiveScreen();
+        }
+
         public void ActiveScreen()
         {
             UIManager.Instance.BonusScreen(false);
@@ -31,7 +37,8 @@ namespace Cor
             }
             bonusTitle.transform.DOLocalMoveY(0, 0.5f).From(-1567f).SetEase(Ease.Linear).SetDelay(1f);
             bottomTitle.transform.DOScale(bottomTitle.transform.localScale, 0.5f).From(0).SetDelay(3f);
-            textEnought.text = (_levelRewards.GetMoneyVictory() - 25) + "$ " + "is enought";
+            if(_levelRewards != null)
+                textEnought.text = (_levelRewards.GetMoneyVictory() - 25) + "$ " + "is enought";
         }
     }
 }
