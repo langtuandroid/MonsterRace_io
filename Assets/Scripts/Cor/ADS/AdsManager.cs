@@ -18,13 +18,13 @@ namespace Cor
 
         #region Variables
 
-        private string bannerAdUnitId = "ca13aa5cf3b4bfbc";
+        private string bannerAdUnitId = "d35db003fcd7f1b3";
         private bool isDeactiveBanner;
 
-        private string interAdID = "b596f35c134506d4";
+        private string interAdID = "e486dda9cf9b0372";
         private int retryAttempt;
 
-        private string rewardAdId = "5aa20f2c3ce005a6";
+        private string rewardAdId = "aba15d180775d493";
         private int retryAttemptReward;
 
         public static bool IsReadyInter;

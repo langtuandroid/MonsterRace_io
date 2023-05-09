@@ -155,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: monsters.games.io
+    Android: monsters.Games.io
   buildNumber:
     Standalone: 0
     iPhone: 0
