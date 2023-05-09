@@ -70303,6 +70303,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 8566806078924240859, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8568066880630823399, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -70986,6 +70990,9 @@ PrefabInstance:
     - {fileID: 2675248586168493220, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
     - {fileID: 7930934593385140888, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
     - {fileID: 5644607896873567292, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
+    - {fileID: 4972882678097394979, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
+    - {fileID: 1023171327069276959, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
+    - {fileID: 3348130422457621947, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 56ce2fbec69975843b34855a58294bbf, type: 3}
 --- !u!114 &515971451 stripped
 MonoBehaviour:
