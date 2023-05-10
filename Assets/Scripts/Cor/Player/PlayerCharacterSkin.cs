@@ -86,9 +86,20 @@ namespace Cor
             SaveSkin();
         }
 
+        public void DeactiveAllParts()
+        {
+            foreach(var i in skins)
+            {
+                i.head.SetActive(false);
+                i.body.SetActive(false);
+                i.arms.SetActive(false);
+                i.legs.SetActive(false);
+            }
+        }
+
         #endregion
 
-        private void CollectSkinChange()
+        public void CollectSkinChange()
         {
             foreach(var i in skins)
             {

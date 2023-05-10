@@ -35,6 +35,11 @@ namespace Cor
             return ammountSmashes;
         }
 
+        public int GetRating()
+        {
+            return numberRating;
+        }
+
         public bool IsPlayerMemeber()
         {
             return isPlayerMember;
@@ -48,6 +53,12 @@ namespace Cor
             ChangeText();
         }
 
+        public void SetupMemberRating()
+        {
+            LoadData();
+            SetNumberRating(numberRating);
+        }
+
         public void SetNumberRating(int number)
         {
             numberRating = number;
@@ -56,6 +67,7 @@ namespace Cor
                 ratingImg[numberRating - 1].SetActive(true);
 
             ChangeText();
+            SaveData();
         }
 
         public void AddSmashes(int ammount)
@@ -82,11 +94,13 @@ namespace Cor
         private void LoadData()
         {
             ammountSmashes = ES3.Load("ammountSmashes" + id, ammountSmashes);
+            numberRating = ES3.Load("numberRating" + id, numberRating);
         }
 
         private void SaveData()
         {
             ES3.Save("ammountSmashes" + id, ammountSmashes);
+            ES3.Save("numberRating" + id, numberRating);
         }
 
         #endregion

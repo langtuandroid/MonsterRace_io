@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class Follower : MonoBehaviour
+namespace Cor
 {
-    [SerializeField] Transform target;
-
-    private void LateUpdate()
+    public class Follower : MonoBehaviour
     {
-        transform.position = target.position;    
+        [SerializeField] RatingMember ratingMember;
+
+        private void FixedUpdate()
+        {
+            if(ratingMember.GetRating() == 20)
+            {
+                transform.DOMoveY(2254f, 0.8f);
+            }
+        }
     }
 }

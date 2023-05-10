@@ -70,6 +70,15 @@ namespace Cor
             StopMovement(false);
         }
 
+        public void Push(Transform dir)
+        {
+            if (_botMovement != null)
+            {
+                _botMovement.StopMovement(true);
+                _botMovement.PushBot(dir);
+            }
+        }
+
         public void StopMovement(bool isStop)
         {
             if (isStop)
@@ -100,7 +109,11 @@ namespace Cor
             scale += number;
             transform.DOScale(scale, 0.3f);
             VibrationManager.Instance.HeavyVibration();
-            if (isPlayer) PlayerSmashes.Instance.AddSmashes(1);
+            if (isPlayer)
+            {
+                if (scale >= 5.4) CameraController.Instance.ChangeMonsterCam(true);
+                PlayerSmashes.Instance.AddSmashes(1);
+            }
         }
 
         public void DieCharacter()

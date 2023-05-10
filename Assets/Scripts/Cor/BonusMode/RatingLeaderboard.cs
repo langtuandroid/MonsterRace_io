@@ -22,11 +22,13 @@ namespace Cor
         private void Start()
         {
             foreach (var i in currencyMembers) i.SetupMemberSmashes();
+            SetupMembers();
             if (isCompletedFight)
             {
                 ChangeSmashes();
+                SortMembers();
+                return;
             }
-            SortMembers();
         }
 
         public void ScrollAnimation()
@@ -69,6 +71,15 @@ namespace Cor
                 {
                     currencyMembers[i].AnimationMember(pointsRating[i]);
                 }
+            }
+        }
+
+        private void SetupMembers()
+        {
+            currencyMembers = currencyMembers.OrderByDescending(i => i.GetSmashes()).ToList();
+            for (int i = 0; i < currencyMembers.Count; i++)
+            {
+                currencyMembers[i].transform.position = pointsRating[i].position;
             }
         }
     }

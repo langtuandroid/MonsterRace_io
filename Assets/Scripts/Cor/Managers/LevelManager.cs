@@ -142,22 +142,24 @@ namespace Cor
 
         private void NextLevel()
         {
-            if (_gameMode == GameModeType.Game)
+            switch (_gameMode)
             {
-                lvlIndex++;
-                lvlNumber++;
-                if (lvlNumber >= 22)
-                {
-                    lvlIndex = Random.Range(0, 20);
-                }
-
-                _analytics.LevelLoop();
-                _analytics.NewLevel();
-                levelRewards.UpdateReward();
-            }
-            if (_gameMode == GameModeType.Bonus)
-            {
-                bonusLvlIndex++;
+                case GameModeType.Game:
+                    lvlIndex++;
+                    lvlNumber++;
+                    if (lvlNumber >= 22)
+                    {
+                        lvlIndex = Random.Range(0, 20);
+                    }
+                    _analytics.LevelLoop();
+                    _analytics.NewLevel();
+                    levelRewards.UpdateReward();
+                    break;
+                case GameModeType.Bonus:
+                    bonusLvlIndex++;
+                    if (bonusLvlIndex == 4)
+                        bonusLvlIndex = 1;
+                    break;
             }
             Save();
         }

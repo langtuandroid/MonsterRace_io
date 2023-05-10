@@ -14022,7 +14022,7 @@ MonoBehaviour:
   _armsType: 0
   _bodyType: 1
   _legsType: 0
-  isLobby: 0
+  isLobby: 1
 --- !u!1 &7249519130363905806
 GameObject:
   m_ObjectHideFlags: 0
