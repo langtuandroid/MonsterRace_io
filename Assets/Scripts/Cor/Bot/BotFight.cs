@@ -9,6 +9,7 @@ namespace Cor
         [SerializeField] CharacterFight characterFight;
         [SerializeField] CharacterAnimation _characterStatesAnimation;
         public bool isAttack;
+        private bool isLockFight;
 
         #endregion
 
@@ -18,12 +19,15 @@ namespace Cor
             characterFight.OnEndAttack += ReturnFight;
         }
 
-        public void StopFight() => isAttack = true;
+        public void StopFight() => isLockFight = true;
 
         private void ReturnFight() => isAttack = false;
 
         private void OnTriggerEnter(Collider other)
         {
+            if (isLockFight)
+                return;
+                
             if (other.gameObject.tag == "Character")
             {
                 if (isAttack)

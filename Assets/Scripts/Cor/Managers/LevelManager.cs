@@ -184,6 +184,11 @@ namespace Cor
             sceneLoader.Loaded(0);
         }
 
+        public void ReloadBonusMode()
+        {
+            sceneLoader.Loaded(2);
+        }
+
         #region Load&Save
 
         private void LoadSave()

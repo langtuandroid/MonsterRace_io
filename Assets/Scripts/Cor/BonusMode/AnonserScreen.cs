@@ -10,6 +10,7 @@ namespace Cor
         [SerializeField] GameObject headerTitle;
         [SerializeField] GameObject rewardTitle;
         [SerializeField] GameObject bottomTitle;
+        [SerializeField] RatingRewards ratingRewards;
 
         #endregion
 

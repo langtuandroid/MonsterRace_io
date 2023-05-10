@@ -11,12 +11,12 @@ namespace Cor
         TimeSpan oneDay = new TimeSpan(24, 0, 0);
         public Text text;
 
-        void Start()
+        private void Start()
         {
             StartTime();
         }
 
-        void Update()
+        private void Update()
         {
             currentTime = DateTime.UtcNow - startTime;
             if (currentTime >= oneDay)
@@ -36,5 +36,19 @@ namespace Cor
             TimeSpan countdown = oneDay - time;
             return countdown.Hours.ToString() + "h" + ":" + countdown.Minutes.ToString() + "m";
         }
+
+        #region Load&SaveData
+
+        private void LoadData()
+        {
+
+        }
+
+        private void SaveData()
+        {
+
+        }
+
+        #endregion
     }
 }

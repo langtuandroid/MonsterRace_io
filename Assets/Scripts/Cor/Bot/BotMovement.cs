@@ -184,6 +184,12 @@ namespace Cor
             transform.DOLocalMove(new Vector3(point.position.x, transform.position.y, point.position.z), force);
         }
 
+        public void SetNullPoint()
+        {
+            index = 0;
+            UpdateMove();
+        }
+
         public void RestartMovement()
         {
             _agent.enabled = true;

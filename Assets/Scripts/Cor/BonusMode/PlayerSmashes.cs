@@ -20,6 +20,7 @@ namespace Cor
         #region Variables
 
         [SerializeField] private int countSmashes;
+        [SerializeField] private int lvlCountSmashes;
 
         #endregion
 
@@ -28,9 +29,15 @@ namespace Cor
             return countSmashes;
         }
 
+        public int GetLevelSmashes()
+        {
+            return lvlCountSmashes;
+        }
+
         public void AddSmashes(int numberAdd)
         {
             countSmashes += numberAdd;
+            lvlCountSmashes++;
             SaveData();
         }
 

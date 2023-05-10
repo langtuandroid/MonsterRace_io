@@ -25,7 +25,7 @@ namespace Cor
         private bool isFirtsOpen;
 
         #endregion
-
+        private bool stop;
         private void Start()
         {
             LoadData();
@@ -33,6 +33,7 @@ namespace Cor
             {
                 anonserTutorial.ActiveScreen();
                 isFirtsOpen = true;
+                stop = true;
                 SaveData();
                 return;
             }
@@ -40,14 +41,14 @@ namespace Cor
             skinTitle.transform.parent = targetSkin.parent;
             skinTitle.transform.position = targetSkin.position;
             skinTitle.transform.localScale = targetSkin.localScale;
+        }
 
-            if (!RatingLeaderboard.isCompletedFight)
-            {
-                ratingScreen.ActiveScreen();
+        public void Play()
+        {
+            if (!isFirtsOpen)
                 return;
-            }
 
-            DOVirtual.DelayedCall(3f, () => ratingScreen.ActiveScreen());
+            ratingScreen.ActiveScreen();
         }
 
         public void FirstOpen()
@@ -59,6 +60,11 @@ namespace Cor
         public void ChangeChestReward()
         {
             screenReward.ActiveScreen();
+        }
+
+        public void ChangeSkinReward()
+        {
+            screenSkinReward.ActiveScreen();
         }
 
         #region Load&SaveData

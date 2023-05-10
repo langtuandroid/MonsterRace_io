@@ -70,12 +70,11 @@ namespace Cor
             StopMovement(false);
         }
 
-        public void Push(Transform dir)
+        public void Push()
         {
             if (_botMovement != null)
             {
-                _botMovement.StopMovement(true);
-                _botMovement.PushBot(dir);
+                _botMovement.SetNullPoint();
             }
         }
 
@@ -109,9 +108,10 @@ namespace Cor
             scale += number;
             transform.DOScale(scale, 0.3f);
             VibrationManager.Instance.HeavyVibration();
+            if (scale >= 1.7f) characterCanvas.SetMonsterTarget();
             if (isPlayer)
             {
-                if (scale >= 5.4) CameraController.Instance.ChangeMonsterCam(true);
+                if (scale >= 1.8f) CameraController.Instance.ChangeMonsterCam(true);
                 PlayerSmashes.Instance.AddSmashes(1);
             }
         }

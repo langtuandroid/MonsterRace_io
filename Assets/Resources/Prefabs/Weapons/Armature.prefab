@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 1999625272893510813}
-  punchAnim: {fileID: 0}
+  punchAnim: {fileID: 4355717842961802263}
   dust: {fileID: 6515928463754285233}
 --- !u!65 &1999625272893510813
 BoxCollider:

@@ -26,7 +26,7 @@ namespace Cor
         {
             if (other.CompareTag("Character"))
             {
-                other.GetComponentInParent<CharacterBonus>().Push(transform);
+                other.GetComponentInParent<CharacterBonus>().Push();
             }
         }
     }

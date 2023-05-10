@@ -27,10 +27,13 @@ namespace Cor
         private void ActiveScreen() 
         {
             header.transform.DOScale(header.transform.localScale, 0.5f).From(0).SetEase(Ease.Linear);
-            bonusButton.transform.DOScale(bonusButton.transform.localScale, 0.5f).From(0).SetEase(Ease.Linear).SetDelay(0.3f);
-            skipButton.transform.DOScale(skipButton.transform.localScale, 0.5f).From(0).SetEase(Ease.Linear).SetDelay(0.35f);
+            if(bonusButton != null)
+                bonusButton.transform.DOScale(bonusButton.transform.localScale, 0.5f).From(0).SetEase(Ease.Linear).SetDelay(0.3f);
+            if(skipButton != null)
+                skipButton.transform.DOScale(skipButton.transform.localScale, 0.5f).From(0).SetEase(Ease.Linear).SetDelay(0.35f);
             bottom.transform.DOScale(bottom.transform.localScale, 0.5f).From(0).SetEase(Ease.Linear).SetDelay(3f);
-            textCounter.text = _levelRewards.GetMoneyFailed() + "$ " + "is enought";
+            if(_levelRewards != null)
+                textCounter.text = _levelRewards.GetMoneyFailed() + "$ " + "is enought";
         }
     }
 }

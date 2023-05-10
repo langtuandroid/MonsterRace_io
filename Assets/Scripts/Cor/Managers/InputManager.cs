@@ -10,6 +10,7 @@ namespace Cor
         [SerializeField] private bool isFightMode;
 
         private bool isLockControll;
+        private bool clicked;
         private PlayerMovement _playerMovement;
         private CharacterFight _characterFight;
 
@@ -33,6 +34,14 @@ namespace Cor
             if (isLockControll)
                 return;
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (_joystick.IsTouch)
+                {
+                    clicked = true;
+                }
+            }
+
             if (Input.GetMouseButton(0))
             {
                 _playerMovement.MovementControll(_joystick.Horizontal, _joystick.Vertical, true);
@@ -43,7 +52,11 @@ namespace Cor
                 _playerMovement.MovementControll(0, 0, false);
                 if (!isFightMode)
                     return;
-                _characterFight.Attack();
+                if (clicked)
+                {
+                    _characterFight.Attack();
+                    clicked = false;
+                }
             }
         }
 

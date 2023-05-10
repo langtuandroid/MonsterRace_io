@@ -9847,6 +9847,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0028631538, y: 0.2907343, z: 0.058886968}
     m_Extent: {x: 0.44096756, y: 0.46455073, z: 0.2881281}
   m_DirtyAABB: 0
+--- !u!1 &5794214743478222128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4118528099262450738}
+  m_Layer: 8
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4118528099262450738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794214743478222128}
+  m_LocalRotation: {x: -0, y: -9.190102e-18, z: -1.7762321e-15, w: 1}
+  m_LocalPosition: {x: 0.01, y: 0.72, z: 0.05}
+  m_LocalScale: {x: 1.4795201, y: 1.4795198, z: 1.4795201}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8475973279327463437}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5821889035955676064
 GameObject:
   m_ObjectHideFlags: 0
@@ -10069,6 +10100,7 @@ Transform:
   m_Children:
   - {fileID: 8552625087003237800}
   - {fileID: 3364304789873839906}
+  - {fileID: 4118528099262450738}
   m_Father: {fileID: 4385091728665835499}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 1.1709136, y: -2.8789053, z: 1.572654}
@@ -13588,7 +13620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCharacter: {fileID: 3364304789873839906}
-  targetMonster: {fileID: 0}
+  targetMonster: {fileID: 4118528099262450738}
 --- !u!1 &7249519130363898471
 GameObject:
   m_ObjectHideFlags: 0
