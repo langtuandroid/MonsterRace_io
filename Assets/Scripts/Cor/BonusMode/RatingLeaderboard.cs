@@ -13,6 +13,7 @@ namespace Cor
         [SerializeField] List<RatingMember> currencyMembers = new List<RatingMember>();
         [SerializeField] List<Transform> pointsRating = new List<Transform>();
         [SerializeField] Transform group;
+        [SerializeField] Transform view;
         [SerializeField] ParticleImage effectSkull;
 
         public static bool isCompletedFight;
@@ -33,7 +34,7 @@ namespace Cor
 
         public void ScrollAnimation()
         {
-            group.DOLocalMoveY(-5376f, 0.8f).OnComplete(() =>
+            group.DOLocalMoveY(-5390f, 0.8f).OnComplete(() =>
                DOVirtual.DelayedCall(1.5f, () => group.DOLocalMoveY(407f, 0.8f)));
         }
 
