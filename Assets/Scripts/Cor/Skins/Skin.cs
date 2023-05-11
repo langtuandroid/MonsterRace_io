@@ -11,16 +11,18 @@ namespace Cor
         [Header("IdSkin")]
         [SerializeField] private string idSkin;
 
+        [Space]
         [Header("Buttons")]
         [SerializeField] GameObject next;
         [SerializeField] GameObject claim;
 
+        [Space]
         [Header("FragmentsSkin")]
         [SerializeField] SkinnedMeshRenderer[] fragments;
         [SerializeField] Material mat;
         [SerializeField] string[] ids;
-        [SerializeField] int[] indx;
 
+        [Space]
         [Header("SliderProgress")]
         [SerializeField] Slider _slider;
         [SerializeField] Text textProgress;
@@ -30,20 +32,25 @@ namespace Cor
         private int setProgress;
         private int progress;
 
+        [Space]
         [Header("PointSkin")]
         [SerializeField] Transform pointSkin;
 
-        [Header("SkinEffeñå³")]
+        [Space]
+        [Header("SkinEffeñåt")]
         [SerializeField] GameObject effect;
 
+        [Space]
         [Header("SkinAnimation")]
         [SerializeField] DOTweenAnimation punchSkin;
 
+        [Space]
         [Header("StatusSkin")]
         [SerializeField] private bool isOpenSkin;
         private bool isPartOpen;
         private bool isSetProgress;
 
+        [Space]
         [SerializeField] SkinsController _skinsController;
         [SerializeField] PartsSkinSaver _partsSkinSaver;
 
@@ -69,8 +76,6 @@ namespace Cor
             {
                 punchSkin.DOPlay();
                 fragments[ammountFramgents].material = mat;
-                _partsSkinSaver.AddNewID(ids[ammountFramgents]);
-                UIManager.Instance.SettingsButtonScreen(false);
                 UIManager.Instance.MoneyScreen(false);
                 
                 SaveSkin();
@@ -109,9 +114,8 @@ namespace Cor
                 setProgress = progress;
                 _slider.value = progress;
                 textProgress.text = progress + "%";
-
-                UIManager.Instance.BonusScreen(true);
                 isSetProgress = true;
+                UIManager.Instance.BonusScreen(true);
             }
 
             if (_slider.value < setProgress + 25)
@@ -135,24 +139,10 @@ namespace Cor
                 effect.SetActive(true);
         }
 
-        private void CheckStatusSkin()
+        public void AddSkinPart()
         {
-            if (isOpenSkin)
-            {
-                foreach(var i in fragments)
-                {
-                    i.material = mat;
-                }
-                return;
-            }
-
-            if (ammountFramgents > 0)
-            {
-                for (int i = 0; i < ammountFramgents; i++)
-                {
-                    fragments[i].material = mat;
-                }
-            }
+            LoadSave();
+            _partsSkinSaver.AddNewID(ids[ammountFramgents]);
         }
 
         public void OpenFramgentSkin()
@@ -183,6 +173,26 @@ namespace Cor
             isOpenSkin = false;
             ammountFramgents = 0;
             SaveSkin();
+        }
+
+        private void CheckStatusSkin()
+        {
+            if (isOpenSkin)
+            {
+                foreach (var i in fragments)
+                {
+                    i.material = mat;
+                }
+                return;
+            }
+
+            if (ammountFramgents > 0)
+            {
+                for (int i = 0; i < ammountFramgents; i++)
+                {
+                    fragments[i].material = mat;
+                }
+            }
         }
 
         #region Load&Save

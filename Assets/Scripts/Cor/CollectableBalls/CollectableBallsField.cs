@@ -239,10 +239,10 @@ namespace Cor
 
         private IEnumerator IE_Step()
         {
-            for(int i = 80; i < spawnedBalls.Count; i += 5)
+            for (int i = 80; i < spawnedBalls.Count; i += 5)
             {
                 spawnedBalls[i].GetCollectableBall().gameObject.SetActive(true);
-                if(spawnedBalls[i + 1] != null)
+                if (spawnedBalls[i + 1] != null)
                     spawnedBalls[i + 1].GetCollectableBall().gameObject.SetActive(true);
                 if (i + 2 < spawnedBalls.Count)
                     spawnedBalls[i + 2].GetCollectableBall().gameObject.SetActive(true);

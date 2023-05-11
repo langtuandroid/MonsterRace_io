@@ -27,7 +27,7 @@ namespace Cor
         private void Start()
         {
             _playerTransform = GameObject.FindObjectOfType<PlayerMovement>();
-            LevelManager.Instance.OnLevelStart.AddListener(ShowedPointer);
+            LevelManager.Instance.OnLevelStart += ShowedPointer;
         }
 
         public void AddToList(BotPointer enemyPointer)
@@ -93,12 +93,9 @@ namespace Cor
             }
         }
 
-        private void ShowedPointer()
-        {
-            canShow = true;
-        }
+        private void ShowedPointer() => canShow = true;
 
-        Quaternion GetIconRotation(int planeIndex)
+        private Quaternion GetIconRotation(int planeIndex)
         {
             if (planeIndex == 0)
             {

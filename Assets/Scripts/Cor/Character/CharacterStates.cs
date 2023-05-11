@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
@@ -10,18 +11,19 @@ namespace Cor
 
         [SerializeField] Character _character;
         [SerializeField] CharacterMonster _characterMonster;
-        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] CharacterAnimation _characterStatesAnimation;
         [SerializeField] CharacterSkins _characterSkins;
         [SerializeField] PlayerCharacterSkin _playerCharacterSkin;
         [SerializeField] CharacterCanvas _characterCanvas;
         [SerializeField] PlayerMovement _playerMovement;
         [SerializeField] BotMovement _botMovement;
         [SerializeField] BotPointer _botPointer;
+        [SerializeField] CharacterFight _characterFight;
         [SerializeField] private bool isPlayerCharacter;
         [SerializeField] private bool isMonsterStage;
         [SerializeField] private bool isDie;
 
-        private ArenaController _arena;
+        private ArenaManager _arena;
         private CollectableMonster _monster;
         private BallsMonster _ballsMonster;
         private SkinsController skinsController;
@@ -44,35 +46,47 @@ namespace Cor
             return isPlayerCharacter;
         }
 
+        private void OnEnable()
+        {
+            _characterFight.OnStartAttack += Attack;
+            _characterFight.OnEndAttack += MoveRetrun;
+        }
+
+        private void OnDestroy()
+        {
+            _characterFight.OnStartAttack -= Attack;
+            _characterFight.OnEndAttack -= MoveRetrun;
+        }
+
         private void Start()
         {
-            _arena = GameObject.FindObjectOfType<ArenaController>();
+            _arena = GameObject.FindObjectOfType<ArenaManager>();
             skinsController = GameObject.FindObjectOfType<SkinsController>();
-            LevelManager.Instance.OnLevelCompleted.AddListener(Finish);
+            LevelManager.Instance.OnLevelCompleted += Finish;
             if (!IsPlayerCharacter())
-                _arena.AddBot(this);
+                _arena.AddBot(_character);
         }
 
-        public void SetSpeedPlatfrom(Transform platform)
-        {
-            if (IsPlayerCharacter()) 
-            {
-                _playerMovement.transform.parent = platform;
-                return;
-            }
+        //public void SetSpeedPlatfrom(Transform platform)
+        //{
+        //    if (IsPlayerCharacter()) 
+        //    {
+        //        _playerMovement.transform.parent = platform;
+        //        return;
+        //    }
 
-            _botMovement.transform.parent = platform;
-        }
+        //    _botMovement.transform.parent = platform;
+        //}
 
-        public void SetNullPlaform()
-        {
-            if (IsPlayerCharacter())
-            {
-                _playerMovement.transform.parent = null;
-                return;
-            }
-            _botMovement.transform.parent = null;
-        }
+        //public void SetNullPlaform()
+        //{
+        //    if (IsPlayerCharacter())
+        //    {
+        //        _playerMovement.transform.parent = null;
+        //        return;
+        //    }
+        //    _botMovement.transform.parent = null;
+        //}
 
         public void SetFlying(bool isFlying)
         {
@@ -92,7 +106,6 @@ namespace Cor
                 _playerMovement.LockControll(true);
 
             _characterStatesAnimation.JumpAnimation();
-            _characterStatesAnimation.IsMonsterStage(true);
             _characterCanvas.SetMonsterTarget();
 
             StartCoroutine(IE_CharacterInMonster());
@@ -133,7 +146,7 @@ namespace Cor
             if (_botMovement != null)
                 _botMovement.StopMovement(true);
 
-            if (!IsPlayerCharacter()) { _arena.RemoveBot(this); }
+            if (!IsPlayerCharacter()) { _arena.RemoveBot(_character); }
             if (IsPlayerCharacter()) { _arena.RemovePlayer(); }
         }
 
@@ -146,6 +159,12 @@ namespace Cor
         public void Attack()
         {
             _characterStatesAnimation.AttackAnimation();
+            StopMovement(true);
+        }
+
+        public void MoveRetrun()
+        {
+            StopMovement(false);
         }
 
         public void Knock(Transform knockDir)
@@ -179,7 +198,6 @@ namespace Cor
             {
                 _botMovement.StopMovement(true);
                 _botMovement.ThrowBot(pushDir, force);
-                //_botMovement.PushBot(pushDir);
                 StartCoroutine(IE_CanMove(1f));
             }
         }
@@ -235,7 +253,8 @@ namespace Cor
             {
                 CameraController.Instance.CharacterCam(false);
                 CameraController.Instance.ChangeMonsterCam(true);
-                PopupController popupController = GameObject.FindObjectOfType<PopupController>();
+                LevelManager.Instance.LevelFight();
+                TutorialPopup popupController = GameObject.FindObjectOfType<TutorialPopup>();
                 popupController.NextPopupActive();
             }
         }
@@ -246,7 +265,6 @@ namespace Cor
 
             _character.gameObject.SetActive(false);
             _characterMonster.gameObject.SetActive(true);
-            _characterMonster.AttackFieldActive(true);
             _monster.DeactiveMonster();
 
             if (_playerMovement != null)

@@ -24,16 +24,16 @@ namespace Cor
 
         private void Start()
         {
-            LevelManager.Instance.OnLevelStart.AddListener(StartTimer);
-            LevelManager.Instance.OnLevelContinue.AddListener(RestartTimer);
-            LevelManager.Instance.OnLevelEnd.AddListener(ResultReward);
+            LevelManager.Instance.OnLevelStart += StartTimer;
+            LevelManager.Instance.OnLevelContinue += RestartTimer;
+            LevelManager.Instance.OnLevelEnd += ResultReward;
             AdsManager.Instance.StopedTimer += StopTimerAction;
         }
 
         private void FixedUpdate()
         {
-            if (LevelManager.Instance.LvlNumber() == 1)
-                return;
+            //if (LevelManager.Instance.LvlNumber() == 1)
+            //    return;
 
             if (!isResultAds)
             {
@@ -76,20 +76,11 @@ namespace Cor
             }
         }
 
-        public void StopTimerAction()
-        {
-            isStop = true;
-        }
+        public void StopTimerAction() => isStop = true;
 
-        private void StartTimer()
-        {
-            isBlockTimer = false;
-        }
+        private void StartTimer() => isBlockTimer = false;
 
-        private void RestartTimer()
-        {
-            isBlockTimer = false;
-        }
+        private void RestartTimer() => isBlockTimer = false;
 
         private void ResultReward()
         {

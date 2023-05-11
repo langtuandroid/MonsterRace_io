@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Release/Cor_Game.unity
     guid: 338b807b43283324d9499e33a17fac22
+  - enabled: 1
+    path: Assets/Scenes/Release/Bonus.unity
+    guid: 4a9f25ec536114743b279b7e0591951b
   m_configObjects: {}

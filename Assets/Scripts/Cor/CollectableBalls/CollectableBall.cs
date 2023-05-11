@@ -52,10 +52,10 @@ namespace Cor
             return false;
         }
 
-        private void OnEnable()
-        {
-            SetupBall();
-        }
+        //private void OnEnable()
+        //{
+        //    SetupBall();
+        //}
 
         private void Start()
         {

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 namespace Cor
 {
@@ -19,7 +18,7 @@ namespace Cor
         [SerializeField] Transform monsterPoint;
         [SerializeField] CharacterStates _characterStates;
         [SerializeField] CharacterSkins _characterSkins;
-        [SerializeField] CharacterStatesAnimation characterStatesAnimation;
+        [SerializeField] CharacterAnimation characterStatesAnimation;
         [SerializeField] MonsterSpine _monsterSpine;
         [SerializeField] GameObject attackField;
         [SerializeField] Animator _anim;
@@ -39,7 +38,7 @@ namespace Cor
                 if (i.monsterType == _monsterType)
                 {
                     _anim.runtimeAnimatorController = i.monsterAnimator;
-                    characterStatesAnimation.AddMonsterAnimator(_anim);
+                    characterStatesAnimation.SetAnimator(_anim);
                     break;
                 }
             }
@@ -50,12 +49,6 @@ namespace Cor
             _characterStates.CharacterDie();
             _characterStates.Die();
             _monsterSpine.CrushSpine(target);
-        }
-
-        public void AttackFieldActive(bool isActive)
-        {
-            if (isActive) { attackField.transform.DOScale(attackField.transform.localScale, 0.5f).From(0); }
-            if (!isActive) { attackField.transform.DOScale(0, 0.5f); }
         }
     }
 }

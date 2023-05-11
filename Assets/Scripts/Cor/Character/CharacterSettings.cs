@@ -35,7 +35,7 @@ namespace Cor
             _skinsController = GameObject.FindObjectOfType<SkinsController>();
             _leaderboard = GameObject.FindObjectOfType<Leaderboard>();
 
-            LevelManager.Instance.OnLevelStart.AddListener(SetCharacterSettings);
+            LevelManager.Instance.OnLevelStart += SetCharacterSettings;
             SetMonsterType();
             SetBasketColor();
         }

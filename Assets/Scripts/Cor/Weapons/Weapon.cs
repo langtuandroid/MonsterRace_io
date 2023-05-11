@@ -5,24 +5,34 @@ namespace Cor
 {
     public class Weapon : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] Collider _collider;
         [SerializeField] DOTweenAnimation punchAnim;
         [SerializeField] ParticleSystem dust;
-        private CharacterStates characterStates;
+
+        private CharacterFight _characterFight;
+
+        #endregion
 
         private void Start()
         {
-            characterStates = GetComponentInParent<CharacterStates>();    
+            _characterFight = GetComponentInParent<CharacterFight>();
+            _characterFight.OnStartAttack += Attack;
+            LevelManager.Instance.OnLevelCompleted += DeactiveWeapon;
         }
 
-        public void Attack()
-        {
-            _collider.enabled = true;
-        }
+        public void Attack() => DOVirtual.DelayedCall(0.5f, () => _collider.enabled = true);
 
         public void StopAttack()
         {
-            _collider.enabled = false;
+            DOVirtual.DelayedCall(0.1f, () => _collider.enabled = false);
+            DOVirtual.DelayedCall(0.1f, () => _characterFight.ReturnAttack());
+        }
+
+        private void DeactiveWeapon()
+        {
+            transform.DOScale(0, 0.3f).OnComplete(() => Destroy(gameObject));
         }
 
         private void OnTriggerEnter(Collider other)
@@ -31,15 +41,21 @@ namespace Cor
             {
                 punchAnim.DORestart();
                 dust.Play();
+                StopAttack();
             }
 
             if (other.gameObject.tag == "Character")
             {
                 Character character = other.GetComponent<Character>();
+                if (character == GetComponentInParent<Character>())
+                    return;
+                if (GetComponentInParent<CharacterBonus>() != null)
+                {
+                    CharacterBonus characterBonus = GetComponentInParent<CharacterBonus>();
+                    float scale = character.transform.localScale.x / 2;
+                    characterBonus.Upgrade(scale);
+                }
                 character.KillCharacter();
-
-                if (characterStates.IsPlayerCharacter())
-                    VibrationManager.Instance.HeavyVibration();
             }
 
             if (other.gameObject.tag == "Monster")
@@ -49,10 +65,12 @@ namespace Cor
                     return;
 
                 characterMonster.ExplosionCharacterMonster(transform);
-
-                if (characterStates.IsPlayerCharacter())
-                    VibrationManager.Instance.HeavyVibration();
             }
+        }
+
+        private void OnDestroy()
+        {
+            LevelManager.Instance.OnLevelCompleted -= DeactiveWeapon;
         }
     }
 }

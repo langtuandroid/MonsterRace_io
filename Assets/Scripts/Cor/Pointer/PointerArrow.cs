@@ -6,14 +6,12 @@ namespace Cor
 {
     public class PointerArrow : MonoBehaviour
     {
-        [SerializeField] Image _image;
-        bool _isShown = true;
+        #region Variables
 
-        private void Awake()
-        {
-            _image.enabled = false;
-            _isShown = false;
-        }
+        [SerializeField] Image _image;
+        private bool _isShown;
+
+        #endregion
 
         public void SetIconPosition(Vector3 position, Quaternion rotation)
         {
@@ -25,6 +23,7 @@ namespace Cor
         {
             if (_isShown) return;
             _isShown = true;
+
             StopAllCoroutines();
             StartCoroutine(IE_ShowProcess());
         }
@@ -59,6 +58,5 @@ namespace Cor
             }
             _image.enabled = false;
         }
-
     }
 }

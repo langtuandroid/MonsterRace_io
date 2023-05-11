@@ -5,8 +5,12 @@ namespace Cor
 {
     public class NameChanger : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] InputField inputField;
         [SerializeField] PlayerName _playerName;
+
+        #endregion
 
         private void Start()
         {
@@ -14,9 +18,6 @@ namespace Cor
                 inputField.text = _playerName.Name();
         }
 
-        public void ChangeName()
-        {
-            _playerName.NewName(inputField.text);
-        }
+        public void ChangeName() => _playerName.NewName(inputField.text);
     }
 }

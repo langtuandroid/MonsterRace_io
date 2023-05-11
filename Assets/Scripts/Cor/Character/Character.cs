@@ -8,27 +8,25 @@ namespace Cor
     {
         #region Variables
 
+        [SerializeField] GameModeType gameMode;
         [SerializeField] CharacterColorType _characterColorType;
         [SerializeField] GameObject crown;
         [SerializeField] ParticleSystem effectDamage;
         [SerializeField] ParticleSystem effectDie;
         [SerializeField] StackBalls _stackBalls;
         [SerializeField] CharacterStates _characterStates;
+        [SerializeField] CharacterBonus _characterBonus;
         private bool isDeactiveCharacter;
          
-        CollectableMonster _ballsMoster;
-        Leaderboard leaderboard;
+        private CollectableMonster _ballsMoster;
+        private Leaderboard leaderboard;
 
         #endregion
-
-        private void Start()
-        {
-            leaderboard = GameObject.FindObjectOfType<Leaderboard>();
-        }
 
         public void SetCharacterSettings(CharacterColorType characterColorType)
         {
             _characterColorType = characterColorType;
+            leaderboard = GameObject.FindObjectOfType<Leaderboard>();
         }
 
         public void CrownActive(bool isActive)
@@ -61,15 +59,10 @@ namespace Cor
             effectDie.transform.parent = null;
             effectDie.Play();
             gameObject.GetComponent<Collider>().enabled = false;
-            _characterStates.CharacterDie();
-            leaderboard.RemoveMember(_characterColorType);
+            if(_characterStates != null) _characterStates.CharacterDie();
+            if(leaderboard != null) leaderboard.RemoveMember(_characterColorType);
+            if (_characterBonus != null) _characterBonus.DieCharacter();
             StartCoroutine(IE_Die());
-        }
-
-        public void KilledField(Transform p)
-        {
-            _characterStates.CharacterDie();
-            transform.LookAt(p);
         }
 
         private IEnumerator IE_Die()
@@ -96,6 +89,9 @@ namespace Cor
 
             if (other.gameObject.tag == "Character")
             {
+                if (gameMode == GameModeType.Bonus)
+                    return;
+
                 StackBalls stackBalls = other.GetComponent<StackBalls>();
 
                 if (isDeactiveCharacter)

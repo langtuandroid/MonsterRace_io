@@ -5,6 +5,8 @@ namespace Cor
 {
     public class BallsMonster : MonoBehaviour
     {
+        #region Variables
+
         [SerializeField] GameObject bodyMonster;
         [SerializeField] List<GameObject> montserHeads = new List<GameObject>();
         [SerializeField] List<GameObject> balls = new List<GameObject>();
@@ -15,8 +17,9 @@ namespace Cor
 
         private Weapon _weapon;
         private WeaponSpawner _weaponSpawner;
-        private PlayerFight _playerFight;
-        private BotFight _botFight;
+        private CharacterFight _characterFight;
+
+        #endregion
 
         public List<GameObject> Balls()
         {
@@ -115,21 +118,11 @@ namespace Cor
             }
 
             _weaponSpawner = GameObject.FindObjectOfType<WeaponSpawner>();
+
             if(ok)
                 _weapon = _weaponSpawner.SpawnWeapon(pointWeapon, _weaponSpawner.GetIndex());
             if(!ok)
                 _weapon = _weaponSpawner.SpawnWeapon(pointWeapon, Random.Range(0, 4));
-            if (GetComponentInParent<PlayerFight>() != null)
-            {
-                _playerFight = GetComponentInParent<PlayerFight>();
-                _playerFight.SetWeapon(_weapon);
-            }
-
-            if (GetComponentInParent<BotFight>() != null)
-            {
-                _botFight = GetComponentInParent<BotFight>();
-                _botFight.SetWeapon(_weapon);
-            }
         }
     }
 }

@@ -10,37 +10,53 @@ namespace Cor
     {
         #region Variables
 
+        [SerializeField] GameModeType gameModeType;
         [SerializeField] List<Transform> monsterPoints = new List<Transform>();
-        [SerializeField] private float range;
+        [SerializeField] CharacterColorType colorType;
+        [SerializeField] List<Vector3> points = new List<Vector3>();
         [SerializeField] private float timeToMonster;
         [SerializeField] private float timer;
         [SerializeField] private bool isStopMovement;
         [SerializeField] private bool toMonster;
-        [SerializeField] CharacterColorType colorType;
-        [SerializeField] List<Vector3> points = new List<Vector3>();
-        [SerializeField] int min;
-        [SerializeField] int max;
+        [SerializeField] private int min;
+        [SerializeField] private int max;
         private int indexMonsterPoint;
         private bool inMonster;
 
         [SerializeField] Rigidbody _rb;
         [SerializeField] NavMeshAgent _agent;
-        [SerializeField] CharacterStatesAnimation _characterStatesAnimation;
+        [SerializeField] CharacterAnimation _characterStatesAnimation;
         [SerializeField] StackBalls _stackBalls;
-        CollectableBallsField _collectableBallsField;
-        Vector3 ball;
+        private CollectableBallsField _collectableBallsField;
+        private Arena _arena;
+        private Vector3 ball;
         public int index;
 
         #endregion
 
+        private void OnDestroy()
+        {
+            LevelManager.Instance.OnLevelStart -= Move;
+            LevelManager.Instance.OnLevelPause -= Stop;
+            LevelManager.Instance.OnLevelContinue -= Move;
+            LevelManager.Instance.OnLevelEnd -= Stop;
+        }
+
         private void Start()
         {
-            _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
+            if (gameModeType == GameModeType.Game)
+            {
+                _collectableBallsField = GameObject.FindObjectOfType<CollectableBallsField>();
+            }
+            else
+            {
+                _arena = GameObject.FindObjectOfType<Arena>();
+            }
             isStopMovement = true;
-            LevelManager.Instance.OnLevelStart.AddListener(Move);
-            LevelManager.Instance.OnLevelPause.AddListener(Stop);
-            LevelManager.Instance.OnLevelContinue.AddListener(Move);
-            LevelManager.Instance.OnLevelEnd.AddListener(Stop);
+            LevelManager.Instance.OnLevelStart += Move;
+            LevelManager.Instance.OnLevelPause += Stop;
+            LevelManager.Instance.OnLevelContinue += Move;
+            LevelManager.Instance.OnLevelEnd += Stop;
         }
 
         private void Update()
@@ -48,7 +64,7 @@ namespace Cor
             if (isStopMovement)
                 return;
 
-            if (!toMonster)
+            if (!toMonster && gameModeType == GameModeType.Game)
             {
                 if (timer >= timeToMonster)
                 {
@@ -80,16 +96,24 @@ namespace Cor
         public void SetMonsterPoints(Transform pointTarget)
         {
             monsterPoints.Add(pointTarget);
-            //monsterPoints.Add(nextTarget);
         }
 
         private void SetPoints()
         {
-            points = _collectableBallsField.ListTypeBalls(colorType);
+            if (gameModeType == GameModeType.Game)
+            {
+                points = _collectableBallsField.ListTypeBalls(colorType);
+                return;
+            }
+
+            points = _arena.GetWayPoints();
         }
 
         private void NewMove()
         {
+            if (!_agent.enabled)
+                return;
+
             if (Vector3.Distance(transform.position, ball) < 1)
             {
                 NewPoint();
@@ -107,7 +131,6 @@ namespace Cor
 
             if(_agent.enabled)
                 _agent.SetDestination(ball);
-            //_characterStatesAnimation.RunAnimation(true);
         }
 
         private void NewPoint()
@@ -127,6 +150,7 @@ namespace Cor
 
         public void Stop()
         {
+            _agent.enabled = false;
             StopMovement(true);
             _characterStatesAnimation.RunAnimation(false);
         }
@@ -158,6 +182,12 @@ namespace Cor
         public void ThrowBot(Transform point, float force)
         {
             transform.DOLocalMove(new Vector3(point.position.x, transform.position.y, point.position.z), force);
+        }
+
+        public void SetNullPoint()
+        {
+            index = 0;
+            UpdateMove();
         }
 
         public void RestartMovement()
