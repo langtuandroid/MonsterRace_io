@@ -25,7 +25,7 @@ namespace Cor
         private bool isFirtsOpen;
 
         #endregion
-        private bool stop;
+      
         private void Start()
         {
             LoadData();
@@ -33,7 +33,6 @@ namespace Cor
             {
                 anonserTutorial.ActiveScreen();
                 isFirtsOpen = true;
-                stop = true;
                 SaveData();
                 return;
             }
@@ -45,9 +44,6 @@ namespace Cor
 
         public void Play()
         {
-            if (!isFirtsOpen)
-                return;
-
             ratingScreen.ActiveScreen();
         }
 

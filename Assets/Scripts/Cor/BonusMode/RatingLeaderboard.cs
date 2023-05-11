@@ -22,20 +22,18 @@ namespace Cor
 
         #endregion
 
-        private void Awake()
-        {
-            if (!isCompletedFight) ratingMenu.Play();
-        }
-
         private void Start()
         {
             SetupMembers();
-           
+
+
+            if (!isCompletedFight) ratingMenu.Play();
+
             if (isCompletedFight)
             {
                 ChangeSmashes();
                 SortMembers();
-                return;
+                isCompletedFight = false;
             }
         }
 
@@ -79,6 +77,8 @@ namespace Cor
                     //ScrollView(currencyMembers[i]);
                 }
             }
+
+            if (!isCompletedFight) ratingMenu.Play();
         }
 
         private void SetupMembers()
