@@ -9,12 +9,12 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_Skin() : base(typeof(Cor.Skin)){ Instance = this; priority = 1;}
+		public ES3UserType_Skin() : base(typeof(Core.Skin)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (Cor.Skin)obj;
+			var instance = (Core.Skin)obj;
 			
 			writer.WritePrivateField("ammountFramgents", instance);
 			writer.WritePrivateField("isOpenSkin", instance);
@@ -22,17 +22,17 @@ namespace ES3Types
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (Cor.Skin)obj;
+			var instance = (Core.Skin)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "ammountFramgents":
-					instance = (Cor.Skin)reader.SetPrivateField("ammountFramgents", reader.Read<System.Int32>(), instance);
+					instance = (Core.Skin)reader.SetPrivateField("ammountFramgents", reader.Read<System.Int32>(), instance);
 					break;
 					case "isOpenSkin":
-					instance = (Cor.Skin)reader.SetPrivateField("isOpenSkin", reader.Read<System.Boolean>(), instance);
+					instance = (Core.Skin)reader.SetPrivateField("isOpenSkin", reader.Read<System.Boolean>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -47,7 +47,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_SkinArray() : base(typeof(Cor.Skin[]), ES3UserType_Skin.Instance)
+		public ES3UserType_SkinArray() : base(typeof(Core.Skin[]), ES3UserType_Skin.Instance)
 		{
 			Instance = this;
 		}

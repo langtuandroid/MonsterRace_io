@@ -9,12 +9,12 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_AppMetricaAnalytics() : base(typeof(Cor.SDK.AppMetricaAnalytics)){ Instance = this; priority = 1;}
+		public ES3UserType_AppMetricaAnalytics() : base(typeof(Core.SDK.AppMetricaAnalytics)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (Cor.SDK.AppMetricaAnalytics)obj;
+			var instance = (Core.SDK.AppMetricaAnalytics)obj;
 			
 			writer.WritePrivateField("_levelNumber", instance);
 			writer.WritePrivateField("_levelName", instance);
@@ -25,26 +25,26 @@ namespace ES3Types
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (Cor.SDK.AppMetricaAnalytics)obj;
+			var instance = (Core.SDK.AppMetricaAnalytics)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "_levelNumber":
-					instance = (Cor.SDK.AppMetricaAnalytics)reader.SetPrivateField("_levelNumber", reader.Read<System.Int32>(), instance);
+					instance = (Core.SDK.AppMetricaAnalytics)reader.SetPrivateField("_levelNumber", reader.Read<System.Int32>(), instance);
 					break;
 					case "_levelName":
-					instance = (Cor.SDK.AppMetricaAnalytics)reader.SetPrivateField("_levelName", reader.Read<System.Int32>(), instance);
+					instance = (Core.SDK.AppMetricaAnalytics)reader.SetPrivateField("_levelName", reader.Read<System.Int32>(), instance);
 					break;
 					case "_levelCount":
-					instance = (Cor.SDK.AppMetricaAnalytics)reader.SetPrivateField("_levelCount", reader.Read<System.Int32>(), instance);
+					instance = (Core.SDK.AppMetricaAnalytics)reader.SetPrivateField("_levelCount", reader.Read<System.Int32>(), instance);
 					break;
 					case "_levelLoop":
-					instance = (Cor.SDK.AppMetricaAnalytics)reader.SetPrivateField("_levelLoop", reader.Read<System.Int32>(), instance);
+					instance = (Core.SDK.AppMetricaAnalytics)reader.SetPrivateField("_levelLoop", reader.Read<System.Int32>(), instance);
 					break;
 					case "_loopAttempt":
-					instance = (Cor.SDK.AppMetricaAnalytics)reader.SetPrivateField("_loopAttempt", reader.Read<System.Int32>(), instance);
+					instance = (Core.SDK.AppMetricaAnalytics)reader.SetPrivateField("_loopAttempt", reader.Read<System.Int32>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -59,7 +59,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_AppMetricaAnalyticsArray() : base(typeof(Cor.SDK.AppMetricaAnalytics[]), ES3UserType_AppMetricaAnalytics.Instance)
+		public ES3UserType_AppMetricaAnalyticsArray() : base(typeof(Core.SDK.AppMetricaAnalytics[]), ES3UserType_AppMetricaAnalytics.Instance)
 		{
 			Instance = this;
 		}

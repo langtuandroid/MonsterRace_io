@@ -9,26 +9,26 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_PartsSkinSaver() : base(typeof(Cor.PartsSkinSaver)){ Instance = this; priority = 1;}
+		public ES3UserType_PartsSkinSaver() : base(typeof(Core.PartsSkinSaver)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (Cor.PartsSkinSaver)obj;
+			var instance = (Core.PartsSkinSaver)obj;
 			
 			writer.WritePrivateField("partsID", instance);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (Cor.PartsSkinSaver)obj;
+			var instance = (Core.PartsSkinSaver)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "partsID":
-					instance = (Cor.PartsSkinSaver)reader.SetPrivateField("partsID", reader.Read<System.Collections.Generic.List<System.String>>(), instance);
+					instance = (Core.PartsSkinSaver)reader.SetPrivateField("partsID", reader.Read<System.Collections.Generic.List<System.String>>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -43,7 +43,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_PartsSkinSaverArray() : base(typeof(Cor.PartsSkinSaver[]), ES3UserType_PartsSkinSaver.Instance)
+		public ES3UserType_PartsSkinSaverArray() : base(typeof(Core.PartsSkinSaver[]), ES3UserType_PartsSkinSaver.Instance)
 		{
 			Instance = this;
 		}
