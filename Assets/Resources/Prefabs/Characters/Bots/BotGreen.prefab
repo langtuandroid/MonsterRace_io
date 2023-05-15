@@ -303,21 +303,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd11f24931778043b84222efaa46251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameModeType: 0
+  gameModeType: 1
   monsterPoints: []
   colorType: 1
   points: []
-  range: 15
+  rb: {fileID: 1437897824514412236}
+  agent: {fileID: 1437897824514405646}
+  characterAnimation: {fileID: 1437897824514399557}
+  stackBalls: {fileID: 8123363861526266267}
   timeToMonster: 3
   timer: 0
   isStopMovement: 0
   toMonster: 0
   min: 8
   max: 20
-  _rb: {fileID: 1437897824514412236}
-  _agent: {fileID: 1437897824514405646}
-  _characterStatesAnimation: {fileID: 1437897824514399557}
-  _stackBalls: {fileID: 8123363861526266267}
   index: 0
 --- !u!114 &6023928729728067115
 MonoBehaviour:
@@ -332,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackField: {fileID: 1437897824514464044}
+  isAttack: 0
 --- !u!114 &1437897824514399566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,9 +433,9 @@ MonoBehaviour:
   colorCharacter: {r: 0.02745098, g: 0.81960785, b: 0.14117648, a: 1}
   basket: {fileID: 8178527484233203536}
   basketColor: {r: 0.019607844, g: 0.5568628, b: 0.09411765, a: 1}
-  _characterState: {fileID: 1437897824514399556}
-  _characterSkins: {fileID: 1437897824514399555}
-  _character: {fileID: 8123363861526266268}
+  characterState: {fileID: 1437897824514399556}
+  characterSkins: {fileID: 1437897824514399555}
+  character: {fileID: 0}
   nameGenerator: {fileID: 1437897824514399560}
   playerName: {fileID: 0}
   ballsMonster: {fileID: 0}
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859183ef15f21d445bd3c7ae34708d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animCharacter: {fileID: 2047219348541862934}
+  animCharacter: {fileID: 2047219348541862934}
 --- !u!114 &1437897824514399555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   - {fileID: 3566319615556364065}
   - {fileID: 1532388623238929166}
   - {fileID: 6508085814974998043}
-  _skinType: 0
+  skinType: 0
 --- !u!1 &1437897824514464201
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70fb6ad1bbd20034a8539de0047ec3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textName: {fileID: 1437897824514399581}
+  _textName: {fileID: 1437897824514399581}
   names:
   - LEGEND
   - MORTI
@@ -1152,12 +1152,10 @@ MonoBehaviour:
   - monsterType: 5
     monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
   monsterPoint: {fileID: 1437897824514443273}
-  _characterStates: {fileID: 1437897824514399556}
-  _characterSkins: {fileID: 1437897824514399555}
+  characterStates: {fileID: 0}
   characterStatesAnimation: {fileID: 1437897824514399557}
-  _monsterSpine: {fileID: 1437897824514399586}
-  attackField: {fileID: 1437897824514464044}
-  _anim: {fileID: 0}
+  monsterSpine: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &1437897824514399586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,11 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40da20ea5ca19644f94e396f32545b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStates: {fileID: 1437897824514399556}
-  _characterStatesAnimation: {fileID: 1437897824514399557}
-  _characterMonster: {fileID: 1437897824514399588}
-  weapon: {fileID: 0}
-  botMovement: {fileID: 1437897824514399567}
+  characterFight: {fileID: 0}
   isAttack: 0
 --- !u!1001 &6440861273898167311
 PrefabInstance:

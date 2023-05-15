@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859183ef15f21d445bd3c7ae34708d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animCharacter: {fileID: 8211012899097130967}
+  animCharacter: {fileID: 0}
 --- !u!114 &147942257724707939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   - {fileID: 6693566580771513568}
   - {fileID: 8709518343112022223}
   - {fileID: 4020326941661242842}
-  _skinType: 0
+  skinType: 0
 --- !u!1 &147942257724641513
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,20 +339,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd11f24931778043b84222efaa46251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameModeType: 0
   monsterPoints: []
   colorType: 3
   points: []
-  range: 15
+  rb: {fileID: 0}
+  agent: {fileID: 0}
+  characterAnimation: {fileID: 0}
+  stackBalls: {fileID: 0}
   timeToMonster: 3
   timer: 0
   isStopMovement: 0
   toMonster: 0
   min: 8
   max: 20
-  _rb: {fileID: 147942257724655596}
-  _agent: {fileID: 147942257724718126}
-  _characterStatesAnimation: {fileID: 147942257724707941}
-  _stackBalls: {fileID: 2099156780213174874}
   index: 0
 --- !u!114 &147942257724707950
 MonoBehaviour:
@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackField: {fileID: 147942257724641292}
+  isAttack: 0
 --- !u!1 &147942257724641873
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70fb6ad1bbd20034a8539de0047ec3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textName: {fileID: 147942257724707965}
+  _textName: {fileID: 147942257724707965}
   names:
   - LUCI
   - ALEX
@@ -996,12 +997,10 @@ MonoBehaviour:
   - monsterType: 5
     monsterAnimator: {fileID: 9100000, guid: 367022ec8b0c0c34398ebf4d6251fcb6, type: 2}
   monsterPoint: {fileID: 147942257724621097}
-  _characterStates: {fileID: 147942257724707940}
-  _characterSkins: {fileID: 147942257724707939}
+  characterStates: {fileID: 0}
   characterStatesAnimation: {fileID: 147942257724707941}
-  _monsterSpine: {fileID: 147942257724707906}
-  attackField: {fileID: 147942257724641292}
-  _anim: {fileID: 0}
+  monsterSpine: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &147942257724707906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,11 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40da20ea5ca19644f94e396f32545b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterStates: {fileID: 147942257724707940}
-  _characterStatesAnimation: {fileID: 147942257724707941}
-  _characterMonster: {fileID: 147942257724707908}
-  weapon: {fileID: 0}
-  botMovement: {fileID: 147942257724707951}
+  characterFight: {fileID: 0}
   isAttack: 0
 --- !u!1 &147942257724644519
 GameObject:
@@ -1283,17 +1278,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3015570414471525225, guid: f78ffea55bbf3b4418f275169dfb44a5, type: 3}
   m_PrefabInstance: {fileID: 3817019112571563982}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2099156780213174874 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3015570414471605652, guid: f78ffea55bbf3b4418f275169dfb44a5, type: 3}
-  m_PrefabInstance: {fileID: 3817019112571563982}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 829075b4c14010d44aa5e3f5346be7b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2099156780213174877 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3015570414471605651, guid: f78ffea55bbf3b4418f275169dfb44a5, type: 3}
@@ -1403,11 +1387,6 @@ GameObject:
 --- !u!1 &8025881438156322409 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6600427735078738343, guid: f78ffea55bbf3b4418f275169dfb44a5, type: 3}
-  m_PrefabInstance: {fileID: 3817019112571563982}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &8211012899097130967 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4975252811905357849, guid: f78ffea55bbf3b4418f275169dfb44a5, type: 3}
   m_PrefabInstance: {fileID: 3817019112571563982}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8449105132862924126 stripped

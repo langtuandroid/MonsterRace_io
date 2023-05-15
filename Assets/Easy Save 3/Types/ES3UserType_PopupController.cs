@@ -9,26 +9,26 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_PopupController() : base(typeof(Cor.TutorialPopup)){ Instance = this; priority = 1;}
+		public ES3UserType_PopupController() : base(typeof(Core.TutorialPopup)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (Cor.TutorialPopup)obj;
+			var instance = (Core.TutorialPopup)obj;
 			
 			writer.WritePrivateField("isClosedPopups", instance);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (Cor.TutorialPopup)obj;
+			var instance = (Core.TutorialPopup)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "isClosedPopups":
-					instance = (Cor.TutorialPopup)reader.SetPrivateField("isClosedPopups", reader.Read<System.Boolean>(), instance);
+					instance = (Core.TutorialPopup)reader.SetPrivateField("isClosedPopups", reader.Read<System.Boolean>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -43,7 +43,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_PopupControllerArray() : base(typeof(Cor.TutorialPopup[]), ES3UserType_PopupController.Instance)
+		public ES3UserType_PopupControllerArray() : base(typeof(Core.TutorialPopup[]), ES3UserType_PopupController.Instance)
 		{
 			Instance = this;
 		}

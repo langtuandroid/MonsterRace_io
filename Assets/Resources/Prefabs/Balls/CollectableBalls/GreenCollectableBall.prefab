@@ -127,10 +127,10 @@ MonoBehaviour:
   - {fileID: 2254461469573734144}
   - {fileID: 3047702607212649173}
   - {fileID: 6440167024246071419}
-  _rb: {fileID: 0}
+  rb: {fileID: 0}
   _collider: {fileID: 5441855226445795350}
-  _ballType: 1
-  _savedType: 1
+  ballType: 1
+  savedType: 1
 --- !u!135 &5441855226445795350
 SphereCollider:
   m_ObjectHideFlags: 0

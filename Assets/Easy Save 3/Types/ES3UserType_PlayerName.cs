@@ -9,26 +9,26 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_PlayerName() : base(typeof(Cor.PlayerName)){ Instance = this; priority = 1;}
+		public ES3UserType_PlayerName() : base(typeof(Core.PlayerName)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (Cor.PlayerName)obj;
+			var instance = (Core.PlayerName)obj;
 			
 			writer.WritePrivateField("playerName", instance);
 		}
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (Cor.PlayerName)obj;
+			var instance = (Core.PlayerName)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "playerName":
-					instance = (Cor.PlayerName)reader.SetPrivateField("playerName", reader.Read<System.String>(), instance);
+					instance = (Core.PlayerName)reader.SetPrivateField("playerName", reader.Read<System.String>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -43,7 +43,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_PlayerNameArray() : base(typeof(Cor.PlayerName[]), ES3UserType_PlayerName.Instance)
+		public ES3UserType_PlayerNameArray() : base(typeof(Core.PlayerName[]), ES3UserType_PlayerName.Instance)
 		{
 			Instance = this;
 		}

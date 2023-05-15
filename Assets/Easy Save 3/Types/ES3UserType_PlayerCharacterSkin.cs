@@ -9,12 +9,12 @@ namespace ES3Types
 	{
 		public static ES3Type Instance = null;
 
-		public ES3UserType_PlayerCharacterSkin() : base(typeof(Cor.PlayerCharacterSkin)){ Instance = this; priority = 1;}
+		public ES3UserType_PlayerCharacterSkin() : base(typeof(Core.PlayerCharacterSkin)){ Instance = this; priority = 1;}
 
 
 		protected override void WriteComponent(object obj, ES3Writer writer)
 		{
-			var instance = (Cor.PlayerCharacterSkin)obj;
+			var instance = (Core.PlayerCharacterSkin)obj;
 			
 			writer.WritePrivateField("_headType", instance);
 			writer.WritePrivateField("_armsType", instance);
@@ -24,23 +24,23 @@ namespace ES3Types
 
 		protected override void ReadComponent<T>(ES3Reader reader, object obj)
 		{
-			var instance = (Cor.PlayerCharacterSkin)obj;
+			var instance = (Core.PlayerCharacterSkin)obj;
 			foreach(string propertyName in reader.Properties)
 			{
 				switch(propertyName)
 				{
 					
 					case "_headType":
-					instance = (Cor.PlayerCharacterSkin)reader.SetPrivateField("_headType", reader.Read<Cor.CharacterMonsterType>(), instance);
+					instance = (Core.PlayerCharacterSkin)reader.SetPrivateField("_headType", reader.Read<Core.CharacterMonsterType>(), instance);
 					break;
 					case "_armsType":
-					instance = (Cor.PlayerCharacterSkin)reader.SetPrivateField("_armsType", reader.Read<Cor.CharacterMonsterType>(), instance);
+					instance = (Core.PlayerCharacterSkin)reader.SetPrivateField("_armsType", reader.Read<Core.CharacterMonsterType>(), instance);
 					break;
 					case "_bodyType":
-					instance = (Cor.PlayerCharacterSkin)reader.SetPrivateField("_bodyType", reader.Read<Cor.CharacterMonsterType>(), instance);
+					instance = (Core.PlayerCharacterSkin)reader.SetPrivateField("_bodyType", reader.Read<Core.CharacterMonsterType>(), instance);
 					break;
 					case "_legsType":
-					instance = (Cor.PlayerCharacterSkin)reader.SetPrivateField("_legsType", reader.Read<Cor.CharacterMonsterType>(), instance);
+					instance = (Core.PlayerCharacterSkin)reader.SetPrivateField("_legsType", reader.Read<Core.CharacterMonsterType>(), instance);
 					break;
 					default:
 						reader.Skip();
@@ -55,7 +55,7 @@ namespace ES3Types
 	{
 		public static ES3Type Instance;
 
-		public ES3UserType_PlayerCharacterSkinArray() : base(typeof(Cor.PlayerCharacterSkin[]), ES3UserType_PlayerCharacterSkin.Instance)
+		public ES3UserType_PlayerCharacterSkinArray() : base(typeof(Core.PlayerCharacterSkin[]), ES3UserType_PlayerCharacterSkin.Instance)
 		{
 			Instance = this;
 		}
